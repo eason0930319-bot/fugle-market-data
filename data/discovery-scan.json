@@ -1,8 +1,15 @@
 {
   "ok": true,
-  "generatedAt": "2026-08-23T16:54:19.743748+00:00",
-  "version": "discovery-github-v2.3",
-  "stage": "isin-industry-diversified-selection-v2.3",
+  "generatedAt": "2026-08-23T17:02:19.189230+00:00",
+  "version": "discovery-github-v2.4",
+  "stage": "production-gate-v2.4",
+  "marketDate": "2026-08-21",
+  "dataIntegrityGate": {
+    "ok": true,
+    "minimumHistoryEnriched": 30,
+    "actualHistoryEnriched": 40,
+    "rule": "TSE + OTC + both security masters must be healthy; history enrichment must reach threshold."
+  },
   "sources": {
     "TSE": {
       "ok": true,
@@ -60,6 +67,7 @@
   },
   "dynamicSelectionPolicy": {
     "maxCandidates": 11,
+    "minScore": 50.0,
     "maxPerIndustry": 2,
     "maxUnknownIndustry": 1,
     "setupQuotas": {
@@ -70,7 +78,18 @@
       "GENERAL_WATCH": 1,
       "EXTENDED": 1
     },
-    "note": "Preview only; does not write watchlist-dynamic.json."
+    "pinnedExcluded": [
+      "0050",
+      "00713",
+      "2303",
+      "2308",
+      "2330",
+      "2357",
+      "2408",
+      "2454",
+      "6757"
+    ],
+    "ttlHours": 72
   },
   "dynamicPreview": [
     {
@@ -83,7 +102,9 @@
       "setup": "EXTENDED",
       "reasonCodes": [
         "SETUP_EXTENDED",
-        "INDUSTRY_航運業"
+        "INDUSTRY_航運業",
+        "SCORE_GATE_PASS",
+        "NOT_PINNED"
       ]
     },
     {
@@ -96,7 +117,9 @@
       "setup": "BREAKOUT",
       "reasonCodes": [
         "SETUP_BREAKOUT",
-        "INDUSTRY_紡織纖維"
+        "INDUSTRY_紡織纖維",
+        "SCORE_GATE_PASS",
+        "NOT_PINNED"
       ]
     },
     {
@@ -109,7 +132,9 @@
       "setup": "BREAKOUT",
       "reasonCodes": [
         "SETUP_BREAKOUT",
-        "INDUSTRY_金融保險業"
+        "INDUSTRY_金融保險業",
+        "SCORE_GATE_PASS",
+        "NOT_PINNED"
       ]
     },
     {
@@ -122,7 +147,9 @@
       "setup": "REVERSAL",
       "reasonCodes": [
         "SETUP_REVERSAL",
-        "INDUSTRY_半導體業"
+        "INDUSTRY_半導體業",
+        "SCORE_GATE_PASS",
+        "NOT_PINNED"
       ]
     },
     {
@@ -135,7 +162,9 @@
       "setup": "TREND_MOMENTUM",
       "reasonCodes": [
         "SETUP_TREND_MOMENTUM",
-        "INDUSTRY_半導體業"
+        "INDUSTRY_半導體業",
+        "SCORE_GATE_PASS",
+        "NOT_PINNED"
       ]
     },
     {
@@ -148,7 +177,9 @@
       "setup": "TREND_MOMENTUM",
       "reasonCodes": [
         "SETUP_TREND_MOMENTUM",
-        "INDUSTRY_電腦及週邊設備業"
+        "INDUSTRY_電腦及週邊設備業",
+        "SCORE_GATE_PASS",
+        "NOT_PINNED"
       ]
     },
     {
@@ -161,7 +192,9 @@
       "setup": "TREND_MOMENTUM",
       "reasonCodes": [
         "SETUP_TREND_MOMENTUM",
-        "INDUSTRY_電子零組件業"
+        "INDUSTRY_電子零組件業",
+        "SCORE_GATE_PASS",
+        "NOT_PINNED"
       ]
     },
     {
@@ -174,43 +207,18 @@
       "setup": "REVERSAL",
       "reasonCodes": [
         "SETUP_REVERSAL",
-        "INDUSTRY_金融保險業"
-      ]
-    },
-    {
-      "symbol": "5871",
-      "name": "中租-KY",
-      "market": "TSE",
-      "industry": "其他業",
-      "tier": "C",
-      "score": 48.56,
-      "setup": "GENERAL_WATCH",
-      "reasonCodes": [
-        "SETUP_GENERAL_WATCH",
-        "INDUSTRY_其他業"
-      ]
-    },
-    {
-      "symbol": "1303",
-      "name": "南亞",
-      "market": "TSE",
-      "industry": "塑膠工業",
-      "tier": "C",
-      "score": 34.04,
-      "setup": "REVERSAL",
-      "reasonCodes": [
-        "SETUP_REVERSAL",
-        "INDUSTRY_塑膠工業"
+        "INDUSTRY_金融保險業",
+        "SCORE_GATE_PASS",
+        "NOT_PINNED"
       ]
     }
   ],
   "dynamicPreviewStats": {
-    "selectedCount": 10,
+    "selectedCount": 8,
     "setupCounts": {
       "BREAKOUT": 2,
-      "REVERSAL": 3,
+      "REVERSAL": 2,
       "TREND_MOMENTUM": 3,
-      "GENERAL_WATCH": 1,
       "EXTENDED": 1
     },
     "industryCounts": {
@@ -219,9 +227,13 @@
       "金融保險業": 2,
       "半導體業": 2,
       "電腦及週邊設備業": 1,
-      "電子零組件業": 1,
-      "其他業": 1,
-      "塑膠工業": 1
+      "電子零組件業": 1
+    },
+    "rejectionCounts": {
+      "belowMinScore": 16,
+      "pinned": 0,
+      "setupQuota": 12,
+      "industryQuota": 4
     }
   },
   "topDiscovery": [
