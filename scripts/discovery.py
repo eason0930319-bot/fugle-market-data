@@ -12,27 +12,110 @@ from pathlib import Path
 
 import requests
 
-TWSE_DAILY = "https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL"
-TPEX_DAILY = "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes"
-TWSE_HIST = "https://www.twse.com.tw/exchangeReport/STOCK_DAY"
-TPEX_HIST = "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock/st43_result.php"
-ISIN = "https://isin.twse.com.tw/isin/C_public.jsp"
 
-MIN_TRADE_VALUE = int(os.getenv("MIN_TRADE_VALUE", "50000000"))
-RESULT_LIMIT = int(os.getenv("RESULT_LIMIT", "30"))
-HISTORY_LIMIT = int(os.getenv("HISTORY_CANDIDATE_LIMIT", "40"))
-DYNAMIC_LIMIT = int(os.getenv("DYNAMIC_PREVIEW_LIMIT", "11"))
-BENCHMARK = os.getenv("BENCHMARK_SYMBOL", "0050")
+# ============================================================
+# Data Sources
+# ============================================================
+
+TWSE_DAILY = (
+    "https://openapi.twse.com.tw/"
+    "v1/exchangeReport/STOCK_DAY_ALL"
+)
+
+TPEX_DAILY = (
+    "https://www.tpex.org.tw/"
+    "openapi/v1/"
+    "tpex_mainboard_daily_close_quotes"
+)
+
+TWSE_HIST = (
+    "https://www.twse.com.tw/"
+    "exchangeReport/STOCK_DAY"
+)
+
+TPEX_HIST = (
+    "https://www.tpex.org.tw/"
+    "www/zh-tw/afterTrading/"
+    "tradingStock/st43_result.php"
+)
+
+ISIN = (
+    "https://isin.twse.com.tw/"
+    "isin/C_public.jsp"
+)
+
+
+# ============================================================
+# Config
+# ============================================================
+
+MIN_TRADE_VALUE = int(
+    os.getenv(
+        "MIN_TRADE_VALUE",
+        "50000000",
+    )
+)
+
+RESULT_LIMIT = int(
+    os.getenv(
+        "RESULT_LIMIT",
+        "30",
+    )
+)
+
+HISTORY_LIMIT = int(
+    os.getenv(
+        "HISTORY_CANDIDATE_LIMIT",
+        "40",
+    )
+)
+
+DYNAMIC_LIMIT = int(
+    os.getenv(
+        "DYNAMIC_PREVIEW_LIMIT",
+        "11",
+    )
+)
+
+BENCHMARK = os.getenv(
+    "BENCHMARK_SYMBOL",
+    "0050",
+)
+
+
+# ============================================================
+# HTTP Session
+# ============================================================
 
 S = requests.Session()
-S.headers.update({"User-Agent": "fugle-market-data-discovery/2.0"})
 
+S.headers.update(
+    {
+        "User-Agent":
+            "fugle-market-data-discovery/2.1",
+    }
+)
+
+
+# ============================================================
+# Basic Helpers
+# ============================================================
 
 def num(v):
     if v is None:
         return None
-    if isinstance(v, (int, float)):
-        return None if isinstance(v, float) and math.isnan(v) else float(v)
+
+    if isinstance(
+        v,
+        (int, float),
+    ):
+        if (
+            isinstance(v, float)
+            and math.isnan(v)
+        ):
+            return None
+
+        return float(v)
 
     t = (
         str(v)
@@ -42,18 +125,47 @@ def num(v):
         .replace("+", "")
     )
 
-    if t in {"", "-", "--", "---", "N/A", "null", "None"}:
+    if t in {
+        "",
+        "-",
+        "--",
+        "---",
+        "N/A",
+        "null",
+        "None",
+    }:
         return None
 
-    m = re.search(r"-?\d+(?:\.\d+)?", t)
-    return float(m.group()) if m else None
+    m = re.search(
+        r"-?\d+(?:\.\d+)?",
+        t,
+    )
+
+    if not m:
+        return None
+
+    return float(
+        m.group()
+    )
 
 
-def rnd(v, n=3):
-    return None if v is None else round(float(v), n)
+def rnd(
+    v,
+    n=3,
+):
+    if v is None:
+        return None
+
+    return round(
+        float(v),
+        n,
+    )
 
 
-def get_json(url, params=None):
+def get_json(
+    url,
+    params=None,
+):
     last = None
 
     for i in range(3):
@@ -62,26 +174,45 @@ def get_json(url, params=None):
                 url,
                 params=params,
                 timeout=30,
-                headers={"Accept": "application/json"},
+                headers={
+                    "Accept":
+                        "application/json",
+                },
             )
+
             r.raise_for_status()
-            time.sleep(0.12)
+
+            time.sleep(
+                0.12
+            )
+
             return r.json()
 
         except Exception as e:
             last = e
-            time.sleep(0.7 * (i + 1))
 
-    raise RuntimeError(f"GET failed {url}: {last}")
+            time.sleep(
+                0.7
+                * (i + 1)
+            )
+
+    raise RuntimeError(
+        f"GET failed {url}: {last}"
+    )
 
 
 def roc_date(v):
     if v is None:
         return None
 
-    d = re.sub(r"\D", "", str(v))
+    d = re.sub(
+        r"\D",
+        "",
+        str(v),
+    )
 
     try:
+        # YYYYMMDD
         if len(d) == 8:
             return date(
                 int(d[:4]),
@@ -89,6 +220,7 @@ def roc_date(v):
                 int(d[6:8]),
             ).isoformat()
 
+        # YYYMMDD 民國年
         if len(d) == 7:
             return date(
                 int(d[:3]) + 1911,
@@ -102,143 +234,391 @@ def roc_date(v):
     return None
 
 
-def change_pct(close, change):
-    if close is None or change is None:
+def change_pct(
+    close,
+    change,
+):
+    if (
+        close is None
+        or change is None
+    ):
         return None
 
-    prev = close - change
+    prev = (
+        close
+        - change
+    )
 
     if prev == 0:
         return None
 
-    return change / prev * 100
+    return (
+        change
+        / prev
+        * 100
+    )
 
+
+# ============================================================
+# Daily Market Normalization
+# ============================================================
 
 def norm_twse(x):
-    s = str(x.get("Code", "")).strip()
+    s = str(
+        x.get(
+            "Code",
+            "",
+        )
+    ).strip()
 
-    if not (len(s) == 4 and s.isdigit()):
+    if not (
+        len(s) == 4
+        and s.isdigit()
+    ):
         return None
 
-    c = num(x.get("ClosingPrice"))
-    ch = num(x.get("Change"))
+    c = num(
+        x.get(
+            "ClosingPrice"
+        )
+    )
+
+    ch = num(
+        x.get(
+            "Change"
+        )
+    )
 
     return {
-        "symbol": s,
-        "name": str(x.get("Name", "")).strip(),
-        "market": "TSE",
-        "date": roc_date(x.get("Date")),
-        "openPrice": num(x.get("OpeningPrice")),
-        "highPrice": num(x.get("HighestPrice")),
-        "lowPrice": num(x.get("LowestPrice")),
-        "closePrice": c,
-        "change": ch,
-        "changePercent": rnd(change_pct(c, ch)),
-        "tradeVolume": num(x.get("TradeVolume")),
-        "tradeValue": num(x.get("TradeValue")),
+        "symbol":
+            s,
+
+        "name":
+            str(
+                x.get(
+                    "Name",
+                    "",
+                )
+            ).strip(),
+
+        "market":
+            "TSE",
+
+        "date":
+            roc_date(
+                x.get(
+                    "Date"
+                )
+            ),
+
+        "openPrice":
+            num(
+                x.get(
+                    "OpeningPrice"
+                )
+            ),
+
+        "highPrice":
+            num(
+                x.get(
+                    "HighestPrice"
+                )
+            ),
+
+        "lowPrice":
+            num(
+                x.get(
+                    "LowestPrice"
+                )
+            ),
+
+        "closePrice":
+            c,
+
+        "change":
+            ch,
+
+        "changePercent":
+            rnd(
+                change_pct(
+                    c,
+                    ch,
+                )
+            ),
+
+        "tradeVolume":
+            num(
+                x.get(
+                    "TradeVolume"
+                )
+            ),
+
+        "tradeValue":
+            num(
+                x.get(
+                    "TradeValue"
+                )
+            ),
     }
 
 
 def norm_tpex(x):
-    s = str(x.get("SecuritiesCompanyCode", "")).strip()
+    s = str(
+        x.get(
+            "SecuritiesCompanyCode",
+            "",
+        )
+    ).strip()
 
-    if not (len(s) == 4 and s.isdigit()):
+    if not (
+        len(s) == 4
+        and s.isdigit()
+    ):
         return None
 
-    c = num(x.get("Close"))
-    ch = num(x.get("Change"))
-    vol = num(x.get("TradingShares"))
+    c = num(
+        x.get(
+            "Close"
+        )
+    )
+
+    ch = num(
+        x.get(
+            "Change"
+        )
+    )
+
+    vol = num(
+        x.get(
+            "TradingShares"
+        )
+    )
 
     val = next(
         (
-            num(x.get(k))
+            num(
+                x.get(k)
+            )
             for k in (
                 "TransactionAmount",
                 "TradingValue",
                 "TradeValue",
                 "TradeAmount",
             )
-            if num(x.get(k)) is not None
+            if num(
+                x.get(k)
+            ) is not None
         ),
         None,
     )
 
-    if val is None and vol is not None and c is not None:
-        val = vol * c
+    # 若 TPEx OpenAPI 沒有成交金額欄位，
+    # 用收盤價 × 成交股數估算成交額。
+    if (
+        val is None
+        and vol is not None
+        and c is not None
+    ):
+        val = (
+            vol
+            * c
+        )
 
     return {
-        "symbol": s,
-        "name": str(x.get("CompanyName", "")).strip(),
-        "market": "OTC",
-        "date": roc_date(x.get("Date")),
-        "openPrice": num(x.get("Open")),
-        "highPrice": num(x.get("High")),
-        "lowPrice": num(x.get("Low")),
-        "closePrice": c,
-        "change": ch,
-        "changePercent": rnd(change_pct(c, ch)),
-        "tradeVolume": vol,
-        "tradeValue": val,
+        "symbol":
+            s,
+
+        "name":
+            str(
+                x.get(
+                    "CompanyName",
+                    "",
+                )
+            ).strip(),
+
+        "market":
+            "OTC",
+
+        "date":
+            roc_date(
+                x.get(
+                    "Date"
+                )
+            ),
+
+        "openPrice":
+            num(
+                x.get(
+                    "Open"
+                )
+            ),
+
+        "highPrice":
+            num(
+                x.get(
+                    "High"
+                )
+            ),
+
+        "lowPrice":
+            num(
+                x.get(
+                    "Low"
+                )
+            ),
+
+        "closePrice":
+            c,
+
+        "change":
+            ch,
+
+        "changePercent":
+            rnd(
+                change_pct(
+                    c,
+                    ch,
+                )
+            ),
+
+        "tradeVolume":
+            vol,
+
+        "tradeValue":
+            val,
     }
 
 
 def add_intraday(r):
-    h = r.get("highPrice")
-    l = r.get("lowPrice")
-    c = r.get("closePrice")
+    h = r.get(
+        "highPrice"
+    )
 
-    if None not in (h, l, c) and h != l:
-        r["closePosition"] = rnd(
-            (c - l) / (h - l),
+    l = r.get(
+        "lowPrice"
+    )
+
+    c = r.get(
+        "closePrice"
+    )
+
+    if (
+        None not in (
+            h,
+            l,
+            c,
+        )
+        and h != l
+    ):
+        r[
+            "closePosition"
+        ] = rnd(
+            (
+                c - l
+            )
+            /
+            (
+                h - l
+            ),
             4,
         )
+
     else:
-        r["closePosition"] = None
+        r[
+            "closePosition"
+        ] = None
 
     return r
 
 
-def load_daily(url, fn, market):
+def load_daily(
+    url,
+    fn,
+    market,
+):
     try:
-        raw = get_json(url)
+        raw = get_json(
+            url
+        )
 
         rows = [
             add_intraday(y)
             for x in raw
-            if isinstance(x, dict)
-            and (y := fn(x))
+            if (
+                isinstance(
+                    x,
+                    dict,
+                )
+                and
+                (
+                    y := fn(x)
+                )
+            )
         ]
 
         return {
-            "ok": bool(rows),
-            "market": market,
-            "raw": len(raw),
-            "rows": rows,
-            "error": None,
+            "ok":
+                bool(rows),
+
+            "market":
+                market,
+
+            "raw":
+                len(raw),
+
+            "rows":
+                rows,
+
+            "error":
+                None,
         }
 
     except Exception as e:
         return {
-            "ok": False,
-            "market": market,
-            "raw": 0,
-            "rows": [],
-            "error": str(e),
+            "ok":
+                False,
+
+            "market":
+                market,
+
+            "raw":
+                0,
+
+            "rows":
+                [],
+
+            "error":
+                str(e),
         }
 
 
-def security_master(str_mode, market):
+# ============================================================
+# Security Master
+# 真正普通股過濾：CFI code ESxxxx
+# ============================================================
+
+def security_master(
+    str_mode,
+    market,
+):
     try:
         r = S.get(
             ISIN,
-            params={"strMode": str_mode},
+            params={
+                "strMode":
+                    str_mode,
+            },
             timeout=30,
         )
+
         r.raise_for_status()
 
-        text = r.content.decode(
-            "big5",
-            errors="replace",
+        text = (
+            r.content
+            .decode(
+                "big5",
+                errors="replace",
+            )
         )
 
         out = {}
@@ -246,14 +626,20 @@ def security_master(str_mode, market):
         for tr in re.findall(
             r"<tr[^>]*>(.*?)</tr>",
             text,
-            flags=re.I | re.S,
+            flags=(
+                re.I
+                | re.S
+            ),
         ):
             cells = []
 
             for td in re.findall(
                 r"<td[^>]*>(.*?)</td>",
                 tr,
-                flags=re.I | re.S,
+                flags=(
+                    re.I
+                    | re.S
+                ),
             ):
                 t = re.sub(
                     r"<[^>]+>",
@@ -269,7 +655,9 @@ def security_master(str_mode, market):
                     )
                 ).strip()
 
-                cells.append(t)
+                cells.append(
+                    t
+                )
 
             if not cells:
                 continue
@@ -285,7 +673,8 @@ def security_master(str_mode, market):
             cfi = next(
                 (
                     c.upper()
-                    for c in cells
+                    for c
+                    in cells
                     if re.fullmatch(
                         r"ES[A-Z0-9]{4}",
                         c.upper(),
@@ -295,39 +684,77 @@ def security_master(str_mode, market):
             )
 
             if cfi:
-                out[m.group(1)] = {
-                    "name": m.group(2).strip(),
-                    "market": market,
-                    "cfi": cfi,
+                out[
+                    m.group(1)
+                ] = {
+                    "name":
+                        m.group(
+                            2
+                        ).strip(),
+
+                    "market":
+                        market,
+
+                    "cfi":
+                        cfi,
                 }
 
         return {
-            "ok": bool(out),
-            "count": len(out),
-            "items": out,
-            "error": None,
+            "ok":
+                bool(out),
+
+            "count":
+                len(out),
+
+            "items":
+                out,
+
+            "error":
+                None,
         }
 
     except Exception as e:
         return {
-            "ok": False,
-            "count": 0,
-            "items": {},
-            "error": str(e),
+            "ok":
+                False,
+
+            "count":
+                0,
+
+            "items":
+                {},
+
+            "error":
+                str(e),
         }
 
 
-def percentile(vals, v):
-    if v is None or len(vals) < 2:
+# ============================================================
+# Cheap Scan
+# ============================================================
+
+def percentile(
+    vals,
+    v,
+):
+    if (
+        v is None
+        or len(vals) < 2
+    ):
         return 0.0
 
     return (
         (
-            sum(x <= v for x in vals) - 1
+            sum(
+                x <= v
+                for x in vals
+            )
+            - 1
         )
         /
         (
-            len(vals) - 1
+            len(vals)
+            - 1
         )
         * 100
     )
@@ -335,107 +762,169 @@ def percentile(vals, v):
 
 def cheap_scan(rows):
     liq = sorted(
-        r["tradeValue"]
+        r[
+            "tradeValue"
+        ]
         for r in rows
-        if r.get("tradeValue") is not None
+        if r.get(
+            "tradeValue"
+        ) is not None
     )
 
     mom = sorted(
-        r["changePercent"]
+        r[
+            "changePercent"
+        ]
         for r in rows
-        if r.get("changePercent") is not None
+        if r.get(
+            "changePercent"
+        ) is not None
     )
 
     for r in rows:
         lp = percentile(
             liq,
-            r.get("tradeValue"),
+            r.get(
+                "tradeValue"
+            ),
         )
 
         mp = percentile(
             mom,
-            r.get("changePercent"),
+            r.get(
+                "changePercent"
+            ),
         )
 
         cp = (
             50
-            if r.get("closePosition") is None
+            if r.get(
+                "closePosition"
+            ) is None
             else max(
                 0,
                 min(
                     100,
-                    r["closePosition"] * 100,
+                    r[
+                        "closePosition"
+                    ]
+                    * 100,
                 ),
             )
         )
 
-        r["cheapScan"] = {
-            "liquidityPercentile": rnd(
-                lp,
-                2,
-            ),
-            "momentumPercentile": rnd(
-                mp,
-                2,
-            ),
-            "closeStrengthScore": rnd(
-                cp,
-                2,
-            ),
-            "discoveryScore": rnd(
-                lp * 0.40
-                + mp * 0.35
-                + cp * 0.25,
-                2,
-            ),
+        r[
+            "cheapScan"
+        ] = {
+            "liquidityPercentile":
+                rnd(
+                    lp,
+                    2,
+                ),
+
+            "momentumPercentile":
+                rnd(
+                    mp,
+                    2,
+                ),
+
+            "closeStrengthScore":
+                rnd(
+                    cp,
+                    2,
+                ),
+
+            "discoveryScore":
+                rnd(
+                    lp
+                    * 0.40
+                    +
+                    mp
+                    * 0.35
+                    +
+                    cp
+                    * 0.25,
+                    2,
+                ),
         }
 
+
+# ============================================================
+# Pick only ~40 stocks for expensive history enrichment
+# ============================================================
 
 def pick_history(rows):
     order = sorted(
         rows,
         key=lambda r:
-            r["cheapScan"]["discoveryScore"],
+            r[
+                "cheapScan"
+            ][
+                "discoveryScore"
+            ],
         reverse=True,
     )
 
     normal = [
         r
         for r in order
-        if (r.get("changePercent") or 0) < 7
+        if (
+            r.get(
+                "changePercent"
+            )
+            or 0
+        ) < 7
     ]
 
-    ext = [
+    extended = [
         r
         for r in order
-        if (r.get("changePercent") or 0) >= 7
+        if (
+            r.get(
+                "changePercent"
+            )
+            or 0
+        ) >= 7
     ]
 
-    ext_cap = min(
+    # 最多約 20% 名額給單日過熱股
+    extended_cap = min(
         8,
         max(
             2,
-            HISTORY_LIMIT // 5,
+            HISTORY_LIMIT
+            // 5,
         ),
     )
 
     selected = (
         normal[
-            :HISTORY_LIMIT - ext_cap
+            :
+            HISTORY_LIMIT
+            - extended_cap
         ]
         +
-        ext[
-            :ext_cap
+        extended[
+            :
+            extended_cap
         ]
     )
 
     return sorted(
         selected,
         key=lambda r:
-            r["cheapScan"]["discoveryScore"],
+            r[
+                "cheapScan"
+            ][
+                "discoveryScore"
+            ],
         reverse=True,
     )
 
+
+# ============================================================
+# Historical Data
+# ============================================================
 
 def months(d):
     out = [
@@ -466,27 +955,93 @@ def months(d):
     )
 
 
-def parse_hist(data):
+def parse_hist(
+    data,
+    unit_multiplier=1,
+):
+    """
+    TWSE historical endpoint:
+      成交股數 = 股
+      成交金額 = 元
+      multiplier = 1
+
+    TPEx historical endpoint:
+      成交仟股 = 千股
+      成交仟元 = 千元
+      multiplier = 1000
+
+    這樣最後全部標準化成：
+      volume = 股
+      tradeValue = 元
+    """
+
     out = []
 
     for x in data:
-        if not isinstance(x, list) or len(x) < 7:
+        if (
+            not isinstance(
+                x,
+                list,
+            )
+            or len(x) < 7
+        ):
             continue
 
         d = roc_date(
             x[0]
         )
 
+        volume = num(
+            x[1]
+        )
+
+        trade_value = num(
+            x[2]
+        )
+
         if d:
             out.append(
                 {
-                    "date": d,
-                    "volume": num(x[1]),
-                    "tradeValue": num(x[2]),
-                    "open": num(x[3]),
-                    "high": num(x[4]),
-                    "low": num(x[5]),
-                    "close": num(x[6]),
+                    "date":
+                        d,
+
+                    "volume":
+                        (
+                            volume
+                            * unit_multiplier
+                            if volume
+                            is not None
+                            else None
+                        ),
+
+                    "tradeValue":
+                        (
+                            trade_value
+                            * unit_multiplier
+                            if trade_value
+                            is not None
+                            else None
+                        ),
+
+                    "open":
+                        num(
+                            x[3]
+                        ),
+
+                    "high":
+                        num(
+                            x[4]
+                        ),
+
+                    "low":
+                        num(
+                            x[5]
+                        ),
+
+                    "close":
+                        num(
+                            x[6]
+                        ),
                 }
             )
 
@@ -500,40 +1055,60 @@ def history(
 ):
     out = []
 
-    for y, m in months(session):
+    for y, m in months(
+        session
+    ):
 
+        # --------------------------
+        # TWSE
+        # --------------------------
         if market == "TSE":
-
             p = get_json(
                 TWSE_HIST,
                 {
-                    "response": "json",
-                    "stockNo": symbol,
+                    "response":
+                        "json",
+
+                    "stockNo":
+                        symbol,
+
                     "date":
                         f"{y:04d}{m:02d}01",
                 },
             )
 
             if (
-                isinstance(p, dict)
-                and p.get("stat") == "OK"
+                isinstance(
+                    p,
+                    dict,
+                )
+                and p.get(
+                    "stat"
+                ) == "OK"
             ):
                 out += parse_hist(
                     p.get(
                         "data",
                         [],
-                    )
+                    ),
+                    unit_multiplier=1,
                 )
 
+        # --------------------------
+        # TPEx
+        # --------------------------
         else:
-
             p = get_json(
                 TPEX_HIST,
                 {
-                    "l": "zh-tw",
+                    "l":
+                        "zh-tw",
+
                     "date":
                         f"{y:04d}/{m:02d}/01",
-                    "code": symbol,
+
+                    "code":
+                        symbol,
                 },
             )
 
@@ -542,25 +1117,39 @@ def history(
                     "tables",
                     [],
                 )
-                if isinstance(p, dict)
+                if isinstance(
+                    p,
+                    dict,
+                )
                 else []
             )
 
             if tables:
+                # TPEx 歷史資料：
+                # 成交仟股 / 成交仟元
+                # 必須 ×1000 才能與今日 OpenAPI 單位一致
                 out += parse_hist(
-                    tables[0].get(
+                    tables[
+                        0
+                    ].get(
                         "data",
                         [],
-                    )
+                    ),
+                    unit_multiplier=1000,
                 )
 
     return sorted(
         {
-            x["date"]: x
+            x[
+                "date"
+            ]:
+                x
             for x in out
         }.values(),
         key=lambda x:
-            x["date"],
+            x[
+                "date"
+            ],
     )
 
 
@@ -569,16 +1158,25 @@ def merged_history(
     row,
 ):
     by = {
-        x["date"]: x
+        x[
+            "date"
+        ]:
+            x
         for x in hist
     }
 
-    if row.get("date"):
+    if row.get(
+        "date"
+    ):
         by[
-            row["date"]
+            row[
+                "date"
+            ]
         ] = {
             "date":
-                row["date"],
+                row[
+                    "date"
+                ],
 
             "volume":
                 row.get(
@@ -614,31 +1212,44 @@ def merged_history(
     return sorted(
         by.values(),
         key=lambda x:
-            x["date"],
+            x[
+                "date"
+            ],
     )
 
+
+# ============================================================
+# Historical Features
+# ============================================================
 
 def ret(
     hist,
     n,
 ):
     closes = [
-        x["close"]
+        x[
+            "close"
+        ]
         for x in hist
-        if x.get("close")
-        not in (
+        if x.get(
+            "close"
+        ) not in (
             None,
             0,
         )
     ]
 
-    if len(closes) < n + 1:
+    if len(
+        closes
+    ) < n + 1:
         return None
 
     return (
         closes[-1]
         /
-        closes[-n - 1]
+        closes[
+            -n - 1
+        ]
         - 1
     ) * 100
 
@@ -647,19 +1258,23 @@ def mean_last(
     vals,
     n,
 ):
-    if len(vals) < n:
+    if len(
+        vals
+    ) < n:
         return None
 
     return statistics.fmean(
-        vals[-n:]
+        vals[
+            -n:
+        ]
     )
 
 
 def features(
     row,
     hist,
-    b5,
-    b20,
+    benchmark_return5,
+    benchmark_return20,
 ):
     h = merged_history(
         hist,
@@ -669,26 +1284,29 @@ def features(
     valid = [
         x
         for x in h
-        if x.get("close")
-        not in (
+        if x.get(
+            "close"
+        ) not in (
             None,
             0,
         )
     ]
 
-    r5 = ret(
+    return5 = ret(
         valid,
         5,
     )
 
-    r20 = ret(
+    return20 = ret(
         valid,
         20,
     )
 
     closes = [
         float(
-            x["close"]
+            x[
+                "close"
+            ]
         )
         for x in valid
     ]
@@ -698,48 +1316,68 @@ def features(
         20,
     )
 
+    # 不包含今天，避免今天成交量被放進平均值
     prev_vol = [
         float(
-            x["volume"]
+            x[
+                "volume"
+            ]
         )
-        for x in valid[:-1]
-        if x.get("volume")
-        not in (
+        for x in valid[
+            :-1
+        ]
+        if x.get(
+            "volume"
+        ) not in (
             None,
             0,
         )
     ]
 
-    av20 = mean_last(
+    avg_volume20 = mean_last(
         prev_vol,
         20,
     )
 
-    rv = (
-        row["tradeVolume"]
+    rvol20 = (
+        row[
+            "tradeVolume"
+        ]
         /
-        av20
-        if av20
-        and row.get("tradeVolume")
+        avg_volume20
+        if (
+            avg_volume20
+            and row.get(
+                "tradeVolume"
+            )
+        )
         else None
     )
 
-    prior = valid[:-1][
+    # Prior 20D High 不包含今天
+    prior = valid[
+        :-1
+    ][
         -20:
     ]
 
     highs = [
-        x["high"]
+        x[
+            "high"
+        ]
         for x in prior
-        if x.get("high")
-        not in (
+        if x.get(
+            "high"
+        ) not in (
             None,
             0,
         )
     ]
 
-    hi20 = (
-        max(highs)
+    high20 = (
+        max(
+            highs
+        )
         if highs
         else None
     )
@@ -748,25 +1386,33 @@ def features(
         "closePrice"
     )
 
-    dist_hi = (
+    distance_high20 = (
         (
-            close / hi20
+            close
+            /
+            high20
             - 1
         )
         * 100
-        if close
-        and hi20
+        if (
+            close
+            and high20
+        )
         else None
     )
 
-    dist_ma = (
+    distance_ma20 = (
         (
-            close / ma20
+            close
+            /
+            ma20
             - 1
         )
         * 100
-        if close
-        and ma20
+        if (
+            close
+            and ma20
+        )
         else None
     )
 
@@ -775,76 +1421,104 @@ def features(
             len(valid),
 
         "return5":
-            rnd(r5),
+            rnd(
+                return5
+            ),
 
         "return20":
-            rnd(r20),
+            rnd(
+                return20
+            ),
 
         "rs5":
             rnd(
-                r5 - b5
+                return5
+                -
+                benchmark_return5
             )
-            if r5 is not None
-            and b5 is not None
+            if (
+                return5 is not None
+                and benchmark_return5
+                is not None
+            )
             else None,
 
         "rs20":
             rnd(
-                r20 - b20
+                return20
+                -
+                benchmark_return20
             )
-            if r20 is not None
-            and b20 is not None
+            if (
+                return20 is not None
+                and benchmark_return20
+                is not None
+            )
             else None,
 
         "rvol20":
-            rnd(rv),
+            rnd(
+                rvol20
+            ),
+
+        "avgVolume20":
+            rnd(
+                avg_volume20
+            ),
 
         "ma20":
-            rnd(ma20),
+            rnd(
+                ma20
+            ),
 
         "prior20High":
-            rnd(hi20),
+            rnd(
+                high20
+            ),
 
         "distanceFrom20DHighPct":
             rnd(
-                dist_hi
+                distance_high20
             ),
 
         "distanceFromMA20Pct":
             rnd(
-                dist_ma
+                distance_ma20
             ),
     }
 
+
+# ============================================================
+# Setup Classification
+# ============================================================
 
 def setup(r):
     f = r[
         "historyFeatures"
     ]
 
-    ch = (
+    change = (
         r.get(
             "changePercent"
         )
         or 0
     )
 
-    cp = (
+    close_position = (
         0.5
         if r.get(
             "closePosition"
-        )
-        is None
+        ) is None
         else r[
             "closePosition"
         ]
     )
 
-    r5 = f.get(
+    return5 = f.get(
         "return5"
     )
 
-    r20 = f.get(
+    return20 = f.get(
         "return20"
     )
 
@@ -852,70 +1526,121 @@ def setup(r):
         "rs20"
     )
 
-    rv = f.get(
+    rvol20 = f.get(
         "rvol20"
     )
 
-    dh = f.get(
+    distance_high = f.get(
         "distanceFrom20DHighPct"
     )
 
-    dm = f.get(
+    distance_ma = f.get(
         "distanceFromMA20Pct"
     )
 
+    # ========================================================
+    # EXTENDED
+    # 單日太強或離 MA20 太遠
+    # ========================================================
     if (
-        ch >= 7
+        change >= 7
         or (
-            dm is not None
-            and dm >= 14
+            distance_ma
+            is not None
+            and distance_ma >= 14
         )
     ):
         return "EXTENDED"
 
+    # ========================================================
+    # BREAKOUT
+    # ========================================================
     if (
-        dh is not None
-        and dh >= -1
-        and (rv or 0) >= 1.15
-        and cp >= 0.70
-        and (rs20 or 0) > 0
+        distance_high
+        is not None
+        and distance_high >= -1
+        and (
+            rvol20
+            or 0
+        ) >= 1.15
+        and close_position >= 0.70
+        and (
+            rs20
+            or 0
+        ) > 0
     ):
         return "BREAKOUT"
 
+    # ========================================================
+    # PULLBACK
+    # ========================================================
     if (
-        r20 is not None
-        and r20 > 3
-        and dm is not None
-        and -1.5 <= dm <= 6
-        and dh is not None
-        and -12 <= dh <= -2
-        and r5 is not None
-        and -6 <= r5 <= 2.5
+        return20
+        is not None
+        and return20 > 3
+        and distance_ma
+        is not None
+        and (
+            -1.5
+            <= distance_ma
+            <= 6
+        )
+        and distance_high
+        is not None
+        and (
+            -12
+            <= distance_high
+            <= -2
+        )
+        and return5
+        is not None
+        and (
+            -6
+            <= return5
+            <= 2.5
+        )
     ):
         return "PULLBACK"
 
+    # ========================================================
+    # REVERSAL
+    # ========================================================
     if (
-        r5 is not None
-        and r5 <= 2
-        and ch > 0
-        and cp >= 0.75
-        and dm is not None
-        and dm >= -2.5
+        return5
+        is not None
+        and return5 <= 2
+        and change > 0
+        and close_position >= 0.75
+        and distance_ma
+        is not None
+        and distance_ma >= -2.5
     ):
         return "REVERSAL"
 
+    # ========================================================
+    # TREND MOMENTUM
+    # ========================================================
     if (
-        r20 is not None
-        and r20 > 4
-        and (rs20 or 0) > 0
-        and dm is not None
-        and dm > 0
-        and cp >= 0.55
+        return20
+        is not None
+        and return20 > 4
+        and (
+            rs20
+            or 0
+        ) > 0
+        and distance_ma
+        is not None
+        and distance_ma > 0
+        and close_position >= 0.55
     ):
         return "TREND_MOMENTUM"
 
     return "GENERAL_WATCH"
 
+
+# ============================================================
+# V2 Score
+# ============================================================
 
 def high_score(d):
     if d is None:
@@ -939,7 +1664,7 @@ def high_score(d):
 
 
 def score_v2(rows):
-    rs5 = sorted(
+    rs5_values = sorted(
         float(
             r[
                 "historyFeatures"
@@ -952,11 +1677,10 @@ def score_v2(rows):
             "historyFeatures"
         ].get(
             "rs5"
-        )
-        is not None
+        ) is not None
     )
 
-    rs20 = sorted(
+    rs20_values = sorted(
         float(
             r[
                 "historyFeatures"
@@ -969,11 +1693,10 @@ def score_v2(rows):
             "historyFeatures"
         ].get(
             "rs20"
-        )
-        is not None
+        ) is not None
     )
 
-    rv = sorted(
+    rvol_values = sorted(
         float(
             r[
                 "historyFeatures"
@@ -986,17 +1709,27 @@ def score_v2(rows):
             "historyFeatures"
         ].get(
             "rvol20"
-        )
-        is not None
+        ) is not None
     )
 
-    bonus = {
-        "BREAKOUT": 5,
-        "PULLBACK": 5,
-        "REVERSAL": 3,
-        "TREND_MOMENTUM": 3,
-        "GENERAL_WATCH": 0,
-        "EXTENDED": -12,
+    setup_bonus = {
+        "BREAKOUT":
+            5,
+
+        "PULLBACK":
+            5,
+
+        "REVERSAL":
+            3,
+
+        "TREND_MOMENTUM":
+            3,
+
+        "GENERAL_WATCH":
+            0,
+
+        "EXTENDED":
+            -12,
     }
 
     for r in rows:
@@ -1004,30 +1737,32 @@ def score_v2(rows):
             "historyFeatures"
         ]
 
-        st = setup(r)
+        st = setup(
+            r
+        )
 
         p5 = percentile(
-            rs5,
+            rs5_values,
             f.get(
                 "rs5"
             ),
         )
 
         p20 = percentile(
-            rs20,
+            rs20_values,
             f.get(
                 "rs20"
             ),
         )
 
-        prv = percentile(
-            rv,
+        p_rvol = percentile(
+            rvol_values,
             f.get(
                 "rvol20"
             ),
         )
 
-        hs = high_score(
+        high_proximity = high_score(
             f.get(
                 "distanceFrom20DHighPct"
             )
@@ -1047,13 +1782,15 @@ def score_v2(rows):
             p20
             * 0.25
             +
-            prv
+            p_rvol
             * 0.20
             +
-            hs
+            high_proximity
             * 0.15
             +
-            bonus[st]
+            setup_bonus[
+                st
+            ]
         )
 
         r[
@@ -1077,13 +1814,13 @@ def score_v2(rows):
 
             "rvol20Percentile":
                 rnd(
-                    prv,
+                    p_rvol,
                     2,
                 ),
 
             "highProximityScore":
                 rnd(
-                    hs,
+                    high_proximity,
                     2,
                 ),
 
@@ -1101,6 +1838,11 @@ def score_v2(rows):
         }
 
 
+# ============================================================
+# Dynamic Preview
+# 尚未正式寫 watchlist-dynamic.json
+# ============================================================
+
 def dynamic_preview(rows):
     order = sorted(
         rows,
@@ -1115,7 +1857,8 @@ def dynamic_preview(rows):
 
     result = []
     used = set()
-    ext = 0
+
+    extended_count = 0
 
     setup_order = (
         "BREAKOUT",
@@ -1126,43 +1869,59 @@ def dynamic_preview(rows):
         "EXTENDED",
     )
 
-    for st in setup_order:
+    for setup_type in setup_order:
 
         for r in order:
 
-            if len(result) >= DYNAMIC_LIMIT:
+            if (
+                len(result)
+                >= DYNAMIC_LIMIT
+            ):
                 return result
 
-            if r["setup"] != st:
-                continue
-
-            if r["symbol"] in used:
-                continue
-
             if (
-                st == "EXTENDED"
-                and ext >= 2
+                r[
+                    "setup"
+                ]
+                != setup_type
             ):
                 continue
 
-            sc = r[
+            if (
+                r[
+                    "symbol"
+                ]
+                in used
+            ):
+                continue
+
+            if (
+                setup_type
+                == "EXTENDED"
+                and extended_count >= 2
+            ):
+                continue
+
+            score = r[
                 "discoveryV2"
             ][
                 "score"
             ]
 
             if (
-                st in {
+                setup_type
+                in {
                     "BREAKOUT",
                     "PULLBACK",
                 }
-                and sc >= 70
+                and score >= 70
             ):
                 tier = "A"
 
             elif (
-                st != "EXTENDED"
-                and sc >= 60
+                setup_type
+                != "EXTENDED"
+                and score >= 60
             ):
                 tier = "B"
 
@@ -1172,36 +1931,55 @@ def dynamic_preview(rows):
             result.append(
                 {
                     "symbol":
-                        r["symbol"],
+                        r[
+                            "symbol"
+                        ],
 
                     "name":
-                        r["name"],
+                        r[
+                            "name"
+                        ],
 
                     "market":
-                        r["market"],
+                        r[
+                            "market"
+                        ],
 
                     "tier":
                         tier,
 
                     "score":
-                        sc,
+                        score,
 
                     "setup":
-                        st,
+                        setup_type,
                 }
             )
 
             used.add(
-                r["symbol"]
+                r[
+                    "symbol"
+                ]
             )
 
-            if st == "EXTENDED":
-                ext += 1
+            if (
+                setup_type
+                == "EXTENDED"
+            ):
+                extended_count += 1
 
     return result
 
 
+# ============================================================
+# Main
+# ============================================================
+
 def main():
+
+    # --------------------------------------------------------
+    # 1. Full Market Daily
+    # --------------------------------------------------------
 
     tse = load_daily(
         TWSE_DAILY,
@@ -1214,6 +1992,10 @@ def main():
         norm_tpex,
         "OTC",
     )
+
+    # --------------------------------------------------------
+    # 2. True Common-Stock Security Master
+    # --------------------------------------------------------
 
     sm_tse = security_master(
         2,
@@ -1229,9 +2011,9 @@ def main():
         {
             (
                 "TSE",
-                s,
+                symbol,
             )
-            for s
+            for symbol
             in sm_tse[
                 "items"
             ]
@@ -1240,9 +2022,9 @@ def main():
         {
             (
                 "OTC",
-                s,
+                symbol,
             )
-            for s
+            for symbol
             in sm_otc[
                 "items"
             ]
@@ -1269,37 +2051,55 @@ def main():
             r[
                 "symbol"
             ],
-        )
-        in master
+        ) in master
     ]
+
+    # --------------------------------------------------------
+    # 3. Liquidity Filter
+    # --------------------------------------------------------
 
     eligible = [
         r
         for r in common
         if (
-            r.get(
-                "tradeValue"
+            (
+                r.get(
+                    "tradeValue"
+                )
+                or 0
             )
-            or 0
-        )
-        >=
-        MIN_TRADE_VALUE
-        and r.get(
-            "closePrice"
+            >= MIN_TRADE_VALUE
+            and r.get(
+                "closePrice"
+            )
         )
     ]
+
+    # --------------------------------------------------------
+    # 4. Cheap Scan
+    # --------------------------------------------------------
 
     cheap_scan(
         eligible
     )
 
+    # --------------------------------------------------------
+    # 5. Top ~40 for history enrichment
+    # --------------------------------------------------------
+
     candidates = pick_history(
         eligible
     )
 
+    # --------------------------------------------------------
+    # Latest trading session
+    # --------------------------------------------------------
+
     sessions = [
         date.fromisoformat(
-            r["date"]
+            r[
+                "date"
+            ]
         )
         for r in raw
         if r.get(
@@ -1311,21 +2111,29 @@ def main():
         sessions
     )
 
-    bh = history(
+    # --------------------------------------------------------
+    # 6. Benchmark 0050
+    # --------------------------------------------------------
+
+    benchmark_history = history(
         BENCHMARK,
         "TSE",
         latest,
     )
 
-    b5 = ret(
-        bh,
+    benchmark_return5 = ret(
+        benchmark_history,
         5,
     )
 
-    b20 = ret(
-        bh,
+    benchmark_return20 = ret(
+        benchmark_history,
         20,
     )
+
+    # --------------------------------------------------------
+    # 7. History Enrichment
+    # --------------------------------------------------------
 
     enriched = []
     errors = []
@@ -1333,20 +2141,21 @@ def main():
     for r in candidates:
 
         try:
+            hist = history(
+                r[
+                    "symbol"
+                ],
+                r[
+                    "market"
+                ],
+                latest,
+            )
 
             f = features(
                 r,
-                history(
-                    r[
-                        "symbol"
-                    ],
-                    r[
-                        "market"
-                    ],
-                    latest,
-                ),
-                b5,
-                b20,
+                hist,
+                benchmark_return5,
+                benchmark_return20,
             )
 
             if (
@@ -1356,10 +2165,14 @@ def main():
                 < 21
             ):
                 raise RuntimeError(
-                    f"only {f['historySessions']} sessions"
+                    "only "
+                    f"{f['historySessions']} "
+                    "sessions"
                 )
 
-            x = dict(r)
+            x = dict(
+                r
+            )
 
             x[
                 "historyFeatures"
@@ -1370,7 +2183,6 @@ def main():
             )
 
         except Exception as e:
-
             errors.append(
                 {
                     "symbol":
@@ -1388,6 +2200,10 @@ def main():
                 }
             )
 
+    # --------------------------------------------------------
+    # 8. V2 Scoring
+    # --------------------------------------------------------
+
     score_v2(
         enriched
     )
@@ -1402,6 +2218,10 @@ def main():
             ],
         reverse=True,
     )
+
+    # --------------------------------------------------------
+    # 9. Setup Counts
+    # --------------------------------------------------------
 
     counts = {}
 
@@ -1421,6 +2241,10 @@ def main():
             1
         )
 
+    # --------------------------------------------------------
+    # 10. Output
+    # --------------------------------------------------------
+
     payload = {
         "ok":
             bool(
@@ -1439,10 +2263,10 @@ def main():
             ).isoformat(),
 
         "version":
-            "discovery-github-v2",
+            "discovery-github-v2.1",
 
         "stage":
-            "history-enriched-discovery-v2",
+            "history-enriched-discovery-v2.1",
 
         "sources": {
             "TSE": {
@@ -1482,16 +2306,21 @@ def main():
 
         "securityMaster": {
             "ok":
-                sm_tse[
-                    "ok"
-                ]
-                and
-                sm_otc[
-                    "ok"
-                ],
+                (
+                    sm_tse[
+                        "ok"
+                    ]
+                    and
+                    sm_otc[
+                        "ok"
+                    ]
+                ),
 
             "method":
-                "TWSE ISIN; CFI starts with ES",
+                (
+                    "TWSE ISIN; "
+                    "CFI starts with ES"
+                ),
 
             "TSE": {
                 "ok":
@@ -1571,12 +2400,12 @@ def main():
 
             "return5":
                 rnd(
-                    b5
+                    benchmark_return5
                 ),
 
             "return20":
                 rnd(
-                    b20
+                    benchmark_return20
                 ),
         },
 
@@ -1590,9 +2419,14 @@ def main():
 
         "topDiscovery":
             ranked[
-                :RESULT_LIMIT
+                :
+                RESULT_LIMIT
             ],
     }
+
+    # --------------------------------------------------------
+    # Write JSON
+    # --------------------------------------------------------
 
     Path(
         "data"
@@ -1610,6 +2444,10 @@ def main():
         ),
         encoding="utf-8",
     )
+
+    # --------------------------------------------------------
+    # GitHub Actions Summary
+    # --------------------------------------------------------
 
     print(
         json.dumps(
@@ -1647,6 +2485,11 @@ def main():
                 "historyErrorCount":
                     payload[
                         "historyErrorCount"
+                    ],
+
+                "benchmark":
+                    payload[
+                        "benchmark"
                     ],
 
                 "setupCounts":
