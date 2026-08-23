@@ -4,20 +4,32 @@ on:
   workflow_dispatch:
 
   schedule:
-    # 台灣時間週一～週五 15:45
-    # UTC = 07:45
-    - cron: "45 7 * * 1-5"
+    # 台灣時間週一～週五 15:10
+    # UTC = 07:10
+    - cron: "10 7 * * 1-5"
 
 permissions:
   contents: write
 
+concurrency:
+  group: taiwan-market-discovery
+  cancel-in-progress: false
+
 jobs:
   discovery:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     env:
       MIN_TRADE_VALUE: "50000000"
       RESULT_LIMIT: "30"
+      HISTORY_CANDIDATE_LIMIT: "40"
+      DYNAMIC_PREVIEW_LIMIT: "11"
+      DYNAMIC_MAX_PER_INDUSTRY: "2"
+      MIN_DYNAMIC_SCORE: "50"
+      DYNAMIC_TTL_HOURS: "72"
+      BENCHMARK_SYMBOL: "0050"
+      PINNED_SYMBOLS: "0050,00713,2303,2308,2330,2357,2408,2454,6757"
 
     steps:
       - name: Checkout
@@ -33,7 +45,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-      - name: Run discovery scan
+      - name: Run discovery production scan
         run: |
           python scripts/discovery.py
 
@@ -41,84 +53,69 @@ jobs:
         run: |
           python - <<'PY'
           import json
+          from pathlib import Path
 
-          with open(
-              "data/discovery-scan.json",
-              "r",
-              encoding="utf-8"
-          ) as f:
-              data = json.load(f)
-
-          print(
-              "Universe:",
-              data.get(
-                  "universeCount"
+          scan = json.loads(
+              Path("data/discovery-scan.json").read_text(
+                  encoding="utf-8"
               )
           )
 
-          print(
-              "Eligible:",
-              data.get(
-                  "eligibleCount"
-              )
-          )
+          print("Version:", scan.get("version"))
+          print("Market date:", scan.get("marketDate"))
+          print("Data integrity:", scan.get("dataIntegrityGate"))
+          print("Universe:", scan.get("commonStockUniverseCount"))
+          print("Eligible:", scan.get("eligibleCount"))
+          print("History:", scan.get("historyEnrichedCount"))
+          print("History errors:", scan.get("historyErrorCount"))
+          print("Dynamic stats:", scan.get("dynamicPreviewStats"))
 
-          print(
-              "TWSE:",
-              data.get(
-                  "sources",
-                  {}
-              ).get(
-                  "TSE"
-              )
-          )
+          dynamic_path = Path("data/watchlist-dynamic.json")
 
-          print(
-              "TPEx:",
-              data.get(
-                  "sources",
-                  {}
-              ).get(
-                  "OTC"
-              )
-          )
-
-          print(
-              "Top:",
-              [
-                  x.get(
-                      "symbol"
+          if dynamic_path.exists():
+              dynamic = json.loads(
+                  dynamic_path.read_text(
+                      encoding="utf-8"
                   )
-                  for x
-                  in data.get(
-                      "topDiscovery",
-                      []
-                  )[:10]
-              ]
-          )
+              )
+
+              print(
+                  "Dynamic candidates:",
+                  [
+                      (
+                          x.get("symbol"),
+                          x.get("score"),
+                          x.get("setup"),
+                          x.get("industry"),
+                      )
+                      for x in dynamic.get(
+                          "candidates",
+                          [],
+                      )
+                  ],
+              )
+
+              print(
+                  "Dynamic expires:",
+                  dynamic.get("expiresAt"),
+              )
           PY
 
-      - name: Commit discovery snapshot
+      - name: Commit discovery and dynamic watchlist
         run: |
-          git config \
-            user.name \
-            "github-actions[bot]"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git config \
-            user.email \
-            "41898282+github-actions[bot]@users.noreply.github.com"
+          git add             data/discovery-scan.json             data/watchlist-dynamic.json
 
-          git add \
-            data/discovery-scan.json
-
-          if git diff \
-            --cached \
-            --quiet
+          if git diff --cached --quiet
           then
             echo "No discovery changes."
-          else
-            git commit \
-              -m "Update Taiwan market discovery scan"
-
-            git push
+            exit 0
           fi
+
+          git commit             -m "Update Taiwan discovery and dynamic watchlist"
+
+          git pull             --rebase             origin             "${GITHUB_REF_NAME}"
+
+          git push
