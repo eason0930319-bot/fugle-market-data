@@ -1,9 +1,9 @@
 {
   "ok": true,
-  "generatedAt": "2026-08-23T17:02:19.189230+00:00",
+  "generatedAt": "2026-08-24T09:32:57.714905+00:00",
   "version": "discovery-github-v2.4",
   "stage": "production-gate-v2.4",
-  "marketDate": "2026-08-21",
+  "marketDate": "2026-08-24",
   "dataIntegrityGate": {
     "ok": true,
     "minimumHistoryEnriched": 30,
@@ -18,7 +18,7 @@
     },
     "OTC": {
       "ok": true,
-      "rawRowCount": 10584,
+      "rawRowCount": 10474,
       "error": null
     }
   },
@@ -39,31 +39,32 @@
     }
   },
   "industryCoverage": {
-    "commonStockKnown": 1968,
-    "commonStockTotal": 1968,
+    "commonStockKnown": 1967,
+    "commonStockTotal": 1967,
     "historyEnrichedKnown": 40,
     "historyEnrichedTotal": 40
   },
-  "rawUniverseCount": 1980,
-  "universeCount": 1968,
-  "commonStockUniverseCount": 1968,
+  "rawUniverseCount": 1979,
+  "universeCount": 1967,
+  "commonStockUniverseCount": 1967,
   "minTradeValue": 50000000,
-  "eligibleCount": 569,
+  "eligibleCount": 568,
   "historyCandidateCount": 40,
   "historyEnrichedCount": 40,
   "historyErrorCount": 0,
   "historyErrors": [],
   "benchmark": {
     "symbol": "0050",
-    "return5": -1.645,
-    "return20": 2.901
+    "return5": -2.489,
+    "return20": 2.316
   },
   "setupCounts": {
-    "EXTENDED": 18,
+    "EXTENDED": 14,
     "BREAKOUT": 2,
-    "REVERSAL": 13,
     "TREND_MOMENTUM": 3,
-    "GENERAL_WATCH": 4
+    "GENERAL_WATCH": 5,
+    "PULLBACK": 1,
+    "REVERSAL": 15
   },
   "dynamicSelectionPolicy": {
     "maxCandidates": 11,
@@ -98,10 +99,25 @@
       "market": "TSE",
       "industry": "航運業",
       "tier": "C",
-      "score": 82.79,
+      "score": 85.89,
       "setup": "EXTENDED",
       "reasonCodes": [
         "SETUP_EXTENDED",
+        "INDUSTRY_航運業",
+        "SCORE_GATE_PASS",
+        "NOT_PINNED"
+      ]
+    },
+    {
+      "symbol": "2606",
+      "name": "裕民",
+      "market": "TSE",
+      "industry": "航運業",
+      "tier": "A",
+      "score": 83.72,
+      "setup": "BREAKOUT",
+      "reasonCodes": [
+        "SETUP_BREAKOUT",
         "INDUSTRY_航運業",
         "SCORE_GATE_PASS",
         "NOT_PINNED"
@@ -113,26 +129,11 @@
       "market": "TSE",
       "industry": "紡織纖維",
       "tier": "A",
-      "score": 77.79,
+      "score": 75.73,
       "setup": "BREAKOUT",
       "reasonCodes": [
         "SETUP_BREAKOUT",
         "INDUSTRY_紡織纖維",
-        "SCORE_GATE_PASS",
-        "NOT_PINNED"
-      ]
-    },
-    {
-      "symbol": "2881",
-      "name": "富邦金",
-      "market": "TSE",
-      "industry": "金融保險業",
-      "tier": "A",
-      "score": 70.06,
-      "setup": "BREAKOUT",
-      "reasonCodes": [
-        "SETUP_BREAKOUT",
-        "INDUSTRY_金融保險業",
         "SCORE_GATE_PASS",
         "NOT_PINNED"
       ]
@@ -143,10 +144,10 @@
       "market": "TSE",
       "industry": "半導體業",
       "tier": "B",
-      "score": 68.2,
-      "setup": "REVERSAL",
+      "score": 74.9,
+      "setup": "TREND_MOMENTUM",
       "reasonCodes": [
-        "SETUP_REVERSAL",
+        "SETUP_TREND_MOMENTUM",
         "INDUSTRY_半導體業",
         "SCORE_GATE_PASS",
         "NOT_PINNED"
@@ -158,41 +159,26 @@
       "market": "OTC",
       "industry": "半導體業",
       "tier": "B",
-      "score": 66.89,
-      "setup": "TREND_MOMENTUM",
+      "score": 74.12,
+      "setup": "GENERAL_WATCH",
       "reasonCodes": [
-        "SETUP_TREND_MOMENTUM",
+        "SETUP_GENERAL_WATCH",
         "INDUSTRY_半導體業",
         "SCORE_GATE_PASS",
         "NOT_PINNED"
       ]
     },
     {
-      "symbol": "5289",
-      "name": "宜鼎",
+      "symbol": "3324",
+      "name": "雙鴻",
       "market": "OTC",
-      "industry": "電腦及週邊設備業",
+      "industry": "其他電子業",
       "tier": "C",
-      "score": 59.96,
-      "setup": "TREND_MOMENTUM",
+      "score": 57.78,
+      "setup": "PULLBACK",
       "reasonCodes": [
-        "SETUP_TREND_MOMENTUM",
-        "INDUSTRY_電腦及週邊設備業",
-        "SCORE_GATE_PASS",
-        "NOT_PINNED"
-      ]
-    },
-    {
-      "symbol": "4939",
-      "name": "亞電",
-      "market": "OTC",
-      "industry": "電子零組件業",
-      "tier": "C",
-      "score": 59.49,
-      "setup": "TREND_MOMENTUM",
-      "reasonCodes": [
-        "SETUP_TREND_MOMENTUM",
-        "INDUSTRY_電子零組件業",
+        "SETUP_PULLBACK",
+        "INDUSTRY_其他電子業",
         "SCORE_GATE_PASS",
         "NOT_PINNED"
       ]
@@ -203,7 +189,7 @@
       "market": "TSE",
       "industry": "金融保險業",
       "tier": "C",
-      "score": 56.13,
+      "score": 57.27,
       "setup": "REVERSAL",
       "reasonCodes": [
         "SETUP_REVERSAL",
@@ -211,28 +197,60 @@
         "SCORE_GATE_PASS",
         "NOT_PINNED"
       ]
+    },
+    {
+      "symbol": "2887",
+      "name": "台新新光金",
+      "market": "TSE",
+      "industry": "金融保險業",
+      "tier": "C",
+      "score": 56.7,
+      "setup": "REVERSAL",
+      "reasonCodes": [
+        "SETUP_REVERSAL",
+        "INDUSTRY_金融保險業",
+        "SCORE_GATE_PASS",
+        "NOT_PINNED"
+      ]
+    },
+    {
+      "symbol": "6446",
+      "name": "藥華藥",
+      "market": "TSE",
+      "industry": "生技醫療業",
+      "tier": "C",
+      "score": 54.94,
+      "setup": "TREND_MOMENTUM",
+      "reasonCodes": [
+        "SETUP_TREND_MOMENTUM",
+        "INDUSTRY_生技醫療業",
+        "SCORE_GATE_PASS",
+        "NOT_PINNED"
+      ]
     }
   ],
   "dynamicPreviewStats": {
-    "selectedCount": 8,
+    "selectedCount": 9,
     "setupCounts": {
       "BREAKOUT": 2,
+      "PULLBACK": 1,
       "REVERSAL": 2,
-      "TREND_MOMENTUM": 3,
+      "TREND_MOMENTUM": 2,
+      "GENERAL_WATCH": 1,
       "EXTENDED": 1
     },
     "industryCounts": {
-      "航運業": 1,
+      "航運業": 2,
       "紡織纖維": 1,
-      "金融保險業": 2,
       "半導體業": 2,
-      "電腦及週邊設備業": 1,
-      "電子零組件業": 1
+      "其他電子業": 1,
+      "金融保險業": 2,
+      "生技醫療業": 1
     },
     "rejectionCounts": {
-      "belowMinScore": 16,
-      "pinned": 0,
-      "setupQuota": 12,
+      "belowMinScore": 13,
+      "pinned": 1,
+      "setupQuota": 13,
       "industryQuota": 4
     }
   },
@@ -255,118 +273,74 @@
       "cfi": "ESVUFR",
       "cheapScan": {
         "liquidityPercentile": 96.65,
-        "momentumPercentile": 97.18,
+        "momentumPercentile": 97.53,
         "closeStrengthScore": 100.0,
-        "discoveryScore": 97.67
+        "discoveryScore": 97.79
       },
       "historyFeatures": {
-        "historySessions": 37,
-        "return5": 37.417,
-        "return20": 43.103,
-        "rs5": 39.062,
-        "rs20": 40.203,
-        "rvol20": 4.115,
-        "avgVolume20": 21171713.3,
-        "ma20": 91.87,
-        "prior20High": 113.5,
-        "distanceFrom20DHighPct": 9.692,
-        "distanceFromMA20Pct": 35.518
+        "historySessions": 38,
+        "return5": 25.0,
+        "return20": 48.214,
+        "rs5": 27.489,
+        "rs20": 45.898,
+        "rvol20": 3.571,
+        "avgVolume20": 24393029.7,
+        "ma20": 93.895,
+        "prior20High": 124.5,
+        "distanceFrom20DHighPct": 0.0,
+        "distanceFromMA20Pct": 32.595
       },
       "setup": "EXTENDED",
       "discoveryV2": {
         "rs5Percentile": 100.0,
-        "rs20Percentile": 87.18,
-        "rvol20Percentile": 92.31,
-        "highProximityScore": 100.0,
-        "score": 82.79
-      }
-    },
-    {
-      "symbol": "3441",
-      "name": "聯一光",
-      "market": "OTC",
-      "date": "2026-08-21",
-      "openPrice": 102.0,
-      "highPrice": 107.0,
-      "lowPrice": 95.5,
-      "closePrice": 107.0,
-      "change": 9.7,
-      "changePercent": 9.969,
-      "tradeVolume": 48814690.0,
-      "tradeValue": 4879957376.0,
-      "closePosition": 1.0,
-      "industry": "光電業",
-      "cfi": "ESVUFR",
-      "cheapScan": {
-        "liquidityPercentile": 90.67,
-        "momentumPercentile": 99.47,
-        "closeStrengthScore": 100.0,
-        "discoveryScore": 96.08
-      },
-      "historyFeatures": {
-        "historySessions": 37,
-        "return5": 27.685,
-        "return20": 66.407,
-        "rs5": 29.33,
-        "rs20": 63.507,
-        "rvol20": 2.469,
-        "avgVolume20": 19771800.0,
-        "ma20": 85.725,
-        "prior20High": 97.3,
-        "distanceFrom20DHighPct": 9.969,
-        "distanceFromMA20Pct": 24.818
-      },
-      "setup": "EXTENDED",
-      "discoveryV2": {
-        "rs5Percentile": 94.87,
-        "rs20Percentile": 100.0,
-        "rvol20Percentile": 82.05,
-        "highProximityScore": 100.0,
-        "score": 82.6
-      }
-    },
-    {
-      "symbol": "1815",
-      "name": "富喬",
-      "market": "OTC",
-      "date": "2026-08-21",
-      "openPrice": 107.0,
-      "highPrice": 112.5,
-      "lowPrice": 105.0,
-      "closePrice": 112.0,
-      "change": 5.0,
-      "changePercent": 4.673,
-      "tradeVolume": 121035856.0,
-      "tradeValue": 13291923849.0,
-      "closePosition": 0.9333,
-      "industry": "電子零組件業",
-      "cfi": "ESVUFR",
-      "cheapScan": {
-        "liquidityPercentile": 97.71,
-        "momentumPercentile": 91.18,
-        "closeStrengthScore": 93.33,
-        "discoveryScore": 94.33
-      },
-      "historyFeatures": {
-        "historySessions": 37,
-        "return5": 22.404,
-        "return20": 51.556,
-        "rs5": 24.049,
-        "rs20": 48.655,
-        "rvol20": 4.371,
-        "avgVolume20": 27687550.0,
-        "ma20": 85.0,
-        "prior20High": 107.5,
-        "distanceFrom20DHighPct": 4.186,
-        "distanceFromMA20Pct": 31.765
-      },
-      "setup": "EXTENDED",
-      "discoveryV2": {
-        "rs5Percentile": 87.18,
-        "rs20Percentile": 94.87,
+        "rs20Percentile": 97.44,
         "rvol20Percentile": 94.87,
         "highProximityScore": 100.0,
-        "score": 81.99
+        "score": 85.89
+      }
+    },
+    {
+      "symbol": "2606",
+      "name": "裕民",
+      "market": "TSE",
+      "date": "2026-08-21",
+      "openPrice": 70.5,
+      "highPrice": 73.0,
+      "lowPrice": 70.2,
+      "closePrice": 72.6,
+      "change": 2.4,
+      "changePercent": 3.419,
+      "tradeVolume": 15910892.0,
+      "tradeValue": 1147858068.0,
+      "closePosition": 0.8571,
+      "industry": "航運業",
+      "cfi": "ESVUFR",
+      "cheapScan": {
+        "liquidityPercentile": 75.66,
+        "momentumPercentile": 89.22,
+        "closeStrengthScore": 85.71,
+        "discoveryScore": 82.92
+      },
+      "historyFeatures": {
+        "historySessions": 38,
+        "return5": 5.857,
+        "return20": 15.127,
+        "rs5": 8.346,
+        "rs20": 12.811,
+        "rvol20": 3.321,
+        "avgVolume20": 4790783.95,
+        "ma20": 66.19,
+        "prior20High": 73.0,
+        "distanceFrom20DHighPct": -0.548,
+        "distanceFromMA20Pct": 9.684
+      },
+      "setup": "BREAKOUT",
+      "discoveryV2": {
+        "rs5Percentile": 66.67,
+        "rs20Percentile": 64.1,
+        "rvol20Percentile": 92.31,
+        "highProximityScore": 95.43,
+        "score": 83.72
       }
     },
     {
@@ -386,75 +360,31 @@
       "industry": "航運業",
       "cfi": "ESVUFR",
       "cheapScan": {
-        "liquidityPercentile": 74.65,
+        "liquidityPercentile": 74.07,
         "momentumPercentile": 99.82,
         "closeStrengthScore": 100.0,
-        "discoveryScore": 89.8
+        "discoveryScore": 89.57
       },
       "historyFeatures": {
-        "historySessions": 37,
-        "return5": 32.979,
-        "return20": 36.364,
-        "rs5": 34.623,
-        "rs20": 33.463,
-        "rvol20": 9.928,
-        "avgVolume20": 5530393.45,
-        "ma20": 14.318,
-        "prior20High": 18.35,
-        "distanceFrom20DHighPct": 2.18,
-        "distanceFromMA20Pct": 30.959
+        "historySessions": 38,
+        "return5": 24.138,
+        "return20": 31.868,
+        "rs5": 26.627,
+        "rs20": 29.552,
+        "rvol20": 6.679,
+        "avgVolume20": 8220114.5,
+        "ma20": 14.535,
+        "prior20High": 18.75,
+        "distanceFrom20DHighPct": 0.0,
+        "distanceFromMA20Pct": 28.999
       },
       "setup": "EXTENDED",
       "discoveryV2": {
         "rs5Percentile": 97.44,
-        "rs20Percentile": 84.62,
+        "rs20Percentile": 89.74,
         "rvol20Percentile": 100.0,
         "highProximityScore": 100.0,
-        "score": 81.6
-      }
-    },
-    {
-      "symbol": "1402",
-      "name": "遠東新",
-      "market": "TSE",
-      "date": "2026-08-21",
-      "openPrice": 29.25,
-      "highPrice": 30.6,
-      "lowPrice": 29.05,
-      "closePrice": 30.35,
-      "change": 1.15,
-      "changePercent": 3.938,
-      "tradeVolume": 40320281.0,
-      "tradeValue": 1211178755.0,
-      "closePosition": 0.8387,
-      "industry": "紡織纖維",
-      "cfi": "ESVUFR",
-      "cheapScan": {
-        "liquidityPercentile": 77.46,
-        "momentumPercentile": 89.24,
-        "closeStrengthScore": 83.87,
-        "discoveryScore": 83.19
-      },
-      "historyFeatures": {
-        "historySessions": 37,
-        "return5": 11.993,
-        "return20": 10.969,
-        "rs5": 13.637,
-        "rs20": 8.068,
-        "rvol20": 2.212,
-        "avgVolume20": 18224496.85,
-        "ma20": 27.535,
-        "prior20High": 29.45,
-        "distanceFrom20DHighPct": 3.056,
-        "distanceFromMA20Pct": 10.223
-      },
-      "setup": "BREAKOUT",
-      "discoveryV2": {
-        "rs5Percentile": 71.79,
-        "rs20Percentile": 43.59,
-        "rvol20Percentile": 79.49,
-        "highProximityScore": 100.0,
-        "score": 77.79
+        "score": 82.84
       }
     },
     {
@@ -474,31 +404,75 @@
       "industry": "航運業",
       "cfi": "ESVUFR",
       "cheapScan": {
-        "liquidityPercentile": 97.36,
-        "momentumPercentile": 94.0,
+        "liquidityPercentile": 97.53,
+        "momentumPercentile": 94.52,
         "closeStrengthScore": 86.67,
-        "discoveryScore": 93.51
+        "discoveryScore": 93.76
       },
       "historyFeatures": {
-        "historySessions": 37,
-        "return5": 24.031,
-        "return20": 24.272,
-        "rs5": 25.676,
-        "rs20": 21.371,
-        "rvol20": 5.582,
-        "avgVolume20": 35645657.05,
-        "ma20": 52.925,
-        "prior20High": 61.0,
-        "distanceFrom20DHighPct": 4.918,
-        "distanceFromMA20Pct": 20.926
+        "historySessions": 38,
+        "return5": 17.916,
+        "return20": 26.223,
+        "rs5": 20.405,
+        "rs20": 23.907,
+        "rvol20": 4.497,
+        "avgVolume20": 44248863.85,
+        "ma20": 53.595,
+        "prior20High": 64.6,
+        "distanceFrom20DHighPct": -0.929,
+        "distanceFromMA20Pct": 19.414
       },
       "setup": "EXTENDED",
       "discoveryV2": {
-        "rs5Percentile": 92.31,
-        "rs20Percentile": 71.79,
+        "rs5Percentile": 94.87,
+        "rs20Percentile": 84.62,
         "rvol20Percentile": 97.44,
+        "highProximityScore": 92.26,
+        "score": 80.21
+      }
+    },
+    {
+      "symbol": "3234",
+      "name": "光環",
+      "market": "OTC",
+      "date": "2026-08-24",
+      "openPrice": 150.5,
+      "highPrice": 166.0,
+      "lowPrice": 148.0,
+      "closePrice": 166.0,
+      "change": 15.0,
+      "changePercent": 9.934,
+      "tradeVolume": 7649771.0,
+      "tradeValue": 1248262777.0,
+      "closePosition": 1.0,
+      "industry": "通信網路業",
+      "cfi": "ESVUFR",
+      "cheapScan": {
+        "liquidityPercentile": 77.43,
+        "momentumPercentile": 99.47,
+        "closeStrengthScore": 100.0,
+        "discoveryScore": 90.78
+      },
+      "historyFeatures": {
+        "historySessions": 38,
+        "return5": 10.667,
+        "return20": 57.346,
+        "rs5": 13.156,
+        "rs20": 55.03,
+        "rvol20": 2.616,
+        "avgVolume20": 2923800.0,
+        "ma20": 124.205,
+        "prior20High": 154.0,
+        "distanceFrom20DHighPct": 7.792,
+        "distanceFromMA20Pct": 33.65
+      },
+      "setup": "EXTENDED",
+      "discoveryV2": {
+        "rs5Percentile": 84.62,
+        "rs20Percentile": 100.0,
+        "rvol20Percentile": 82.05,
         "highProximityScore": 100.0,
-        "score": 77.6
+        "score": 79.49
       }
     },
     {
@@ -518,163 +492,75 @@
       "industry": "光電業",
       "cfi": "ESVUFR",
       "cheapScan": {
-        "liquidityPercentile": 86.09,
+        "liquidityPercentile": 86.6,
         "momentumPercentile": 98.41,
         "closeStrengthScore": 100.0,
-        "discoveryScore": 93.88
+        "discoveryScore": 94.08
       },
       "historyFeatures": {
-        "historySessions": 37,
-        "return5": 23.423,
-        "return20": 32.581,
-        "rs5": 25.068,
-        "rs20": 29.68,
-        "rvol20": 1.847,
-        "avgVolume20": 15432677.85,
-        "ma20": 63.892,
-        "prior20High": 74.8,
-        "distanceFrom20DHighPct": 9.893,
-        "distanceFromMA20Pct": 28.654
+        "historySessions": 38,
+        "return5": 12.842,
+        "return20": 33.226,
+        "rs5": 15.331,
+        "rs20": 30.909,
+        "rvol20": 1.787,
+        "avgVolume20": 15953918.2,
+        "ma20": 64.922,
+        "prior20High": 82.2,
+        "distanceFrom20DHighPct": 0.0,
+        "distanceFromMA20Pct": 26.612
       },
       "setup": "EXTENDED",
       "discoveryV2": {
         "rs5Percentile": 89.74,
-        "rs20Percentile": 82.05,
-        "rvol20Percentile": 66.67,
+        "rs20Percentile": 94.87,
+        "rvol20Percentile": 64.1,
         "highProximityScore": 100.0,
-        "score": 73.57
+        "score": 76.3
       }
     },
     {
-      "symbol": "6830",
-      "name": "汎銓",
+      "symbol": "1402",
+      "name": "遠東新",
       "market": "TSE",
       "date": "2026-08-21",
-      "openPrice": 428.5,
-      "highPrice": 462.0,
-      "lowPrice": 417.5,
-      "closePrice": 462.0,
-      "change": 42.0,
-      "changePercent": 10.0,
-      "tradeVolume": 4328417.0,
-      "tradeValue": 1940252685.0,
-      "closePosition": 1.0,
-      "industry": "其他電子業",
+      "openPrice": 29.25,
+      "highPrice": 30.6,
+      "lowPrice": 29.05,
+      "closePrice": 30.35,
+      "change": 1.15,
+      "changePercent": 3.938,
+      "tradeVolume": 40320281.0,
+      "tradeValue": 1211178755.0,
+      "closePosition": 0.8387,
+      "industry": "紡織纖維",
       "cfi": "ESVUFR",
       "cheapScan": {
-        "liquidityPercentile": 83.8,
-        "momentumPercentile": 100.0,
-        "closeStrengthScore": 100.0,
-        "discoveryScore": 93.52
+        "liquidityPercentile": 76.72,
+        "momentumPercentile": 91.7,
+        "closeStrengthScore": 83.87,
+        "discoveryScore": 83.75
       },
       "historyFeatures": {
-        "historySessions": 37,
-        "return5": 13.514,
-        "return20": 27.098,
-        "rs5": 15.158,
-        "rs20": 24.197,
-        "rvol20": 2.157,
-        "avgVolume20": 2006847.5,
-        "ma20": 400.55,
-        "prior20High": 444.0,
-        "distanceFrom20DHighPct": 4.054,
-        "distanceFromMA20Pct": 15.341
-      },
-      "setup": "EXTENDED",
-      "discoveryV2": {
-        "rs5Percentile": 76.92,
-        "rs20Percentile": 76.92,
-        "rvol20Percentile": 76.92,
-        "highProximityScore": 100.0,
-        "score": 71.7
-      }
-    },
-    {
-      "symbol": "2881",
-      "name": "富邦金",
-      "market": "TSE",
-      "date": "2026-08-21",
-      "openPrice": 129.0,
-      "highPrice": 135.5,
-      "lowPrice": 127.5,
-      "closePrice": 134.0,
-      "change": 6.0,
-      "changePercent": 4.688,
-      "tradeVolume": 38191506.0,
-      "tradeValue": 5073973610.0,
-      "closePosition": 0.8125,
-      "industry": "金融保險業",
-      "cfi": "ESVUFR",
-      "cheapScan": {
-        "liquidityPercentile": 91.2,
-        "momentumPercentile": 91.36,
-        "closeStrengthScore": 81.25,
-        "discoveryScore": 88.77
-      },
-      "historyFeatures": {
-        "historySessions": 37,
-        "return5": 3.475,
-        "return20": 5.098,
-        "rs5": 5.12,
-        "rs20": 2.197,
-        "rvol20": 2.069,
-        "avgVolume20": 18462037.15,
-        "ma20": 128.0,
-        "prior20High": 132.5,
-        "distanceFrom20DHighPct": 1.132,
-        "distanceFromMA20Pct": 4.688
+        "historySessions": 38,
+        "return5": 6.897,
+        "return20": 7.286,
+        "rs5": 9.386,
+        "rs20": 4.97,
+        "rvol20": 2.13,
+        "avgVolume20": 18928766.45,
+        "ma20": 27.635,
+        "prior20High": 30.6,
+        "distanceFrom20DHighPct": -0.817,
+        "distanceFromMA20Pct": 9.824
       },
       "setup": "BREAKOUT",
       "discoveryV2": {
-        "rs5Percentile": 48.72,
-        "rs20Percentile": 30.77,
+        "rs5Percentile": 74.36,
+        "rs20Percentile": 41.03,
         "rvol20Percentile": 74.36,
-        "highProximityScore": 100.0,
-        "score": 70.06
-      }
-    },
-    {
-      "symbol": "2603",
-      "name": "長榮",
-      "market": "TSE",
-      "date": "2026-08-21",
-      "openPrice": 246.5,
-      "highPrice": 254.0,
-      "lowPrice": 246.0,
-      "closePrice": 251.5,
-      "change": 5.5,
-      "changePercent": 2.236,
-      "tradeVolume": 33249355.0,
-      "tradeValue": 8346969168.0,
-      "closePosition": 0.6875,
-      "industry": "航運業",
-      "cfi": "ESVUFR",
-      "cheapScan": {
-        "liquidityPercentile": 95.42,
-        "momentumPercentile": 80.07,
-        "closeStrengthScore": 68.75,
-        "discoveryScore": 83.38
-      },
-      "historyFeatures": {
-        "historySessions": 37,
-        "return5": 14.84,
-        "return20": 22.087,
-        "rs5": 16.485,
-        "rs20": 19.187,
-        "rvol20": 2.621,
-        "avgVolume20": 12687196.15,
-        "ma20": 216.425,
-        "prior20High": 249.0,
-        "distanceFrom20DHighPct": 1.004,
-        "distanceFromMA20Pct": 16.207
-      },
-      "setup": "EXTENDED",
-      "discoveryV2": {
-        "rs5Percentile": 79.49,
-        "rs20Percentile": 69.23,
-        "rvol20Percentile": 84.62,
-        "highProximityScore": 100.0,
-        "score": 69.8
+        "highProximityScore": 93.19,
+        "score": 75.73
       }
     },
     {
@@ -694,31 +580,31 @@
       "industry": "光電業",
       "cfi": "ESVUFR",
       "cheapScan": {
-        "liquidityPercentile": 77.99,
-        "momentumPercentile": 98.24,
+        "liquidityPercentile": 77.25,
+        "momentumPercentile": 98.23,
         "closeStrengthScore": 100.0,
-        "discoveryScore": 90.58
+        "discoveryScore": 90.28
       },
       "historyFeatures": {
-        "historySessions": 37,
-        "return5": 13.175,
-        "return20": 18.439,
-        "rs5": 14.819,
-        "rs20": 15.538,
-        "rvol20": 3.296,
-        "avgVolume20": 10730820.25,
-        "ma20": 30.69,
-        "prior20High": 33.7,
-        "distanceFrom20DHighPct": 5.786,
-        "distanceFromMA20Pct": 16.162
+        "historySessions": 38,
+        "return5": 14.596,
+        "return20": 22.795,
+        "rs5": 17.086,
+        "rs20": 20.479,
+        "rvol20": 2.895,
+        "avgVolume20": 12215644.6,
+        "ma20": 31.032,
+        "prior20High": 35.65,
+        "distanceFrom20DHighPct": 0.0,
+        "distanceFromMA20Pct": 14.88
       },
       "setup": "EXTENDED",
       "discoveryV2": {
-        "rs5Percentile": 74.36,
-        "rs20Percentile": 64.1,
-        "rvol20Percentile": 87.18,
+        "rs5Percentile": 92.31,
+        "rs20Percentile": 74.36,
+        "rvol20Percentile": 84.62,
         "highProximityScore": 100.0,
-        "score": 69.45
+        "score": 75.03
       }
     },
     {
@@ -738,119 +624,339 @@
       "industry": "半導體業",
       "cfi": "ESVUFR",
       "cheapScan": {
-        "liquidityPercentile": 84.68,
-        "momentumPercentile": 87.83,
+        "liquidityPercentile": 84.83,
+        "momentumPercentile": 89.93,
         "closeStrengthScore": 92.31,
-        "discoveryScore": 87.69
+        "discoveryScore": 88.49
       },
       "historyFeatures": {
-        "historySessions": 37,
-        "return5": 0.364,
-        "return20": 26.316,
-        "rs5": 2.008,
-        "rs20": 23.415,
-        "rvol20": 1.454,
-        "avgVolume20": 5261225.75,
-        "ma20": 256.375,
+        "historySessions": 38,
+        "return5": 5.503,
+        "return20": 24.385,
+        "rs5": 7.992,
+        "rs20": 22.068,
+        "rvol20": 1.402,
+        "avgVolume20": 5456590.45,
+        "ma20": 259.1,
         "prior20High": 288.5,
         "distanceFrom20DHighPct": -4.333,
-        "distanceFromMA20Pct": 7.655
+        "distanceFromMA20Pct": 6.523
       },
-      "setup": "REVERSAL",
+      "setup": "TREND_MOMENTUM",
       "discoveryV2": {
-        "rs5Percentile": 38.46,
-        "rs20Percentile": 74.36,
-        "rvol20Percentile": 58.97,
+        "rs5Percentile": 64.1,
+        "rs20Percentile": 82.05,
+        "rvol20Percentile": 56.41,
         "highProximityScore": 63.89,
-        "score": 68.2
-      }
-    },
-    {
-      "symbol": "3081",
-      "name": "聯亞",
-      "market": "OTC",
-      "date": "2026-08-21",
-      "openPrice": 2845.0,
-      "highPrice": 2920.0,
-      "lowPrice": 2760.0,
-      "closePrice": 2920.0,
-      "change": 140.0,
-      "changePercent": 5.036,
-      "tradeVolume": 5068754.0,
-      "tradeValue": 14464190735.0,
-      "closePosition": 1.0,
-      "industry": "通信網路業",
-      "cfi": "ESVUFR",
-      "cheapScan": {
-        "liquidityPercentile": 98.24,
-        "momentumPercentile": 91.89,
-        "closeStrengthScore": 100.0,
-        "discoveryScore": 96.46
-      },
-      "historyFeatures": {
-        "historySessions": 37,
-        "return5": 14.961,
-        "return20": 65.909,
-        "rs5": 16.605,
-        "rs20": 63.008,
-        "rvol20": 1.44,
-        "avgVolume20": 3519500.0,
-        "ma20": 2290.25,
-        "prior20High": 3065.0,
-        "distanceFrom20DHighPct": -4.731,
-        "distanceFromMA20Pct": 27.497
-      },
-      "setup": "EXTENDED",
-      "discoveryV2": {
-        "rs5Percentile": 82.05,
-        "rs20Percentile": 97.44,
-        "rvol20Percentile": 53.85,
-        "highProximityScore": 60.57,
-        "score": 67.92
+        "score": 74.9
       }
     },
     {
       "symbol": "3260",
       "name": "威剛",
       "market": "OTC",
+      "date": "2026-08-24",
+      "openPrice": 425.5,
+      "highPrice": 459.5,
+      "lowPrice": 421.5,
+      "closePrice": 438.5,
+      "change": 16.0,
+      "changePercent": 3.787,
+      "tradeVolume": 32345699.0,
+      "tradeValue": 14354203516.0,
+      "closePosition": 0.4474,
+      "industry": "半導體業",
+      "cfi": "ESVUFR",
+      "cheapScan": {
+        "liquidityPercentile": 98.24,
+        "momentumPercentile": 90.46,
+        "closeStrengthScore": 44.74,
+        "discoveryScore": 82.14
+      },
+      "historyFeatures": {
+        "historySessions": 38,
+        "return5": 9.625,
+        "return20": 9.08,
+        "rs5": 12.114,
+        "rs20": 6.763,
+        "rvol20": 2.368,
+        "avgVolume20": 13660600.0,
+        "ma20": 402.2,
+        "prior20High": 437.0,
+        "distanceFrom20DHighPct": 0.343,
+        "distanceFromMA20Pct": 9.025
+      },
+      "setup": "GENERAL_WATCH",
+      "discoveryV2": {
+        "rs5Percentile": 82.05,
+        "rs20Percentile": 43.59,
+        "rvol20Percentile": 76.92,
+        "highProximityScore": 100.0,
+        "score": 74.12
+      }
+    },
+    {
+      "symbol": "2605",
+      "name": "新興",
+      "market": "TSE",
       "date": "2026-08-21",
-      "openPrice": 400.5,
-      "highPrice": 422.5,
-      "lowPrice": 399.0,
-      "closePrice": 422.5,
-      "change": 21.5,
-      "changePercent": 5.362,
-      "tradeVolume": 21407025.0,
-      "tradeValue": 8912571832.0,
+      "openPrice": 36.25,
+      "highPrice": 38.3,
+      "lowPrice": 36.25,
+      "closePrice": 37.8,
+      "change": 1.4,
+      "changePercent": 3.846,
+      "tradeVolume": 37504751.0,
+      "tradeValue": 1412790906.0,
+      "closePosition": 0.7561,
+      "industry": "航運業",
+      "cfi": "ESVUFR",
+      "cheapScan": {
+        "liquidityPercentile": 79.19,
+        "momentumPercentile": 91.17,
+        "closeStrengthScore": 75.61,
+        "discoveryScore": 82.49
+      },
+      "historyFeatures": {
+        "historySessions": 38,
+        "return5": 11.246,
+        "return20": 15.823,
+        "rs5": 13.736,
+        "rs20": 13.506,
+        "rvol20": 3.07,
+        "avgVolume20": 12217385.1,
+        "ma20": 33.01,
+        "prior20High": 38.3,
+        "distanceFrom20DHighPct": -1.305,
+        "distanceFromMA20Pct": 14.511
+      },
+      "setup": "EXTENDED",
+      "discoveryV2": {
+        "rs5Percentile": 87.18,
+        "rs20Percentile": 66.67,
+        "rvol20Percentile": 89.74,
+        "highProximityScore": 89.12,
+        "score": 69.92
+      }
+    },
+    {
+      "symbol": "2451",
+      "name": "創見",
+      "market": "TSE",
+      "date": "2026-08-21",
+      "openPrice": 285.0,
+      "highPrice": 312.5,
+      "lowPrice": 285.0,
+      "closePrice": 312.5,
+      "change": 28.0,
+      "changePercent": 9.842,
+      "tradeVolume": 18341659.0,
+      "tradeValue": 5635127900.0,
       "closePosition": 1.0,
       "industry": "半導體業",
       "cfi": "ESVUFR",
       "cheapScan": {
-        "liquidityPercentile": 95.95,
-        "momentumPercentile": 93.12,
+        "liquidityPercentile": 91.89,
+        "momentumPercentile": 97.88,
         "closeStrengthScore": 100.0,
-        "discoveryScore": 95.97
+        "discoveryScore": 96.01
       },
       "historyFeatures": {
-        "historySessions": 37,
-        "return5": 5.1,
-        "return20": 10.313,
-        "rs5": 6.744,
-        "rs20": 7.413,
-        "rvol20": 1.628,
-        "avgVolume20": 13146700.0,
-        "ma20": 400.375,
-        "prior20High": 437.0,
-        "distanceFrom20DHighPct": -3.318,
-        "distanceFromMA20Pct": 5.526
+        "historySessions": 38,
+        "return5": 8.966,
+        "return20": 16.176,
+        "rs5": 11.455,
+        "rs20": 13.86,
+        "rvol20": 2.004,
+        "avgVolume20": 9151518.1,
+        "ma20": 288.1,
+        "prior20High": 312.5,
+        "distanceFrom20DHighPct": 0.0,
+        "distanceFromMA20Pct": 8.469
+      },
+      "setup": "EXTENDED",
+      "discoveryV2": {
+        "rs5Percentile": 79.49,
+        "rs20Percentile": 69.23,
+        "rvol20Percentile": 69.23,
+        "highProximityScore": 100.0,
+        "score": 69.25
+      }
+    },
+    {
+      "symbol": "2603",
+      "name": "長榮",
+      "market": "TSE",
+      "date": "2026-08-21",
+      "openPrice": 246.5,
+      "highPrice": 254.0,
+      "lowPrice": 246.0,
+      "closePrice": 251.5,
+      "change": 5.5,
+      "changePercent": 2.236,
+      "tradeVolume": 33249355.0,
+      "tradeValue": 8346969168.0,
+      "closePosition": 0.6875,
+      "industry": "航運業",
+      "cfi": "ESVUFR",
+      "cheapScan": {
+        "liquidityPercentile": 95.59,
+        "momentumPercentile": 82.51,
+        "closeStrengthScore": 68.75,
+        "discoveryScore": 84.3
+      },
+      "historyFeatures": {
+        "historySessions": 38,
+        "return5": 8.207,
+        "return20": 23.096,
+        "rs5": 10.697,
+        "rs20": 20.779,
+        "rvol20": 2.373,
+        "avgVolume20": 14011668.65,
+        "ma20": 218.775,
+        "prior20High": 254.0,
+        "distanceFrom20DHighPct": -0.984,
+        "distanceFromMA20Pct": 14.958
+      },
+      "setup": "EXTENDED",
+      "discoveryV2": {
+        "rs5Percentile": 76.92,
+        "rs20Percentile": 76.92,
+        "rvol20Percentile": 79.49,
+        "highProximityScore": 91.8,
+        "score": 69.14
+      }
+    },
+    {
+      "symbol": "2881",
+      "name": "富邦金",
+      "market": "TSE",
+      "date": "2026-08-21",
+      "openPrice": 129.0,
+      "highPrice": 135.5,
+      "lowPrice": 127.5,
+      "closePrice": 134.0,
+      "change": 6.0,
+      "changePercent": 4.688,
+      "tradeVolume": 38191506.0,
+      "tradeValue": 5073973610.0,
+      "closePosition": 0.8125,
+      "industry": "金融保險業",
+      "cfi": "ESVUFR",
+      "cheapScan": {
+        "liquidityPercentile": 91.01,
+        "momentumPercentile": 92.58,
+        "closeStrengthScore": 81.25,
+        "discoveryScore": 89.12
+      },
+      "historyFeatures": {
+        "historySessions": 38,
+        "return5": 5.179,
+        "return20": 1.538,
+        "rs5": 7.669,
+        "rs20": -0.778,
+        "rvol20": 1.95,
+        "avgVolume20": 19581586.8,
+        "ma20": 128.1,
+        "prior20High": 135.5,
+        "distanceFrom20DHighPct": -1.107,
+        "distanceFromMA20Pct": 4.606
+      },
+      "setup": "GENERAL_WATCH",
+      "discoveryV2": {
+        "rs5Percentile": 61.54,
+        "rs20Percentile": 30.77,
+        "rvol20Percentile": 66.67,
+        "highProximityScore": 90.78,
+        "score": 64.77
+      }
+    },
+    {
+      "symbol": "6830",
+      "name": "汎銓",
+      "market": "TSE",
+      "date": "2026-08-21",
+      "openPrice": 428.5,
+      "highPrice": 462.0,
+      "lowPrice": 417.5,
+      "closePrice": 462.0,
+      "change": 42.0,
+      "changePercent": 10.0,
+      "tradeVolume": 4328417.0,
+      "tradeValue": 1940252685.0,
+      "closePosition": 1.0,
+      "industry": "其他電子業",
+      "cfi": "ESVUFR",
+      "cheapScan": {
+        "liquidityPercentile": 83.6,
+        "momentumPercentile": 100.0,
+        "closeStrengthScore": 100.0,
+        "discoveryScore": 93.44
+      },
+      "historyFeatures": {
+        "historySessions": 38,
+        "return5": 2.174,
+        "return20": 19.226,
+        "rs5": 4.663,
+        "rs20": 16.909,
+        "rvol20": 2.102,
+        "avgVolume20": 2059640.0,
+        "ma20": 404.15,
+        "prior20High": 462.0,
+        "distanceFrom20DHighPct": 0.0,
+        "distanceFromMA20Pct": 14.314
+      },
+      "setup": "EXTENDED",
+      "discoveryV2": {
+        "rs5Percentile": 51.28,
+        "rs20Percentile": 71.79,
+        "rvol20Percentile": 71.79,
+        "highProximityScore": 100.0,
+        "score": 64.25
+      }
+    },
+    {
+      "symbol": "3006",
+      "name": "晶豪科",
+      "market": "TSE",
+      "date": "2026-08-21",
+      "openPrice": 249.5,
+      "highPrice": 260.5,
+      "lowPrice": 247.0,
+      "closePrice": 256.5,
+      "change": 6.0,
+      "changePercent": 2.395,
+      "tradeVolume": 9305545.0,
+      "tradeValue": 2379581147.0,
+      "closePosition": 0.7037,
+      "industry": "半導體業",
+      "cfi": "ESVUFR",
+      "cheapScan": {
+        "liquidityPercentile": 86.77,
+        "momentumPercentile": 83.92,
+        "closeStrengthScore": 70.37,
+        "discoveryScore": 81.67
+      },
+      "historyFeatures": {
+        "historySessions": 38,
+        "return5": 3.297,
+        "return20": 33.019,
+        "rs5": 5.786,
+        "rs20": 30.702,
+        "rvol20": 0.891,
+        "avgVolume20": 10440253.8,
+        "ma20": 239.975,
+        "prior20High": 285.5,
+        "distanceFrom20DHighPct": -10.158,
+        "distanceFromMA20Pct": 6.886
       },
       "setup": "TREND_MOMENTUM",
       "discoveryV2": {
-        "rs5Percentile": 53.85,
-        "rs20Percentile": 41.03,
-        "rvol20Percentile": 64.1,
-        "highProximityScore": 72.35,
-        "score": 66.89
+        "rs5Percentile": 56.41,
+        "rs20Percentile": 92.31,
+        "rvol20Percentile": 35.9,
+        "highProximityScore": 15.35,
+        "score": 63.17
       }
     },
     {
@@ -871,30 +977,30 @@
       "cfi": "ESVUFR",
       "cheapScan": {
         "liquidityPercentile": 98.77,
-        "momentumPercentile": 74.6,
+        "momentumPercentile": 76.68,
         "closeStrengthScore": 71.43,
-        "discoveryScore": 83.48
+        "discoveryScore": 84.2
       },
       "historyFeatures": {
-        "historySessions": 37,
-        "return5": 21.692,
-        "return20": 43.112,
-        "rs5": 23.337,
-        "rs20": 40.212,
-        "rvol20": 1.339,
-        "avgVolume20": 2567971.8,
-        "ma20": 4556.75,
-        "prior20High": 5720.0,
-        "distanceFrom20DHighPct": -1.923,
-        "distanceFromMA20Pct": 23.114
+        "historySessions": 38,
+        "return5": 6.213,
+        "return20": 31.663,
+        "rs5": 8.702,
+        "rs20": 29.346,
+        "rvol20": 1.293,
+        "avgVolume20": 2661073.75,
+        "ma20": 4621.5,
+        "prior20High": 5750.0,
+        "distanceFrom20DHighPct": -2.435,
+        "distanceFromMA20Pct": 21.389
       },
       "setup": "EXTENDED",
       "discoveryV2": {
-        "rs5Percentile": 84.62,
-        "rs20Percentile": 89.74,
-        "rvol20Percentile": 46.15,
-        "highProximityScore": 83.97,
-        "score": 65.88
+        "rs5Percentile": 69.23,
+        "rs20Percentile": 87.18,
+        "rvol20Percentile": 51.28,
+        "highProximityScore": 79.71,
+        "score": 62.69
       }
     },
     {
@@ -914,163 +1020,75 @@
       "industry": "光電業",
       "cfi": "ESVUFR",
       "cheapScan": {
-        "liquidityPercentile": 87.85,
-        "momentumPercentile": 89.07,
+        "liquidityPercentile": 88.71,
+        "momentumPercentile": 91.34,
         "closeStrengthScore": 72.0,
-        "discoveryScore": 84.31
+        "discoveryScore": 85.45
       },
       "historyFeatures": {
-        "historySessions": 37,
-        "return5": 8.092,
-        "return20": 17.241,
-        "rs5": 9.737,
-        "rs20": 14.341,
-        "rvol20": 3.466,
-        "avgVolume20": 4972826.4,
-        "ma20": 161.6,
-        "prior20High": 181.5,
-        "distanceFrom20DHighPct": 3.03,
-        "distanceFromMA20Pct": 15.718
+        "historySessions": 38,
+        "return5": 2.286,
+        "return20": 14.013,
+        "rs5": 4.775,
+        "rs20": 11.696,
+        "rvol20": 3.015,
+        "avgVolume20": 5716297.65,
+        "ma20": 162.7,
+        "prior20High": 190.5,
+        "distanceFrom20DHighPct": -1.837,
+        "distanceFromMA20Pct": 14.935
       },
       "setup": "EXTENDED",
       "discoveryV2": {
-        "rs5Percentile": 64.1,
-        "rs20Percentile": 58.97,
-        "rvol20Percentile": 89.74,
-        "highProximityScore": 100.0,
-        "score": 65.37
-      }
-    },
-    {
-      "symbol": "2451",
-      "name": "創見",
-      "market": "TSE",
-      "date": "2026-08-21",
-      "openPrice": 285.0,
-      "highPrice": 312.5,
-      "lowPrice": 285.0,
-      "closePrice": 312.5,
-      "change": 28.0,
-      "changePercent": 9.842,
-      "tradeVolume": 18341659.0,
-      "tradeValue": 5635127900.0,
-      "closePosition": 1.0,
-      "industry": "半導體業",
-      "cfi": "ESVUFR",
-      "cheapScan": {
-        "liquidityPercentile": 92.08,
-        "momentumPercentile": 97.71,
-        "closeStrengthScore": 100.0,
-        "discoveryScore": 96.03
-      },
-      "historyFeatures": {
-        "historySessions": 37,
-        "return5": 6.838,
-        "return20": 18.371,
-        "rs5": 8.482,
-        "rs20": 15.471,
-        "rvol20": 2.0,
-        "avgVolume20": 9172847.0,
-        "ma20": 285.9,
-        "prior20High": 306.0,
-        "distanceFrom20DHighPct": 2.124,
-        "distanceFromMA20Pct": 9.304
-      },
-      "setup": "EXTENDED",
-      "discoveryV2": {
-        "rs5Percentile": 58.97,
-        "rs20Percentile": 61.54,
-        "rvol20Percentile": 71.79,
-        "highProximityScore": 100.0,
-        "score": 63.74
-      }
-    },
-    {
-      "symbol": "5289",
-      "name": "宜鼎",
-      "market": "OTC",
-      "date": "2026-08-21",
-      "openPrice": 1515.0,
-      "highPrice": 1580.0,
-      "lowPrice": 1500.0,
-      "closePrice": 1560.0,
-      "change": 70.0,
-      "changePercent": 4.698,
-      "tradeVolume": 3173051.0,
-      "tradeValue": 4928815050.0,
-      "closePosition": 0.75,
-      "industry": "電腦及週邊設備業",
-      "cfi": "ESVUFR",
-      "cheapScan": {
-        "liquidityPercentile": 90.85,
-        "momentumPercentile": 91.53,
-        "closeStrengthScore": 75.0,
-        "discoveryScore": 87.13
-      },
-      "historyFeatures": {
-        "historySessions": 37,
-        "return5": 5.763,
-        "return20": 13.869,
-        "rs5": 7.407,
-        "rs20": 10.968,
-        "rvol20": 1.124,
-        "avgVolume20": 2822350.0,
-        "ma20": 1428.0,
-        "prior20High": 1680.0,
-        "distanceFrom20DHighPct": -7.143,
-        "distanceFromMA20Pct": 9.244
-      },
-      "setup": "TREND_MOMENTUM",
-      "discoveryV2": {
-        "rs5Percentile": 56.41,
+        "rs5Percentile": 53.85,
         "rs20Percentile": 53.85,
-        "rvol20Percentile": 43.59,
-        "highProximityScore": 40.47,
-        "score": 59.96
+        "rvol20Percentile": 87.18,
+        "highProximityScore": 84.69,
+        "score": 59.46
       }
     },
     {
-      "symbol": "4939",
-      "name": "亞電",
+      "symbol": "3324",
+      "name": "雙鴻",
       "market": "OTC",
-      "date": "2026-08-21",
-      "openPrice": 62.7,
-      "highPrice": 68.5,
-      "lowPrice": 60.8,
-      "closePrice": 66.5,
-      "change": 3.8,
-      "changePercent": 6.061,
-      "tradeVolume": 25415049.0,
-      "tradeValue": 1659532863.0,
-      "closePosition": 0.7403,
-      "industry": "電子零組件業",
+      "date": "2026-08-24",
+      "openPrice": 973.0,
+      "highPrice": 1050.0,
+      "lowPrice": 970.0,
+      "closePrice": 1015.0,
+      "change": 46.0,
+      "changePercent": 4.747,
+      "tradeVolume": 2610664.0,
+      "tradeValue": 2661295473.0,
+      "closePosition": 0.5625,
+      "industry": "其他電子業",
       "cfi": "ESVUFR",
       "cheapScan": {
-        "liquidityPercentile": 81.87,
-        "momentumPercentile": 93.47,
-        "closeStrengthScore": 74.03,
-        "discoveryScore": 83.97
+        "liquidityPercentile": 87.65,
+        "momentumPercentile": 92.93,
+        "closeStrengthScore": 56.25,
+        "discoveryScore": 81.65
       },
       "historyFeatures": {
-        "historySessions": 37,
-        "return5": 8.306,
-        "return20": 6.061,
-        "rs5": 9.951,
-        "rs20": 3.16,
-        "rvol20": 1.984,
-        "avgVolume20": 12807300.0,
-        "ma20": 58.81,
-        "prior20High": 72.8,
-        "distanceFrom20DHighPct": -8.654,
-        "distanceFromMA20Pct": 13.076
+        "historySessions": 38,
+        "return5": 0.995,
+        "return20": 9.14,
+        "rs5": 3.484,
+        "rs20": 6.823,
+        "rvol20": 0.989,
+        "avgVolume20": 2640050.0,
+        "ma20": 973.7,
+        "prior20High": 1080.0,
+        "distanceFrom20DHighPct": -6.019,
+        "distanceFromMA20Pct": 4.242
       },
-      "setup": "TREND_MOMENTUM",
+      "setup": "PULLBACK",
       "discoveryV2": {
-        "rs5Percentile": 66.67,
-        "rs20Percentile": 33.33,
-        "rvol20Percentile": 69.23,
-        "highProximityScore": 27.88,
-        "score": 59.49
+        "rs5Percentile": 46.15,
+        "rs20Percentile": 46.15,
+        "rvol20Percentile": 41.03,
+        "highProximityScore": 49.84,
+        "score": 57.78
       }
     },
     {
@@ -1090,31 +1108,31 @@
       "industry": "金融保險業",
       "cfi": "ESVUFR",
       "cheapScan": {
-        "liquidityPercentile": 80.99,
-        "momentumPercentile": 88.01,
+        "liquidityPercentile": 80.42,
+        "momentumPercentile": 90.28,
         "closeStrengthScore": 100.0,
-        "discoveryScore": 88.2
+        "discoveryScore": 88.77
       },
       "historyFeatures": {
-        "historySessions": 37,
-        "return5": -0.316,
-        "return20": 2.936,
-        "rs5": 1.329,
-        "rs20": 0.036,
-        "rvol20": 1.109,
-        "avgVolume20": 44341115.8,
-        "ma20": 30.72,
+        "historySessions": 38,
+        "return5": -1.274,
+        "return20": 0.977,
+        "rs5": 1.216,
+        "rs20": -1.339,
+        "rvol20": 1.094,
+        "avgVolume20": 44924804.95,
+        "ma20": 30.735,
         "prior20High": 31.75,
         "distanceFrom20DHighPct": -0.63,
-        "distanceFromMA20Pct": 2.702
+        "distanceFromMA20Pct": 2.652
       },
       "setup": "REVERSAL",
       "discoveryV2": {
         "rs5Percentile": 33.33,
         "rs20Percentile": 25.64,
-        "rvol20Percentile": 41.03,
+        "rvol20Percentile": 46.15,
         "highProximityScore": 94.75,
-        "score": 56.13
+        "score": 57.27
       }
     },
     {
@@ -1134,75 +1152,31 @@
       "industry": "金融保險業",
       "cfi": "ESVUFR",
       "cheapScan": {
-        "liquidityPercentile": 84.51,
-        "momentumPercentile": 87.65,
+        "liquidityPercentile": 84.66,
+        "momentumPercentile": 89.75,
         "closeStrengthScore": 90.32,
-        "discoveryScore": 87.06
+        "discoveryScore": 87.86
       },
       "historyFeatures": {
-        "historySessions": 37,
-        "return5": -1.325,
-        "return20": 9.078,
-        "rs5": 0.32,
-        "rs20": 6.177,
-        "rvol20": 0.969,
-        "avgVolume20": 57903870.9,
-        "ma20": 35.575,
+        "historySessions": 38,
+        "return5": -1.75,
+        "return20": 4.435,
+        "rs5": 0.74,
+        "rs20": 2.118,
+        "rvol20": 0.96,
+        "avgVolume20": 58448055.75,
+        "ma20": 35.652,
         "prior20High": 37.8,
         "distanceFrom20DHighPct": -1.455,
-        "distanceFromMA20Pct": 4.708
+        "distanceFromMA20Pct": 4.481
       },
       "setup": "REVERSAL",
       "discoveryV2": {
-        "rs5Percentile": 20.51,
+        "rs5Percentile": 28.21,
         "rs20Percentile": 38.46,
-        "rvol20Percentile": 33.33,
+        "rvol20Percentile": 38.46,
         "highProximityScore": 87.88,
-        "score": 53.98
-      }
-    },
-    {
-      "symbol": "2891",
-      "name": "中信金",
-      "market": "TSE",
-      "date": "2026-08-21",
-      "openPrice": 63.7,
-      "highPrice": 65.5,
-      "lowPrice": 63.0,
-      "closePrice": 65.0,
-      "change": 1.6,
-      "changePercent": 2.524,
-      "tradeVolume": 51685764.0,
-      "tradeValue": 3342135257.0,
-      "closePosition": 0.8,
-      "industry": "金融保險業",
-      "cfi": "ESVUFR",
-      "cheapScan": {
-        "liquidityPercentile": 88.2,
-        "momentumPercentile": 82.36,
-        "closeStrengthScore": 80.0,
-        "discoveryScore": 84.11
-      },
-      "historyFeatures": {
-        "historySessions": 37,
-        "return5": -1.216,
-        "return20": 2.201,
-        "rs5": 0.429,
-        "rs20": -0.699,
-        "rvol20": 1.49,
-        "avgVolume20": 34684357.6,
-        "ma20": 64.94,
-        "prior20High": 67.3,
-        "distanceFrom20DHighPct": -3.418,
-        "distanceFromMA20Pct": 0.092
-      },
-      "setup": "REVERSAL",
-      "discoveryV2": {
-        "rs5Percentile": 23.08,
-        "rs20Percentile": 20.51,
-        "rvol20Percentile": 61.54,
-        "highProximityScore": 71.52,
-        "score": 52.6
+        "score": 56.7
       }
     },
     {
@@ -1222,31 +1196,163 @@
       "industry": "金融保險業",
       "cfi": "ESVUFR",
       "cheapScan": {
-        "liquidityPercentile": 85.56,
-        "momentumPercentile": 84.83,
+        "liquidityPercentile": 86.07,
+        "momentumPercentile": 86.75,
         "closeStrengthScore": 86.49,
-        "discoveryScore": 85.54
+        "discoveryScore": 86.41
       },
       "historyFeatures": {
-        "historySessions": 37,
-        "return5": -0.985,
-        "return20": 3.608,
-        "rs5": 0.66,
-        "rs20": 0.708,
-        "rvol20": 1.071,
-        "avgVolume20": 20418569.0,
-        "ma20": 98.845,
+        "historySessions": 38,
+        "return5": 0.815,
+        "return20": 0.406,
+        "rs5": 3.305,
+        "rs20": -1.91,
+        "rvol20": 1.044,
+        "avgVolume20": 20947477.6,
+        "ma20": 98.865,
         "prior20High": 102.5,
         "distanceFrom20DHighPct": -1.951,
-        "distanceFromMA20Pct": 1.674
+        "distanceFromMA20Pct": 1.654
       },
       "setup": "REVERSAL",
       "discoveryV2": {
-        "rs5Percentile": 28.21,
-        "rs20Percentile": 28.21,
-        "rvol20Percentile": 35.9,
+        "rs5Percentile": 43.59,
+        "rs20Percentile": 20.51,
+        "rvol20Percentile": 43.59,
         "highProximityScore": 83.74,
-        "score": 52.54
+        "score": 55.41
+      }
+    },
+    {
+      "symbol": "6446",
+      "name": "藥華藥",
+      "market": "TSE",
+      "date": "2026-08-21",
+      "openPrice": 1375.0,
+      "highPrice": 1410.0,
+      "lowPrice": 1360.0,
+      "closePrice": 1400.0,
+      "change": 25.0,
+      "changePercent": 1.818,
+      "tradeVolume": 1610602.0,
+      "tradeValue": 2227504035.0,
+      "closePosition": 0.8,
+      "industry": "生技醫療業",
+      "cfi": "ESVUFR",
+      "cheapScan": {
+        "liquidityPercentile": 86.24,
+        "momentumPercentile": 77.74,
+        "closeStrengthScore": 80.0,
+        "discoveryScore": 81.71
+      },
+      "historyFeatures": {
+        "historySessions": 38,
+        "return5": 4.61,
+        "return20": 23.431,
+        "rs5": 7.099,
+        "rs20": 21.115,
+        "rvol20": 0.431,
+        "avgVolume20": 3739278.6,
+        "ma20": 1308.0,
+        "prior20High": 1550.0,
+        "distanceFrom20DHighPct": -9.677,
+        "distanceFromMA20Pct": 7.034
+      },
+      "setup": "TREND_MOMENTUM",
+      "discoveryV2": {
+        "rs5Percentile": 58.97,
+        "rs20Percentile": 79.49,
+        "rvol20Percentile": 5.13,
+        "highProximityScore": 19.36,
+        "score": 54.94
+      }
+    },
+    {
+      "symbol": "5871",
+      "name": "中租-KY",
+      "market": "TSE",
+      "date": "2026-08-21",
+      "openPrice": 111.5,
+      "highPrice": 115.5,
+      "lowPrice": 111.5,
+      "closePrice": 115.5,
+      "change": 4.0,
+      "changePercent": 3.587,
+      "tradeVolume": 9432964.0,
+      "tradeValue": 1077186959.0,
+      "closePosition": 1.0,
+      "industry": "其他業",
+      "cfi": "ESVUFR",
+      "cheapScan": {
+        "liquidityPercentile": 74.96,
+        "momentumPercentile": 89.58,
+        "closeStrengthScore": 100.0,
+        "discoveryScore": 86.33
+      },
+      "historyFeatures": {
+        "historySessions": 38,
+        "return5": 6.452,
+        "return20": -3.75,
+        "rs5": 8.941,
+        "rs20": -6.066,
+        "rvol20": 1.333,
+        "avgVolume20": 7076586.45,
+        "ma20": 112.125,
+        "prior20High": 121.5,
+        "distanceFrom20DHighPct": -4.938,
+        "distanceFromMA20Pct": 3.01
+      },
+      "setup": "GENERAL_WATCH",
+      "discoveryV2": {
+        "rs5Percentile": 71.79,
+        "rs20Percentile": 10.26,
+        "rvol20Percentile": 53.85,
+        "highProximityScore": 58.85,
+        "score": 53.79
+      }
+    },
+    {
+      "symbol": "2891",
+      "name": "中信金",
+      "market": "TSE",
+      "date": "2026-08-21",
+      "openPrice": 63.7,
+      "highPrice": 65.5,
+      "lowPrice": 63.0,
+      "closePrice": 65.0,
+      "change": 1.6,
+      "changePercent": 2.524,
+      "tradeVolume": 51685764.0,
+      "tradeValue": 3342135257.0,
+      "closePosition": 0.8,
+      "industry": "金融保險業",
+      "cfi": "ESVUFR",
+      "cheapScan": {
+        "liquidityPercentile": 89.07,
+        "momentumPercentile": 84.81,
+        "closeStrengthScore": 80.0,
+        "discoveryScore": 85.31
+      },
+      "historyFeatures": {
+        "historySessions": 38,
+        "return5": -3.049,
+        "return20": 0.952,
+        "rs5": -0.559,
+        "rs20": -1.364,
+        "rvol20": 1.418,
+        "avgVolume20": 36457867.35,
+        "ma20": 64.97,
+        "prior20High": 67.3,
+        "distanceFrom20DHighPct": -3.418,
+        "distanceFromMA20Pct": 0.046
+      },
+      "setup": "REVERSAL",
+      "discoveryV2": {
+        "rs5Percentile": 23.08,
+        "rs20Percentile": 23.08,
+        "rvol20Percentile": 58.97,
+        "highProximityScore": 71.52,
+        "score": 52.97
       }
     },
     {
@@ -1267,74 +1373,30 @@
       "cfi": "ESVUFR",
       "cheapScan": {
         "liquidityPercentile": 99.12,
-        "momentumPercentile": 82.54,
+        "momentumPercentile": 85.16,
         "closeStrengthScore": 86.67,
-        "discoveryScore": 90.2
+        "discoveryScore": 91.12
       },
       "historyFeatures": {
-        "historySessions": 37,
-        "return5": -1.362,
-        "return20": 17.152,
-        "rs5": 0.282,
-        "rs20": 14.251,
-        "rvol20": 0.754,
-        "avgVolume20": 151393924.05,
-        "ma20": 163.225,
+        "historySessions": 38,
+        "return5": -2.479,
+        "return20": 10.625,
+        "rs5": 0.01,
+        "rs20": 8.309,
+        "rvol20": 0.759,
+        "avgVolume20": 150331593.6,
+        "ma20": 164.075,
         "prior20High": 193.0,
         "distanceFrom20DHighPct": -6.218,
-        "distanceFromMA20Pct": 10.89
+        "distanceFromMA20Pct": 10.315
       },
       "setup": "REVERSAL",
       "discoveryV2": {
-        "rs5Percentile": 17.95,
-        "rs20Percentile": 56.41,
-        "rvol20Percentile": 25.64,
+        "rs5Percentile": 25.64,
+        "rs20Percentile": 48.72,
+        "rvol20Percentile": 30.77,
         "highProximityScore": 48.18,
-        "score": 51.09
-      }
-    },
-    {
-      "symbol": "8358",
-      "name": "金居",
-      "market": "OTC",
-      "date": "2026-08-21",
-      "openPrice": 417.0,
-      "highPrice": 444.0,
-      "lowPrice": 404.5,
-      "closePrice": 436.0,
-      "change": 22.5,
-      "changePercent": 5.441,
-      "tradeVolume": 30889572.0,
-      "tradeValue": 13263812770.0,
-      "closePosition": 0.7975,
-      "industry": "電子零組件業",
-      "cfi": "ESVUFR",
-      "cheapScan": {
-        "liquidityPercentile": 97.54,
-        "momentumPercentile": 93.3,
-        "closeStrengthScore": 79.75,
-        "discoveryScore": 91.61
-      },
-      "historyFeatures": {
-        "historySessions": 37,
-        "return5": 1.75,
-        "return20": 18.801,
-        "rs5": 3.395,
-        "rs20": 15.9,
-        "rvol20": 1.438,
-        "avgVolume20": 21479400.0,
-        "ma20": 370.95,
-        "prior20High": 462.0,
-        "distanceFrom20DHighPct": -5.628,
-        "distanceFromMA20Pct": 17.536
-      },
-      "setup": "EXTENDED",
-      "discoveryV2": {
-        "rs5Percentile": 43.59,
-        "rs20Percentile": 66.67,
-        "rvol20Percentile": 51.28,
-        "highProximityScore": 53.1,
-        "score": 49.93
+        "score": 51.91
       }
     },
     {
@@ -1355,206 +1417,162 @@
       "cfi": "ESVUFR",
       "cheapScan": {
         "liquidityPercentile": 100.0,
-        "momentumPercentile": 72.31,
+        "momentumPercentile": 74.73,
         "closeStrengthScore": 100.0,
-        "discoveryScore": 90.31
+        "discoveryScore": 91.16
       },
       "historyFeatures": {
-        "historySessions": 37,
-        "return5": 0.626,
-        "return20": 2.553,
-        "rs5": 2.271,
-        "rs20": -0.347,
-        "rvol20": 0.599,
-        "avgVolume20": 31584668.15,
-        "ma20": 2361.25,
+        "historySessions": 38,
+        "return5": -1.042,
+        "return20": 1.064,
+        "rs5": 1.448,
+        "rs20": -1.253,
+        "rvol20": 0.605,
+        "avgVolume20": 31290266.7,
+        "ma20": 2362.5,
         "prior20High": 2445.0,
         "distanceFrom20DHighPct": -1.431,
-        "distanceFromMA20Pct": 2.065
-      },
-      "setup": "REVERSAL",
-      "discoveryV2": {
-        "rs5Percentile": 41.03,
-        "rs20Percentile": 23.08,
-        "rvol20Percentile": 5.13,
-        "highProximityScore": 88.08,
-        "score": 49.27
-      }
-    },
-    {
-      "symbol": "5871",
-      "name": "中租-KY",
-      "market": "TSE",
-      "date": "2026-08-21",
-      "openPrice": 111.5,
-      "highPrice": 115.5,
-      "lowPrice": 111.5,
-      "closePrice": 115.5,
-      "change": 4.0,
-      "changePercent": 3.587,
-      "tradeVolume": 9432964.0,
-      "tradeValue": 1077186959.0,
-      "closePosition": 1.0,
-      "industry": "其他業",
-      "cfi": "ESVUFR",
-      "cheapScan": {
-        "liquidityPercentile": 75.53,
-        "momentumPercentile": 87.48,
-        "closeStrengthScore": 100.0,
-        "discoveryScore": 85.83
-      },
-      "historyFeatures": {
-        "historySessions": 37,
-        "return5": 3.587,
-        "return20": -3.75,
-        "rs5": 5.232,
-        "rs20": -6.651,
-        "rvol20": 1.376,
-        "avgVolume20": 6854751.4,
-        "ma20": 112.35,
-        "prior20High": 121.5,
-        "distanceFrom20DHighPct": -4.938,
-        "distanceFromMA20Pct": 2.804
-      },
-      "setup": "GENERAL_WATCH",
-      "discoveryV2": {
-        "rs5Percentile": 51.28,
-        "rs20Percentile": 10.26,
-        "rvol20Percentile": 48.72,
-        "highProximityScore": 58.85,
-        "score": 48.56
-      }
-    },
-    {
-      "symbol": "2408",
-      "name": "南亞科",
-      "market": "TSE",
-      "date": "2026-08-21",
-      "openPrice": 519.0,
-      "highPrice": 534.0,
-      "lowPrice": 512.0,
-      "closePrice": 528.0,
-      "change": 11.0,
-      "changePercent": 2.128,
-      "tradeVolume": 65354270.0,
-      "tradeValue": 34136334434.0,
-      "closePosition": 0.7273,
-      "industry": "半導體業",
-      "cfi": "ESVUFR",
-      "cheapScan": {
-        "liquidityPercentile": 99.82,
-        "momentumPercentile": 79.37,
-        "closeStrengthScore": 72.73,
-        "discoveryScore": 85.89
-      },
-      "historyFeatures": {
-        "historySessions": 37,
-        "return5": 3.125,
-        "return20": 31.671,
-        "rs5": 4.77,
-        "rs20": 28.77,
-        "rvol20": 0.744,
-        "avgVolume20": 87794875.55,
-        "ma20": 456.425,
-        "prior20High": 553.0,
-        "distanceFrom20DHighPct": -4.521,
-        "distanceFromMA20Pct": 15.682
-      },
-      "setup": "EXTENDED",
-      "discoveryV2": {
-        "rs5Percentile": 46.15,
-        "rs20Percentile": 79.49,
-        "rvol20Percentile": 23.08,
-        "highProximityScore": 62.32,
-        "score": 48.24
-      }
-    },
-    {
-      "symbol": "8299",
-      "name": "群聯",
-      "market": "OTC",
-      "date": "2026-08-21",
-      "openPrice": 2005.0,
-      "highPrice": 2075.0,
-      "lowPrice": 1995.0,
-      "closePrice": 2075.0,
-      "change": 80.0,
-      "changePercent": 4.01,
-      "tradeVolume": 3731103.0,
-      "tradeValue": 7616331710.0,
-      "closePosition": 1.0,
-      "industry": "半導體業",
-      "cfi": "ESVUFR",
-      "cheapScan": {
-        "liquidityPercentile": 94.37,
-        "momentumPercentile": 89.42,
-        "closeStrengthScore": 100.0,
-        "discoveryScore": 94.04
-      },
-      "historyFeatures": {
-        "historySessions": 37,
-        "return5": -0.24,
-        "return20": 13.699,
-        "rs5": 1.404,
-        "rs20": 10.798,
-        "rvol20": 0.65,
-        "avgVolume20": 5736500.0,
-        "ma20": 1920.5,
-        "prior20High": 2325.0,
-        "distanceFrom20DHighPct": -10.753,
-        "distanceFromMA20Pct": 8.045
+        "distanceFromMA20Pct": 2.011
       },
       "setup": "REVERSAL",
       "discoveryV2": {
         "rs5Percentile": 35.9,
-        "rs20Percentile": 51.28,
+        "rs20Percentile": 28.21,
         "rvol20Percentile": 15.38,
-        "highProximityScore": 10.39,
-        "score": 46.44
+        "highProximityScore": 88.08,
+        "score": 51.75
       }
     },
     {
-      "symbol": "3163",
-      "name": "波若威",
-      "market": "OTC",
+      "symbol": "2324",
+      "name": "仁寶",
+      "market": "TSE",
       "date": "2026-08-21",
-      "openPrice": 734.0,
-      "highPrice": 783.0,
-      "lowPrice": 725.0,
-      "closePrice": 783.0,
-      "change": 47.0,
-      "changePercent": 6.386,
-      "tradeVolume": 2920225.0,
-      "tradeValue": 2214356088.0,
-      "closePosition": 1.0,
-      "industry": "通信網路業",
+      "openPrice": 38.4,
+      "highPrice": 39.0,
+      "lowPrice": 37.9,
+      "closePrice": 38.95,
+      "change": 0.45,
+      "changePercent": 1.169,
+      "tradeVolume": 42759328.0,
+      "tradeValue": 1642559847.0,
+      "closePosition": 0.9545,
+      "industry": "電腦及週邊設備業",
       "cfi": "ESVUFR",
       "cheapScan": {
-        "liquidityPercentile": 85.74,
-        "momentumPercentile": 94.36,
-        "closeStrengthScore": 100.0,
-        "discoveryScore": 92.32
+        "liquidityPercentile": 80.95,
+        "momentumPercentile": 71.73,
+        "closeStrengthScore": 95.45,
+        "discoveryScore": 81.35
       },
       "historyFeatures": {
-        "historySessions": 37,
-        "return5": 11.538,
-        "return20": 11.064,
-        "rs5": 13.183,
-        "rs20": 8.163,
-        "rvol20": 0.63,
-        "avgVolume20": 4631950.0,
-        "ma20": 672.35,
-        "prior20High": 817.0,
-        "distanceFrom20DHighPct": -4.162,
-        "distanceFromMA20Pct": 16.457
+        "historySessions": 38,
+        "return5": -0.12,
+        "return20": 11.978,
+        "rs5": 2.369,
+        "rs20": 9.662,
+        "rvol20": 0.439,
+        "avgVolume20": 97427570.3,
+        "ma20": 37.953,
+        "prior20High": 44.95,
+        "distanceFrom20DHighPct": -13.348,
+        "distanceFromMA20Pct": 2.628
       },
-      "setup": "EXTENDED",
+      "setup": "REVERSAL",
       "discoveryV2": {
-        "rs5Percentile": 69.23,
-        "rs20Percentile": 48.72,
-        "rvol20Percentile": 12.82,
-        "highProximityScore": 65.32,
-        "score": 44.85
+        "rs5Percentile": 38.46,
+        "rs20Percentile": 51.28,
+        "rvol20Percentile": 7.69,
+        "highProximityScore": 0.0,
+        "score": 41.32
+      }
+    },
+    {
+      "symbol": "6770",
+      "name": "力積電",
+      "market": "TSE",
+      "date": "2026-08-21",
+      "openPrice": 67.0,
+      "highPrice": 68.5,
+      "lowPrice": 66.5,
+      "closePrice": 68.4,
+      "change": 1.1,
+      "changePercent": 1.634,
+      "tradeVolume": 116273055.0,
+      "tradeValue": 7852631989.0,
+      "closePosition": 0.95,
+      "industry": "半導體業",
+      "cfi": "ESVUFR",
+      "cheapScan": {
+        "liquidityPercentile": 95.24,
+        "momentumPercentile": 75.97,
+        "closeStrengthScore": 95.0,
+        "discoveryScore": 88.44
+      },
+      "historyFeatures": {
+        "historySessions": 38,
+        "return5": -5.094,
+        "return20": 14.378,
+        "rs5": -2.604,
+        "rs20": 12.062,
+        "rvol20": 0.505,
+        "avgVolume20": 230309401.8,
+        "ma20": 65.112,
+        "prior20High": 81.8,
+        "distanceFrom20DHighPct": -16.381,
+        "distanceFromMA20Pct": 5.049
+      },
+      "setup": "REVERSAL",
+      "discoveryV2": {
+        "rs5Percentile": 10.26,
+        "rs20Percentile": 56.41,
+        "rvol20Percentile": 10.26,
+        "highProximityScore": 0.0,
+        "score": 38.89
+      }
+    },
+    {
+      "symbol": "1301",
+      "name": "台塑",
+      "market": "TSE",
+      "date": "2026-08-21",
+      "openPrice": 57.8,
+      "highPrice": 59.5,
+      "lowPrice": 57.8,
+      "closePrice": 59.4,
+      "change": 1.6,
+      "changePercent": 2.768,
+      "tradeVolume": 20206463.0,
+      "tradeValue": 1191268064.0,
+      "closePosition": 0.9412,
+      "industry": "塑膠工業",
+      "cfi": "ESVUFR",
+      "cheapScan": {
+        "liquidityPercentile": 76.19,
+        "momentumPercentile": 86.4,
+        "closeStrengthScore": 94.12,
+        "discoveryScore": 84.24
+      },
+      "historyFeatures": {
+        "historySessions": 38,
+        "return5": -3.553,
+        "return20": -7.618,
+        "rs5": -1.064,
+        "rs20": -9.934,
+        "rvol20": 0.717,
+        "avgVolume20": 28169986.85,
+        "ma20": 56.63,
+        "prior20High": 62.5,
+        "distanceFrom20DHighPct": -4.96,
+        "distanceFromMA20Pct": 4.891
+      },
+      "setup": "REVERSAL",
+      "discoveryV2": {
+        "rs5Percentile": 20.51,
+        "rs20Percentile": 5.13,
+        "rvol20Percentile": 23.08,
+        "highProximityScore": 58.67,
+        "score": 38.65
       }
     }
   ]
