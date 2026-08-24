@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-08-24T01:10:10.602Z",
+  "updatedAt": "2026-08-24T01:15:11.209Z",
   "source": "Fugle Market Data API",
   "bridgeVersion": "3.2.3",
   "triggerContext": {
     "cron": "*/5 1-4 * * MON-FRI",
-    "scheduledTime": "2026-08-24T01:10:08.000Z"
+    "scheduledTime": "2026-08-24T01:15:08.000Z"
   },
   "market": "TW",
   "watchlist": [
@@ -171,14 +171,10 @@
     "version": 2,
     "cacheDate": "2026-08-24",
     "historicalAdjusted": true,
-    "staleAtStart": 1,
+    "staleAtStart": 0,
     "refreshBudget": 8,
-    "refreshAttempted": [
-      "2883"
-    ],
-    "refreshedThisRun": [
-      "2883"
-    ],
+    "refreshAttempted": [],
+    "refreshedThisRun": [],
     "remainingAfterRun": 0,
     "pendingSymbols": [],
     "note": "Daily indicators use completed historical daily candles and are cached through the previous GitHub snapshot for the same Taipei calendar date. projectedDaily combines that prior completed-day background with the current live session without an extra historical subrequest."
@@ -207,37 +203,37 @@
       "symbol": "1402",
       "name": "遠東新",
       "date": "2026-08-24",
-      "price": 29.85,
+      "price": 29.7,
       "referencePrice": 30.35,
       "previousClose": 30.35,
       "open": 30.3,
       "high": 30.65,
-      "low": 29.8,
-      "change": -0.5,
-      "changePercent": -1.65,
-      "avgPrice": 30.23,
+      "low": 29.65,
+      "change": -0.65,
+      "changePercent": -2.14,
+      "avgPrice": 30.08,
       "bid": {
-        "price": 29.85,
-        "size": 2
+        "price": 29.7,
+        "size": 8
       },
       "ask": {
-        "price": 29.9,
-        "size": 144
+        "price": 29.8,
+        "size": 23
       },
-      "tradeVolume": 2561,
-      "transaction": 359,
+      "tradeVolume": 3824,
+      "transaction": 481,
       "earlyHigh": 30.65,
-      "earlyLow": 29.8,
+      "earlyLow": 29.65,
       "aboveAverage": false,
-      "last5Volume": 632,
-      "previous5Volume": 984,
-      "volumeAcceleration": 0.64,
-      "intradayLast5Volume": 632,
-      "intradayPrevious5Volume": 984,
-      "intradayVolumeAcceleration": 0.64,
+      "last5Volume": 1102,
+      "previous5Volume": 793,
+      "volumeAcceleration": 1.39,
+      "intradayLast5Volume": 1102,
+      "intradayPrevious5Volume": 793,
+      "intradayVolumeAcceleration": 1.39,
       "intradayLast5BarCount": 5,
       "intradayPrevious5BarCount": 5,
-      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:10:00.000+08:00",
+      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:15:00.000+08:00",
       "closingAuctionVolume": null,
       "closingAuctionPrice": null,
       "closingAuctionDetected": false,
@@ -336,21 +332,66 @@
         {
           "date": "2026-08-24T09:10:00.000+08:00",
           "open": 29.8,
+          "high": 29.9,
+          "low": 29.8,
+          "close": 29.85,
+          "volume": 164,
+          "average": 30.21
+        },
+        {
+          "date": "2026-08-24T09:11:00.000+08:00",
+          "open": 29.85,
+          "high": 29.85,
+          "low": 29.8,
+          "close": 29.8,
+          "volume": 54,
+          "average": 30.21
+        },
+        {
+          "date": "2026-08-24T09:12:00.000+08:00",
+          "open": 29.8,
+          "high": 29.85,
+          "low": 29.65,
+          "close": 29.85,
+          "volume": 746,
+          "average": 30.11
+        },
+        {
+          "date": "2026-08-24T09:13:00.000+08:00",
+          "open": 29.8,
+          "high": 29.9,
+          "low": 29.8,
+          "close": 29.8,
+          "volume": 105,
+          "average": 30.1
+        },
+        {
+          "date": "2026-08-24T09:14:00.000+08:00",
+          "open": 29.8,
           "high": 29.85,
           "low": 29.8,
           "close": 29.85,
-          "volume": 3,
-          "average": 30.23
+          "volume": 32,
+          "average": 30.1
+        },
+        {
+          "date": "2026-08-24T09:15:00.000+08:00",
+          "open": 29.85,
+          "high": 29.85,
+          "low": 29.7,
+          "close": 29.7,
+          "volume": 165,
+          "average": 30.08
         }
       ],
       "latestCandle": {
-        "date": "2026-08-24T09:10:00.000+08:00",
-        "open": 29.8,
+        "date": "2026-08-24T09:15:00.000+08:00",
+        "open": 29.85,
         "high": 29.85,
-        "low": 29.8,
-        "close": 29.85,
-        "volume": 3,
-        "average": 30.23
+        "low": 29.7,
+        "close": 29.7,
+        "volume": 165,
+        "average": 30.08
       },
       "dailyIndicators": {
         "ok": true,
@@ -402,10 +443,10 @@
         "basedOnDailyAsOf": "2026-08-21",
         "sessionComplete": false,
         "scaleDiffPct": 0,
-        "ma20": 27.655,
-        "ma60": 27.0502,
-        "atr14": 0.7599,
-        "atr14PctOfClose": 2.546,
+        "ma20": 27.6475,
+        "ma60": 27.0477,
+        "atr14": 0.7706,
+        "atr14PctOfClose": 2.595,
         "high20": 30.65,
         "low20": 26.6,
         "high60": 30.65,
@@ -419,50 +460,50 @@
           "price": 26.65
         }
       },
-      "fugleLastUpdated": 1787533809658146,
-      "fugleLastUpdatedAt": "2026-08-24T01:10:09.658Z",
-      "sourceAgeSeconds": 1,
+      "fugleLastUpdated": 1787534110547692,
+      "fugleLastUpdatedAt": "2026-08-24T01:15:10.547Z",
+      "sourceAgeSeconds": 0,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
       "isClose": null,
-      "fetchedAt": "2026-08-24T01:10:10.224Z"
+      "fetchedAt": "2026-08-24T01:15:10.743Z"
     },
     "2303": {
       "ok": true,
       "symbol": "2303",
       "name": "聯電",
       "date": "2026-08-24",
-      "price": 123,
+      "price": 122.5,
       "referencePrice": 116.5,
       "previousClose": 116.5,
       "open": 118,
       "high": 124.5,
       "low": 117.5,
-      "change": 6.5,
-      "changePercent": 5.58,
-      "avgPrice": 121.8,
+      "change": 6,
+      "changePercent": 5.15,
+      "avgPrice": 122.24,
       "bid": {
-        "price": 123,
-        "size": 323
+        "price": 122.5,
+        "size": 656
       },
       "ask": {
-        "price": 123.5,
-        "size": 828
+        "price": 123,
+        "size": 770
       },
-      "tradeVolume": 33379,
-      "transaction": 4726,
+      "tradeVolume": 42467,
+      "transaction": 6376,
       "earlyHigh": 124.5,
       "earlyLow": 117.5,
       "aboveAverage": true,
-      "last5Volume": 19143,
-      "previous5Volume": 12542,
-      "volumeAcceleration": 1.53,
-      "intradayLast5Volume": 19143,
-      "intradayPrevious5Volume": 12542,
-      "intradayVolumeAcceleration": 1.53,
+      "last5Volume": 3225,
+      "previous5Volume": 25006,
+      "volumeAcceleration": 0.13,
+      "intradayLast5Volume": 3225,
+      "intradayPrevious5Volume": 25006,
+      "intradayVolumeAcceleration": 0.13,
       "intradayLast5BarCount": 5,
       "intradayPrevious5BarCount": 5,
-      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:10:00.000+08:00",
+      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:15:00.000+08:00",
       "closingAuctionVolume": null,
       "closingAuctionPrice": null,
       "closingAuctionDetected": false,
@@ -561,21 +602,66 @@
         {
           "date": "2026-08-24T09:10:00.000+08:00",
           "open": 122.5,
-          "high": 123.5,
+          "high": 124.5,
           "low": 122.5,
+          "close": 124,
+          "volume": 7109,
+          "average": 122.14
+        },
+        {
+          "date": "2026-08-24T09:11:00.000+08:00",
+          "open": 124,
+          "high": 124,
+          "low": 123.5,
+          "close": 123.5,
+          "volume": 758,
+          "average": 122.17
+        },
+        {
+          "date": "2026-08-24T09:12:00.000+08:00",
+          "open": 123.5,
+          "high": 124,
+          "low": 123,
+          "close": 123.5,
+          "volume": 1521,
+          "average": 122.22
+        },
+        {
+          "date": "2026-08-24T09:13:00.000+08:00",
+          "open": 123.5,
+          "high": 123.5,
+          "low": 123,
           "close": 123,
-          "volume": 1246,
-          "average": 121.8
+          "volume": 379,
+          "average": 122.23
+        },
+        {
+          "date": "2026-08-24T09:14:00.000+08:00",
+          "open": 123,
+          "high": 123,
+          "low": 122.5,
+          "close": 122.5,
+          "volume": 536,
+          "average": 122.24
+        },
+        {
+          "date": "2026-08-24T09:15:00.000+08:00",
+          "open": 122.5,
+          "high": 123,
+          "low": 122.5,
+          "close": 122.5,
+          "volume": 31,
+          "average": 122.24
         }
       ],
       "latestCandle": {
-        "date": "2026-08-24T09:10:00.000+08:00",
+        "date": "2026-08-24T09:15:00.000+08:00",
         "open": 122.5,
-        "high": 123.5,
+        "high": 123,
         "low": 122.5,
-        "close": 123,
-        "volume": 1246,
-        "average": 121.8
+        "close": 122.5,
+        "volume": 31,
+        "average": 122.24
       },
       "dailyIndicators": {
         "ok": true,
@@ -627,10 +713,10 @@
         "basedOnDailyAsOf": "2026-08-21",
         "sessionComplete": false,
         "scaleDiffPct": 0,
-        "ma20": 118.425,
-        "ma60": 136.7983,
+        "ma20": 118.4,
+        "ma60": 136.79,
         "atr14": 7.5323,
-        "atr14PctOfClose": 6.124,
+        "atr14PctOfClose": 6.149,
         "high20": 130.5,
         "low20": 102.5,
         "high60": 182.38,
@@ -644,50 +730,50 @@
           "price": 114
         }
       },
-      "fugleLastUpdated": 1787533809596356,
-      "fugleLastUpdatedAt": "2026-08-24T01:10:09.596Z",
+      "fugleLastUpdated": 1787534109951887,
+      "fugleLastUpdatedAt": "2026-08-24T01:15:09.951Z",
       "sourceAgeSeconds": 0,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
       "isClose": null,
-      "fetchedAt": "2026-08-24T01:10:09.667Z"
+      "fetchedAt": "2026-08-24T01:15:10.276Z"
     },
     "2308": {
       "ok": true,
       "symbol": "2308",
       "name": "台達電",
       "date": "2026-08-24",
-      "price": 1740,
+      "price": 1765,
       "referencePrice": 1750,
       "previousClose": 1750,
       "open": 1720,
-      "high": 1745,
+      "high": 1765,
       "low": 1710,
-      "change": -10,
-      "changePercent": -0.57,
-      "avgPrice": 1723.78,
+      "change": 15,
+      "changePercent": 0.86,
+      "avgPrice": 1729.04,
       "bid": {
-        "price": 1740,
-        "size": 30
+        "price": 1760,
+        "size": 24
       },
       "ask": {
-        "price": 1745,
-        "size": 27
+        "price": 1765,
+        "size": 18
       },
-      "tradeVolume": 935,
-      "transaction": 278,
-      "earlyHigh": 1745,
+      "tradeVolume": 1142,
+      "transaction": 368,
+      "earlyHigh": 1765,
       "earlyLow": 1710,
       "aboveAverage": true,
-      "last5Volume": 89,
-      "previous5Volume": 313,
-      "volumeAcceleration": 0.28,
-      "intradayLast5Volume": 89,
-      "intradayPrevious5Volume": 313,
-      "intradayVolumeAcceleration": 0.28,
+      "last5Volume": 197,
+      "previous5Volume": 99,
+      "volumeAcceleration": 1.99,
+      "intradayLast5Volume": 197,
+      "intradayPrevious5Volume": 99,
+      "intradayVolumeAcceleration": 1.99,
       "intradayLast5BarCount": 5,
       "intradayPrevious5BarCount": 5,
-      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:10:00.000+08:00",
+      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:15:00.000+08:00",
       "closingAuctionVolume": null,
       "closingAuctionPrice": null,
       "closingAuctionDetected": false,
@@ -786,21 +872,66 @@
         {
           "date": "2026-08-24T09:10:00.000+08:00",
           "open": 1740,
-          "high": 1740,
+          "high": 1745,
           "low": 1740,
-          "close": 1740,
-          "volume": 18,
-          "average": 1723.78
+          "close": 1745,
+          "volume": 28,
+          "average": 1724.01
+        },
+        {
+          "date": "2026-08-24T09:11:00.000+08:00",
+          "open": 1745,
+          "high": 1745,
+          "low": 1745,
+          "close": 1745,
+          "volume": 3,
+          "average": 1724.07
+        },
+        {
+          "date": "2026-08-24T09:12:00.000+08:00",
+          "open": 1740,
+          "high": 1760,
+          "low": 1740,
+          "close": 1760,
+          "volume": 98,
+          "average": 1726.42
+        },
+        {
+          "date": "2026-08-24T09:13:00.000+08:00",
+          "open": 1760,
+          "high": 1760,
+          "low": 1755,
+          "close": 1755,
+          "volume": 32,
+          "average": 1727.31
+        },
+        {
+          "date": "2026-08-24T09:14:00.000+08:00",
+          "open": 1755,
+          "high": 1760,
+          "low": 1750,
+          "close": 1760,
+          "volume": 60,
+          "average": 1728.92
+        },
+        {
+          "date": "2026-08-24T09:15:00.000+08:00",
+          "open": 1765,
+          "high": 1765,
+          "low": 1760,
+          "close": 1765,
+          "volume": 4,
+          "average": 1729.04
         }
       ],
       "latestCandle": {
-        "date": "2026-08-24T09:10:00.000+08:00",
-        "open": 1740,
-        "high": 1740,
-        "low": 1740,
-        "close": 1740,
-        "volume": 18,
-        "average": 1723.78
+        "date": "2026-08-24T09:15:00.000+08:00",
+        "open": 1765,
+        "high": 1765,
+        "low": 1760,
+        "close": 1765,
+        "volume": 4,
+        "average": 1729.04
       },
       "dailyIndicators": {
         "ok": true,
@@ -852,10 +983,10 @@
         "basedOnDailyAsOf": "2026-08-21",
         "sessionComplete": false,
         "scaleDiffPct": 0,
-        "ma20": 1715.5,
-        "ma60": 1937.1413,
-        "atr14": 98.5295,
-        "atr14PctOfClose": 5.663,
+        "ma20": 1716.75,
+        "ma60": 1937.558,
+        "atr14": 99.601,
+        "atr14PctOfClose": 5.643,
         "high20": 2005,
         "low20": 1425,
         "high60": 2511.87,
@@ -869,13 +1000,13 @@
           "price": 1520
         }
       },
-      "fugleLastUpdated": 1787533809462374,
-      "fugleLastUpdatedAt": "2026-08-24T01:10:09.462Z",
+      "fugleLastUpdated": 1787534110230085,
+      "fugleLastUpdatedAt": "2026-08-24T01:15:10.230Z",
       "sourceAgeSeconds": 0,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
       "isClose": null,
-      "fetchedAt": "2026-08-24T01:10:09.666Z"
+      "fetchedAt": "2026-08-24T01:15:10.323Z"
     },
     "2330": {
       "ok": true,
@@ -890,29 +1021,29 @@
       "low": 2395,
       "change": -10,
       "changePercent": -0.41,
-      "avgPrice": 2407.47,
+      "avgPrice": 2406.56,
       "bid": {
         "price": 2395,
-        "size": 133
+        "size": 54
       },
       "ask": {
         "price": 2400,
-        "size": 35
+        "size": 524
       },
-      "tradeVolume": 1992,
-      "transaction": 253,
+      "tradeVolume": 2164,
+      "transaction": 300,
       "earlyHigh": 2410,
       "earlyLow": 2395,
       "aboveAverage": false,
-      "last5Volume": 134,
-      "previous5Volume": 816,
-      "volumeAcceleration": 0.16,
-      "intradayLast5Volume": 134,
-      "intradayPrevious5Volume": 816,
-      "intradayVolumeAcceleration": 0.16,
+      "last5Volume": 144,
+      "previous5Volume": 162,
+      "volumeAcceleration": 0.89,
+      "intradayLast5Volume": 144,
+      "intradayPrevious5Volume": 162,
+      "intradayVolumeAcceleration": 0.89,
       "intradayLast5BarCount": 5,
       "intradayPrevious5BarCount": 5,
-      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:10:00.000+08:00",
+      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:15:00.000+08:00",
       "closingAuctionVolume": null,
       "closingAuctionPrice": null,
       "closingAuctionDetected": false,
@@ -1012,20 +1143,65 @@
           "date": "2026-08-24T09:10:00.000+08:00",
           "open": 2400,
           "high": 2400,
-          "low": 2400,
+          "low": 2395,
+          "close": 2395,
+          "volume": 29,
+          "average": 2407.37
+        },
+        {
+          "date": "2026-08-24T09:11:00.000+08:00",
+          "open": 2395,
+          "high": 2400,
+          "low": 2395,
           "close": 2400,
-          "volume": 1,
-          "average": 2407.47
+          "volume": 10,
+          "average": 2407.32
+        },
+        {
+          "date": "2026-08-24T09:12:00.000+08:00",
+          "open": 2400,
+          "high": 2400,
+          "low": 2395,
+          "close": 2395,
+          "volume": 21,
+          "average": 2407.19
+        },
+        {
+          "date": "2026-08-24T09:13:00.000+08:00",
+          "open": 2395,
+          "high": 2395,
+          "low": 2395,
+          "close": 2395,
+          "volume": 91,
+          "average": 2406.68
+        },
+        {
+          "date": "2026-08-24T09:14:00.000+08:00",
+          "open": 2395,
+          "high": 2395,
+          "low": 2395,
+          "close": 2395,
+          "volume": 20,
+          "average": 2406.57
+        },
+        {
+          "date": "2026-08-24T09:15:00.000+08:00",
+          "open": 2395,
+          "high": 2400,
+          "low": 2395,
+          "close": 2400,
+          "volume": 2,
+          "average": 2406.56
         }
       ],
       "latestCandle": {
-        "date": "2026-08-24T09:10:00.000+08:00",
-        "open": 2400,
+        "date": "2026-08-24T09:15:00.000+08:00",
+        "open": 2395,
         "high": 2400,
-        "low": 2400,
+        "low": 2395,
         "close": 2400,
-        "volume": 1,
-        "average": 2407.47
+        "volume": 2,
+        "average": 2406.56
       },
       "dailyIndicators": {
         "ok": true,
@@ -1094,50 +1270,50 @@
           "price": 2335
         }
       },
-      "fugleLastUpdated": 1787533809571686,
-      "fugleLastUpdatedAt": "2026-08-24T01:10:09.571Z",
+      "fugleLastUpdated": 1787534110302236,
+      "fugleLastUpdatedAt": "2026-08-24T01:15:10.302Z",
       "sourceAgeSeconds": 0,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
       "isClose": null,
-      "fetchedAt": "2026-08-24T01:10:09.737Z"
+      "fetchedAt": "2026-08-24T01:15:10.514Z"
     },
     "2357": {
       "ok": true,
       "symbol": "2357",
       "name": "華碩",
       "date": "2026-08-24",
-      "price": 920,
+      "price": 923,
       "referencePrice": 921,
       "previousClose": 921,
       "open": 919,
-      "high": 921,
+      "high": 928,
       "low": 916,
-      "change": -1,
-      "changePercent": -0.11,
-      "avgPrice": 919.06,
+      "change": 2,
+      "changePercent": 0.22,
+      "avgPrice": 921.9,
       "bid": {
-        "price": 919,
-        "size": 5
+        "price": 923,
+        "size": 6
       },
       "ask": {
-        "price": 920,
-        "size": 2
+        "price": 924,
+        "size": 1
       },
-      "tradeVolume": 99,
-      "transaction": 53,
-      "earlyHigh": 921,
+      "tradeVolume": 271,
+      "transaction": 123,
+      "earlyHigh": 928,
       "earlyLow": 916,
       "aboveAverage": true,
-      "last5Volume": 32,
-      "previous5Volume": 67,
+      "last5Volume": 64,
+      "previous5Volume": 133,
       "volumeAcceleration": 0.48,
-      "intradayLast5Volume": 32,
-      "intradayPrevious5Volume": 67,
+      "intradayLast5Volume": 64,
+      "intradayPrevious5Volume": 133,
       "intradayVolumeAcceleration": 0.48,
       "intradayLast5BarCount": 5,
-      "intradayPrevious5BarCount": 4,
-      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:09:00.000+08:00",
+      "intradayPrevious5BarCount": 5,
+      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:15:00.000+08:00",
       "closingAuctionVolume": null,
       "closingAuctionPrice": null,
       "closingAuctionDetected": false,
@@ -1223,16 +1399,70 @@
           "close": 920,
           "volume": 3,
           "average": 919.06
+        },
+        {
+          "date": "2026-08-24T09:10:00.000+08:00",
+          "open": 920,
+          "high": 925,
+          "low": 920,
+          "close": 925,
+          "volume": 108,
+          "average": 920.83
+        },
+        {
+          "date": "2026-08-24T09:11:00.000+08:00",
+          "open": 925,
+          "high": 928,
+          "low": 924,
+          "close": 924,
+          "volume": 45,
+          "average": 921.73
+        },
+        {
+          "date": "2026-08-24T09:12:00.000+08:00",
+          "open": 925,
+          "high": 925,
+          "low": 924,
+          "close": 924,
+          "volume": 7,
+          "average": 921.81
+        },
+        {
+          "date": "2026-08-24T09:13:00.000+08:00",
+          "open": 924,
+          "high": 924,
+          "low": 924,
+          "close": 924,
+          "volume": 8,
+          "average": 921.88
+        },
+        {
+          "date": "2026-08-24T09:14:00.000+08:00",
+          "open": 923,
+          "high": 923,
+          "low": 923,
+          "close": 923,
+          "volume": 2,
+          "average": 921.89
+        },
+        {
+          "date": "2026-08-24T09:15:00.000+08:00",
+          "open": 923,
+          "high": 923,
+          "low": 923,
+          "close": 923,
+          "volume": 2,
+          "average": 921.9
         }
       ],
       "latestCandle": {
-        "date": "2026-08-24T09:09:00.000+08:00",
-        "open": 921,
-        "high": 921,
-        "low": 920,
-        "close": 920,
-        "volume": 3,
-        "average": 919.06
+        "date": "2026-08-24T09:15:00.000+08:00",
+        "open": 923,
+        "high": 923,
+        "low": 923,
+        "close": 923,
+        "volume": 2,
+        "average": 921.9
       },
       "dailyIndicators": {
         "ok": true,
@@ -1284,10 +1514,10 @@
         "basedOnDailyAsOf": "2026-08-21",
         "sessionComplete": false,
         "scaleDiffPct": 0,
-        "ma20": 854.5,
-        "ma60": 773.8123,
-        "atr14": 36.4325,
-        "atr14PctOfClose": 3.96,
+        "ma20": 854.65,
+        "ma60": 773.8623,
+        "atr14": 36.9325,
+        "atr14PctOfClose": 4.001,
         "high20": 1025,
         "low20": 722,
         "high60": 1025,
@@ -1301,50 +1531,50 @@
           "price": 891
         }
       },
-      "fugleLastUpdated": 1787533802833547,
-      "fugleLastUpdatedAt": "2026-08-24T01:10:02.833Z",
-      "sourceAgeSeconds": 7,
+      "fugleLastUpdated": 1787534109767687,
+      "fugleLastUpdatedAt": "2026-08-24T01:15:09.767Z",
+      "sourceAgeSeconds": 1,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
       "isClose": null,
-      "fetchedAt": "2026-08-24T01:10:09.885Z"
+      "fetchedAt": "2026-08-24T01:15:10.531Z"
     },
     "2408": {
       "ok": true,
       "symbol": "2408",
       "name": "南亞科",
       "date": "2026-08-24",
-      "price": 528,
+      "price": 535,
       "referencePrice": 528,
       "previousClose": 528,
       "open": 521,
-      "high": 533,
+      "high": 537,
       "low": 515,
-      "change": 0,
-      "changePercent": 0,
-      "avgPrice": 526.13,
+      "change": 7,
+      "changePercent": 1.33,
+      "avgPrice": 527.73,
       "bid": {
-        "price": 528,
-        "size": 26
+        "price": 534,
+        "size": 72
       },
       "ask": {
-        "price": 529,
-        "size": 54
+        "price": 535,
+        "size": 38
       },
-      "tradeVolume": 10997,
-      "transaction": 3010,
-      "earlyHigh": 533,
+      "tradeVolume": 14916,
+      "transaction": 4083,
+      "earlyHigh": 537,
       "earlyLow": 515,
       "aboveAverage": true,
-      "last5Volume": 2638,
-      "previous5Volume": 5319,
-      "volumeAcceleration": 0.5,
-      "intradayLast5Volume": 2638,
-      "intradayPrevious5Volume": 5319,
-      "intradayVolumeAcceleration": 0.5,
+      "last5Volume": 3710,
+      "previous5Volume": 2846,
+      "volumeAcceleration": 1.3,
+      "intradayLast5Volume": 3710,
+      "intradayPrevious5Volume": 2846,
+      "intradayVolumeAcceleration": 1.3,
       "intradayLast5BarCount": 5,
       "intradayPrevious5BarCount": 5,
-      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:10:00.000+08:00",
+      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:15:00.000+08:00",
       "closingAuctionVolume": null,
       "closingAuctionPrice": null,
       "closingAuctionDetected": false,
@@ -1443,21 +1673,66 @@
         {
           "date": "2026-08-24T09:10:00.000+08:00",
           "open": 528,
-          "high": 528,
-          "low": 528,
-          "close": 528,
-          "volume": 47,
-          "average": 526.13
+          "high": 529,
+          "low": 527,
+          "close": 529,
+          "volume": 255,
+          "average": 526.17
+        },
+        {
+          "date": "2026-08-24T09:11:00.000+08:00",
+          "open": 529,
+          "high": 531,
+          "low": 526,
+          "close": 531,
+          "volume": 806,
+          "average": 526.32
+        },
+        {
+          "date": "2026-08-24T09:12:00.000+08:00",
+          "open": 530,
+          "high": 531,
+          "low": 530,
+          "close": 531,
+          "volume": 407,
+          "average": 526.47
+        },
+        {
+          "date": "2026-08-24T09:13:00.000+08:00",
+          "open": 531,
+          "high": 534,
+          "low": 531,
+          "close": 534,
+          "volume": 1048,
+          "average": 526.94
+        },
+        {
+          "date": "2026-08-24T09:14:00.000+08:00",
+          "open": 533,
+          "high": 537,
+          "low": 533,
+          "close": 536,
+          "volume": 1345,
+          "average": 527.68
+        },
+        {
+          "date": "2026-08-24T09:15:00.000+08:00",
+          "open": 536,
+          "high": 536,
+          "low": 534,
+          "close": 534,
+          "volume": 104,
+          "average": 527.73
         }
       ],
       "latestCandle": {
-        "date": "2026-08-24T09:10:00.000+08:00",
-        "open": 528,
-        "high": 528,
-        "low": 528,
-        "close": 528,
-        "volume": 47,
-        "average": 526.13
+        "date": "2026-08-24T09:15:00.000+08:00",
+        "open": 536,
+        "high": 536,
+        "low": 534,
+        "close": 534,
+        "volume": 104,
+        "average": 527.73
       },
       "dailyIndicators": {
         "ok": true,
@@ -1509,10 +1784,10 @@
         "basedOnDailyAsOf": "2026-08-21",
         "sessionComplete": false,
         "scaleDiffPct": 0,
-        "ma20": 461.025,
-        "ma60": 429.4222,
-        "atr14": 34.0772,
-        "atr14PctOfClose": 6.454,
+        "ma20": 461.375,
+        "ma60": 429.5388,
+        "atr14": 34.3629,
+        "atr14PctOfClose": 6.423,
         "high20": 553,
         "low20": 322,
         "high60": 553,
@@ -1526,50 +1801,50 @@
           "price": 480
         }
       },
-      "fugleLastUpdated": 1787533809686579,
-      "fugleLastUpdatedAt": "2026-08-24T01:10:09.686Z",
+      "fugleLastUpdated": 1787534110570349,
+      "fugleLastUpdatedAt": "2026-08-24T01:15:10.570Z",
       "sourceAgeSeconds": 0,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
       "isClose": null,
-      "fetchedAt": "2026-08-24T01:10:09.960Z"
+      "fetchedAt": "2026-08-24T01:15:10.648Z"
     },
     "2454": {
       "ok": true,
       "symbol": "2454",
       "name": "聯發科",
       "date": "2026-08-24",
-      "price": 3785,
+      "price": 3780,
       "referencePrice": 3790,
       "previousClose": 3790,
       "open": 3820,
       "high": 3820,
       "low": 3760,
-      "change": -5,
-      "changePercent": -0.13,
-      "avgPrice": 3798.21,
+      "change": -10,
+      "changePercent": -0.26,
+      "avgPrice": 3795.83,
       "bid": {
         "price": 3780,
-        "size": 15
+        "size": 5
       },
       "ask": {
-        "price": 3785,
+        "price": 3790,
         "size": 4
       },
-      "tradeVolume": 408,
-      "transaction": 172,
+      "tradeVolume": 470,
+      "transaction": 216,
       "earlyHigh": 3820,
       "earlyLow": 3760,
       "aboveAverage": false,
-      "last5Volume": 66,
-      "previous5Volume": 342,
-      "volumeAcceleration": 0.19,
-      "intradayLast5Volume": 66,
-      "intradayPrevious5Volume": 342,
-      "intradayVolumeAcceleration": 0.19,
+      "last5Volume": 48,
+      "previous5Volume": 80,
+      "volumeAcceleration": 0.6,
+      "intradayLast5Volume": 48,
+      "intradayPrevious5Volume": 80,
+      "intradayVolumeAcceleration": 0.6,
       "intradayLast5BarCount": 5,
-      "intradayPrevious5BarCount": 4,
-      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:10:00.000+08:00",
+      "intradayPrevious5BarCount": 5,
+      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:15:00.000+08:00",
       "closingAuctionVolume": null,
       "closingAuctionPrice": null,
       "closingAuctionDetected": false,
@@ -1651,20 +1926,65 @@
           "date": "2026-08-24T09:10:00.000+08:00",
           "open": 3785,
           "high": 3785,
-          "low": 3785,
+          "low": 3780,
+          "close": 3780,
+          "volume": 15,
+          "average": 3797.75
+        },
+        {
+          "date": "2026-08-24T09:11:00.000+08:00",
+          "open": 3780,
+          "high": 3785,
+          "low": 3770,
           "close": 3785,
-          "volume": 1,
-          "average": 3798.21
+          "volume": 21,
+          "average": 3796.81
+        },
+        {
+          "date": "2026-08-24T09:12:00.000+08:00",
+          "open": 3785,
+          "high": 3785,
+          "low": 3780,
+          "close": 3785,
+          "volume": 8,
+          "average": 3796.59
+        },
+        {
+          "date": "2026-08-24T09:13:00.000+08:00",
+          "open": 3780,
+          "high": 3780,
+          "low": 3775,
+          "close": 3780,
+          "volume": 7,
+          "average": 3796.3
+        },
+        {
+          "date": "2026-08-24T09:14:00.000+08:00",
+          "open": 3775,
+          "high": 3785,
+          "low": 3770,
+          "close": 3785,
+          "volume": 10,
+          "average": 3795.9
+        },
+        {
+          "date": "2026-08-24T09:15:00.000+08:00",
+          "open": 3780,
+          "high": 3780,
+          "low": 3780,
+          "close": 3780,
+          "volume": 2,
+          "average": 3795.83
         }
       ],
       "latestCandle": {
-        "date": "2026-08-24T09:10:00.000+08:00",
-        "open": 3785,
-        "high": 3785,
-        "low": 3785,
-        "close": 3785,
-        "volume": 1,
-        "average": 3798.21
+        "date": "2026-08-24T09:15:00.000+08:00",
+        "open": 3780,
+        "high": 3780,
+        "low": 3780,
+        "close": 3780,
+        "volume": 2,
+        "average": 3795.83
       },
       "dailyIndicators": {
         "ok": true,
@@ -1716,10 +2036,10 @@
         "basedOnDailyAsOf": "2026-08-21",
         "sessionComplete": false,
         "scaleDiffPct": 0,
-        "ma20": 3816.75,
-        "ma60": 4003.6492,
+        "ma20": 3816.5,
+        "ma60": 4003.5658,
         "atr14": 205.8058,
-        "atr14PctOfClose": 5.437,
+        "atr14PctOfClose": 5.445,
         "high20": 4400,
         "low20": 2990,
         "high60": 4940.48,
@@ -1733,13 +2053,13 @@
           "price": 3810
         }
       },
-      "fugleLastUpdated": 1787533809794219,
-      "fugleLastUpdatedAt": "2026-08-24T01:10:09.794Z",
-      "sourceAgeSeconds": 0,
+      "fugleLastUpdated": 1787534109944844,
+      "fugleLastUpdatedAt": "2026-08-24T01:15:09.944Z",
+      "sourceAgeSeconds": 1,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
       "isClose": null,
-      "fetchedAt": "2026-08-24T01:10:09.958Z"
+      "fetchedAt": "2026-08-24T01:15:10.664Z"
     },
     "2615": {
       "ok": true,
@@ -1754,29 +2074,29 @@
       "low": 123.5,
       "change": 5,
       "changePercent": 4.02,
-      "avgPrice": 127.17,
+      "avgPrice": 127.51,
       "bid": {
         "price": 129,
-        "size": 254
+        "size": 188
       },
       "ask": {
         "price": 129.5,
-        "size": 219
+        "size": 94
       },
-      "tradeVolume": 23535,
-      "transaction": 3568,
+      "tradeVolume": 28475,
+      "transaction": 4649,
       "earlyHigh": 130,
       "earlyLow": 123.5,
       "aboveAverage": true,
-      "last5Volume": 6204,
-      "previous5Volume": 17331,
-      "volumeAcceleration": 0.36,
-      "intradayLast5Volume": 6204,
-      "intradayPrevious5Volume": 12811,
-      "intradayVolumeAcceleration": 0.48,
+      "last5Volume": 4034,
+      "previous5Volume": 7110,
+      "volumeAcceleration": 0.57,
+      "intradayLast5Volume": 4034,
+      "intradayPrevious5Volume": 7110,
+      "intradayVolumeAcceleration": 0.57,
       "intradayLast5BarCount": 5,
-      "intradayPrevious5BarCount": 4,
-      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:10:00.000+08:00",
+      "intradayPrevious5BarCount": 5,
+      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:15:00.000+08:00",
       "closingAuctionVolume": null,
       "closingAuctionPrice": null,
       "closingAuctionDetected": false,
@@ -1866,21 +2186,66 @@
         {
           "date": "2026-08-24T09:10:00.000+08:00",
           "open": 129,
-          "high": 129.5,
+          "high": 130,
           "low": 129,
           "close": 129.5,
-          "volume": 107,
-          "average": 127.17
+          "volume": 1013,
+          "average": 127.26
+        },
+        {
+          "date": "2026-08-24T09:11:00.000+08:00",
+          "open": 130,
+          "high": 130,
+          "low": 128,
+          "close": 128.5,
+          "volume": 1581,
+          "average": 127.36
+        },
+        {
+          "date": "2026-08-24T09:12:00.000+08:00",
+          "open": 129,
+          "high": 129,
+          "low": 128,
+          "close": 128.5,
+          "volume": 526,
+          "average": 127.39
+        },
+        {
+          "date": "2026-08-24T09:13:00.000+08:00",
+          "open": 128.5,
+          "high": 129.5,
+          "low": 128,
+          "close": 129,
+          "volume": 830,
+          "average": 127.43
+        },
+        {
+          "date": "2026-08-24T09:14:00.000+08:00",
+          "open": 129.5,
+          "high": 129.5,
+          "low": 129,
+          "close": 129,
+          "volume": 301,
+          "average": 127.45
+        },
+        {
+          "date": "2026-08-24T09:15:00.000+08:00",
+          "open": 129,
+          "high": 130,
+          "low": 129,
+          "close": 129.5,
+          "volume": 796,
+          "average": 127.51
         }
       ],
       "latestCandle": {
-        "date": "2026-08-24T09:10:00.000+08:00",
+        "date": "2026-08-24T09:15:00.000+08:00",
         "open": 129,
-        "high": 129.5,
+        "high": 130,
         "low": 129,
         "close": 129.5,
-        "volume": 107,
-        "average": 127.17
+        "volume": 796,
+        "average": 127.51
       },
       "dailyIndicators": {
         "ok": true,
@@ -1949,50 +2314,50 @@
           "price": 86
         }
       },
-      "fugleLastUpdated": 1787533810335819,
-      "fugleLastUpdatedAt": "2026-08-24T01:10:10.335Z",
+      "fugleLastUpdated": 1787534110831232,
+      "fugleLastUpdatedAt": "2026-08-24T01:15:10.831Z",
       "sourceAgeSeconds": 0,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
       "isClose": null,
-      "fetchedAt": "2026-08-24T01:10:10.440Z"
+      "fetchedAt": "2026-08-24T01:15:10.934Z"
     },
     "2881": {
       "ok": true,
       "symbol": "2881",
       "name": "富邦金",
       "date": "2026-08-24",
-      "price": 133.5,
+      "price": 133,
       "referencePrice": 134,
       "previousClose": 134,
       "open": 135,
       "high": 135,
       "low": 133,
-      "change": -0.5,
-      "changePercent": -0.37,
-      "avgPrice": 134.5,
+      "change": -1,
+      "changePercent": -0.75,
+      "avgPrice": 134.37,
       "bid": {
         "price": 133,
-        "size": 148
+        "size": 271
       },
       "ask": {
         "price": 133.5,
-        "size": 62
+        "size": 95
       },
-      "tradeVolume": 1934,
-      "transaction": 245,
+      "tradeVolume": 2128,
+      "transaction": 290,
       "earlyHigh": 135,
       "earlyLow": 133,
       "aboveAverage": false,
-      "last5Volume": 394,
-      "previous5Volume": 912,
-      "volumeAcceleration": 0.43,
-      "intradayLast5Volume": 394,
-      "intradayPrevious5Volume": 912,
-      "intradayVolumeAcceleration": 0.43,
+      "last5Volume": 195,
+      "previous5Volume": 511,
+      "volumeAcceleration": 0.38,
+      "intradayLast5Volume": 195,
+      "intradayPrevious5Volume": 511,
+      "intradayVolumeAcceleration": 0.38,
       "intradayLast5BarCount": 5,
       "intradayPrevious5BarCount": 5,
-      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:10:00.000+08:00",
+      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:14:00.000+08:00",
       "closingAuctionVolume": null,
       "closingAuctionPrice": null,
       "closingAuctionDetected": false,
@@ -2092,20 +2457,56 @@
           "date": "2026-08-24T09:10:00.000+08:00",
           "open": 133.5,
           "high": 133.5,
-          "low": 133.5,
-          "close": 133.5,
-          "volume": 1,
+          "low": 133,
+          "close": 133,
+          "volume": 5,
           "average": 134.5
+        },
+        {
+          "date": "2026-08-24T09:11:00.000+08:00",
+          "open": 133,
+          "high": 133.5,
+          "low": 133,
+          "close": 133,
+          "volume": 36,
+          "average": 134.47
+        },
+        {
+          "date": "2026-08-24T09:12:00.000+08:00",
+          "open": 133.5,
+          "high": 133.5,
+          "low": 133,
+          "close": 133,
+          "volume": 18,
+          "average": 134.46
+        },
+        {
+          "date": "2026-08-24T09:13:00.000+08:00",
+          "open": 133,
+          "high": 133.5,
+          "low": 133,
+          "close": 133.5,
+          "volume": 122,
+          "average": 134.38
+        },
+        {
+          "date": "2026-08-24T09:14:00.000+08:00",
+          "open": 133,
+          "high": 133.5,
+          "low": 133,
+          "close": 133,
+          "volume": 14,
+          "average": 134.37
         }
       ],
       "latestCandle": {
-        "date": "2026-08-24T09:10:00.000+08:00",
-        "open": 133.5,
+        "date": "2026-08-24T09:14:00.000+08:00",
+        "open": 133,
         "high": 133.5,
-        "low": 133.5,
-        "close": 133.5,
-        "volume": 1,
-        "average": 134.5
+        "low": 133,
+        "close": 133,
+        "volume": 14,
+        "average": 134.37
       },
       "dailyIndicators": {
         "ok": true,
@@ -2157,10 +2558,10 @@
         "basedOnDailyAsOf": "2026-08-21",
         "sessionComplete": false,
         "scaleDiffPct": 0,
-        "ma20": 128.175,
-        "ma60": 124.7063,
+        "ma20": 128.15,
+        "ma60": 124.698,
         "atr14": 3.9957,
-        "atr14PctOfClose": 2.993,
+        "atr14PctOfClose": 3.004,
         "high20": 135.5,
         "low20": 120.5,
         "high60": 136.37,
@@ -2174,50 +2575,50 @@
           "price": 123.5
         }
       },
-      "fugleLastUpdated": 1787533809854879,
-      "fugleLastUpdatedAt": "2026-08-24T01:10:09.854Z",
+      "fugleLastUpdated": 1787534110472526,
+      "fugleLastUpdatedAt": "2026-08-24T01:15:10.472Z",
       "sourceAgeSeconds": 0,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
       "isClose": null,
-      "fetchedAt": "2026-08-24T01:10:10.341Z"
+      "fetchedAt": "2026-08-24T01:15:10.865Z"
     },
     "2883": {
       "ok": true,
       "symbol": "2883",
       "name": "凱基金",
       "date": "2026-08-24",
-      "price": 31.45,
+      "price": 31.35,
       "referencePrice": 31.55,
       "previousClose": 31.55,
       "open": 31.75,
       "high": 31.95,
-      "low": 31.4,
-      "change": -0.1,
-      "changePercent": -0.32,
-      "avgPrice": 31.75,
+      "low": 31.3,
+      "change": -0.2,
+      "changePercent": -0.63,
+      "avgPrice": 31.69,
       "bid": {
-        "price": 31.4,
-        "size": 20
+        "price": 31.35,
+        "size": 98
       },
       "ask": {
-        "price": 31.45,
-        "size": 85
+        "price": 31.4,
+        "size": 34
       },
-      "tradeVolume": 2940,
-      "transaction": 261,
+      "tradeVolume": 3498,
+      "transaction": 332,
       "earlyHigh": 31.95,
-      "earlyLow": 31.4,
+      "earlyLow": 31.3,
       "aboveAverage": false,
-      "last5Volume": 615,
-      "previous5Volume": 2325,
-      "volumeAcceleration": 0.26,
-      "intradayLast5Volume": 615,
-      "intradayPrevious5Volume": 2325,
-      "intradayVolumeAcceleration": 0.26,
+      "last5Volume": 558,
+      "previous5Volume": 615,
+      "volumeAcceleration": 0.91,
+      "intradayLast5Volume": 558,
+      "intradayPrevious5Volume": 615,
+      "intradayVolumeAcceleration": 0.91,
       "intradayLast5BarCount": 5,
       "intradayPrevious5BarCount": 5,
-      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:09:00.000+08:00",
+      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:14:00.000+08:00",
       "closingAuctionVolume": null,
       "closingAuctionPrice": null,
       "closingAuctionDetected": false,
@@ -2312,16 +2713,61 @@
           "close": 31.45,
           "volume": 28,
           "average": 31.75
+        },
+        {
+          "date": "2026-08-24T09:10:00.000+08:00",
+          "open": 31.45,
+          "high": 31.45,
+          "low": 31.4,
+          "close": 31.4,
+          "volume": 20,
+          "average": 31.75
+        },
+        {
+          "date": "2026-08-24T09:11:00.000+08:00",
+          "open": 31.4,
+          "high": 31.45,
+          "low": 31.4,
+          "close": 31.45,
+          "volume": 11,
+          "average": 31.75
+        },
+        {
+          "date": "2026-08-24T09:12:00.000+08:00",
+          "open": 31.45,
+          "high": 31.45,
+          "low": 31.4,
+          "close": 31.4,
+          "volume": 149,
+          "average": 31.73
+        },
+        {
+          "date": "2026-08-24T09:13:00.000+08:00",
+          "open": 31.4,
+          "high": 31.4,
+          "low": 31.3,
+          "close": 31.35,
+          "volume": 318,
+          "average": 31.69
+        },
+        {
+          "date": "2026-08-24T09:14:00.000+08:00",
+          "open": 31.3,
+          "high": 31.4,
+          "low": 31.3,
+          "close": 31.35,
+          "volume": 60,
+          "average": 31.69
         }
       ],
       "latestCandle": {
-        "date": "2026-08-24T09:09:00.000+08:00",
-        "open": 31.4,
-        "high": 31.45,
-        "low": 31.4,
-        "close": 31.45,
-        "volume": 28,
-        "average": 31.75
+        "date": "2026-08-24T09:14:00.000+08:00",
+        "open": 31.3,
+        "high": 31.4,
+        "low": 31.3,
+        "close": 31.35,
+        "volume": 60,
+        "average": 31.69
       },
       "dailyIndicators": {
         "ok": true,
@@ -2329,7 +2775,7 @@
         "cacheDate": "2026-08-24",
         "asOf": "2026-08-21",
         "fetchedAt": "2026-08-24T01:10:10.599Z",
-        "cacheSource": "fugle-historical",
+        "cacheSource": "github-cache",
         "adjusted": true,
         "rowCount": 144,
         "projectionBase": {
@@ -2373,10 +2819,10 @@
         "basedOnDailyAsOf": "2026-08-21",
         "sessionComplete": false,
         "scaleDiffPct": 0,
-        "ma20": 30.7575,
-        "ma60": 29.1433,
-        "atr14": 0.8732,
-        "atr14PctOfClose": 2.777,
+        "ma20": 30.7525,
+        "ma60": 29.1417,
+        "atr14": 0.8804,
+        "atr14PctOfClose": 2.808,
         "high20": 31.95,
         "low20": 28.35,
         "high60": 31.95,
@@ -2390,50 +2836,50 @@
           "price": 30.3
         }
       },
-      "fugleLastUpdated": 1787533809692087,
-      "fugleLastUpdatedAt": "2026-08-24T01:10:09.692Z",
-      "sourceAgeSeconds": 1,
+      "fugleLastUpdated": 1787534109607978,
+      "fugleLastUpdatedAt": "2026-08-24T01:15:09.607Z",
+      "sourceAgeSeconds": 2,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
       "isClose": null,
-      "fetchedAt": "2026-08-24T01:10:10.602Z"
+      "fetchedAt": "2026-08-24T01:15:11.209Z"
     },
     "3260": {
       "ok": true,
       "symbol": "3260",
       "name": "威剛",
       "date": "2026-08-24",
-      "price": 432.5,
+      "price": 435.5,
       "referencePrice": 422.5,
       "previousClose": 422.5,
       "open": 425.5,
       "high": 438,
       "low": 421.5,
-      "change": 10,
-      "changePercent": 2.37,
-      "avgPrice": 431.62,
+      "change": 13,
+      "changePercent": 3.08,
+      "avgPrice": 431.94,
       "bid": {
-        "price": 432.5,
-        "size": 13
+        "price": 435.5,
+        "size": 45
       },
       "ask": {
-        "price": 433,
-        "size": 5
+        "price": 436,
+        "size": 185
       },
-      "tradeVolume": 4913,
-      "transaction": 1558,
+      "tradeVolume": 5698,
+      "transaction": 1837,
       "earlyHigh": 438,
       "earlyLow": 421.5,
       "aboveAverage": true,
-      "last5Volume": 836,
-      "previous5Volume": 3243,
-      "volumeAcceleration": 0.26,
-      "intradayLast5Volume": 836,
-      "intradayPrevious5Volume": 3243,
-      "intradayVolumeAcceleration": 0.26,
+      "last5Volume": 717,
+      "previous5Volume": 904,
+      "volumeAcceleration": 0.79,
+      "intradayLast5Volume": 717,
+      "intradayPrevious5Volume": 904,
+      "intradayVolumeAcceleration": 0.79,
       "intradayLast5BarCount": 5,
       "intradayPrevious5BarCount": 5,
-      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:10:00.000+08:00",
+      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:15:00.000+08:00",
       "closingAuctionVolume": null,
       "closingAuctionPrice": null,
       "closingAuctionDetected": false,
@@ -2534,19 +2980,64 @@
           "open": 433,
           "high": 433,
           "low": 432.5,
-          "close": 432.5,
-          "volume": 6,
-          "average": 431.62
+          "close": 433,
+          "volume": 74,
+          "average": 431.64
+        },
+        {
+          "date": "2026-08-24T09:11:00.000+08:00",
+          "open": 433,
+          "high": 434,
+          "low": 432,
+          "close": 434,
+          "volume": 214,
+          "average": 431.69
+        },
+        {
+          "date": "2026-08-24T09:12:00.000+08:00",
+          "open": 434,
+          "high": 434.5,
+          "low": 433,
+          "close": 433.5,
+          "volume": 84,
+          "average": 431.73
+        },
+        {
+          "date": "2026-08-24T09:13:00.000+08:00",
+          "open": 433.5,
+          "high": 434,
+          "low": 433,
+          "close": 433.5,
+          "volume": 86,
+          "average": 431.76
+        },
+        {
+          "date": "2026-08-24T09:14:00.000+08:00",
+          "open": 434,
+          "high": 436,
+          "low": 433.5,
+          "close": 435.5,
+          "volume": 319,
+          "average": 431.93
+        },
+        {
+          "date": "2026-08-24T09:15:00.000+08:00",
+          "open": 435.5,
+          "high": 436,
+          "low": 435.5,
+          "close": 435.5,
+          "volume": 14,
+          "average": 431.94
         }
       ],
       "latestCandle": {
-        "date": "2026-08-24T09:10:00.000+08:00",
-        "open": 433,
-        "high": 433,
-        "low": 432.5,
-        "close": 432.5,
-        "volume": 6,
-        "average": 431.62
+        "date": "2026-08-24T09:15:00.000+08:00",
+        "open": 435.5,
+        "high": 436,
+        "low": 435.5,
+        "close": 435.5,
+        "volume": 14,
+        "average": 431.94
       },
       "dailyIndicators": {
         "ok": true,
@@ -2598,10 +3089,10 @@
         "basedOnDailyAsOf": "2026-08-21",
         "sessionComplete": false,
         "scaleDiffPct": 0,
-        "ma20": 401.9,
-        "ma60": 405.8,
+        "ma20": 402.05,
+        "ma60": 405.85,
         "atr14": 19.6743,
-        "atr14PctOfClose": 4.549,
+        "atr14PctOfClose": 4.518,
         "high20": 438,
         "low20": 350,
         "high60": 481,
@@ -2615,50 +3106,50 @@
           "price": 375
         }
       },
-      "fugleLastUpdated": 1787533810282306,
-      "fugleLastUpdatedAt": "2026-08-24T01:10:10.282Z",
+      "fugleLastUpdated": 1787534110781743,
+      "fugleLastUpdatedAt": "2026-08-24T01:15:10.781Z",
       "sourceAgeSeconds": 0,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
       "isClose": null,
-      "fetchedAt": "2026-08-24T01:10:10.437Z"
+      "fetchedAt": "2026-08-24T01:15:10.939Z"
     },
     "4939": {
       "ok": true,
       "symbol": "4939",
       "name": "亞電",
       "date": "2026-08-24",
-      "price": 67.6,
+      "price": 68.4,
       "referencePrice": 66.5,
       "previousClose": 66.5,
       "open": 67,
       "high": 69.7,
       "low": 66,
-      "change": 1.1,
-      "changePercent": 1.65,
-      "avgPrice": 68.04,
+      "change": 1.9,
+      "changePercent": 2.86,
+      "avgPrice": 68.01,
       "bid": {
-        "price": 67.5,
-        "size": 37
+        "price": 68.4,
+        "size": 14
       },
       "ask": {
-        "price": 67.6,
-        "size": 2
+        "price": 68.5,
+        "size": 20
       },
-      "tradeVolume": 6743,
-      "transaction": 2111,
+      "tradeVolume": 8326,
+      "transaction": 2699,
       "earlyHigh": 69.7,
       "earlyLow": 66,
-      "aboveAverage": false,
-      "last5Volume": 2273,
-      "previous5Volume": 4470,
-      "volumeAcceleration": 0.51,
-      "intradayLast5Volume": 2273,
-      "intradayPrevious5Volume": 2982,
-      "intradayVolumeAcceleration": 0.76,
+      "aboveAverage": true,
+      "last5Volume": 1317,
+      "previous5Volume": 2539,
+      "volumeAcceleration": 0.52,
+      "intradayLast5Volume": 1317,
+      "intradayPrevious5Volume": 2539,
+      "intradayVolumeAcceleration": 0.52,
       "intradayLast5BarCount": 5,
-      "intradayPrevious5BarCount": 4,
-      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:10:00.000+08:00",
+      "intradayPrevious5BarCount": 5,
+      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:15:00.000+08:00",
       "closingAuctionVolume": null,
       "closingAuctionPrice": null,
       "closingAuctionDetected": false,
@@ -2749,20 +3240,65 @@
           "date": "2026-08-24T09:10:00.000+08:00",
           "open": 67.7,
           "high": 67.7,
-          "low": 67.5,
-          "close": 67.6,
-          "volume": 66,
-          "average": 68.04
+          "low": 67.4,
+          "close": 67.5,
+          "volume": 332,
+          "average": 68.02
+        },
+        {
+          "date": "2026-08-24T09:11:00.000+08:00",
+          "open": 67.6,
+          "high": 68.4,
+          "low": 67.1,
+          "close": 68.2,
+          "volume": 448,
+          "average": 67.99
+        },
+        {
+          "date": "2026-08-24T09:12:00.000+08:00",
+          "open": 68.2,
+          "high": 68.5,
+          "low": 67.8,
+          "close": 68.1,
+          "volume": 289,
+          "average": 68
+        },
+        {
+          "date": "2026-08-24T09:13:00.000+08:00",
+          "open": 68,
+          "high": 68.3,
+          "low": 67.6,
+          "close": 68.2,
+          "volume": 199,
+          "average": 68
+        },
+        {
+          "date": "2026-08-24T09:14:00.000+08:00",
+          "open": 68.2,
+          "high": 68.6,
+          "low": 68,
+          "close": 68.5,
+          "volume": 341,
+          "average": 68.01
+        },
+        {
+          "date": "2026-08-24T09:15:00.000+08:00",
+          "open": 68.5,
+          "high": 68.5,
+          "low": 68.3,
+          "close": 68.4,
+          "volume": 40,
+          "average": 68.01
         }
       ],
       "latestCandle": {
-        "date": "2026-08-24T09:10:00.000+08:00",
-        "open": 67.7,
-        "high": 67.7,
-        "low": 67.5,
-        "close": 67.6,
-        "volume": 66,
-        "average": 68.04
+        "date": "2026-08-24T09:15:00.000+08:00",
+        "open": 68.5,
+        "high": 68.5,
+        "low": 68.3,
+        "close": 68.4,
+        "volume": 40,
+        "average": 68.01
       },
       "dailyIndicators": {
         "ok": true,
@@ -2814,10 +3350,10 @@
         "basedOnDailyAsOf": "2026-08-21",
         "sessionComplete": false,
         "scaleDiffPct": 0,
-        "ma20": 59.17,
-        "ma60": 60.8067,
+        "ma20": 59.21,
+        "ma60": 60.82,
         "atr14": 4.8489,
-        "atr14PctOfClose": 7.173,
+        "atr14PctOfClose": 7.089,
         "high20": 69.7,
         "low20": 45.9,
         "high60": 78.2,
@@ -2831,50 +3367,50 @@
           "price": 59.1
         }
       },
-      "fugleLastUpdated": 1787533810402084,
-      "fugleLastUpdatedAt": "2026-08-24T01:10:10.402Z",
+      "fugleLastUpdated": 1787534110913306,
+      "fugleLastUpdatedAt": "2026-08-24T01:15:10.913Z",
       "sourceAgeSeconds": 0,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
       "isClose": null,
-      "fetchedAt": "2026-08-24T01:10:10.498Z"
+      "fetchedAt": "2026-08-24T01:15:11.005Z"
     },
     "4967": {
       "ok": true,
       "symbol": "4967",
       "name": "十銓",
       "date": "2026-08-24",
-      "price": 277.5,
+      "price": 279,
       "referencePrice": 276,
       "previousClose": 276,
       "open": 277,
       "high": 279.5,
       "low": 276,
-      "change": 1.5,
-      "changePercent": 0.54,
-      "avgPrice": 277.68,
+      "change": 3,
+      "changePercent": 1.09,
+      "avgPrice": 277.71,
       "bid": {
-        "price": 277,
-        "size": 72
+        "price": 278.5,
+        "size": 19
       },
       "ask": {
-        "price": 277.5,
-        "size": 9
+        "price": 279,
+        "size": 48
       },
-      "tradeVolume": 1065,
-      "transaction": 401,
+      "tradeVolume": 1361,
+      "transaction": 490,
       "earlyHigh": 279.5,
       "earlyLow": 276,
-      "aboveAverage": false,
-      "last5Volume": 219,
-      "previous5Volume": 627,
-      "volumeAcceleration": 0.35,
-      "intradayLast5Volume": 219,
-      "intradayPrevious5Volume": 627,
-      "intradayVolumeAcceleration": 0.35,
+      "aboveAverage": true,
+      "last5Volume": 193,
+      "previous5Volume": 322,
+      "volumeAcceleration": 0.6,
+      "intradayLast5Volume": 193,
+      "intradayPrevious5Volume": 322,
+      "intradayVolumeAcceleration": 0.6,
       "intradayLast5BarCount": 5,
       "intradayPrevious5BarCount": 5,
-      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:10:00.000+08:00",
+      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:15:00.000+08:00",
       "closingAuctionVolume": null,
       "closingAuctionPrice": null,
       "closingAuctionDetected": false,
@@ -2974,20 +3510,65 @@
           "date": "2026-08-24T09:10:00.000+08:00",
           "open": 277.5,
           "high": 277.5,
-          "low": 277.5,
+          "low": 277,
+          "close": 277,
+          "volume": 108,
+          "average": 277.63
+        },
+        {
+          "date": "2026-08-24T09:11:00.000+08:00",
+          "open": 277,
+          "high": 277.5,
+          "low": 277,
           "close": 277.5,
-          "volume": 5,
-          "average": 277.68
+          "volume": 41,
+          "average": 277.62
+        },
+        {
+          "date": "2026-08-24T09:12:00.000+08:00",
+          "open": 277.5,
+          "high": 278.5,
+          "low": 277.5,
+          "close": 278.5,
+          "volume": 59,
+          "average": 277.64
+        },
+        {
+          "date": "2026-08-24T09:13:00.000+08:00",
+          "open": 278,
+          "high": 278.5,
+          "low": 278,
+          "close": 278.5,
+          "volume": 42,
+          "average": 277.67
+        },
+        {
+          "date": "2026-08-24T09:14:00.000+08:00",
+          "open": 278.5,
+          "high": 279,
+          "low": 278.5,
+          "close": 279,
+          "volume": 42,
+          "average": 277.7
+        },
+        {
+          "date": "2026-08-24T09:15:00.000+08:00",
+          "open": 279,
+          "high": 279,
+          "low": 278.5,
+          "close": 279,
+          "volume": 9,
+          "average": 277.71
         }
       ],
       "latestCandle": {
-        "date": "2026-08-24T09:10:00.000+08:00",
-        "open": 277.5,
-        "high": 277.5,
-        "low": 277.5,
-        "close": 277.5,
-        "volume": 5,
-        "average": 277.68
+        "date": "2026-08-24T09:15:00.000+08:00",
+        "open": 279,
+        "high": 279,
+        "low": 278.5,
+        "close": 279,
+        "volume": 9,
+        "average": 277.71
       },
       "dailyIndicators": {
         "ok": true,
@@ -3039,10 +3620,10 @@
         "basedOnDailyAsOf": "2026-08-21",
         "sessionComplete": false,
         "scaleDiffPct": 0,
-        "ma20": 253.4545,
-        "ma60": 250.8027,
+        "ma20": 253.5295,
+        "ma60": 250.8277,
         "atr14": 11.3106,
-        "atr14PctOfClose": 4.076,
+        "atr14PctOfClose": 4.054,
         "high20": 279.5,
         "low20": 191.79,
         "high60": 305.61,
@@ -3056,50 +3637,50 @@
           "price": 248
         }
       },
-      "fugleLastUpdated": 1787533809281550,
-      "fugleLastUpdatedAt": "2026-08-24T01:10:09.281Z",
-      "sourceAgeSeconds": 1,
+      "fugleLastUpdated": 1787534110649388,
+      "fugleLastUpdatedAt": "2026-08-24T01:15:10.649Z",
+      "sourceAgeSeconds": 0,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
       "isClose": null,
-      "fetchedAt": "2026-08-24T01:10:10.289Z"
+      "fetchedAt": "2026-08-24T01:15:10.865Z"
     },
     "5289": {
       "ok": true,
       "symbol": "5289",
       "name": "宜鼎",
       "date": "2026-08-24",
-      "price": 1625,
+      "price": 1630,
       "referencePrice": 1560,
       "previousClose": 1560,
       "open": 1580,
       "high": 1635,
       "low": 1570,
-      "change": 65,
-      "changePercent": 4.17,
-      "avgPrice": 1607.94,
+      "change": 70,
+      "changePercent": 4.49,
+      "avgPrice": 1610.24,
       "bid": {
-        "price": 1620,
-        "size": 10
+        "price": 1630,
+        "size": 5
       },
       "ask": {
-        "price": 1625,
-        "size": 6
+        "price": 1635,
+        "size": 26
       },
-      "tradeVolume": 824,
-      "transaction": 362,
+      "tradeVolume": 959,
+      "transaction": 419,
       "earlyHigh": 1635,
       "earlyLow": 1570,
       "aboveAverage": true,
-      "last5Volume": 199,
-      "previous5Volume": 512,
-      "volumeAcceleration": 0.39,
-      "intradayLast5Volume": 199,
-      "intradayPrevious5Volume": 512,
-      "intradayVolumeAcceleration": 0.39,
+      "last5Volume": 121,
+      "previous5Volume": 213,
+      "volumeAcceleration": 0.57,
+      "intradayLast5Volume": 121,
+      "intradayPrevious5Volume": 213,
+      "intradayVolumeAcceleration": 0.57,
       "intradayLast5BarCount": 5,
       "intradayPrevious5BarCount": 5,
-      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:10:00.000+08:00",
+      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:15:00.000+08:00",
       "closingAuctionVolume": null,
       "closingAuctionPrice": null,
       "closingAuctionDetected": false,
@@ -3201,18 +3782,63 @@
           "high": 1625,
           "low": 1625,
           "close": 1625,
-          "volume": 4,
-          "average": 1607.94
+          "volume": 18,
+          "average": 1608.22
+        },
+        {
+          "date": "2026-08-24T09:11:00.000+08:00",
+          "open": 1625,
+          "high": 1625,
+          "low": 1620,
+          "close": 1620,
+          "volume": 10,
+          "average": 1608.4
+        },
+        {
+          "date": "2026-08-24T09:12:00.000+08:00",
+          "open": 1620,
+          "high": 1625,
+          "low": 1615,
+          "close": 1620,
+          "volume": 36,
+          "average": 1608.86
+        },
+        {
+          "date": "2026-08-24T09:13:00.000+08:00",
+          "open": 1625,
+          "high": 1630,
+          "low": 1620,
+          "close": 1625,
+          "volume": 33,
+          "average": 1609.39
+        },
+        {
+          "date": "2026-08-24T09:14:00.000+08:00",
+          "open": 1620,
+          "high": 1630,
+          "low": 1620,
+          "close": 1630,
+          "volume": 30,
+          "average": 1609.99
+        },
+        {
+          "date": "2026-08-24T09:15:00.000+08:00",
+          "open": 1630,
+          "high": 1630,
+          "low": 1630,
+          "close": 1630,
+          "volume": 12,
+          "average": 1610.24
         }
       ],
       "latestCandle": {
-        "date": "2026-08-24T09:10:00.000+08:00",
-        "open": 1625,
-        "high": 1625,
-        "low": 1625,
-        "close": 1625,
-        "volume": 4,
-        "average": 1607.94
+        "date": "2026-08-24T09:15:00.000+08:00",
+        "open": 1630,
+        "high": 1630,
+        "low": 1630,
+        "close": 1630,
+        "volume": 12,
+        "average": 1610.24
       },
       "dailyIndicators": {
         "ok": true,
@@ -3264,10 +3890,10 @@
         "basedOnDailyAsOf": "2026-08-21",
         "sessionComplete": false,
         "scaleDiffPct": 0,
-        "ma20": 1442.75,
-        "ma60": 1587,
+        "ma20": 1443,
+        "ma60": 1587.0833,
         "atr14": 103.3347,
-        "atr14PctOfClose": 6.359,
+        "atr14PctOfClose": 6.34,
         "high20": 1680,
         "low20": 1090,
         "high60": 2025,
@@ -3281,50 +3907,50 @@
           "price": 1390
         }
       },
-      "fugleLastUpdated": 1787533810224039,
-      "fugleLastUpdatedAt": "2026-08-24T01:10:10.224Z",
+      "fugleLastUpdated": 1787534110928832,
+      "fugleLastUpdatedAt": "2026-08-24T01:15:10.928Z",
       "sourceAgeSeconds": 0,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
       "isClose": null,
-      "fetchedAt": "2026-08-24T01:10:10.499Z"
+      "fetchedAt": "2026-08-24T01:15:11.096Z"
     },
     "6757": {
       "ok": true,
       "symbol": "6757",
       "name": "台灣虎航",
       "date": "2026-08-24",
-      "price": 56.2,
+      "price": 55.8,
       "referencePrice": 55.8,
       "previousClose": 55.8,
       "open": 55.3,
       "high": 56.4,
       "low": 55.3,
-      "change": 0.4,
-      "changePercent": 0.72,
-      "avgPrice": 55.79,
+      "change": 0,
+      "changePercent": 0,
+      "avgPrice": 55.8,
       "bid": {
-        "price": 55.8,
-        "size": 7
+        "price": 55.7,
+        "size": 8
       },
       "ask": {
         "price": 56,
-        "size": 1
+        "size": 29
       },
-      "tradeVolume": 100,
-      "transaction": 26,
+      "tradeVolume": 118,
+      "transaction": 36,
       "earlyHigh": 56.4,
       "earlyLow": 55.3,
-      "aboveAverage": true,
-      "last5Volume": 49,
-      "previous5Volume": 51,
-      "volumeAcceleration": 0.96,
-      "intradayLast5Volume": 49,
-      "intradayPrevious5Volume": 51,
-      "intradayVolumeAcceleration": 0.96,
-      "intradayLast5BarCount": 5,
-      "intradayPrevious5BarCount": 2,
-      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:07:00.000+08:00",
+      "aboveAverage": false,
+      "last5Volume": 22,
+      "previous5Volume": 53,
+      "volumeAcceleration": 0.42,
+      "intradayLast5Volume": 18,
+      "intradayPrevious5Volume": 37,
+      "intradayVolumeAcceleration": 0.49,
+      "intradayLast5BarCount": 4,
+      "intradayPrevious5BarCount": 3,
+      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:14:00.000+08:00",
       "closingAuctionVolume": null,
       "closingAuctionPrice": null,
       "closingAuctionDetected": false,
@@ -3392,16 +4018,52 @@
           "close": 56.2,
           "volume": 4,
           "average": 55.79
+        },
+        {
+          "date": "2026-08-24T09:10:00.000+08:00",
+          "open": 56,
+          "high": 56,
+          "low": 56,
+          "close": 56,
+          "volume": 1,
+          "average": 55.79
+        },
+        {
+          "date": "2026-08-24T09:11:00.000+08:00",
+          "open": 56,
+          "high": 56,
+          "low": 56,
+          "close": 56,
+          "volume": 3,
+          "average": 55.8
+        },
+        {
+          "date": "2026-08-24T09:12:00.000+08:00",
+          "open": 55.9,
+          "high": 55.9,
+          "low": 55.9,
+          "close": 55.9,
+          "volume": 1,
+          "average": 55.8
+        },
+        {
+          "date": "2026-08-24T09:14:00.000+08:00",
+          "open": 55.9,
+          "high": 55.9,
+          "low": 55.8,
+          "close": 55.8,
+          "volume": 13,
+          "average": 55.8
         }
       ],
       "latestCandle": {
-        "date": "2026-08-24T09:07:00.000+08:00",
-        "open": 56.4,
-        "high": 56.4,
-        "low": 56.2,
-        "close": 56.2,
-        "volume": 4,
-        "average": 55.79
+        "date": "2026-08-24T09:14:00.000+08:00",
+        "open": 55.9,
+        "high": 55.9,
+        "low": 55.8,
+        "close": 55.8,
+        "volume": 13,
+        "average": 55.8
       },
       "dailyIndicators": {
         "ok": true,
@@ -3453,10 +4115,10 @@
         "basedOnDailyAsOf": "2026-08-21",
         "sessionComplete": false,
         "scaleDiffPct": 0,
-        "ma20": 55.985,
-        "ma60": 55.6738,
+        "ma20": 55.965,
+        "ma60": 55.6672,
         "atr14": 1.5031,
-        "atr14PctOfClose": 2.675,
+        "atr14PctOfClose": 2.694,
         "high20": 58.4,
         "low20": 52.5,
         "high60": 64.37,
@@ -3470,50 +4132,50 @@
           "price": 53.3
         }
       },
-      "fugleLastUpdated": 1787533806961080,
-      "fugleLastUpdatedAt": "2026-08-24T01:10:06.961Z",
-      "sourceAgeSeconds": 3,
+      "fugleLastUpdated": 1787534097634012,
+      "fugleLastUpdatedAt": "2026-08-24T01:14:57.634Z",
+      "sourceAgeSeconds": 13,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
       "isClose": null,
-      "fetchedAt": "2026-08-24T01:10:10.219Z"
+      "fetchedAt": "2026-08-24T01:15:10.765Z"
     },
     "0050": {
       "ok": true,
       "symbol": "0050",
       "name": "元大台灣50",
       "date": "2026-08-24",
-      "price": 104.4,
+      "price": 104.55,
       "referencePrice": 104.65,
       "previousClose": 104.65,
       "open": 104.65,
       "high": 104.75,
       "low": 104.4,
-      "change": -0.25,
-      "changePercent": -0.24,
-      "avgPrice": 104.59,
+      "change": -0.1,
+      "changePercent": -0.1,
+      "avgPrice": 104.58,
       "bid": {
-        "price": 104.45,
-        "size": 42
+        "price": 104.5,
+        "size": 726
       },
       "ask": {
-        "price": 104.5,
+        "price": 104.55,
         "size": 154
       },
-      "tradeVolume": 3528,
-      "transaction": 499,
+      "tradeVolume": 4567,
+      "transaction": 684,
       "earlyHigh": 104.75,
       "earlyLow": 104.4,
       "aboveAverage": false,
-      "last5Volume": 1312,
-      "previous5Volume": 2216,
-      "volumeAcceleration": 0.59,
-      "intradayLast5Volume": 1312,
-      "intradayPrevious5Volume": 2216,
-      "intradayVolumeAcceleration": 0.59,
+      "last5Volume": 484,
+      "previous5Volume": 1867,
+      "volumeAcceleration": 0.26,
+      "intradayLast5Volume": 484,
+      "intradayPrevious5Volume": 1867,
+      "intradayVolumeAcceleration": 0.26,
       "intradayLast5BarCount": 5,
-      "intradayPrevious5BarCount": 4,
-      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:10:00.000+08:00",
+      "intradayPrevious5BarCount": 5,
+      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:15:00.000+08:00",
       "closingAuctionVolume": null,
       "closingAuctionPrice": null,
       "closingAuctionDetected": false,
@@ -3594,21 +4256,66 @@
         {
           "date": "2026-08-24T09:10:00.000+08:00",
           "open": 104.4,
-          "high": 104.45,
+          "high": 104.65,
           "low": 104.4,
-          "close": 104.4,
-          "volume": 137,
+          "close": 104.55,
+          "volume": 692,
           "average": 104.59
+        },
+        {
+          "date": "2026-08-24T09:11:00.000+08:00",
+          "open": 104.55,
+          "high": 104.55,
+          "low": 104.45,
+          "close": 104.5,
+          "volume": 208,
+          "average": 104.58
+        },
+        {
+          "date": "2026-08-24T09:12:00.000+08:00",
+          "open": 104.55,
+          "high": 104.6,
+          "low": 104.5,
+          "close": 104.55,
+          "volume": 86,
+          "average": 104.58
+        },
+        {
+          "date": "2026-08-24T09:13:00.000+08:00",
+          "open": 104.5,
+          "high": 104.6,
+          "low": 104.5,
+          "close": 104.5,
+          "volume": 117,
+          "average": 104.58
+        },
+        {
+          "date": "2026-08-24T09:14:00.000+08:00",
+          "open": 104.5,
+          "high": 104.55,
+          "low": 104.5,
+          "close": 104.55,
+          "volume": 57,
+          "average": 104.58
+        },
+        {
+          "date": "2026-08-24T09:15:00.000+08:00",
+          "open": 104.5,
+          "high": 104.55,
+          "low": 104.5,
+          "close": 104.55,
+          "volume": 16,
+          "average": 104.58
         }
       ],
       "latestCandle": {
-        "date": "2026-08-24T09:10:00.000+08:00",
-        "open": 104.4,
-        "high": 104.45,
-        "low": 104.4,
-        "close": 104.4,
-        "volume": 137,
-        "average": 104.59
+        "date": "2026-08-24T09:15:00.000+08:00",
+        "open": 104.5,
+        "high": 104.55,
+        "low": 104.5,
+        "close": 104.55,
+        "volume": 16,
+        "average": 104.58
       },
       "dailyIndicators": {
         "ok": true,
@@ -3660,10 +4367,10 @@
         "basedOnDailyAsOf": "2026-08-21",
         "sessionComplete": false,
         "scaleDiffPct": 0,
-        "ma20": 102.7125,
-        "ma60": 103.9487,
+        "ma20": 102.72,
+        "ma60": 103.9512,
         "atr14": 2.1461,
-        "atr14PctOfClose": 2.056,
+        "atr14PctOfClose": 2.053,
         "high20": 107.5,
         "low20": 91.8,
         "high60": 111.62,
@@ -3677,13 +4384,13 @@
           "price": 102.7
         }
       },
-      "fugleLastUpdated": 1787533809457740,
-      "fugleLastUpdatedAt": "2026-08-24T01:10:09.457Z",
-      "sourceAgeSeconds": 0,
+      "fugleLastUpdated": 1787534109444849,
+      "fugleLastUpdatedAt": "2026-08-24T01:15:09.444Z",
+      "sourceAgeSeconds": 1,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
       "isClose": null,
-      "fetchedAt": "2026-08-24T01:10:09.588Z"
+      "fetchedAt": "2026-08-24T01:15:10.154Z"
     },
     "00713": {
       "ok": true,
@@ -3700,27 +4407,27 @@
       "changePercent": -0.08,
       "avgPrice": 61.59,
       "bid": {
-        "price": 61.55,
-        "size": 1
+        "price": 61.5,
+        "size": 24
       },
       "ask": {
         "price": 61.6,
-        "size": 72
+        "size": 198
       },
-      "tradeVolume": 578,
-      "transaction": 46,
+      "tradeVolume": 598,
+      "transaction": 57,
       "earlyHigh": 61.7,
       "earlyLow": 61.5,
       "aboveAverage": false,
-      "last5Volume": 243,
-      "previous5Volume": 335,
-      "volumeAcceleration": 0.73,
-      "intradayLast5Volume": 243,
-      "intradayPrevious5Volume": 335,
-      "intradayVolumeAcceleration": 0.73,
-      "intradayLast5BarCount": 5,
-      "intradayPrevious5BarCount": 3,
-      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:09:00.000+08:00",
+      "last5Volume": 84,
+      "previous5Volume": 355,
+      "volumeAcceleration": 0.24,
+      "intradayLast5Volume": 20,
+      "intradayPrevious5Volume": 243,
+      "intradayVolumeAcceleration": 0.08,
+      "intradayLast5BarCount": 4,
+      "intradayPrevious5BarCount": 5,
+      "intradayVolumeWindowLatestBarAt": "2026-08-24T09:14:00.000+08:00",
       "closingAuctionVolume": null,
       "closingAuctionPrice": null,
       "closingAuctionDetected": false,
@@ -3797,15 +4504,51 @@
           "close": 61.5,
           "volume": 64,
           "average": 61.59
+        },
+        {
+          "date": "2026-08-24T09:10:00.000+08:00",
+          "open": 61.55,
+          "high": 61.6,
+          "low": 61.55,
+          "close": 61.6,
+          "volume": 10,
+          "average": 61.59
+        },
+        {
+          "date": "2026-08-24T09:11:00.000+08:00",
+          "open": 61.6,
+          "high": 61.6,
+          "low": 61.6,
+          "close": 61.6,
+          "volume": 1,
+          "average": 61.59
+        },
+        {
+          "date": "2026-08-24T09:13:00.000+08:00",
+          "open": 61.6,
+          "high": 61.6,
+          "low": 61.5,
+          "close": 61.6,
+          "volume": 6,
+          "average": 61.59
+        },
+        {
+          "date": "2026-08-24T09:14:00.000+08:00",
+          "open": 61.6,
+          "high": 61.6,
+          "low": 61.5,
+          "close": 61.5,
+          "volume": 3,
+          "average": 61.59
         }
       ],
       "latestCandle": {
-        "date": "2026-08-24T09:09:00.000+08:00",
-        "open": 61.55,
+        "date": "2026-08-24T09:14:00.000+08:00",
+        "open": 61.6,
         "high": 61.6,
         "low": 61.5,
         "close": 61.5,
-        "volume": 64,
+        "volume": 3,
         "average": 61.59
       },
       "dailyIndicators": {
@@ -3875,13 +4618,13 @@
           "price": 60.2
         }
       },
-      "fugleLastUpdated": 1787533807055442,
-      "fugleLastUpdatedAt": "2026-08-24T01:10:07.055Z",
-      "sourceAgeSeconds": 2,
+      "fugleLastUpdated": 1787534109753156,
+      "fugleLastUpdatedAt": "2026-08-24T01:15:09.753Z",
+      "sourceAgeSeconds": 0,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
       "isClose": null,
-      "fetchedAt": "2026-08-24T01:10:09.545Z"
+      "fetchedAt": "2026-08-24T01:15:10.158Z"
     }
   }
 }
