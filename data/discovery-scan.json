@@ -1,24 +1,44 @@
 {
   "ok": true,
-  "generatedAt": "2026-08-24T09:32:57.714905+00:00",
-  "version": "discovery-github-v2.4",
-  "stage": "production-gate-v2.4",
+  "generatedAt": "2026-08-24T16:44:53.480827+00:00",
+  "generatedAtTaipei": "2026-08-25T00:44:53.480827+08:00",
+  "version": "discovery-github-v2.5",
+  "stage": "market-date-production-gate-v2.5",
   "marketDate": "2026-08-24",
+  "expectedMarketDate": "2026-08-25",
+  "marketDateGate": {
+    "ok": false,
+    "expectedTaipeiDate": "2026-08-25",
+    "TSE": "2026-08-21",
+    "OTC": "2026-08-24",
+    "sameDate": false,
+    "reasons": [
+      "TSE_NOT_CURRENT_TAIPEI_DATE",
+      "OTC_NOT_CURRENT_TAIPEI_DATE",
+      "TSE_OTC_DATE_MISMATCH"
+    ],
+    "rule": "TWSE and TPEx daily snapshots must both match today's Asia/Taipei calendar date before Dynamic can be refreshed."
+  },
+  "dynamicWriteDecision": "skipped_market_date",
   "dataIntegrityGate": {
-    "ok": true,
+    "ok": false,
+    "baseIntegrityOk": true,
+    "marketDateOk": false,
     "minimumHistoryEnriched": 30,
     "actualHistoryEnriched": 40,
-    "rule": "TSE + OTC + both security masters must be healthy; history enrichment must reach threshold."
+    "rule": "TSE + OTC + both security masters must be healthy; history enrichment must reach threshold; TWSE and TPEx market dates must both equal today's Taipei date."
   },
   "sources": {
     "TSE": {
       "ok": true,
       "rawRowCount": 1377,
+      "marketDate": "2026-08-21",
       "error": null
     },
     "OTC": {
       "ok": true,
       "rawRowCount": 10474,
+      "marketDate": "2026-08-24",
       "error": null
     }
   },
@@ -90,7 +110,8 @@
       "2454",
       "6757"
     ],
-    "ttlHours": 72
+    "ttlHours": 72,
+    "requiresCurrentTaipeiMarketDate": true
   },
   "dynamicPreview": [
     {
@@ -1020,10 +1041,10 @@
       "industry": "光電業",
       "cfi": "ESVUFR",
       "cheapScan": {
-        "liquidityPercentile": 88.71,
+        "liquidityPercentile": 88.54,
         "momentumPercentile": 91.34,
         "closeStrengthScore": 72.0,
-        "discoveryScore": 85.45
+        "discoveryScore": 85.38
       },
       "historyFeatures": {
         "historySessions": 38,
@@ -1044,7 +1065,7 @@
         "rs20Percentile": 53.85,
         "rvol20Percentile": 87.18,
         "highProximityScore": 84.69,
-        "score": 59.46
+        "score": 59.45
       }
     },
     {
@@ -1328,10 +1349,10 @@
       "industry": "金融保險業",
       "cfi": "ESVUFR",
       "cheapScan": {
-        "liquidityPercentile": 89.07,
+        "liquidityPercentile": 88.89,
         "momentumPercentile": 84.81,
         "closeStrengthScore": 80.0,
-        "discoveryScore": 85.31
+        "discoveryScore": 85.24
       },
       "historyFeatures": {
         "historySessions": 38,
@@ -1352,7 +1373,7 @@
         "rs20Percentile": 23.08,
         "rvol20Percentile": 58.97,
         "highProximityScore": 71.52,
-        "score": 52.97
+        "score": 52.95
       }
     },
     {
