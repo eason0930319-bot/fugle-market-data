@@ -1,4 +1,4 @@
-name: Historical Taiwan Backtest V1.6.2
+name: Historical Taiwan Backtest V1.6.3 Frozen
 
 on:
   workflow_dispatch:
@@ -8,14 +8,16 @@ on:
         required: false
         default: "2024-01-01"
       end:
-        description: Backtest end date; blank = latest available
+        description: Backtest end date; must not exceed frozen horizon
         required: false
-        default: ""
+        default: "2026-08-28"
   push:
     branches: [main]
     paths:
       - ".github/workflows/historical-backtest.yml"
       - "scripts/backtest_data.py"
+      - "scripts/backtest_snapshot.py"
+      - "scripts/backtest_repro.py"
       - "scripts/backtest_model.py"
       - "scripts/backtest_execution.py"
       - "scripts/backtest_portfolio.py"
@@ -28,6 +30,7 @@ on:
       - "scripts/backtest_v16_runner.py"
       - "scripts/backtest_v161_runner.py"
       - "scripts/backtest_v162_runner.py"
+      - "scripts/backtest_v163_runner.py"
       - "scripts/historical_backtest.py"
 
 permissions:
@@ -40,15 +43,20 @@ concurrency:
 jobs:
   backtest:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 180
     env:
       BACKTEST_START: ${{ inputs.start || '2024-01-01' }}
-      BACKTEST_END: ${{ inputs.end || '' }}
+      BACKTEST_END: ${{ inputs.end || '2026-08-28' }}
       BACKTEST_MIN_TRADE_VALUE: "50000000"
       BACKTEST_DOWNLOAD_BATCH: "80"
       BACKTEST_TOP_LIMIT: "50"
       BACKTEST_HISTORY_LIMIT: "40"
       BACKTEST_MIN_GROUP_SAMPLE: "30"
+      BACKTEST_FREEZE_ID: "tw-history-2024-20260828-v1"
+      BACKTEST_FREEZE_TAG: "backtest-data-tw-history-2024-20260828-v1"
+      BACKTEST_FROZEN_DATA: ".backtest-freeze/tw-history-2024-20260828-v1.csv.gz"
+      BACKTEST_FROZEN_MANIFEST: ".backtest-freeze/tw-history-2024-20260828-v1.manifest.json"
+      GH_TOKEN: ${{ github.token }}
 
     steps:
       - name: Checkout
@@ -59,14 +67,16 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install dependencies
+      - name: Install pinned dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests pandas numpy scipy yfinance
+          pip install requests==2.34.2 pandas==3.0.5 numpy==2.5.2 scipy==1.18.1 yfinance==1.7.0
 
       - name: Syntax check
         run: |
           python -m py_compile scripts/backtest_data.py
+          python -m py_compile scripts/backtest_snapshot.py
+          python -m py_compile scripts/backtest_repro.py
           python -m py_compile scripts/backtest_model.py
           python -m py_compile scripts/backtest_execution.py
           python -m py_compile scripts/backtest_portfolio.py
@@ -80,25 +90,82 @@ jobs:
           python -m py_compile scripts/backtest_v16_runner.py
           python -m py_compile scripts/backtest_v161_runner.py
           python -m py_compile scripts/backtest_v162_runner.py
+          python -m py_compile scripts/backtest_v163_runner.py
 
-      - name: Run historical backtest
+      - name: Restore or create immutable market-data freeze
         run: |
-          python scripts/backtest_v162_runner.py
+          set -euo pipefail
+          mkdir -p .backtest-freeze data
+          DATA_NAME="$(basename "$BACKTEST_FROZEN_DATA")"
+          MANIFEST_NAME="$(basename "$BACKTEST_FROZEN_MANIFEST")"
 
-      - name: Show calibration summary
+          if gh release view "$BACKTEST_FREEZE_TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Restoring immutable freeze: $BACKTEST_FREEZE_TAG"
+            gh release download "$BACKTEST_FREEZE_TAG" --repo "$GITHUB_REPOSITORY" \
+              --pattern "$DATA_NAME" --pattern "$MANIFEST_NAME" \
+              --dir .backtest-freeze --clobber
+          else
+            echo "Creating first immutable freeze: $BACKTEST_FREEZE_TAG"
+            python scripts/backtest_snapshot.py create \
+              --start "2024-01-01" \
+              --end "2026-08-28" \
+              --data "$BACKTEST_FROZEN_DATA" \
+              --manifest "$BACKTEST_FROZEN_MANIFEST" \
+              --freeze-id "$BACKTEST_FREEZE_ID" \
+              --batch-size "$BACKTEST_DOWNLOAD_BATCH"
+            gh release create "$BACKTEST_FREEZE_TAG" \
+              "$BACKTEST_FROZEN_DATA" "$BACKTEST_FROZEN_MANIFEST" \
+              --repo "$GITHUB_REPOSITORY" \
+              --target "$GITHUB_SHA" \
+              --title "Taiwan backtest data freeze 2024-01-01 to 2026-08-28" \
+              --notes "Immutable public-market OHLCV snapshot for reproducible Taiwan strategy research. Create a new freeze tag to extend or replace the sample; do not overwrite this asset."
+          fi
+
+          python scripts/backtest_snapshot.py verify \
+            --data "$BACKTEST_FROZEN_DATA" \
+            --manifest "$BACKTEST_FROZEN_MANIFEST"
+          cp "$BACKTEST_FROZEN_MANIFEST" data/backtest-freeze-manifest.json
+
+      - name: Run frozen historical backtest pass 1
+        run: |
+          python scripts/backtest_v163_runner.py
+
+      - name: Capture pass 1 fingerprints
+        run: |
+          python scripts/backtest_repro.py capture \
+            --output .backtest-freeze/pass1-fingerprints.json \
+            --freeze-manifest "$BACKTEST_FROZEN_MANIFEST"
+
+      - name: Run frozen historical backtest pass 2
+        run: |
+          python scripts/backtest_v163_runner.py
+
+      - name: Verify deterministic outputs
+        run: |
+          python scripts/backtest_repro.py compare \
+            --baseline .backtest-freeze/pass1-fingerprints.json \
+            --report data/backtest-reproducibility.json \
+            --freeze-manifest "$BACKTEST_FROZEN_MANIFEST"
+
+      - name: Show calibration and reproducibility summary
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           p = json.loads(Path('data/backtest-summary.json').read_text(encoding='utf-8'))
           r = json.loads(Path('data/backtest-ma5-regime-reentry-summary.json').read_text(encoding='utf-8'))
-          print('Version:', p.get('version'))
-          print('Period:', p.get('period'))
+          q = json.loads(Path('data/backtest-reproducibility.json').read_text(encoding='utf-8'))
+          f = json.loads(Path('data/backtest-freeze-manifest.json').read_text(encoding='utf-8'))
+          print('Backtest version:', p.get('version'))
+          print('Freeze:', f.get('freezeId'), f.get('dataFileSha256'))
+          print('Frozen period:', f.get('targetStart'), 'to', f.get('targetEnd'))
           print('Coverage:', p.get('coverage'))
+          print('Deterministic across two runs:', q.get('deterministicAcrossTwoConsecutiveRuns'))
+          print('Mismatched outputs:', q.get('mismatchedOutputs'))
           print('V1.6.2 variants:', r.get('variantCount'))
           print('Both-year basic pass:', r.get('bothYearsBasicPassCount'))
           print('Top by worst train/validation return:')
-          for row in (r.get('topByWorstTrainValidationReturn') or [])[:12]:
+          for row in (r.get('topByWorstTrainValidationReturn') or [])[:8]:
               print({
                   'variant': row.get('variant'),
                   'bothYearsBasicPass': row.get('bothYearsBasicPass'),
@@ -107,20 +174,29 @@ jobs:
                   '2025': (row.get('results') or {}).get('VALIDATION_2025'),
                   '2026': (row.get('results') or {}).get('TEST_2026_DESCRIPTIVE'),
               })
-          print('Diagnostics:')
-          for k, v in (r.get('diagnostics') or {}).items():
-              print(k, v)
           PY
 
-      - name: Commit backtest outputs
+      - name: Commit frozen backtest outputs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/backtest-summary.json data/backtest-signal-sample.json data/backtest-execution-summary.json data/backtest-execution-sample.json data/backtest-portfolio-summary.json data/backtest-ranking-summary.json data/backtest-ma5-summary.json data/backtest-ma5-stop-summary.json data/backtest-ma5-robustness-summary.json data/backtest-ma5-regime-reentry-summary.json
+          git add \
+            data/backtest-summary.json \
+            data/backtest-signal-sample.json \
+            data/backtest-execution-summary.json \
+            data/backtest-execution-sample.json \
+            data/backtest-portfolio-summary.json \
+            data/backtest-ranking-summary.json \
+            data/backtest-ma5-summary.json \
+            data/backtest-ma5-stop-summary.json \
+            data/backtest-ma5-robustness-summary.json \
+            data/backtest-ma5-regime-reentry-summary.json \
+            data/backtest-freeze-manifest.json \
+            data/backtest-reproducibility.json
           if git diff --cached --quiet; then
-            echo "No backtest output changes."
+            echo "No frozen backtest output changes."
             exit 0
           fi
-          git commit -m "Update historical Taiwan backtest V1.6.2"
+          git commit -m "Update reproducible frozen Taiwan backtest V1.6.3"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push
