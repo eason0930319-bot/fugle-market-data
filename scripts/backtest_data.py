@@ -8,7 +8,7 @@ import yfinance as yf
 
 ISIN = "https://isin.twse.com.tw/isin/C_public.jsp"
 S = requests.Session()
-S.headers.update({"User-Agent": "Mozilla/5.0 fugle-market-data-backtest/1.1"})
+S.headers.update({"User-Agent": "Mozilla/5.0 fugle-market-data-backtest/1.2"})
 
 
 def security_master(mode: int, market: str):
@@ -174,6 +174,7 @@ def add_features(d):
     tr = pd.concat([(d["high"]-d["low"]).abs(), (d["high"]-d["prev"]).abs(), (d["low"]-d["prev"]).abs()], axis=1).max(axis=1)
     d["atr14"] = tr.groupby([d["market"], d["symbol"]]).transform(lambda s: s.rolling(14, min_periods=14).mean())
     for i in range(1, 6):
+        d[f"fo{i}"] = g["open"].shift(-i)
         d[f"fc{i}"] = g["close"].shift(-i)
         d[f"fh{i}"] = g["high"].shift(-i)
         d[f"fl{i}"] = g["low"].shift(-i)
