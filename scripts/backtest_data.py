@@ -8,7 +8,7 @@ import yfinance as yf
 
 ISIN = "https://isin.twse.com.tw/isin/C_public.jsp"
 S = requests.Session()
-S.headers.update({"User-Agent": "Mozilla/5.0 fugle-market-data-backtest/1.0"})
+S.headers.update({"User-Agent": "Mozilla/5.0 fugle-market-data-backtest/1.1"})
 
 
 def security_master(mode: int, market: str):
@@ -150,6 +150,11 @@ def add_features(d):
     g = d.groupby(["market", "symbol"], sort=False)
     d["prev"] = g["close"].shift(1)
     d["chg"] = (d["close"] / d["prev"] - 1) * 100
+    d["gapPct"] = (d["open"] / d["prev"] - 1) * 100
+    d["bodyPct"] = (d["close"] / d["open"] - 1) * 100
+    d["rangePct"] = (d["high"] - d["low"]) / d["prev"] * 100
+    d["upperWickPct"] = (d["high"] - pd.concat([d["open"], d["close"]], axis=1).max(axis=1)) / d["prev"] * 100
+    d["lowerWickPct"] = (pd.concat([d["open"], d["close"]], axis=1).min(axis=1) - d["low"]) / d["prev"] * 100
     day_range = d["high"] - d["low"]
     d["cp"] = ((d["close"] - d["low"]) / day_range).where(day_range > 0, 0.5)
     d["lowdd"] = (d["low"] / d["prev"] - 1) * 100
@@ -157,6 +162,8 @@ def add_features(d):
     d["ret5"] = g["close"].pct_change(5, fill_method=None) * 100
     d["ret20"] = g["close"].pct_change(20, fill_method=None) * 100
     d["ma20"] = g["close"].transform(lambda s: s.rolling(20, min_periods=20).mean())
+    d["ma20Prev5"] = g["close"].transform(lambda s: s.rolling(20, min_periods=20).mean().shift(5))
+    d["ma20Slope5Pct"] = (d["ma20"] / d["ma20Prev5"] - 1) * 100
     d["av20"] = g["volume"].transform(lambda s: s.shift(1).rolling(20, min_periods=20).mean())
     d["h20"] = g["high"].transform(lambda s: s.shift(1).rolling(20, min_periods=20).max())
     d["h60"] = g["high"].transform(lambda s: s.shift(1).rolling(60, min_periods=40).max())
