@@ -8,7 +8,9 @@ from pathlib import Path
 
 OUTPUTS = [
     "data/backtest-summary.json",
+    "data/backtest-signal-sample.json",
     "data/backtest-execution-summary.json",
+    "data/backtest-execution-sample.json",
     "data/backtest-portfolio-summary.json",
     "data/backtest-ranking-summary.json",
     "data/backtest-ma5-summary.json",
