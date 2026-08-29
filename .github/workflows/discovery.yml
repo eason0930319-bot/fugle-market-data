@@ -70,12 +70,12 @@ jobs:
       - name: Set screener date-gate mode
         shell: bash
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "SCREENER_STRICT_TODAY=0" >> "$GITHUB_ENV"
-            echo "Manual run: allow the latest matching TWSE/TPEx session for testing."
-          else
+          if [ "${{ github.event_name }}" = "schedule" ]; then
             echo "SCREENER_STRICT_TODAY=1" >> "$GITHUB_ENV"
-            echo "Scheduled/push run: require the current Asia/Taipei trading date."
+            echo "Scheduled run: require the current Asia/Taipei trading date."
+          else
+            echo "SCREENER_STRICT_TODAY=0" >> "$GITHUB_ENV"
+            echo "Manual/push test: allow the latest matching TWSE/TPEx session."
           fi
 
       - name: Run discovery production scan
