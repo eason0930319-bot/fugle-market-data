@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "freezeId": "tw-history-2024-20260828-v1",
+  "createdAt": "2026-08-29T17:47:58.381373+00:00",
+  "targetStart": "2024-01-01",
+  "targetEnd": "2026-08-28",
+  "fetchStart": "2023-09-03",
+  "fetchEndRequested": "2026-09-11",
+  "effectiveEquityStart": "2023-09-04",
+  "effectiveEquityEnd": "2026-08-28",
+  "effectiveBenchmarkEnd": "2026-08-27",
+  "universe": {
+    "total": 1975,
+    "TSE": 1085,
+    "OTC": 890,
+    "tickersWithData": 1975,
+    "coverageRatio": 1.0,
+    "failedTickerCount": 0,
+    "failedTickers": []
+  },
+  "rows": {
+    "equity": 1405683,
+    "benchmark": 725,
+    "total": 1406408
+  },
+  "columns": [
+    "date",
+    "symbol",
+    "name",
+    "market",
+    "industry",
+    "open",
+    "high",
+    "low",
+    "close",
+    "volume",
+    "tradeValue"
+  ],
+  "dataFile": "tw-history-2024-20260828-v1.csv.gz",
+  "dataFileSha256": "0ca44a7f714e9fffd80df2664e4f54e77f875d0f467d01a7ba79d0ffd420aae0",
+  "format": "csv.gz",
+  "priceBasis": "Yahoo OHLC scaled by Adj Close/Close at snapshot creation; unadjusted volume",
+  "software": {
+    "python": "3.12.14",
+    "pandas": "3.0.5",
+    "yfinance": "1.7.0"
+  },
+  "policy": {
+    "immutable": true,
+    "refreshRule": "Create a new freezeId/release asset to extend or replace history; never overwrite this freeze.",
+    "purpose": "Make strategy and execution comparisons use identical historical rows and prices across runs."
+  }
+}
