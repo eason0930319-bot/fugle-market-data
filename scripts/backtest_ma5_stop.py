@@ -19,7 +19,13 @@ STOP_VARIANTS = {
     "MA5_ONLY": {"kind": "NONE"},
     "FIXED_STOP_5PCT": {"kind": "FIXED", "pct": 0.05},
     "FIXED_STOP_7PCT": {"kind": "FIXED", "pct": 0.07},
-    "ATR_STRUCT_STOP": {"kind": "ATR_STRUCT"},
+    "ATR_STRUCT_STOP": {
+        "kind": "ATR_STRUCT",
+        "atr_mult": 1.5,
+        "use_structure": True,
+        "struct_col": "l10",
+        "struct_atr_offset": 0.25,
+    },
 }
 
 
@@ -31,14 +37,21 @@ def _stop_level(signal, entry_price: float, cfg: dict):
         return entry_price * (1.0 - float(cfg["pct"]))
     if kind == "ATR_STRUCT":
         atr = _num(signal.atr14)
-        low10 = _num(signal.l10)
         if atr is None or atr <= 0:
             return None
-        levels = [entry_price - 1.5 * atr]
-        if low10 is not None:
-            structural = low10 - 0.25 * atr
-            if 0 < structural < entry_price:
-                levels.append(structural)
+        atr_mult = float(cfg.get("atr_mult", 1.5))
+        levels = [entry_price - atr_mult * atr]
+        if bool(cfg.get("use_structure", True)):
+            struct_col = str(cfg.get("struct_col", "l10"))
+            try:
+                struct_low = _num(signal.get(struct_col))
+            except Exception:
+                struct_low = None
+            if struct_low is not None:
+                offset = float(cfg.get("struct_atr_offset", 0.25))
+                structural = struct_low - offset * atr
+                if 0 < structural < entry_price:
+                    levels.append(structural)
         stop = max(levels)
         return stop if 0 < stop < entry_price else None
     raise ValueError(kind)
