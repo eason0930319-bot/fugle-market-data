@@ -1,0 +1,2174 @@
+{
+  "ok": true,
+  "schemaVersion": 1,
+  "version": "ma5-risk-stop-backtest-v1.6",
+  "generatedAt": "2026-08-29T15:11:55.868094+00:00",
+  "purpose": "Test whether a fixed or volatility/structure-aware disaster stop improves the MA5 trend-following rule without destroying its large-winner payoff profile.",
+  "baseRule": {
+    "entry": "MA5 rising and close crosses above MA5 at close; enter next session open.",
+    "normalExit": "MA5 falling and close crosses below MA5 at close; exit next session open.",
+    "selectionPriority": "Higher MA5 slope, then higher signal-day trade value; max 5 concurrent positions."
+  },
+  "stopRules": {
+    "MA5_ONLY": "No additional hard stop.",
+    "FIXED_STOP_5PCT": "5% below raw entry price; gap below stop exits at the open, otherwise intraday touch exits at stop.",
+    "FIXED_STOP_7PCT": "7% below raw entry price; gap below stop exits at the open, otherwise intraday touch exits at stop.",
+    "ATR_STRUCT_STOP": "max(entry - 1.5*ATR14, prior10Low - 0.25*ATR14) when valid; static initial stop."
+  },
+  "recoveryAudit": "For stop exits, measure post-exit maximum rebound and close return over 5/10/20 sessions plus entry-price reclaim rate to detect stops that are too tight.",
+  "costModel": {
+    "buy_commission": 0.001425,
+    "sell_commission": 0.001425,
+    "sell_tax": 0.003,
+    "slippage_each_side": 0.0005
+  },
+  "results": {
+    "MA5_ONLY": {
+      "definition": {
+        "kind": "NONE"
+      },
+      "missingStopLevelCount": 0,
+      "scopes": {
+        "FULL": {
+          "tradeDistribution": {
+            "tradeCount": 17791,
+            "winRate": 0.3064,
+            "avgTradeNetReturnPct": 0.5076,
+            "avgWinPct": 13.8554,
+            "avgLossPct": -5.3885,
+            "payoffRatio": 2.5713,
+            "expectancyPct": 0.5076,
+            "profitFactor": 1.1358,
+            "maxTradeGainPct": 359.4667,
+            "maxTradeLossPct": -55.448,
+            "avgHoldingDays": 14.19,
+            "medianHoldingDays": 10.0,
+            "avgMfePct": 10.8835,
+            "avgMaePct": -6.2153,
+            "worstInTradeMaePct": -68.3805,
+            "maxConsecutiveLosses": 22,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 17394,
+              "END_OF_DATA": 397
+            },
+            "bestTrade": {
+              "symbol": "5386",
+              "signalDate": "2025-12-08",
+              "entryDate": "2025-12-09",
+              "exitDate": "2026-04-24",
+              "netReturnPct": 359.4667,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "6885",
+              "signalDate": "2023-12-11",
+              "entryDate": "2023-12-12",
+              "exitDate": "2024-03-14",
+              "netReturnPct": -55.448,
+              "exitReason": "MA5_DOWN_CROSS"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 120500.02,
+            "totalReturnPct": 20.5,
+            "maxDrawdownPct": -63.923,
+            "selectedTradeCount": 216,
+            "candidateTradeCount": 17791,
+            "skippedCapacity": 17575,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 216,
+            "winRate": 0.3565,
+            "avgTradeNetReturnPct": 1.2317,
+            "avgWinPct": 19.5072,
+            "avgLossPct": -8.8921,
+            "payoffRatio": 2.1938,
+            "expectancyPct": 1.2317,
+            "profitFactor": 1.2153,
+            "maxTradeGainPct": 172.1271,
+            "maxTradeLossPct": -36.7627,
+            "avgHoldingDays": 16.63,
+            "medianHoldingDays": 13.0,
+            "avgMfePct": 16.7882,
+            "avgMaePct": -9.3061,
+            "worstInTradeMaePct": -49.0062,
+            "maxConsecutiveLosses": 11,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 211,
+              "END_OF_DATA": 5
+            },
+            "bestTrade": {
+              "symbol": "7734",
+              "signalDate": "2026-02-02",
+              "entryDate": "2026-02-03",
+              "exitDate": "2026-06-02",
+              "netReturnPct": 172.1271,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "6684",
+              "signalDate": "2025-02-04",
+              "entryDate": "2025-02-05",
+              "exitDate": "2025-04-08",
+              "netReturnPct": -36.7627,
+              "exitReason": "MA5_DOWN_CROSS"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 0
+          }
+        },
+        "TRAIN_2024": {
+          "tradeDistribution": {
+            "tradeCount": 6489,
+            "winRate": 0.2817,
+            "avgTradeNetReturnPct": -0.3588,
+            "avgWinPct": 11.7125,
+            "avgLossPct": -5.0931,
+            "payoffRatio": 2.2997,
+            "expectancyPct": -0.3588,
+            "profitFactor": 0.9019,
+            "maxTradeGainPct": 187.8393,
+            "maxTradeLossPct": -37.0291,
+            "avgHoldingDays": 13.83,
+            "medianHoldingDays": 10.0,
+            "avgMfePct": 9.3263,
+            "avgMaePct": -5.9697,
+            "worstInTradeMaePct": -49.1954,
+            "maxConsecutiveLosses": 20,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 6489
+            },
+            "bestTrade": {
+              "symbol": "4909",
+              "signalDate": "2024-01-05",
+              "entryDate": "2024-01-08",
+              "exitDate": "2024-04-11",
+              "netReturnPct": 187.8393,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "2241",
+              "signalDate": "2024-06-13",
+              "entryDate": "2024-06-14",
+              "exitDate": "2024-08-22",
+              "netReturnPct": -37.0291,
+              "exitReason": "MA5_DOWN_CROSS"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 95450.11,
+            "totalReturnPct": -4.5499,
+            "maxDrawdownPct": -32.5354,
+            "selectedTradeCount": 85,
+            "candidateTradeCount": 6489,
+            "skippedCapacity": 6404,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 85,
+            "winRate": 0.2471,
+            "avgTradeNetReturnPct": -0.0911,
+            "avgWinPct": 22.6464,
+            "avgLossPct": -7.5518,
+            "payoffRatio": 2.9988,
+            "expectancyPct": -0.0911,
+            "profitFactor": 0.984,
+            "maxTradeGainPct": 147.8532,
+            "maxTradeLossPct": -33.8304,
+            "avgHoldingDays": 14.74,
+            "medianHoldingDays": 11.0,
+            "avgMfePct": 14.4438,
+            "avgMaePct": -9.2579,
+            "worstInTradeMaePct": -38.125,
+            "maxConsecutiveLosses": 13,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 85
+            },
+            "bestTrade": {
+              "symbol": "8937",
+              "signalDate": "2024-08-26",
+              "entryDate": "2024-08-27",
+              "exitDate": "2024-12-03",
+              "netReturnPct": 147.8532,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "5381",
+              "signalDate": "2024-07-12",
+              "entryDate": "2024-07-15",
+              "exitDate": "2024-08-29",
+              "netReturnPct": -33.8304,
+              "exitReason": "MA5_DOWN_CROSS"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 0
+          }
+        },
+        "VALIDATION_2025": {
+          "tradeDistribution": {
+            "tradeCount": 5353,
+            "winRate": 0.3067,
+            "avgTradeNetReturnPct": 0.4298,
+            "avgWinPct": 13.7544,
+            "avgLossPct": -5.4658,
+            "payoffRatio": 2.5164,
+            "expectancyPct": 0.4298,
+            "profitFactor": 1.1134,
+            "maxTradeGainPct": 359.4667,
+            "maxTradeLossPct": -48.1534,
+            "avgHoldingDays": 14.57,
+            "medianHoldingDays": 10.0,
+            "avgMfePct": 10.3482,
+            "avgMaePct": -6.1362,
+            "worstInTradeMaePct": -54.3071,
+            "maxConsecutiveLosses": 20,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 5353
+            },
+            "bestTrade": {
+              "symbol": "5386",
+              "signalDate": "2025-12-08",
+              "entryDate": "2025-12-09",
+              "exitDate": "2026-04-24",
+              "netReturnPct": 359.4667,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "6515",
+              "signalDate": "2025-03-04",
+              "entryDate": "2025-03-05",
+              "exitDate": "2025-04-22",
+              "netReturnPct": -48.1534,
+              "exitReason": "MA5_DOWN_CROSS"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 100456.16,
+            "totalReturnPct": 0.4562,
+            "maxDrawdownPct": -48.1929,
+            "selectedTradeCount": 81,
+            "candidateTradeCount": 5353,
+            "skippedCapacity": 5272,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 81,
+            "winRate": 0.3086,
+            "avgTradeNetReturnPct": 0.5307,
+            "avgWinPct": 19.6322,
+            "avgLossPct": -7.9967,
+            "payoffRatio": 2.455,
+            "expectancyPct": 0.5307,
+            "profitFactor": 1.096,
+            "maxTradeGainPct": 109.1985,
+            "maxTradeLossPct": -37.5495,
+            "avgHoldingDays": 16.33,
+            "medianHoldingDays": 12.0,
+            "avgMfePct": 14.8001,
+            "avgMaePct": -9.0802,
+            "worstInTradeMaePct": -44.6247,
+            "maxConsecutiveLosses": 10,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 81
+            },
+            "bestTrade": {
+              "symbol": "5289",
+              "signalDate": "2025-10-08",
+              "entryDate": "2025-10-09",
+              "exitDate": "2026-02-03",
+              "netReturnPct": 109.1985,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "6168",
+              "signalDate": "2025-01-06",
+              "entryDate": "2025-01-07",
+              "exitDate": "2025-05-06",
+              "netReturnPct": -37.5495,
+              "exitReason": "MA5_DOWN_CROSS"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 0
+          }
+        },
+        "TEST_2026_DESCRIPTIVE": {
+          "tradeDistribution": {
+            "tradeCount": 4177,
+            "winRate": 0.3388,
+            "avgTradeNetReturnPct": 1.8669,
+            "avgWinPct": 17.8119,
+            "avgLossPct": -6.3019,
+            "payoffRatio": 2.8264,
+            "expectancyPct": 1.8669,
+            "profitFactor": 1.448,
+            "maxTradeGainPct": 267.4794,
+            "maxTradeLossPct": -52.3285,
+            "avgHoldingDays": 13.86,
+            "medianHoldingDays": 10.0,
+            "avgMfePct": 14.7261,
+            "avgMaePct": -7.3143,
+            "worstInTradeMaePct": -67.8457,
+            "maxConsecutiveLosses": 19,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 3780,
+              "END_OF_DATA": 397
+            },
+            "bestTrade": {
+              "symbol": "6147",
+              "signalDate": "2026-02-23",
+              "entryDate": "2026-02-24",
+              "exitDate": "2026-07-08",
+              "netReturnPct": 267.4794,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "6173",
+              "signalDate": "2026-06-30",
+              "entryDate": "2026-07-01",
+              "exitDate": "2026-07-27",
+              "netReturnPct": -52.3285,
+              "exitReason": "MA5_DOWN_CROSS"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 125771.11,
+            "totalReturnPct": 25.7711,
+            "maxDrawdownPct": -23.8114,
+            "selectedTradeCount": 51,
+            "candidateTradeCount": 4177,
+            "skippedCapacity": 4126,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 51,
+            "winRate": 0.4118,
+            "avgTradeNetReturnPct": 3.5074,
+            "avgWinPct": 19.2156,
+            "avgLossPct": -7.4884,
+            "payoffRatio": 2.566,
+            "expectancyPct": 3.5074,
+            "profitFactor": 1.7962,
+            "maxTradeGainPct": 104.8253,
+            "maxTradeLossPct": -32.144,
+            "avgHoldingDays": 15.59,
+            "medianHoldingDays": 11.0,
+            "avgMfePct": 19.6255,
+            "avgMaePct": -8.4714,
+            "worstInTradeMaePct": -49.0062,
+            "maxConsecutiveLosses": 6,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 46,
+              "END_OF_DATA": 5
+            },
+            "bestTrade": {
+              "symbol": "8046",
+              "signalDate": "2026-02-09",
+              "entryDate": "2026-02-10",
+              "exitDate": "2026-05-29",
+              "netReturnPct": 104.8253,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "6182",
+              "signalDate": "2026-07-08",
+              "entryDate": "2026-07-09",
+              "exitDate": "2026-08-28",
+              "netReturnPct": -32.144,
+              "exitReason": "END_OF_DATA"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 0
+          }
+        },
+        "BULL_ONLY_FULL": {
+          "tradeDistribution": {
+            "tradeCount": 7813,
+            "winRate": 0.3213,
+            "avgTradeNetReturnPct": 0.6248,
+            "avgWinPct": 13.1821,
+            "avgLossPct": -5.3188,
+            "payoffRatio": 2.4784,
+            "expectancyPct": 0.6248,
+            "profitFactor": 1.1731,
+            "maxTradeGainPct": 267.4794,
+            "maxTradeLossPct": -52.3285,
+            "avgHoldingDays": 14.47,
+            "medianHoldingDays": 10.0,
+            "avgMfePct": 10.9514,
+            "avgMaePct": -6.0522,
+            "worstInTradeMaePct": -62.334,
+            "maxConsecutiveLosses": 29,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 7592,
+              "END_OF_DATA": 221
+            },
+            "bestTrade": {
+              "symbol": "6147",
+              "signalDate": "2026-02-23",
+              "entryDate": "2026-02-24",
+              "exitDate": "2026-07-08",
+              "netReturnPct": 267.4794,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "6173",
+              "signalDate": "2026-06-30",
+              "entryDate": "2026-07-01",
+              "exitDate": "2026-07-27",
+              "netReturnPct": -52.3285,
+              "exitReason": "MA5_DOWN_CROSS"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 91136.75,
+            "totalReturnPct": -8.8633,
+            "maxDrawdownPct": -66.4215,
+            "selectedTradeCount": 192,
+            "candidateTradeCount": 7813,
+            "skippedCapacity": 7621,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 192,
+            "winRate": 0.3281,
+            "avgTradeNetReturnPct": -0.0634,
+            "avgWinPct": 17.7045,
+            "avgLossPct": -8.7408,
+            "payoffRatio": 2.0255,
+            "expectancyPct": -0.0634,
+            "profitFactor": 0.9892,
+            "maxTradeGainPct": 199.071,
+            "maxTradeLossPct": -47.3478,
+            "avgHoldingDays": 16.01,
+            "medianHoldingDays": 12.0,
+            "avgMfePct": 15.4155,
+            "avgMaePct": -9.6095,
+            "worstInTradeMaePct": -52.1829,
+            "maxConsecutiveLosses": 12,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 187,
+              "END_OF_DATA": 5
+            },
+            "bestTrade": {
+              "symbol": "8358",
+              "signalDate": "2025-07-09",
+              "entryDate": "2025-07-10",
+              "exitDate": "2025-09-02",
+              "netReturnPct": 199.071,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "5521",
+              "signalDate": "2026-02-23",
+              "entryDate": "2026-02-24",
+              "exitDate": "2026-03-30",
+              "netReturnPct": -47.3478,
+              "exitReason": "MA5_DOWN_CROSS"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 0
+          }
+        }
+      }
+    },
+    "FIXED_STOP_5PCT": {
+      "definition": {
+        "kind": "FIXED",
+        "pct": 0.05
+      },
+      "missingStopLevelCount": 0,
+      "scopes": {
+        "FULL": {
+          "tradeDistribution": {
+            "tradeCount": 20534,
+            "winRate": 0.2496,
+            "avgTradeNetReturnPct": 0.1723,
+            "avgWinPct": 13.5858,
+            "avgLossPct": -4.2902,
+            "payoffRatio": 3.1667,
+            "expectancyPct": 0.1723,
+            "profitFactor": 1.0535,
+            "maxTradeGainPct": 347.7123,
+            "maxTradeLossPct": -17.9137,
+            "avgHoldingDays": 9.3,
+            "medianHoldingDays": 6.0,
+            "avgMfePct": 9.2126,
+            "avgMaePct": -4.5071,
+            "worstInTradeMaePct": -26.2418,
+            "maxConsecutiveLosses": 41,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 12242,
+              "STOP_INTRADAY": 7106,
+              "STOP_GAP": 888,
+              "END_OF_DATA": 298
+            },
+            "bestTrade": {
+              "symbol": "6173",
+              "signalDate": "2026-04-08",
+              "entryDate": "2026-04-09",
+              "exitDate": "2026-06-24",
+              "netReturnPct": 347.7123,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "8162",
+              "signalDate": "2024-03-04",
+              "entryDate": "2024-03-05",
+              "exitDate": "2024-03-08",
+              "netReturnPct": -17.9137,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 136738.24,
+            "totalReturnPct": 36.7382,
+            "maxDrawdownPct": -59.4988,
+            "selectedTradeCount": 425,
+            "candidateTradeCount": 20534,
+            "skippedCapacity": 20109,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 425,
+            "winRate": 0.2424,
+            "avgTradeNetReturnPct": 0.9137,
+            "avgWinPct": 19.9196,
+            "avgLossPct": -5.1659,
+            "payoffRatio": 3.856,
+            "expectancyPct": 0.9137,
+            "profitFactor": 1.2334,
+            "maxTradeGainPct": 172.1271,
+            "maxTradeLossPct": -14.4432,
+            "avgHoldingDays": 8.43,
+            "medianHoldingDays": 4.0,
+            "avgMfePct": 12.745,
+            "avgMaePct": -5.4952,
+            "worstInTradeMaePct": -18.1022,
+            "maxConsecutiveLosses": 22,
+            "exitReasonCounts": {
+              "STOP_INTRADAY": 231,
+              "MA5_DOWN_CROSS": 169,
+              "STOP_GAP": 20,
+              "END_OF_DATA": 5
+            },
+            "bestTrade": {
+              "symbol": "7734",
+              "signalDate": "2026-02-02",
+              "entryDate": "2026-02-03",
+              "exitDate": "2026-06-02",
+              "netReturnPct": 172.1271,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "3234",
+              "signalDate": "2024-12-09",
+              "entryDate": "2024-12-10",
+              "exitDate": "2024-12-11",
+              "netReturnPct": -14.4432,
+              "exitReason": "MA5_DOWN_CROSS"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 7994,
+            "avgMaxRebound5dPct": 6.1582,
+            "medianMaxRebound5dPct": 4.3081,
+            "avgCloseReturn5dPct": 0.1167,
+            "reclaimEntryRate5d": 0.4132,
+            "rebound10PctRate5d": 0.2075,
+            "avgMaxRebound10dPct": 9.2985,
+            "medianMaxRebound10dPct": 6.1628,
+            "avgCloseReturn10dPct": 0.5457,
+            "reclaimEntryRate10d": 0.5392,
+            "rebound10PctRate10d": 0.3315,
+            "avgMaxRebound20dPct": 13.805,
+            "medianMaxRebound20dPct": 8.818,
+            "avgCloseReturn20dPct": 1.4649,
+            "reclaimEntryRate20d": 0.6466,
+            "rebound10PctRate20d": 0.4605
+          }
+        },
+        "TRAIN_2024": {
+          "tradeDistribution": {
+            "tradeCount": 7402,
+            "winRate": 0.2363,
+            "avgTradeNetReturnPct": -0.4018,
+            "avgWinPct": 11.5515,
+            "avgLossPct": -4.1001,
+            "payoffRatio": 2.8174,
+            "expectancyPct": -0.4018,
+            "profitFactor": 0.8717,
+            "maxTradeGainPct": 187.8393,
+            "maxTradeLossPct": -17.9137,
+            "avgHoldingDays": 9.34,
+            "medianHoldingDays": 6.0,
+            "avgMfePct": 8.1306,
+            "avgMaePct": -4.4323,
+            "worstInTradeMaePct": -24.3772,
+            "maxConsecutiveLosses": 26,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 4721,
+              "STOP_INTRADAY": 2424,
+              "STOP_GAP": 257
+            },
+            "bestTrade": {
+              "symbol": "4909",
+              "signalDate": "2024-01-05",
+              "entryDate": "2024-01-08",
+              "exitDate": "2024-04-11",
+              "netReturnPct": 187.8393,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "8162",
+              "signalDate": "2024-03-04",
+              "entryDate": "2024-03-05",
+              "exitDate": "2024-03-08",
+              "netReturnPct": -17.9137,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 65775.91,
+            "totalReturnPct": -34.2241,
+            "maxDrawdownPct": -41.8445,
+            "selectedTradeCount": 161,
+            "candidateTradeCount": 7402,
+            "skippedCapacity": 7241,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 161,
+            "winRate": 0.1988,
+            "avgTradeNetReturnPct": -1.3143,
+            "avgWinPct": 14.054,
+            "avgLossPct": -5.1266,
+            "payoffRatio": 2.7414,
+            "expectancyPct": -1.3143,
+            "profitFactor": 0.68,
+            "maxTradeGainPct": 64.3142,
+            "maxTradeLossPct": -14.4432,
+            "avgHoldingDays": 7.8,
+            "medianHoldingDays": 3.0,
+            "avgMfePct": 10.8513,
+            "avgMaePct": -5.8132,
+            "worstInTradeMaePct": -14.476,
+            "maxConsecutiveLosses": 16,
+            "exitReasonCounts": {
+              "STOP_INTRADAY": 95,
+              "MA5_DOWN_CROSS": 61,
+              "STOP_GAP": 5
+            },
+            "bestTrade": {
+              "symbol": "3081",
+              "signalDate": "2024-09-06",
+              "entryDate": "2024-09-09",
+              "exitDate": "2024-10-29",
+              "netReturnPct": 64.3142,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "3234",
+              "signalDate": "2024-12-09",
+              "entryDate": "2024-12-10",
+              "exitDate": "2024-12-11",
+              "netReturnPct": -14.4432,
+              "exitReason": "MA5_DOWN_CROSS"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 2681,
+            "avgMaxRebound5dPct": 5.5256,
+            "medianMaxRebound5dPct": 3.8502,
+            "avgCloseReturn5dPct": -0.2723,
+            "reclaimEntryRate5d": 0.3726,
+            "rebound10PctRate5d": 0.1738,
+            "avgMaxRebound10dPct": 8.1368,
+            "medianMaxRebound10dPct": 5.2632,
+            "avgCloseReturn10dPct": 0.0606,
+            "reclaimEntryRate10d": 0.4864,
+            "rebound10PctRate10d": 0.279,
+            "avgMaxRebound20dPct": 11.9045,
+            "medianMaxRebound20dPct": 7.3921,
+            "avgCloseReturn20dPct": 0.4713,
+            "reclaimEntryRate20d": 0.5983,
+            "rebound10PctRate20d": 0.4002
+          }
+        },
+        "VALIDATION_2025": {
+          "tradeDistribution": {
+            "tradeCount": 6113,
+            "winRate": 0.2554,
+            "avgTradeNetReturnPct": 0.1966,
+            "avgWinPct": 13.1861,
+            "avgLossPct": -4.2579,
+            "payoffRatio": 3.0969,
+            "expectancyPct": 0.1966,
+            "profitFactor": 1.062,
+            "maxTradeGainPct": 214.6362,
+            "maxTradeLossPct": -14.4502,
+            "avgHoldingDays": 9.56,
+            "medianHoldingDays": 6.0,
+            "avgMfePct": 8.745,
+            "avgMaePct": -4.3708,
+            "worstInTradeMaePct": -26.2418,
+            "maxConsecutiveLosses": 24,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 3805,
+              "STOP_INTRADAY": 2028,
+              "STOP_GAP": 280
+            },
+            "bestTrade": {
+              "symbol": "2408",
+              "signalDate": "2025-09-04",
+              "entryDate": "2025-09-05",
+              "exitDate": "2025-11-19",
+              "netReturnPct": 214.6362,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "1785",
+              "signalDate": "2025-03-03",
+              "entryDate": "2025-03-04",
+              "exitDate": "2025-04-08",
+              "netReturnPct": -14.4502,
+              "exitReason": "MA5_DOWN_CROSS"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 132218.31,
+            "totalReturnPct": 32.2183,
+            "maxDrawdownPct": -38.91,
+            "selectedTradeCount": 159,
+            "candidateTradeCount": 6113,
+            "skippedCapacity": 5954,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 159,
+            "winRate": 0.239,
+            "avgTradeNetReturnPct": 1.5465,
+            "avgWinPct": 23.2602,
+            "avgLossPct": -5.2727,
+            "payoffRatio": 4.4114,
+            "expectancyPct": 1.5465,
+            "profitFactor": 1.3854,
+            "maxTradeGainPct": 109.1985,
+            "maxTradeLossPct": -12.733,
+            "avgHoldingDays": 8.28,
+            "medianHoldingDays": 4.0,
+            "avgMfePct": 12.4663,
+            "avgMaePct": -5.4205,
+            "worstInTradeMaePct": -18.1022,
+            "maxConsecutiveLosses": 11,
+            "exitReasonCounts": {
+              "STOP_INTRADAY": 85,
+              "MA5_DOWN_CROSS": 64,
+              "STOP_GAP": 10
+            },
+            "bestTrade": {
+              "symbol": "5289",
+              "signalDate": "2025-10-08",
+              "entryDate": "2025-10-09",
+              "exitDate": "2026-02-03",
+              "netReturnPct": 109.1985,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "8088",
+              "signalDate": "2025-03-12",
+              "entryDate": "2025-03-13",
+              "exitDate": "2025-04-08",
+              "netReturnPct": -12.733,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 2308,
+            "avgMaxRebound5dPct": 5.4195,
+            "medianMaxRebound5dPct": 3.9588,
+            "avgCloseReturn5dPct": -0.4384,
+            "reclaimEntryRate5d": 0.3791,
+            "rebound10PctRate5d": 0.1802,
+            "avgMaxRebound10dPct": 8.2287,
+            "medianMaxRebound10dPct": 5.6325,
+            "avgCloseReturn10dPct": -0.0655,
+            "reclaimEntryRate10d": 0.5022,
+            "rebound10PctRate10d": 0.2994,
+            "avgMaxRebound20dPct": 12.3949,
+            "medianMaxRebound20dPct": 8.0349,
+            "avgCloseReturn20dPct": 0.6516,
+            "reclaimEntryRate20d": 0.6179,
+            "rebound10PctRate20d": 0.4328
+          }
+        },
+        "TEST_2026_DESCRIPTIVE": {
+          "tradeDistribution": {
+            "tradeCount": 5080,
+            "winRate": 0.2506,
+            "avgTradeNetReturnPct": 1.0376,
+            "avgWinPct": 18.4794,
+            "avgLossPct": -4.7946,
+            "payoffRatio": 3.8542,
+            "expectancyPct": 1.0376,
+            "profitFactor": 1.2888,
+            "maxTradeGainPct": 347.7123,
+            "maxTradeLossPct": -13.9962,
+            "avgHoldingDays": 8.35,
+            "medianHoldingDays": 4.0,
+            "avgMfePct": 11.9372,
+            "avgMaePct": -5.0476,
+            "worstInTradeMaePct": -18.0276,
+            "maxConsecutiveLosses": 23,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 2359,
+              "STOP_INTRADAY": 2120,
+              "STOP_GAP": 303,
+              "END_OF_DATA": 298
+            },
+            "bestTrade": {
+              "symbol": "6173",
+              "signalDate": "2026-04-08",
+              "entryDate": "2026-04-09",
+              "exitDate": "2026-06-24",
+              "netReturnPct": 347.7123,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "3555",
+              "signalDate": "2026-06-04",
+              "entryDate": "2026-06-05",
+              "exitDate": "2026-06-08",
+              "netReturnPct": -13.9962,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 121192.57,
+            "totalReturnPct": 21.1926,
+            "maxDrawdownPct": -27.477,
+            "selectedTradeCount": 96,
+            "candidateTradeCount": 5080,
+            "skippedCapacity": 4984,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 96,
+            "winRate": 0.2396,
+            "avgTradeNetReturnPct": 2.1156,
+            "avgWinPct": 26.4731,
+            "avgLossPct": -5.5587,
+            "payoffRatio": 4.7625,
+            "expectancyPct": 2.1156,
+            "profitFactor": 1.5005,
+            "maxTradeGainPct": 172.1271,
+            "maxTradeLossPct": -13.5183,
+            "avgHoldingDays": 8.27,
+            "medianHoldingDays": 3.0,
+            "avgMfePct": 15.3533,
+            "avgMaePct": -6.0401,
+            "worstInTradeMaePct": -13.0,
+            "maxConsecutiveLosses": 11,
+            "exitReasonCounts": {
+              "STOP_INTRADAY": 53,
+              "MA5_DOWN_CROSS": 30,
+              "STOP_GAP": 8,
+              "END_OF_DATA": 5
+            },
+            "bestTrade": {
+              "symbol": "7734",
+              "signalDate": "2026-02-02",
+              "entryDate": "2026-02-03",
+              "exitDate": "2026-06-02",
+              "netReturnPct": 172.1271,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "8088",
+              "signalDate": "2026-06-02",
+              "entryDate": "2026-06-03",
+              "exitDate": "2026-06-08",
+              "netReturnPct": -13.5183,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 2423,
+            "avgMaxRebound5dPct": 7.8815,
+            "medianMaxRebound5dPct": 5.5809,
+            "avgCloseReturn5dPct": 1.1024,
+            "reclaimEntryRate5d": 0.5021,
+            "rebound10PctRate5d": 0.2907,
+            "avgMaxRebound10dPct": 12.0866,
+            "medianMaxRebound10dPct": 8.4486,
+            "avgCloseReturn10dPct": 1.6669,
+            "reclaimEntryRate10d": 0.641,
+            "rebound10PctRate10d": 0.44,
+            "avgMaxRebound20dPct": 17.7845,
+            "medianMaxRebound20dPct": 12.3003,
+            "avgCloseReturn20dPct": 3.1468,
+            "reclaimEntryRate20d": 0.7341,
+            "rebound10PctRate20d": 0.5691
+          }
+        },
+        "BULL_ONLY_FULL": {
+          "tradeDistribution": {
+            "tradeCount": 9128,
+            "winRate": 0.2672,
+            "avgTradeNetReturnPct": 0.4008,
+            "avgWinPct": 13.1347,
+            "avgLossPct": -4.2423,
+            "payoffRatio": 3.0961,
+            "expectancyPct": 0.4008,
+            "profitFactor": 1.1289,
+            "maxTradeGainPct": 347.7123,
+            "maxTradeLossPct": -14.1906,
+            "avgHoldingDays": 9.87,
+            "medianHoldingDays": 6.0,
+            "avgMfePct": 9.5496,
+            "avgMaePct": -4.3979,
+            "worstInTradeMaePct": -19.4737,
+            "maxConsecutiveLosses": 25,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 5636,
+              "STOP_INTRADAY": 2917,
+              "STOP_GAP": 416,
+              "END_OF_DATA": 159
+            },
+            "bestTrade": {
+              "symbol": "6173",
+              "signalDate": "2026-04-08",
+              "entryDate": "2026-04-09",
+              "exitDate": "2026-06-24",
+              "netReturnPct": 347.7123,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "2006",
+              "signalDate": "2025-04-01",
+              "entryDate": "2025-04-02",
+              "exitDate": "2025-04-07",
+              "netReturnPct": -14.1906,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 54033.96,
+            "totalReturnPct": -45.966,
+            "maxDrawdownPct": -67.4595,
+            "selectedTradeCount": 335,
+            "candidateTradeCount": 9128,
+            "skippedCapacity": 8769,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 335,
+            "winRate": 0.2358,
+            "avgTradeNetReturnPct": -0.7336,
+            "avgWinPct": 14.1074,
+            "avgLossPct": -5.3135,
+            "payoffRatio": 2.655,
+            "expectancyPct": -0.7336,
+            "profitFactor": 0.8193,
+            "maxTradeGainPct": 108.2857,
+            "maxTradeLossPct": -13.6178,
+            "avgHoldingDays": 8.05,
+            "medianHoldingDays": 5.0,
+            "avgMfePct": 11.0864,
+            "avgMaePct": -5.439,
+            "worstInTradeMaePct": -14.2553,
+            "maxConsecutiveLosses": 14,
+            "exitReasonCounts": {
+              "STOP_INTRADAY": 183,
+              "MA5_DOWN_CROSS": 126,
+              "STOP_GAP": 21,
+              "END_OF_DATA": 5
+            },
+            "bestTrade": {
+              "symbol": "6443",
+              "signalDate": "2025-12-19",
+              "entryDate": "2025-12-22",
+              "exitDate": "2026-03-11",
+              "netReturnPct": 108.2857,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "2466",
+              "signalDate": "2025-04-01",
+              "entryDate": "2025-04-02",
+              "exitDate": "2025-04-07",
+              "netReturnPct": -13.6178,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 3333,
+            "avgMaxRebound5dPct": 6.2131,
+            "medianMaxRebound5dPct": 4.4627,
+            "avgCloseReturn5dPct": 0.3245,
+            "reclaimEntryRate5d": 0.4183,
+            "rebound10PctRate5d": 0.2142,
+            "avgMaxRebound10dPct": 9.3565,
+            "medianMaxRebound10dPct": 6.2615,
+            "avgCloseReturn10dPct": 0.6219,
+            "reclaimEntryRate10d": 0.5433,
+            "rebound10PctRate10d": 0.3392,
+            "avgMaxRebound20dPct": 13.5477,
+            "medianMaxRebound20dPct": 8.9696,
+            "avgCloseReturn20dPct": 1.1471,
+            "reclaimEntryRate20d": 0.6439,
+            "rebound10PctRate20d": 0.4648
+          }
+        }
+      }
+    },
+    "FIXED_STOP_7PCT": {
+      "definition": {
+        "kind": "FIXED",
+        "pct": 0.07
+      },
+      "missingStopLevelCount": 0,
+      "scopes": {
+        "FULL": {
+          "tradeDistribution": {
+            "tradeCount": 19526,
+            "winRate": 0.2738,
+            "avgTradeNetReturnPct": 0.2348,
+            "avgWinPct": 13.6565,
+            "avgLossPct": -4.8266,
+            "payoffRatio": 2.8294,
+            "expectancyPct": 0.2348,
+            "profitFactor": 1.067,
+            "maxTradeGainPct": 347.7123,
+            "maxTradeLossPct": -17.9137,
+            "avgHoldingDays": 10.72,
+            "medianHoldingDays": 7.0,
+            "avgMfePct": 9.921,
+            "avgMaePct": -5.0264,
+            "worstInTradeMaePct": -62.982,
+            "maxConsecutiveLosses": 40,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 14095,
+              "STOP_INTRADAY": 4418,
+              "STOP_GAP": 693,
+              "END_OF_DATA": 320
+            },
+            "bestTrade": {
+              "symbol": "6173",
+              "signalDate": "2026-04-08",
+              "entryDate": "2026-04-09",
+              "exitDate": "2026-06-24",
+              "netReturnPct": 347.7123,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "8162",
+              "signalDate": "2024-03-04",
+              "entryDate": "2024-03-05",
+              "exitDate": "2024-03-08",
+              "netReturnPct": -17.9137,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 97041.52,
+            "totalReturnPct": -2.9585,
+            "maxDrawdownPct": -65.5369,
+            "selectedTradeCount": 360,
+            "candidateTradeCount": 19526,
+            "skippedCapacity": 19166,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 360,
+            "winRate": 0.25,
+            "avgTradeNetReturnPct": 0.289,
+            "avgWinPct": 20.2064,
+            "avgLossPct": -6.3502,
+            "payoffRatio": 3.182,
+            "expectancyPct": 0.289,
+            "profitFactor": 1.0607,
+            "maxTradeGainPct": 109.1985,
+            "maxTradeLossPct": -15.5089,
+            "avgHoldingDays": 9.95,
+            "medianHoldingDays": 6.0,
+            "avgMfePct": 13.3834,
+            "avgMaePct": -6.4786,
+            "worstInTradeMaePct": -18.1022,
+            "maxConsecutiveLosses": 16,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 180,
+              "STOP_INTRADAY": 157,
+              "STOP_GAP": 18,
+              "END_OF_DATA": 5
+            },
+            "bestTrade": {
+              "symbol": "5289",
+              "signalDate": "2025-10-08",
+              "entryDate": "2025-10-09",
+              "exitDate": "2026-02-03",
+              "netReturnPct": 109.1985,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "5314",
+              "signalDate": "2025-03-31",
+              "entryDate": "2025-04-01",
+              "exitDate": "2025-04-07",
+              "netReturnPct": -15.5089,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 5111,
+            "avgMaxRebound5dPct": 6.3499,
+            "medianMaxRebound5dPct": 4.5121,
+            "avgCloseReturn5dPct": 0.2273,
+            "reclaimEntryRate5d": 0.2983,
+            "rebound10PctRate5d": 0.2163,
+            "avgMaxRebound10dPct": 9.5044,
+            "medianMaxRebound10dPct": 6.4456,
+            "avgCloseReturn10dPct": 0.824,
+            "reclaimEntryRate10d": 0.4296,
+            "rebound10PctRate10d": 0.3363,
+            "avgMaxRebound20dPct": 13.9684,
+            "medianMaxRebound20dPct": 9.063,
+            "avgCloseReturn20dPct": 1.5759,
+            "reclaimEntryRate20d": 0.5528,
+            "rebound10PctRate20d": 0.4672
+          }
+        },
+        "TRAIN_2024": {
+          "tradeDistribution": {
+            "tradeCount": 7050,
+            "winRate": 0.2587,
+            "avgTradeNetReturnPct": -0.3571,
+            "avgWinPct": 11.7138,
+            "avgLossPct": -4.5701,
+            "payoffRatio": 2.5631,
+            "expectancyPct": -0.3571,
+            "profitFactor": 0.8946,
+            "maxTradeGainPct": 187.8393,
+            "maxTradeLossPct": -17.9137,
+            "avgHoldingDays": 10.74,
+            "medianHoldingDays": 7.0,
+            "avgMfePct": 8.7586,
+            "avgMaePct": -4.9258,
+            "worstInTradeMaePct": -24.3772,
+            "maxConsecutiveLosses": 26,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 5342,
+              "STOP_INTRADAY": 1497,
+              "STOP_GAP": 211
+            },
+            "bestTrade": {
+              "symbol": "4909",
+              "signalDate": "2024-01-05",
+              "entryDate": "2024-01-08",
+              "exitDate": "2024-04-11",
+              "netReturnPct": 187.8393,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "8162",
+              "signalDate": "2024-03-04",
+              "entryDate": "2024-03-05",
+              "exitDate": "2024-03-08",
+              "netReturnPct": -17.9137,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 77191.93,
+            "totalReturnPct": -22.8081,
+            "maxDrawdownPct": -37.4093,
+            "selectedTradeCount": 131,
+            "candidateTradeCount": 7050,
+            "skippedCapacity": 6919,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 131,
+            "winRate": 0.229,
+            "avgTradeNetReturnPct": -0.7313,
+            "avgWinPct": 17.2071,
+            "avgLossPct": -6.0595,
+            "payoffRatio": 2.8397,
+            "expectancyPct": -0.7313,
+            "profitFactor": 0.8435,
+            "maxTradeGainPct": 64.3142,
+            "maxTradeLossPct": -14.4432,
+            "avgHoldingDays": 9.54,
+            "medianHoldingDays": 6.0,
+            "avgMfePct": 12.7046,
+            "avgMaePct": -6.5522,
+            "worstInTradeMaePct": -14.476,
+            "maxConsecutiveLosses": 12,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 68,
+              "STOP_INTRADAY": 58,
+              "STOP_GAP": 5
+            },
+            "bestTrade": {
+              "symbol": "3081",
+              "signalDate": "2024-09-06",
+              "entryDate": "2024-09-09",
+              "exitDate": "2024-10-29",
+              "netReturnPct": 64.3142,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "3234",
+              "signalDate": "2024-12-09",
+              "entryDate": "2024-12-10",
+              "exitDate": "2024-12-11",
+              "netReturnPct": -14.4432,
+              "exitReason": "MA5_DOWN_CROSS"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 1708,
+            "avgMaxRebound5dPct": 5.4815,
+            "medianMaxRebound5dPct": 3.8191,
+            "avgCloseReturn5dPct": -0.2612,
+            "reclaimEntryRate5d": 0.243,
+            "rebound10PctRate5d": 0.1663,
+            "avgMaxRebound10dPct": 8.0617,
+            "medianMaxRebound10dPct": 5.4318,
+            "avgCloseReturn10dPct": 0.2621,
+            "reclaimEntryRate10d": 0.3595,
+            "rebound10PctRate10d": 0.2711,
+            "avgMaxRebound20dPct": 11.7688,
+            "medianMaxRebound20dPct": 7.5399,
+            "avgCloseReturn20dPct": 0.4944,
+            "reclaimEntryRate20d": 0.4941,
+            "rebound10PctRate20d": 0.3993
+          }
+        },
+        "VALIDATION_2025": {
+          "tradeDistribution": {
+            "tradeCount": 5836,
+            "winRate": 0.2786,
+            "avgTradeNetReturnPct": 0.2511,
+            "avgWinPct": 13.2266,
+            "avgLossPct": -4.7603,
+            "payoffRatio": 2.7785,
+            "expectancyPct": 0.2511,
+            "profitFactor": 1.0731,
+            "maxTradeGainPct": 214.6362,
+            "maxTradeLossPct": -15.5089,
+            "avgHoldingDays": 11.09,
+            "medianHoldingDays": 7.0,
+            "avgMfePct": 9.4211,
+            "avgMaePct": -4.873,
+            "worstInTradeMaePct": -26.2418,
+            "maxConsecutiveLosses": 23,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 4386,
+              "STOP_INTRADAY": 1234,
+              "STOP_GAP": 216
+            },
+            "bestTrade": {
+              "symbol": "2408",
+              "signalDate": "2025-09-04",
+              "entryDate": "2025-09-05",
+              "exitDate": "2025-11-19",
+              "netReturnPct": 214.6362,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "5314",
+              "signalDate": "2025-03-31",
+              "entryDate": "2025-04-01",
+              "exitDate": "2025-04-07",
+              "netReturnPct": -15.5089,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 129947.07,
+            "totalReturnPct": 29.9471,
+            "maxDrawdownPct": -38.2077,
+            "selectedTradeCount": 138,
+            "candidateTradeCount": 5836,
+            "skippedCapacity": 5698,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 138,
+            "winRate": 0.2536,
+            "avgTradeNetReturnPct": 1.7334,
+            "avgWinPct": 26.1025,
+            "avgLossPct": -6.5474,
+            "payoffRatio": 3.9867,
+            "expectancyPct": 1.7334,
+            "profitFactor": 1.3547,
+            "maxTradeGainPct": 109.1985,
+            "maxTradeLossPct": -15.5089,
+            "avgHoldingDays": 9.51,
+            "medianHoldingDays": 6.0,
+            "avgMfePct": 13.9032,
+            "avgMaePct": -6.3926,
+            "worstInTradeMaePct": -18.1022,
+            "maxConsecutiveLosses": 9,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 66,
+              "STOP_INTRADAY": 65,
+              "STOP_GAP": 7
+            },
+            "bestTrade": {
+              "symbol": "5289",
+              "signalDate": "2025-10-08",
+              "entryDate": "2025-10-09",
+              "exitDate": "2026-02-03",
+              "netReturnPct": 109.1985,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "5314",
+              "signalDate": "2025-03-31",
+              "entryDate": "2025-04-01",
+              "exitDate": "2025-04-07",
+              "netReturnPct": -15.5089,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 1450,
+            "avgMaxRebound5dPct": 5.5496,
+            "medianMaxRebound5dPct": 3.9684,
+            "avgCloseReturn5dPct": -0.6087,
+            "reclaimEntryRate5d": 0.249,
+            "rebound10PctRate5d": 0.1752,
+            "avgMaxRebound10dPct": 8.3447,
+            "medianMaxRebound10dPct": 5.8668,
+            "avgCloseReturn10dPct": 0.1905,
+            "reclaimEntryRate10d": 0.3779,
+            "rebound10PctRate10d": 0.2897,
+            "avgMaxRebound20dPct": 12.6409,
+            "medianMaxRebound20dPct": 8.4029,
+            "avgCloseReturn20dPct": 0.7065,
+            "reclaimEntryRate20d": 0.5097,
+            "rebound10PctRate20d": 0.431
+          }
+        },
+        "TEST_2026_DESCRIPTIVE": {
+          "tradeDistribution": {
+            "tradeCount": 4780,
+            "winRate": 0.2812,
+            "avgTradeNetReturnPct": 1.0935,
+            "avgWinPct": 18.179,
+            "avgLossPct": -5.5895,
+            "payoffRatio": 3.2524,
+            "expectancyPct": 1.0935,
+            "profitFactor": 1.2722,
+            "maxTradeGainPct": 347.7123,
+            "maxTradeLossPct": -16.175,
+            "avgHoldingDays": 9.65,
+            "medianHoldingDays": 6.0,
+            "avgMfePct": 12.8883,
+            "avgMaePct": -5.7009,
+            "worstInTradeMaePct": -18.0276,
+            "maxConsecutiveLosses": 20,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 2835,
+              "STOP_INTRADAY": 1376,
+              "END_OF_DATA": 320,
+              "STOP_GAP": 249
+            },
+            "bestTrade": {
+              "symbol": "6173",
+              "signalDate": "2026-04-08",
+              "entryDate": "2026-04-09",
+              "exitDate": "2026-06-24",
+              "netReturnPct": 347.7123,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "6412",
+              "signalDate": "2026-05-29",
+              "entryDate": "2026-06-01",
+              "exitDate": "2026-06-08",
+              "netReturnPct": -16.175,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 116397.16,
+            "totalReturnPct": 16.3972,
+            "maxDrawdownPct": -24.8833,
+            "selectedTradeCount": 74,
+            "candidateTradeCount": 4780,
+            "skippedCapacity": 4706,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 74,
+            "winRate": 0.3378,
+            "avgTradeNetReturnPct": 1.3349,
+            "avgWinPct": 17.5754,
+            "avgLossPct": -6.951,
+            "payoffRatio": 2.5285,
+            "expectancyPct": 1.3349,
+            "profitFactor": 1.29,
+            "maxTradeGainPct": 95.2663,
+            "maxTradeLossPct": -12.754,
+            "avgHoldingDays": 10.73,
+            "medianHoldingDays": 5.0,
+            "avgMfePct": 16.5255,
+            "avgMaePct": -6.569,
+            "worstInTradeMaePct": -13.3236,
+            "maxConsecutiveLosses": 6,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 36,
+              "STOP_INTRADAY": 28,
+              "END_OF_DATA": 5,
+              "STOP_GAP": 5
+            },
+            "bestTrade": {
+              "symbol": "2467",
+              "signalDate": "2026-02-03",
+              "entryDate": "2026-02-04",
+              "exitDate": "2026-06-08",
+              "netReturnPct": 95.2663,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "6643",
+              "signalDate": "2026-03-04",
+              "entryDate": "2026-03-05",
+              "exitDate": "2026-03-09",
+              "netReturnPct": -12.754,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 1625,
+            "avgMaxRebound5dPct": 8.3005,
+            "medianMaxRebound5dPct": 6.3676,
+            "avgCloseReturn5dPct": 1.5848,
+            "reclaimEntryRate5d": 0.4122,
+            "rebound10PctRate5d": 0.3198,
+            "avgMaxRebound10dPct": 12.571,
+            "medianMaxRebound10dPct": 9.1811,
+            "avgCloseReturn10dPct": 2.1022,
+            "reclaimEntryRate10d": 0.5656,
+            "rebound10PctRate10d": 0.4652,
+            "avgMaxRebound20dPct": 18.0024,
+            "medianMaxRebound20dPct": 13.2686,
+            "avgCloseReturn20dPct": 3.2554,
+            "reclaimEntryRate20d": 0.6667,
+            "rebound10PctRate20d": 0.5866
+          }
+        },
+        "BULL_ONLY_FULL": {
+          "tradeDistribution": {
+            "tradeCount": 8692,
+            "winRate": 0.2898,
+            "avgTradeNetReturnPct": 0.4567,
+            "avgWinPct": 13.2182,
+            "avgLossPct": -4.7508,
+            "payoffRatio": 2.7823,
+            "expectancyPct": 0.4567,
+            "profitFactor": 1.1354,
+            "maxTradeGainPct": 347.7123,
+            "maxTradeLossPct": -16.175,
+            "avgHoldingDays": 11.18,
+            "medianHoldingDays": 7.0,
+            "avgMfePct": 10.1851,
+            "avgMaePct": -4.8947,
+            "worstInTradeMaePct": -19.4737,
+            "maxConsecutiveLosses": 25,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 6369,
+              "STOP_INTRADAY": 1839,
+              "STOP_GAP": 309,
+              "END_OF_DATA": 175
+            },
+            "bestTrade": {
+              "symbol": "6173",
+              "signalDate": "2026-04-08",
+              "entryDate": "2026-04-09",
+              "exitDate": "2026-06-24",
+              "netReturnPct": 347.7123,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "6412",
+              "signalDate": "2026-05-29",
+              "entryDate": "2026-06-01",
+              "exitDate": "2026-06-08",
+              "netReturnPct": -16.175,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 105070.08,
+            "totalReturnPct": 5.0701,
+            "maxDrawdownPct": -58.1416,
+            "selectedTradeCount": 278,
+            "candidateTradeCount": 8692,
+            "skippedCapacity": 8414,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 278,
+            "winRate": 0.295,
+            "avgTradeNetReturnPct": 0.7268,
+            "avgWinPct": 17.5988,
+            "avgLossPct": -6.3319,
+            "payoffRatio": 2.7794,
+            "expectancyPct": 0.7268,
+            "profitFactor": 1.1628,
+            "maxTradeGainPct": 167.1613,
+            "maxTradeLossPct": -15.3699,
+            "avgHoldingDays": 10.34,
+            "medianHoldingDays": 7.0,
+            "avgMfePct": 14.173,
+            "avgMaePct": -6.152,
+            "worstInTradeMaePct": -14.7874,
+            "maxConsecutiveLosses": 12,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 154,
+              "STOP_INTRADAY": 106,
+              "STOP_GAP": 13,
+              "END_OF_DATA": 5
+            },
+            "bestTrade": {
+              "symbol": "2485",
+              "signalDate": "2026-01-12",
+              "entryDate": "2026-01-13",
+              "exitDate": "2026-04-07",
+              "netReturnPct": 167.1613,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "6668",
+              "signalDate": "2025-04-01",
+              "entryDate": "2025-04-02",
+              "exitDate": "2025-04-07",
+              "netReturnPct": -15.3699,
+              "exitReason": "MA5_DOWN_CROSS"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 2148,
+            "avgMaxRebound5dPct": 6.3092,
+            "medianMaxRebound5dPct": 4.5964,
+            "avgCloseReturn5dPct": 0.3602,
+            "reclaimEntryRate5d": 0.2968,
+            "rebound10PctRate5d": 0.2153,
+            "avgMaxRebound10dPct": 9.3719,
+            "medianMaxRebound10dPct": 6.6172,
+            "avgCloseReturn10dPct": 0.7176,
+            "reclaimEntryRate10d": 0.4334,
+            "rebound10PctRate10d": 0.3434,
+            "avgMaxRebound20dPct": 13.4297,
+            "medianMaxRebound20dPct": 9.1582,
+            "avgCloseReturn20dPct": 0.8569,
+            "reclaimEntryRate20d": 0.5471,
+            "rebound10PctRate20d": 0.466
+          }
+        }
+      }
+    },
+    "ATR_STRUCT_STOP": {
+      "definition": {
+        "kind": "ATR_STRUCT"
+      },
+      "missingStopLevelCount": 218,
+      "scopes": {
+        "FULL": {
+          "tradeDistribution": {
+            "tradeCount": 20155,
+            "winRate": 0.2576,
+            "avgTradeNetReturnPct": 0.1688,
+            "avgWinPct": 13.8296,
+            "avgLossPct": -4.5701,
+            "payoffRatio": 3.0261,
+            "expectancyPct": 0.1688,
+            "profitFactor": 1.0498,
+            "maxTradeGainPct": 347.7123,
+            "maxTradeLossPct": -32.4616,
+            "avgHoldingDays": 9.65,
+            "medianHoldingDays": 6.0,
+            "avgMfePct": 9.4948,
+            "avgMaePct": -4.7713,
+            "worstInTradeMaePct": -34.5336,
+            "maxConsecutiveLosses": 30,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 12728,
+              "STOP_INTRADAY": 6321,
+              "STOP_GAP": 782,
+              "END_OF_DATA": 324
+            },
+            "bestTrade": {
+              "symbol": "6173",
+              "signalDate": "2026-04-08",
+              "entryDate": "2026-04-09",
+              "exitDate": "2026-06-24",
+              "netReturnPct": 347.7123,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "6526",
+              "signalDate": "2023-09-15",
+              "entryDate": "2023-09-18",
+              "exitDate": "2023-11-01",
+              "netReturnPct": -32.4616,
+              "exitReason": "MA5_DOWN_CROSS"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 161505.2,
+            "totalReturnPct": 61.5052,
+            "maxDrawdownPct": -48.0148,
+            "selectedTradeCount": 357,
+            "candidateTradeCount": 20155,
+            "skippedCapacity": 19542,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 357,
+            "winRate": 0.2577,
+            "avgTradeNetReturnPct": 0.9533,
+            "avgWinPct": 21.2477,
+            "avgLossPct": -6.0922,
+            "payoffRatio": 3.4877,
+            "expectancyPct": 0.9533,
+            "profitFactor": 1.2108,
+            "maxTradeGainPct": 109.1985,
+            "maxTradeLossPct": -21.6264,
+            "avgHoldingDays": 10.01,
+            "medianHoldingDays": 6.0,
+            "avgMfePct": 14.4706,
+            "avgMaePct": -6.3739,
+            "worstInTradeMaePct": -27.7174,
+            "maxConsecutiveLosses": 18,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 186,
+              "STOP_INTRADAY": 148,
+              "STOP_GAP": 18,
+              "END_OF_DATA": 5
+            },
+            "bestTrade": {
+              "symbol": "5289",
+              "signalDate": "2025-10-08",
+              "entryDate": "2025-10-09",
+              "exitDate": "2026-02-03",
+              "netReturnPct": 109.1985,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "8068",
+              "signalDate": "2023-09-20",
+              "entryDate": "2023-09-21",
+              "exitDate": "2023-10-17",
+              "netReturnPct": -21.6264,
+              "exitReason": "MA5_DOWN_CROSS"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 7103,
+            "avgMaxRebound5dPct": 5.2205,
+            "medianMaxRebound5dPct": 3.5339,
+            "avgCloseReturn5dPct": 0.1558,
+            "reclaimEntryRate5d": 0.3605,
+            "rebound10PctRate5d": 0.1637,
+            "avgMaxRebound10dPct": 7.8037,
+            "medianMaxRebound10dPct": 5.0791,
+            "avgCloseReturn10dPct": 0.5527,
+            "reclaimEntryRate10d": 0.4926,
+            "rebound10PctRate10d": 0.2716,
+            "avgMaxRebound20dPct": 11.6274,
+            "medianMaxRebound20dPct": 7.2648,
+            "avgCloseReturn20dPct": 1.277,
+            "reclaimEntryRate20d": 0.6118,
+            "rebound10PctRate20d": 0.3978
+          }
+        },
+        "TRAIN_2024": {
+          "tradeDistribution": {
+            "tradeCount": 7358,
+            "winRate": 0.2367,
+            "avgTradeNetReturnPct": -0.4032,
+            "avgWinPct": 11.8705,
+            "avgLossPct": -4.2103,
+            "payoffRatio": 2.8194,
+            "expectancyPct": -0.4032,
+            "profitFactor": 0.8745,
+            "maxTradeGainPct": 187.8393,
+            "maxTradeLossPct": -18.9889,
+            "avgHoldingDays": 9.35,
+            "medianHoldingDays": 6.0,
+            "avgMfePct": 8.2222,
+            "avgMaePct": -4.5439,
+            "worstInTradeMaePct": -24.3772,
+            "maxConsecutiveLosses": 25,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 4659,
+              "STOP_INTRADAY": 2449,
+              "STOP_GAP": 250
+            },
+            "bestTrade": {
+              "symbol": "4909",
+              "signalDate": "2024-01-05",
+              "entryDate": "2024-01-08",
+              "exitDate": "2024-04-11",
+              "netReturnPct": 187.8393,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "4160",
+              "signalDate": "2024-07-15",
+              "entryDate": "2024-07-16",
+              "exitDate": "2024-07-30",
+              "netReturnPct": -18.9889,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 96549.72,
+            "totalReturnPct": -3.4503,
+            "maxDrawdownPct": -29.3789,
+            "selectedTradeCount": 131,
+            "candidateTradeCount": 7358,
+            "skippedCapacity": 7227,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 131,
+            "winRate": 0.2214,
+            "avgTradeNetReturnPct": 0.3524,
+            "avgWinPct": 22.1378,
+            "avgLossPct": -5.8415,
+            "payoffRatio": 3.7897,
+            "expectancyPct": 0.3524,
+            "profitFactor": 1.0775,
+            "maxTradeGainPct": 72.166,
+            "maxTradeLossPct": -15.323,
+            "avgHoldingDays": 9.46,
+            "medianHoldingDays": 6.0,
+            "avgMfePct": 13.9528,
+            "avgMaePct": -6.5594,
+            "worstInTradeMaePct": -15.5477,
+            "maxConsecutiveLosses": 12,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 64,
+              "STOP_INTRADAY": 61,
+              "STOP_GAP": 6
+            },
+            "bestTrade": {
+              "symbol": "6425",
+              "signalDate": "2024-01-23",
+              "entryDate": "2024-01-24",
+              "exitDate": "2024-03-11",
+              "netReturnPct": 72.166,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "1325",
+              "signalDate": "2024-01-03",
+              "entryDate": "2024-01-04",
+              "exitDate": "2024-01-08",
+              "netReturnPct": -15.323,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 2699,
+            "avgMaxRebound5dPct": 4.5622,
+            "medianMaxRebound5dPct": 3.0324,
+            "avgCloseReturn5dPct": -0.2921,
+            "reclaimEntryRate5d": 0.3416,
+            "rebound10PctRate5d": 0.1278,
+            "avgMaxRebound10dPct": 6.8238,
+            "medianMaxRebound10dPct": 4.3995,
+            "avgCloseReturn10dPct": 0.0096,
+            "reclaimEntryRate10d": 0.462,
+            "rebound10PctRate10d": 0.2212,
+            "avgMaxRebound20dPct": 10.1505,
+            "medianMaxRebound20dPct": 6.1885,
+            "avgCloseReturn20dPct": 0.6763,
+            "reclaimEntryRate20d": 0.5839,
+            "rebound10PctRate20d": 0.3453
+          }
+        },
+        "VALIDATION_2025": {
+          "tradeDistribution": {
+            "tradeCount": 6068,
+            "winRate": 0.2589,
+            "avgTradeNetReturnPct": 0.1565,
+            "avgWinPct": 13.2463,
+            "avgLossPct": -4.4164,
+            "payoffRatio": 2.9994,
+            "expectancyPct": 0.1565,
+            "profitFactor": 1.0478,
+            "maxTradeGainPct": 214.6362,
+            "maxTradeLossPct": -17.1328,
+            "avgHoldingDays": 9.78,
+            "medianHoldingDays": 6.0,
+            "avgMfePct": 8.8708,
+            "avgMaePct": -4.5034,
+            "worstInTradeMaePct": -26.2418,
+            "maxConsecutiveLosses": 24,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 3877,
+              "STOP_INTRADAY": 1922,
+              "STOP_GAP": 269
+            },
+            "bestTrade": {
+              "symbol": "2408",
+              "signalDate": "2025-09-04",
+              "entryDate": "2025-09-05",
+              "exitDate": "2025-11-19",
+              "netReturnPct": 214.6362,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "7780",
+              "signalDate": "2025-09-17",
+              "entryDate": "2025-09-18",
+              "exitDate": "2025-09-25",
+              "netReturnPct": -17.1328,
+              "exitReason": "STOP_INTRADAY"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 159410.77,
+            "totalReturnPct": 59.4108,
+            "maxDrawdownPct": -29.8048,
+            "selectedTradeCount": 128,
+            "candidateTradeCount": 6068,
+            "skippedCapacity": 5684,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 128,
+            "winRate": 0.2891,
+            "avgTradeNetReturnPct": 2.1481,
+            "avgWinPct": 23.1207,
+            "avgLossPct": -6.3791,
+            "payoffRatio": 3.6244,
+            "expectancyPct": 2.1481,
+            "profitFactor": 1.4737,
+            "maxTradeGainPct": 109.1985,
+            "maxTradeLossPct": -16.4253,
+            "avgHoldingDays": 10.21,
+            "medianHoldingDays": 7.0,
+            "avgMfePct": 14.9931,
+            "avgMaePct": -6.2106,
+            "worstInTradeMaePct": -18.4438,
+            "maxConsecutiveLosses": 12,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 66,
+              "STOP_INTRADAY": 54,
+              "STOP_GAP": 8
+            },
+            "bestTrade": {
+              "symbol": "5289",
+              "signalDate": "2025-10-08",
+              "entryDate": "2025-10-09",
+              "exitDate": "2026-02-03",
+              "netReturnPct": 109.1985,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "3081",
+              "signalDate": "2025-03-20",
+              "entryDate": "2025-03-21",
+              "exitDate": "2025-03-31",
+              "netReturnPct": -16.4253,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 2191,
+            "avgMaxRebound5dPct": 4.896,
+            "medianMaxRebound5dPct": 3.4436,
+            "avgCloseReturn5dPct": -0.374,
+            "reclaimEntryRate5d": 0.3524,
+            "rebound10PctRate5d": 0.1442,
+            "avgMaxRebound10dPct": 7.2838,
+            "medianMaxRebound10dPct": 4.7579,
+            "avgCloseReturn10dPct": 0.0667,
+            "reclaimEntryRate10d": 0.477,
+            "rebound10PctRate10d": 0.2501,
+            "avgMaxRebound20dPct": 11.0243,
+            "medianMaxRebound20dPct": 6.9249,
+            "avgCloseReturn20dPct": 0.4829,
+            "reclaimEntryRate20d": 0.5997,
+            "rebound10PctRate20d": 0.3806
+          }
+        },
+        "TEST_2026_DESCRIPTIVE": {
+          "tradeDistribution": {
+            "tradeCount": 4826,
+            "winRate": 0.2777,
+            "avgTradeNetReturnPct": 1.0353,
+            "avgWinPct": 18.4261,
+            "avgLossPct": -5.6496,
+            "payoffRatio": 3.2615,
+            "expectancyPct": 1.0353,
+            "profitFactor": 1.2537,
+            "maxTradeGainPct": 347.7123,
+            "maxTradeLossPct": -19.7122,
+            "avgHoldingDays": 9.36,
+            "medianHoldingDays": 6.0,
+            "avgMfePct": 12.8258,
+            "avgMaePct": -5.7909,
+            "worstInTradeMaePct": -23.5521,
+            "maxConsecutiveLosses": 32,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 2825,
+              "STOP_INTRADAY": 1453,
+              "END_OF_DATA": 324,
+              "STOP_GAP": 224
+            },
+            "bestTrade": {
+              "symbol": "6173",
+              "signalDate": "2026-04-08",
+              "entryDate": "2026-04-09",
+              "exitDate": "2026-06-24",
+              "netReturnPct": 347.7123,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "2434",
+              "signalDate": "2026-07-08",
+              "entryDate": "2026-07-09",
+              "exitDate": "2026-07-30",
+              "netReturnPct": -19.7122,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 134662.57,
+            "totalReturnPct": 34.6626,
+            "maxDrawdownPct": -27.7023,
+            "selectedTradeCount": 80,
+            "candidateTradeCount": 4826,
+            "skippedCapacity": 4617,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 80,
+            "winRate": 0.3,
+            "avgTradeNetReturnPct": 2.7369,
+            "avgWinPct": 24.3965,
+            "avgLossPct": -6.5457,
+            "payoffRatio": 3.7271,
+            "expectancyPct": 2.7369,
+            "profitFactor": 1.5973,
+            "maxTradeGainPct": 172.1271,
+            "maxTradeLossPct": -13.5183,
+            "avgHoldingDays": 9.9,
+            "medianHoldingDays": 4.0,
+            "avgMfePct": 17.0201,
+            "avgMaePct": -6.2996,
+            "worstInTradeMaePct": -13.4921,
+            "maxConsecutiveLosses": 9,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 38,
+              "STOP_INTRADAY": 31,
+              "STOP_GAP": 6,
+              "END_OF_DATA": 5
+            },
+            "bestTrade": {
+              "symbol": "7734",
+              "signalDate": "2026-02-02",
+              "entryDate": "2026-02-03",
+              "exitDate": "2026-06-02",
+              "netReturnPct": 172.1271,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "8088",
+              "signalDate": "2026-06-02",
+              "entryDate": "2026-06-03",
+              "exitDate": "2026-06-08",
+              "netReturnPct": -13.5183,
+              "exitReason": "STOP_GAP"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 1677,
+            "avgMaxRebound5dPct": 7.0637,
+            "medianMaxRebound5dPct": 5.178,
+            "avgCloseReturn5dPct": 1.6322,
+            "reclaimEntryRate5d": 0.4023,
+            "rebound10PctRate5d": 0.269,
+            "avgMaxRebound10dPct": 10.6518,
+            "medianMaxRebound10dPct": 7.8694,
+            "avgCloseReturn10dPct": 2.155,
+            "reclaimEntryRate10d": 0.5595,
+            "rebound10PctRate10d": 0.4088,
+            "avgMaxRebound20dPct": 15.6029,
+            "medianMaxRebound20dPct": 11.1071,
+            "avgCloseReturn20dPct": 3.2211,
+            "reclaimEntryRate20d": 0.6701,
+            "rebound10PctRate20d": 0.5344
+          }
+        },
+        "BULL_ONLY_FULL": {
+          "tradeDistribution": {
+            "tradeCount": 8960,
+            "winRate": 0.2752,
+            "avgTradeNetReturnPct": 0.3052,
+            "avgWinPct": 13.1267,
+            "avgLossPct": -4.5636,
+            "payoffRatio": 2.8764,
+            "expectancyPct": 0.3052,
+            "profitFactor": 1.0923,
+            "maxTradeGainPct": 347.7123,
+            "maxTradeLossPct": -22.1233,
+            "avgHoldingDays": 10.29,
+            "medianHoldingDays": 7.0,
+            "avgMfePct": 9.7121,
+            "avgMaePct": -4.7141,
+            "worstInTradeMaePct": -23.4921,
+            "maxConsecutiveLosses": 24,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 5917,
+              "STOP_INTRADAY": 2500,
+              "STOP_GAP": 362,
+              "END_OF_DATA": 181
+            },
+            "bestTrade": {
+              "symbol": "6173",
+              "signalDate": "2026-04-08",
+              "entryDate": "2026-04-09",
+              "exitDate": "2026-06-24",
+              "netReturnPct": 347.7123,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "6799",
+              "signalDate": "2023-09-14",
+              "entryDate": "2023-09-15",
+              "exitDate": "2023-10-27",
+              "netReturnPct": -22.1233,
+              "exitReason": "MA5_DOWN_CROSS"
+            }
+          },
+          "portfolio": {
+            "initialCapital": 100000.0,
+            "endingCapital": 100397.92,
+            "totalReturnPct": 0.3979,
+            "maxDrawdownPct": -52.3751,
+            "selectedTradeCount": 289,
+            "candidateTradeCount": 8960,
+            "skippedCapacity": 8671,
+            "selectionPriority": "Higher MA5 slope first, then higher signal-day trade value.",
+            "tradeCount": 289,
+            "winRate": 0.2803,
+            "avgTradeNetReturnPct": 0.5043,
+            "avgWinPct": 17.9303,
+            "avgLossPct": -6.2818,
+            "payoffRatio": 2.8543,
+            "expectancyPct": 0.5043,
+            "profitFactor": 1.1115,
+            "maxTradeGainPct": 108.2857,
+            "maxTradeLossPct": -15.6183,
+            "avgHoldingDays": 9.78,
+            "medianHoldingDays": 7.0,
+            "avgMfePct": 13.7269,
+            "avgMaePct": -6.3402,
+            "worstInTradeMaePct": -17.6692,
+            "maxConsecutiveLosses": 15,
+            "exitReasonCounts": {
+              "MA5_DOWN_CROSS": 164,
+              "STOP_INTRADAY": 104,
+              "STOP_GAP": 16,
+              "END_OF_DATA": 5
+            },
+            "bestTrade": {
+              "symbol": "6443",
+              "signalDate": "2025-12-19",
+              "entryDate": "2025-12-22",
+              "exitDate": "2026-03-11",
+              "netReturnPct": 108.2857,
+              "exitReason": "MA5_DOWN_CROSS"
+            },
+            "worstTrade": {
+              "symbol": "6945",
+              "signalDate": "2025-08-21",
+              "entryDate": "2025-08-22",
+              "exitDate": "2025-09-23",
+              "netReturnPct": -15.6183,
+              "exitReason": "MA5_DOWN_CROSS"
+            }
+          },
+          "stopRecovery": {
+            "stopTradeCount": 2862,
+            "avgMaxRebound5dPct": 5.2243,
+            "medianMaxRebound5dPct": 3.5458,
+            "avgCloseReturn5dPct": 0.3084,
+            "reclaimEntryRate5d": 0.3508,
+            "rebound10PctRate5d": 0.1689,
+            "avgMaxRebound10dPct": 7.7387,
+            "medianMaxRebound10dPct": 5.1239,
+            "avgCloseReturn10dPct": 0.4471,
+            "reclaimEntryRate10d": 0.4841,
+            "rebound10PctRate10d": 0.2721,
+            "avgMaxRebound20dPct": 11.4493,
+            "medianMaxRebound20dPct": 7.2958,
+            "avgCloseReturn20dPct": 1.0642,
+            "reclaimEntryRate20d": 0.603,
+            "rebound10PctRate20d": 0.398
+          }
+        }
+      }
+    }
+  },
+  "validation2025Ranking": [
+    {
+      "variant": "ATR_STRUCT_STOP",
+      "totalReturnPct": 59.4108,
+      "maxDrawdownPct": -29.8048,
+      "expectancyPct": 2.1481,
+      "profitFactor": 1.4737,
+      "payoffRatio": 3.6244,
+      "avgWinPct": 23.1207,
+      "avgLossPct": -6.3791,
+      "maxTradeGainPct": 109.1985,
+      "maxTradeLossPct": -16.4253,
+      "tradeCount": 128
+    },
+    {
+      "variant": "FIXED_STOP_5PCT",
+      "totalReturnPct": 32.2183,
+      "maxDrawdownPct": -38.91,
+      "expectancyPct": 1.5465,
+      "profitFactor": 1.3854,
+      "payoffRatio": 4.4114,
+      "avgWinPct": 23.2602,
+      "avgLossPct": -5.2727,
+      "maxTradeGainPct": 109.1985,
+      "maxTradeLossPct": -12.733,
+      "tradeCount": 159
+    },
+    {
+      "variant": "FIXED_STOP_7PCT",
+      "totalReturnPct": 29.9471,
+      "maxDrawdownPct": -38.2077,
+      "expectancyPct": 1.7334,
+      "profitFactor": 1.3547,
+      "payoffRatio": 3.9867,
+      "avgWinPct": 26.1025,
+      "avgLossPct": -6.5474,
+      "maxTradeGainPct": 109.1985,
+      "maxTradeLossPct": -15.5089,
+      "tradeCount": 138
+    },
+    {
+      "variant": "MA5_ONLY",
+      "totalReturnPct": 0.4562,
+      "maxDrawdownPct": -48.1929,
+      "expectancyPct": 0.5307,
+      "profitFactor": 1.096,
+      "payoffRatio": 2.455,
+      "avgWinPct": 19.6322,
+      "avgLossPct": -7.9967,
+      "maxTradeGainPct": 109.1985,
+      "maxTradeLossPct": -37.5495,
+      "tradeCount": 81
+    }
+  ],
+  "promotionPolicy": {
+    "automaticProductionChanges": false,
+    "minimum": "Prefer positive 2025 total return and expectancy, profit factor >1, materially lower drawdown and worst loss than MA5_ONLY, while retaining a strong payoff ratio and without excessive post-stop recoveries."
+  },
+  "limitations": [
+    "Daily OHLC cannot determine intraday path when multiple price levels are touched; hard-stop fills use conservative gap/open logic and stop-touch assumptions.",
+    "ATR/structure stop is static from entry and is not a trailing stop.",
+    "Current-listed security master and Yahoo history retain the prior survivorship/data-source limitations.",
+    "2026 is descriptive because it has already been examined in earlier research; forward Decision Ledger remains the cleanest live validation."
+  ]
+}
