@@ -1,4 +1,4 @@
-name: Historical Taiwan Backtest V1.4
+name: Historical Taiwan Backtest V1.5
 
 on:
   workflow_dispatch:
@@ -20,7 +20,8 @@ on:
       - "scripts/backtest_execution.py"
       - "scripts/backtest_portfolio.py"
       - "scripts/backtest_ranker.py"
-      - "scripts/backtest_v14_runner.py"
+      - "scripts/backtest_ma5.py"
+      - "scripts/backtest_v15_runner.py"
       - "scripts/historical_backtest.py"
 
 permissions:
@@ -64,12 +65,13 @@ jobs:
           python -m py_compile scripts/backtest_execution.py
           python -m py_compile scripts/backtest_portfolio.py
           python -m py_compile scripts/backtest_ranker.py
+          python -m py_compile scripts/backtest_ma5.py
           python -m py_compile scripts/historical_backtest.py
-          python -m py_compile scripts/backtest_v14_runner.py
+          python -m py_compile scripts/backtest_v15_runner.py
 
       - name: Run historical backtest
         run: |
-          python scripts/backtest_v14_runner.py
+          python scripts/backtest_v15_runner.py
 
       - name: Show calibration summary
         run: |
@@ -79,23 +81,28 @@ jobs:
           p = json.loads(Path('data/backtest-summary.json').read_text(encoding='utf-8'))
           q = json.loads(Path('data/backtest-portfolio-summary.json').read_text(encoding='utf-8'))
           r = json.loads(Path('data/backtest-ranking-summary.json').read_text(encoding='utf-8'))
+          m = json.loads(Path('data/backtest-ma5-summary.json').read_text(encoding='utf-8'))
           print('Version:', p.get('version'))
           print('Period:', p.get('period'))
           print('Coverage:', p.get('coverage'))
           print('Portfolio validation-2025 top 5:', (q.get('validation2025RankingByTotalReturn') or [])[:5])
-          print('Ranker training policy:', r.get('trainingPolicy'))
           print('Ranker validation-2025 top 10:', (r.get('validation2025Ranking') or [])[:10])
+          print('MA5 rule:', m.get('ruleDefinition'))
+          for variant, modes in (m.get('results') or {}).items():
+              for mode, scopes in modes.items():
+                  v = (scopes.get('VALIDATION_2025') or {}).get('portfolio') or {}
+                  print('MA5 2025:', variant, mode, {k:v.get(k) for k in ['totalReturnPct','maxDrawdownPct','expectancyPct','profitFactor','avgWinPct','avgLossPct','maxTradeGainPct','maxTradeLossPct','tradeCount']})
           PY
 
       - name: Commit backtest outputs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/backtest-summary.json data/backtest-signal-sample.json data/backtest-execution-summary.json data/backtest-execution-sample.json data/backtest-portfolio-summary.json data/backtest-ranking-summary.json
+          git add data/backtest-summary.json data/backtest-signal-sample.json data/backtest-execution-summary.json data/backtest-execution-sample.json data/backtest-portfolio-summary.json data/backtest-ranking-summary.json data/backtest-ma5-summary.json
           if git diff --cached --quiet; then
             echo "No backtest output changes."
             exit 0
           fi
-          git commit -m "Update historical Taiwan backtest V1.4"
+          git commit -m "Update historical Taiwan backtest V1.5"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push
