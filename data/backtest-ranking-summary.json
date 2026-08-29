@@ -2,7 +2,7 @@
   "ok": true,
   "schemaVersion": 1,
   "version": "candidate-ranker-v1.4",
-  "generatedAt": "2026-08-29T15:11:55.868094+00:00",
+  "generatedAt": "2026-08-29T16:05:26.628464+00:00",
   "purpose": "Train a point-in-time candidate ranking model on 2024 only, then test whether choosing limited portfolio slots improves 2025 portfolio economics. Win rate is secondary to total return, expectancy, payoff and drawdown.",
   "trainingPolicy": {
     "fitSplit": "TRAIN_2024 only",
@@ -80,7 +80,7 @@
         "trainDayCount": 242,
         "trainTargetMeanPct": -0.793,
         "trainWinsorizedMeanPct": -0.821,
-        "trainSpearman": 0.0828,
+        "trainSpearman": 0.0827,
         "alpha": 25.0,
         "targetClipPct": [
           -10.1863,
@@ -89,113 +89,113 @@
         "topCoefficients": [
           {
             "feature": "RANK_closePosition",
-            "coefficient": -2.179
+            "coefficient": -2.1716
           },
           {
             "feature": "RANK_distanceFromMA20Pct",
-            "coefficient": 1.3676
+            "coefficient": 1.3789
           },
           {
             "feature": "distMABucket=LT14",
-            "coefficient": 1.2823
+            "coefficient": 1.2833
           },
           {
             "feature": "RANK_distanceFrom20DHighPct",
-            "coefficient": 1.0718
+            "coefficient": 1.0832
           },
           {
             "feature": "RANK_ma20Slope5Pct",
-            "coefficient": 1.02
+            "coefficient": 1.0252
           },
           {
             "feature": "distMABucket=GE25",
-            "coefficient": -0.9173
+            "coefficient": -0.9212
           },
           {
             "feature": "RANK_rrProxy",
-            "coefficient": -0.6637
+            "coefficient": -0.6229
           },
           {
             "feature": "RANK_changePct",
-            "coefficient": 0.5907
+            "coefficient": 0.5848
           },
           {
             "feature": "extensionSubtype=EXHAUSTION_RISK",
-            "coefficient": -0.5128
+            "coefficient": -0.5101
           },
           {
             "feature": "extensionSubtype=OTHER_EXTENSION",
-            "coefficient": 0.4683
+            "coefficient": 0.4705
           },
           {
             "feature": "RANK_upperWickPct",
-            "coefficient": -0.3828
+            "coefficient": -0.3789
           },
           {
             "feature": "distMABucket=18_TO_25",
-            "coefficient": -0.3336
+            "coefficient": -0.3334
           }
         ]
       },
       "OPEN_NO_CHASE_3PCT": {
-        "trainCount": 12852,
+        "trainCount": 12851,
         "trainDayCount": 242,
-        "trainTargetMeanPct": -0.793,
-        "trainWinsorizedMeanPct": -0.8178,
-        "trainSpearman": 0.1024,
+        "trainTargetMeanPct": -0.7937,
+        "trainWinsorizedMeanPct": -0.8185,
+        "trainSpearman": 0.1022,
         "alpha": 25.0,
         "targetClipPct": [
           -9.737,
-          15.5516
+          15.5521
         ],
         "topCoefficients": [
           {
             "feature": "RANK_distanceFrom20DHighPct",
-            "coefficient": 1.8033
+            "coefficient": 1.8172
           },
           {
             "feature": "RANK_closePosition",
-            "coefficient": -1.5878
+            "coefficient": -1.5807
           },
           {
             "feature": "distMABucket=LT14",
-            "coefficient": 1.3857
+            "coefficient": 1.383
           },
           {
             "feature": "RANK_ma20Slope5Pct",
-            "coefficient": 1.36
+            "coefficient": 1.3659
           },
           {
             "feature": "distMABucket=GE25",
-            "coefficient": -0.9378
+            "coefficient": -0.9351
           },
           {
             "feature": "RANK_distanceFromMA20Pct",
-            "coefficient": 0.6524
+            "coefficient": 0.6542
           },
           {
             "feature": "RANK_rrProxy",
-            "coefficient": -0.4121
+            "coefficient": -0.3771
           },
           {
             "feature": "rvolBucket=GE2",
-            "coefficient": -0.3511
+            "coefficient": -0.3459
           },
           {
             "feature": "extensionSubtype=EXHAUSTION_RISK",
-            "coefficient": -0.341
+            "coefficient": -0.3391
           },
           {
             "feature": "extensionSubtype=HIGH_VOLUME_EXTENSION",
-            "coefficient": 0.3205
-          },
-          {
-            "feature": "distMABucket=18_TO_25",
-            "coefficient": -0.2843
+            "coefficient": 0.3166
           },
           {
             "feature": "extensionSubtype=OTHER_EXTENSION",
-            "coefficient": 0.2841
+            "coefficient": 0.2863
+          },
+          {
+            "feature": "distMABucket=18_TO_25",
+            "coefficient": -0.286
           }
         ]
       },
@@ -204,7 +204,7 @@
         "trainDayCount": 242,
         "trainTargetMeanPct": -0.8004,
         "trainWinsorizedMeanPct": -0.8226,
-        "trainSpearman": 0.0747,
+        "trainSpearman": 0.0746,
         "alpha": 25.0,
         "targetClipPct": [
           -9.5533,
@@ -213,113 +213,113 @@
         "topCoefficients": [
           {
             "feature": "RANK_distanceFrom20DHighPct",
-            "coefficient": 1.4006
+            "coefficient": 1.4055
           },
           {
             "feature": "RANK_closePosition",
-            "coefficient": -1.1229
+            "coefficient": -1.1192
           },
           {
             "feature": "distMABucket=LT14",
-            "coefficient": 0.9536
+            "coefficient": 0.953
           },
           {
             "feature": "distMABucket=GE25",
-            "coefficient": -0.8584
+            "coefficient": -0.858
           },
           {
             "feature": "RANK_ma20Slope5Pct",
-            "coefficient": 0.8213
+            "coefficient": 0.8223
           },
           {
             "feature": "RANK_distanceFromMA20Pct",
-            "coefficient": 0.8103
+            "coefficient": 0.8132
           },
           {
             "feature": "distMABucket=UNKNOWN",
-            "coefficient": 0.7044
+            "coefficient": 0.705
           },
           {
             "feature": "distMABucket=18_TO_25",
-            "coefficient": -0.5826
+            "coefficient": -0.5832
           },
           {
             "feature": "extensionSubtype=HIGH_VOLUME_EXTENSION",
-            "coefficient": 0.4815
+            "coefficient": 0.4801
           },
           {
             "feature": "rvolBucket=LT1",
-            "coefficient": 0.297
+            "coefficient": 0.2964
           },
           {
             "feature": "extensionSubtype=GAP_EXTENSION",
-            "coefficient": -0.2901
+            "coefficient": -0.2916
           },
           {
             "feature": "RANK_upperWickPct",
-            "coefficient": -0.2796
+            "coefficient": -0.278
           }
         ]
       },
       "BREAKOUT_0_5PCT": {
-        "trainCount": 8933,
+        "trainCount": 8934,
         "trainDayCount": 242,
-        "trainTargetMeanPct": -0.7713,
-        "trainWinsorizedMeanPct": -0.7966,
-        "trainSpearman": 0.0704,
+        "trainTargetMeanPct": -0.7721,
+        "trainWinsorizedMeanPct": -0.7974,
+        "trainSpearman": 0.0703,
         "alpha": 25.0,
         "targetClipPct": [
-          -10.7501,
-          17.4036
+          -10.7499,
+          17.4025
         ],
         "topCoefficients": [
           {
             "feature": "RANK_ma20Slope5Pct",
-            "coefficient": 2.1179
+            "coefficient": 2.1342
           },
           {
             "feature": "RANK_closePosition",
-            "coefficient": -1.0909
+            "coefficient": -1.0834
           },
           {
             "feature": "RANK_distanceFrom20DHighPct",
-            "coefficient": 1.0596
+            "coefficient": 1.0753
           },
           {
             "feature": "distMABucket=LT14",
-            "coefficient": 0.7978
-          },
-          {
-            "feature": "extensionSubtype=EXHAUSTION_RISK",
-            "coefficient": -0.779
+            "coefficient": 0.8013
           },
           {
             "feature": "RANK_rangePct",
-            "coefficient": -0.7765
+            "coefficient": -0.7807
+          },
+          {
+            "feature": "extensionSubtype=EXHAUSTION_RISK",
+            "coefficient": -0.7781
           },
           {
             "feature": "RANK_gapPct",
-            "coefficient": -0.7635
+            "coefficient": -0.7664
           },
           {
             "feature": "rvolBucket=1_5_TO_2",
-            "coefficient": 0.7444
+            "coefficient": 0.7463
           },
           {
             "feature": "extensionSubtype=OTHER_EXTENSION",
-            "coefficient": 0.6581
-          },
-          {
-            "feature": "RANK_changePct",
-            "coefficient": 0.4924
+            "coefficient": 0.6595
           },
           {
             "feature": "distMABucket=GE25",
-            "coefficient": -0.4849
+            "coefficient": -0.4993
+          },
+          {
+            "feature": "RANK_changePct",
+            "coefficient": 0.4827
           },
           {
             "feature": "RANK_sectorStrengthScore",
-            "coefficient": 0.3997
+            "coefficient": 0.4027
           }
         ]
       }
@@ -339,47 +339,47 @@
         "topCoefficients": [
           {
             "feature": "RANK_sectorStrengthScore",
-            "coefficient": -1.4568
+            "coefficient": -1.4584
           },
           {
             "feature": "rvolBucket=LT1",
-            "coefficient": 1.213
+            "coefficient": 1.2133
           },
           {
             "feature": "RANK_closePosition",
-            "coefficient": 0.9231
+            "coefficient": 0.9236
           },
           {
             "feature": "RANK_rrProxy",
-            "coefficient": -0.7699
+            "coefficient": -0.7623
           },
           {
             "feature": "RANK_gapPct",
-            "coefficient": -0.6983
+            "coefficient": -0.6985
           },
           {
             "feature": "rvolBucket=GE2",
-            "coefficient": -0.6544
+            "coefficient": -0.6552
           },
           {
             "feature": "RANK_rvol20",
-            "coefficient": 0.6521
+            "coefficient": 0.6527
           },
           {
             "feature": "RANK_ma20Slope5Pct",
-            "coefficient": 0.6176
+            "coefficient": 0.6178
           },
           {
             "feature": "distMABucket=GE25",
-            "coefficient": -0.5821
+            "coefficient": -0.582
           },
           {
             "feature": "rvolBucket=1_5_TO_2",
-            "coefficient": -0.511
+            "coefficient": -0.5114
           },
           {
             "feature": "RANK_distanceFrom20DHighPct",
-            "coefficient": -0.4668
+            "coefficient": -0.4673
           },
           {
             "feature": "distMABucket=18_TO_25",
@@ -392,7 +392,7 @@
         "trainDayCount": 59,
         "trainTargetMeanPct": 0.6067,
         "trainWinsorizedMeanPct": 0.597,
-        "trainSpearman": 0.1587,
+        "trainSpearman": 0.1586,
         "alpha": 25.0,
         "targetClipPct": [
           -9.298,
@@ -401,51 +401,51 @@
         "topCoefficients": [
           {
             "feature": "RANK_ma20Slope5Pct",
-            "coefficient": 1.3797
+            "coefficient": 1.3805
           },
           {
             "feature": "RANK_sectorStrengthScore",
-            "coefficient": -1.0281
+            "coefficient": -1.0292
           },
           {
             "feature": "rvolBucket=GE2",
-            "coefficient": -0.7414
+            "coefficient": -0.742
           },
           {
             "feature": "RANK_rangePct",
-            "coefficient": -0.7322
+            "coefficient": -0.7333
           },
           {
             "feature": "distMABucket=LT14",
-            "coefficient": 0.7204
+            "coefficient": 0.719
           },
           {
             "feature": "RANK_closePosition",
-            "coefficient": -0.5684
+            "coefficient": -0.5697
           },
           {
             "feature": "RANK_distanceFromMA20Pct",
-            "coefficient": 0.5632
+            "coefficient": 0.5651
           },
           {
             "feature": "rvolBucket=LT1",
-            "coefficient": 0.4473
+            "coefficient": 0.4483
           },
           {
             "feature": "distMABucket=GE25",
-            "coefficient": -0.4222
+            "coefficient": -0.4221
           },
           {
             "feature": "sectorBucket=STRONG_70_PLUS",
-            "coefficient": -0.4184
+            "coefficient": -0.419
           },
           {
             "feature": "sectorBucket=WEAK_LT50",
-            "coefficient": 0.3754
+            "coefficient": 0.3755
           },
           {
             "feature": "RANK_changePct",
-            "coefficient": 0.3522
+            "coefficient": 0.3515
           }
         ]
       },
@@ -454,7 +454,7 @@
         "trainDayCount": 58,
         "trainTargetMeanPct": 0.3368,
         "trainWinsorizedMeanPct": 0.3356,
-        "trainSpearman": 0.172,
+        "trainSpearman": 0.1715,
         "alpha": 25.0,
         "targetClipPct": [
           -8.4891,
@@ -463,51 +463,51 @@
         "topCoefficients": [
           {
             "feature": "RANK_distanceFrom20DHighPct",
-            "coefficient": -1.6004
+            "coefficient": -1.599
           },
           {
             "feature": "RANK_gapPct",
-            "coefficient": 0.9248
+            "coefficient": 0.9242
           },
           {
             "feature": "rvolBucket=LT1",
-            "coefficient": 0.9164
+            "coefficient": 0.9169
           },
           {
             "feature": "rvolBucket=1_TO_1_5",
-            "coefficient": -0.7114
+            "coefficient": -0.712
           },
           {
             "feature": "sectorBucket=WEAK_LT50",
-            "coefficient": 0.6657
+            "coefficient": 0.6656
           },
           {
             "feature": "RANK_sectorStrengthScore",
-            "coefficient": -0.6491
+            "coefficient": -0.65
           },
           {
             "feature": "sectorBucket=STRONG_70_PLUS",
-            "coefficient": -0.6342
+            "coefficient": -0.6345
           },
           {
             "feature": "rvolBucket=1_5_TO_2",
-            "coefficient": -0.6128
+            "coefficient": -0.613
           },
           {
             "feature": "RANK_closePosition",
-            "coefficient": 0.552
+            "coefficient": 0.5513
           },
           {
             "feature": "distMABucket=GE25",
-            "coefficient": -0.4708
+            "coefficient": -0.4704
           },
           {
             "feature": "rvolBucket=GE2",
-            "coefficient": 0.4078
+            "coefficient": 0.4081
           },
           {
             "feature": "RANK_changePct",
-            "coefficient": -0.3435
+            "coefficient": -0.3441
           }
         ]
       },
@@ -580,7 +580,7 @@
       "NEXT_OPEN": {
         "FULL_RESEARCH_PERIOD": {
           "baselineV13": {
-            "totalReturnPct": -97.1616,
+            "totalReturnPct": -97.1617,
             "cagrPct": -73.9202,
             "maxDrawdownPct": -97.5446,
             "tradeCount": 1759,
@@ -597,30 +597,30 @@
             "avgCapitalUtilizationPct": 45.1985
           },
           "trainedRanker": {
-            "totalReturnPct": -71.36,
-            "cagrPct": -37.6118,
-            "maxDrawdownPct": -81.164,
-            "tradeCount": 1163,
-            "winRate": 0.3792,
-            "avgTradeNetReturnPct": -0.44,
-            "avgWinPct": 8.029,
-            "avgLossPct": -5.6129,
-            "payoffRatio": 1.4305,
-            "expectancyPct": -0.44,
-            "profitFactor": 0.8737,
+            "totalReturnPct": -65.2356,
+            "cagrPct": -32.8789,
+            "maxDrawdownPct": -77.9957,
+            "tradeCount": 1156,
+            "winRate": 0.3841,
+            "avgTradeNetReturnPct": -0.3586,
+            "avgWinPct": 8.0433,
+            "avgLossPct": -5.598,
+            "payoffRatio": 1.4368,
+            "expectancyPct": -0.3586,
+            "profitFactor": 0.896,
             "maxTradeGainPct": 26.0251,
             "maxTradeLossPct": -17.2999,
             "maxConsecutiveLosses": 19,
-            "avgCapitalUtilizationPct": 63.2562
+            "avgCapitalUtilizationPct": 63.4558
           },
-          "deltaTotalReturnPct": 25.8016,
-          "deltaMaxDrawdownPct": 16.3806,
-          "deltaExpectancyPct": 0.5547
+          "deltaTotalReturnPct": 31.9261,
+          "deltaMaxDrawdownPct": 19.5489,
+          "deltaExpectancyPct": 0.6361
         },
         "TRAIN_2024": {
           "baselineV13": {
-            "totalReturnPct": -63.3059,
-            "cagrPct": -62.7313,
+            "totalReturnPct": -63.306,
+            "cagrPct": -62.7314,
             "maxDrawdownPct": -69.5019,
             "tradeCount": 636,
             "winRate": 0.3097,
@@ -636,25 +636,25 @@
             "avgCapitalUtilizationPct": 46.629
           },
           "trainedRanker": {
-            "totalReturnPct": -3.7729,
-            "cagrPct": -3.7155,
-            "maxDrawdownPct": -34.8699,
-            "tradeCount": 429,
-            "winRate": 0.4242,
-            "avgTradeNetReturnPct": 0.036,
-            "avgWinPct": 7.8108,
-            "avgLossPct": -5.6928,
-            "payoffRatio": 1.372,
-            "expectancyPct": 0.036,
-            "profitFactor": 1.011,
+            "totalReturnPct": 5.1417,
+            "cagrPct": 5.06,
+            "maxDrawdownPct": -32.4756,
+            "tradeCount": 433,
+            "winRate": 0.4296,
+            "avgTradeNetReturnPct": 0.147,
+            "avgWinPct": 7.8641,
+            "avgLossPct": -5.6643,
+            "payoffRatio": 1.3884,
+            "expectancyPct": 0.147,
+            "profitFactor": 1.0455,
             "maxTradeGainPct": 24.0333,
             "maxTradeLossPct": -17.2999,
             "maxConsecutiveLosses": 8,
-            "avgCapitalUtilizationPct": 63.6548
+            "avgCapitalUtilizationPct": 63.0477
           },
-          "deltaTotalReturnPct": 59.533,
-          "deltaMaxDrawdownPct": 34.632,
-          "deltaExpectancyPct": 0.8088
+          "deltaTotalReturnPct": 68.4477,
+          "deltaMaxDrawdownPct": 37.0263,
+          "deltaExpectancyPct": 0.9198
         },
         "VALIDATION_2025": {
           "baselineV13": {
@@ -675,25 +675,25 @@
             "avgCapitalUtilizationPct": 45.8859
           },
           "trainedRanker": {
-            "totalReturnPct": -45.8123,
-            "cagrPct": -45.3844,
-            "maxDrawdownPct": -54.1573,
-            "tradeCount": 434,
-            "winRate": 0.3594,
-            "avgTradeNetReturnPct": -0.6133,
-            "avgWinPct": 7.1707,
-            "avgLossPct": -4.9813,
-            "payoffRatio": 1.4395,
-            "expectancyPct": -0.6133,
-            "profitFactor": 0.8078,
+            "totalReturnPct": -46.268,
+            "cagrPct": -45.8378,
+            "maxDrawdownPct": -52.4582,
+            "tradeCount": 433,
+            "winRate": 0.3557,
+            "avgTradeNetReturnPct": -0.6268,
+            "avgWinPct": 7.2362,
+            "avgLossPct": -4.967,
+            "payoffRatio": 1.4569,
+            "expectancyPct": -0.6268,
+            "profitFactor": 0.8041,
             "maxTradeGainPct": 19.9169,
             "maxTradeLossPct": -11.3667,
             "maxConsecutiveLosses": 19,
-            "avgCapitalUtilizationPct": 62.8937
+            "avgCapitalUtilizationPct": 62.9546
           },
-          "deltaTotalReturnPct": 27.5627,
-          "deltaMaxDrawdownPct": 20.896,
-          "deltaExpectancyPct": 0.3861
+          "deltaTotalReturnPct": 27.107,
+          "deltaMaxDrawdownPct": 22.5951,
+          "deltaExpectancyPct": 0.3726
         },
         "TEST_2026_PLUS_DESCRIPTIVE": {
           "baselineV13": {
@@ -714,32 +714,32 @@
             "avgCapitalUtilizationPct": 39.8912
           },
           "trainedRanker": {
-            "totalReturnPct": -45.8902,
-            "cagrPct": -61.5016,
-            "maxDrawdownPct": -57.6697,
-            "tradeCount": 302,
-            "winRate": 0.3411,
-            "avgTradeNetReturnPct": -0.885,
-            "avgWinPct": 9.8354,
-            "avgLossPct": -6.4337,
-            "payoffRatio": 1.5287,
-            "expectancyPct": -0.885,
-            "profitFactor": 0.7913,
+            "totalReturnPct": -40.7039,
+            "cagrPct": -55.6162,
+            "maxDrawdownPct": -52.5286,
+            "tradeCount": 294,
+            "winRate": 0.3503,
+            "avgTradeNetReturnPct": -0.7636,
+            "avgWinPct": 9.7463,
+            "avgLossPct": -6.4313,
+            "payoffRatio": 1.5154,
+            "expectancyPct": -0.7636,
+            "profitFactor": 0.8172,
             "maxTradeGainPct": 26.0251,
-            "maxTradeLossPct": -14.6149,
+            "maxTradeLossPct": -13.6266,
             "maxConsecutiveLosses": 15,
-            "avgCapitalUtilizationPct": 61.4078
+            "avgCapitalUtilizationPct": 62.4367
           },
-          "deltaTotalReturnPct": 26.7113,
-          "deltaMaxDrawdownPct": 14.3316,
-          "deltaExpectancyPct": 0.4586
+          "deltaTotalReturnPct": 31.8976,
+          "deltaMaxDrawdownPct": 19.4727,
+          "deltaExpectancyPct": 0.58
         }
       },
       "OPEN_NO_CHASE_3PCT": {
         "FULL_RESEARCH_PERIOD": {
           "baselineV13": {
-            "totalReturnPct": -96.2763,
-            "cagrPct": -71.107,
+            "totalReturnPct": -96.2764,
+            "cagrPct": -71.1071,
             "maxDrawdownPct": -96.6174,
             "tradeCount": 1716,
             "winRate": 0.2838,
@@ -755,30 +755,30 @@
             "avgCapitalUtilizationPct": 46.3928
           },
           "trainedRanker": {
-            "totalReturnPct": -89.9999,
-            "cagrPct": -58.0552,
-            "maxDrawdownPct": -91.6718,
-            "tradeCount": 1128,
-            "winRate": 0.3395,
-            "avgTradeNetReturnPct": -0.9587,
-            "avgWinPct": 7.4507,
-            "avgLossPct": -5.2819,
-            "payoffRatio": 1.4106,
-            "expectancyPct": -0.9587,
-            "profitFactor": 0.7252,
+            "totalReturnPct": -87.2185,
+            "cagrPct": -53.9859,
+            "maxDrawdownPct": -89.7256,
+            "tradeCount": 1130,
+            "winRate": 0.3469,
+            "avgTradeNetReturnPct": -0.8473,
+            "avgWinPct": 7.5029,
+            "avgLossPct": -5.2826,
+            "payoffRatio": 1.4203,
+            "expectancyPct": -0.8473,
+            "profitFactor": 0.7544,
             "maxTradeGainPct": 24.0333,
             "maxTradeLossPct": -14.6149,
             "maxConsecutiveLosses": 15,
-            "avgCapitalUtilizationPct": 64.1683
+            "avgCapitalUtilizationPct": 64.1043
           },
-          "deltaTotalReturnPct": 6.2764,
-          "deltaMaxDrawdownPct": 4.9456,
-          "deltaExpectancyPct": -0.0236
+          "deltaTotalReturnPct": 9.0579,
+          "deltaMaxDrawdownPct": 6.8918,
+          "deltaExpectancyPct": 0.0878
         },
         "TRAIN_2024": {
           "baselineV13": {
-            "totalReturnPct": -61.5536,
-            "cagrPct": -60.9798,
+            "totalReturnPct": -61.5537,
+            "cagrPct": -60.9799,
             "maxDrawdownPct": -65.1382,
             "tradeCount": 619,
             "winRate": 0.3053,
@@ -794,31 +794,31 @@
             "avgCapitalUtilizationPct": 48.1842
           },
           "trainedRanker": {
-            "totalReturnPct": -20.1837,
-            "cagrPct": -19.9044,
-            "maxDrawdownPct": -39.1322,
-            "tradeCount": 419,
-            "winRate": 0.3914,
-            "avgTradeNetReturnPct": -0.2088,
-            "avgWinPct": 7.6443,
-            "avgLossPct": -5.2594,
-            "payoffRatio": 1.4534,
-            "expectancyPct": -0.2088,
-            "profitFactor": 0.9348,
+            "totalReturnPct": -24.118,
+            "cagrPct": -23.7927,
+            "maxDrawdownPct": -39.5822,
+            "tradeCount": 418,
+            "winRate": 0.39,
+            "avgTradeNetReturnPct": -0.278,
+            "avgWinPct": 7.5531,
+            "avgLossPct": -5.2837,
+            "payoffRatio": 1.4295,
+            "expectancyPct": -0.278,
+            "profitFactor": 0.9138,
             "maxTradeGainPct": 24.0333,
             "maxTradeLossPct": -12.8069,
             "maxConsecutiveLosses": 13,
-            "avgCapitalUtilizationPct": 64.3036
+            "avgCapitalUtilizationPct": 64.1244
           },
-          "deltaTotalReturnPct": 41.3699,
-          "deltaMaxDrawdownPct": 26.006,
-          "deltaExpectancyPct": 0.5487
+          "deltaTotalReturnPct": 37.4357,
+          "deltaMaxDrawdownPct": 25.556,
+          "deltaExpectancyPct": 0.4795
         },
         "VALIDATION_2025": {
           "baselineV13": {
             "totalReturnPct": -70.2687,
             "cagrPct": -69.8021,
-            "maxDrawdownPct": -71.8419,
+            "maxDrawdownPct": -71.842,
             "tradeCount": 638,
             "winRate": 0.2837,
             "avgTradeNetReturnPct": -0.9243,
@@ -833,25 +833,25 @@
             "avgCapitalUtilizationPct": 46.6388
           },
           "trainedRanker": {
-            "totalReturnPct": -66.7391,
-            "cagrPct": -66.2657,
-            "maxDrawdownPct": -69.6498,
-            "tradeCount": 421,
-            "winRate": 0.3207,
-            "avgTradeNetReturnPct": -1.2579,
-            "avgWinPct": 6.5765,
-            "avgLossPct": -4.956,
-            "payoffRatio": 1.327,
-            "expectancyPct": -1.2579,
-            "profitFactor": 0.6264,
+            "totalReturnPct": -63.7453,
+            "cagrPct": -63.27,
+            "maxDrawdownPct": -67.1908,
+            "tradeCount": 423,
+            "winRate": 0.3286,
+            "avgTradeNetReturnPct": -1.146,
+            "avgWinPct": 6.6459,
+            "avgLossPct": -4.9596,
+            "payoffRatio": 1.34,
+            "expectancyPct": -1.146,
+            "profitFactor": 0.6558,
             "maxTradeGainPct": 17.2949,
             "maxTradeLossPct": -11.2982,
             "maxConsecutiveLosses": 15,
-            "avgCapitalUtilizationPct": 63.8364
+            "avgCapitalUtilizationPct": 63.7427
           },
-          "deltaTotalReturnPct": 3.5296,
-          "deltaMaxDrawdownPct": 2.1921,
-          "deltaExpectancyPct": -0.3336
+          "deltaTotalReturnPct": 6.5234,
+          "deltaMaxDrawdownPct": 4.6512,
+          "deltaExpectancyPct": -0.2217
         },
         "TEST_2026_PLUS_DESCRIPTIVE": {
           "baselineV13": {
@@ -872,72 +872,72 @@
             "avgCapitalUtilizationPct": 41.5109
           },
           "trainedRanker": {
-            "totalReturnPct": -58.337,
-            "cagrPct": -74.3554,
-            "maxDrawdownPct": -61.258,
-            "tradeCount": 295,
-            "winRate": 0.3051,
-            "avgTradeNetReturnPct": -1.3958,
-            "avgWinPct": 8.596,
-            "avgLossPct": -5.7825,
-            "payoffRatio": 1.4866,
-            "expectancyPct": -1.3958,
-            "profitFactor": 0.6526,
+            "totalReturnPct": -49.8244,
+            "cagrPct": -65.7636,
+            "maxDrawdownPct": -55.2702,
+            "tradeCount": 294,
+            "winRate": 0.3197,
+            "avgTradeNetReturnPct": -1.0757,
+            "avgWinPct": 8.8874,
+            "avgLossPct": -5.7584,
+            "payoffRatio": 1.5434,
+            "expectancyPct": -1.0757,
+            "profitFactor": 0.7254,
             "maxTradeGainPct": 22.3839,
             "maxTradeLossPct": -14.6149,
-            "maxConsecutiveLosses": 12,
-            "avgCapitalUtilizationPct": 62.2385
+            "maxConsecutiveLosses": 13,
+            "avgCapitalUtilizationPct": 62.3895
           },
-          "deltaTotalReturnPct": 11.3865,
-          "deltaMaxDrawdownPct": 8.4548,
-          "deltaExpectancyPct": -0.1341
+          "deltaTotalReturnPct": 19.8991,
+          "deltaMaxDrawdownPct": 14.4426,
+          "deltaExpectancyPct": 0.186
         }
       },
       "PULLBACK_1PCT": {
         "FULL_RESEARCH_PERIOD": {
           "baselineV13": {
-            "totalReturnPct": -95.6627,
-            "cagrPct": -69.3953,
-            "maxDrawdownPct": -95.823,
+            "totalReturnPct": -95.6661,
+            "cagrPct": -69.4043,
+            "maxDrawdownPct": -95.8263,
             "tradeCount": 1722,
             "winRate": 0.241,
-            "avgTradeNetReturnPct": -0.8947,
+            "avgTradeNetReturnPct": -0.895,
             "avgWinPct": 4.4945,
-            "avgLossPct": -2.6059,
-            "payoffRatio": 1.7247,
-            "expectancyPct": -0.8947,
+            "avgLossPct": -2.6062,
+            "payoffRatio": 1.7245,
+            "expectancyPct": -0.895,
             "profitFactor": 0.5476,
             "maxTradeGainPct": 24.0333,
             "maxTradeLossPct": -13.0475,
             "maxConsecutiveLosses": 32,
-            "avgCapitalUtilizationPct": 46.0408
+            "avgCapitalUtilizationPct": 46.0403
           },
           "trainedRanker": {
-            "totalReturnPct": -60.3415,
-            "cagrPct": -29.4589,
-            "maxDrawdownPct": -71.5527,
-            "tradeCount": 1007,
-            "winRate": 0.3644,
-            "avgTradeNetReturnPct": -0.3985,
-            "avgWinPct": 7.4084,
-            "avgLossPct": -4.8752,
-            "payoffRatio": 1.5196,
-            "expectancyPct": -0.3985,
-            "profitFactor": 0.8714,
+            "totalReturnPct": -62.9108,
+            "cagrPct": -31.2193,
+            "maxDrawdownPct": -73.3956,
+            "tradeCount": 1008,
+            "winRate": 0.3601,
+            "avgTradeNetReturnPct": -0.4321,
+            "avgWinPct": 7.4465,
+            "avgLossPct": -4.866,
+            "payoffRatio": 1.5303,
+            "expectancyPct": -0.4321,
+            "profitFactor": 0.8612,
             "maxTradeGainPct": 28.902,
             "maxTradeLossPct": -12.9699,
             "maxConsecutiveLosses": 19,
-            "avgCapitalUtilizationPct": 67.8322
+            "avgCapitalUtilizationPct": 67.8092
           },
-          "deltaTotalReturnPct": 35.3212,
-          "deltaMaxDrawdownPct": 24.2703,
-          "deltaExpectancyPct": 0.4962
+          "deltaTotalReturnPct": 32.7553,
+          "deltaMaxDrawdownPct": 22.4307,
+          "deltaExpectancyPct": 0.4629
         },
         "TRAIN_2024": {
           "baselineV13": {
-            "totalReturnPct": -59.6651,
-            "cagrPct": -59.0935,
-            "maxDrawdownPct": -61.1558,
+            "totalReturnPct": -59.6652,
+            "cagrPct": -59.0936,
+            "maxDrawdownPct": -61.156,
             "tradeCount": 617,
             "winRate": 0.2609,
             "avgTradeNetReturnPct": -0.7239,
@@ -952,64 +952,64 @@
             "avgCapitalUtilizationPct": 48.5106
           },
           "trainedRanker": {
-            "totalReturnPct": -8.6554,
-            "cagrPct": -8.5272,
-            "maxDrawdownPct": -27.1125,
-            "tradeCount": 371,
-            "winRate": 0.3801,
-            "avgTradeNetReturnPct": -0.0506,
-            "avgWinPct": 7.348,
-            "avgLossPct": -4.5862,
-            "payoffRatio": 1.6022,
-            "expectancyPct": -0.0506,
-            "profitFactor": 0.9822,
+            "totalReturnPct": -8.4747,
+            "cagrPct": -8.349,
+            "maxDrawdownPct": -26.9682,
+            "tradeCount": 370,
+            "winRate": 0.3784,
+            "avgTradeNetReturnPct": -0.0546,
+            "avgWinPct": 7.3319,
+            "avgLossPct": -4.5508,
+            "payoffRatio": 1.6111,
+            "expectancyPct": -0.0546,
+            "profitFactor": 0.9807,
             "maxTradeGainPct": 24.0333,
             "maxTradeLossPct": -12.6874,
             "maxConsecutiveLosses": 10,
-            "avgCapitalUtilizationPct": 67.9006
+            "avgCapitalUtilizationPct": 67.9592
           },
-          "deltaTotalReturnPct": 51.0097,
-          "deltaMaxDrawdownPct": 34.0433,
-          "deltaExpectancyPct": 0.6733
+          "deltaTotalReturnPct": 51.1905,
+          "deltaMaxDrawdownPct": 34.1878,
+          "deltaExpectancyPct": 0.6693
         },
         "VALIDATION_2025": {
           "baselineV13": {
-            "totalReturnPct": -71.3319,
-            "cagrPct": -70.8684,
-            "maxDrawdownPct": -71.8079,
+            "totalReturnPct": -71.3544,
+            "cagrPct": -70.8909,
+            "maxDrawdownPct": -71.83,
             "tradeCount": 651,
             "winRate": 0.2473,
-            "avgTradeNetReturnPct": -0.939,
+            "avgTradeNetReturnPct": -0.9396,
             "avgWinPct": 4.1984,
-            "avgLossPct": -2.627,
-            "payoffRatio": 1.5982,
-            "expectancyPct": -0.939,
-            "profitFactor": 0.5251,
+            "avgLossPct": -2.6278,
+            "payoffRatio": 1.5977,
+            "expectancyPct": -0.9396,
+            "profitFactor": 0.525,
             "maxTradeGainPct": 19.202,
             "maxTradeLossPct": -10.5832,
             "maxConsecutiveLosses": 18,
-            "avgCapitalUtilizationPct": 45.3336
+            "avgCapitalUtilizationPct": 45.3323
           },
           "trainedRanker": {
-            "totalReturnPct": -56.2434,
-            "cagrPct": -55.7767,
-            "maxDrawdownPct": -58.2914,
-            "tradeCount": 389,
-            "winRate": 0.329,
-            "avgTradeNetReturnPct": -1.0246,
-            "avgWinPct": 6.9782,
-            "avgLossPct": -4.9493,
-            "payoffRatio": 1.4099,
-            "expectancyPct": -1.0246,
-            "profitFactor": 0.6915,
+            "totalReturnPct": -54.4357,
+            "cagrPct": -53.9736,
+            "maxDrawdownPct": -56.5683,
+            "tradeCount": 388,
+            "winRate": 0.3325,
+            "avgTradeNetReturnPct": -0.9729,
+            "avgWinPct": 7.0315,
+            "avgLossPct": -4.9597,
+            "payoffRatio": 1.4177,
+            "expectancyPct": -0.9729,
+            "profitFactor": 0.7061,
             "maxTradeGainPct": 28.902,
             "maxTradeLossPct": -10.7413,
             "maxConsecutiveLosses": 19,
-            "avgCapitalUtilizationPct": 66.2265
+            "avgCapitalUtilizationPct": 66.2984
           },
-          "deltaTotalReturnPct": 15.0885,
-          "deltaMaxDrawdownPct": 13.5165,
-          "deltaExpectancyPct": -0.0856
+          "deltaTotalReturnPct": 16.9187,
+          "deltaMaxDrawdownPct": 15.2617,
+          "deltaExpectancyPct": -0.0333
         },
         "TEST_2026_PLUS_DESCRIPTIVE": {
           "baselineV13": {
@@ -1030,32 +1030,32 @@
             "avgCapitalUtilizationPct": 41.541
           },
           "trainedRanker": {
-            "totalReturnPct": -5.4247,
-            "cagrPct": -8.3035,
-            "maxDrawdownPct": -19.5035,
-            "tradeCount": 252,
-            "winRate": 0.3889,
-            "avgTradeNetReturnPct": -0.0351,
-            "avgWinPct": 8.1224,
-            "avgLossPct": -5.2263,
-            "payoffRatio": 1.5541,
-            "expectancyPct": -0.0351,
-            "profitFactor": 0.989,
+            "totalReturnPct": -15.2848,
+            "cagrPct": -22.726,
+            "maxDrawdownPct": -26.727,
+            "tradeCount": 255,
+            "winRate": 0.3686,
+            "avgTradeNetReturnPct": -0.2471,
+            "avgWinPct": 8.2547,
+            "avgLossPct": -5.2109,
+            "payoffRatio": 1.5841,
+            "expectancyPct": -0.2471,
+            "profitFactor": 0.9249,
             "maxTradeGainPct": 22.3839,
             "maxTradeLossPct": -12.9699,
             "maxConsecutiveLosses": 9,
-            "avgCapitalUtilizationPct": 67.1232
+            "avgCapitalUtilizationPct": 66.8295
           },
-          "deltaTotalReturnPct": 57.8124,
-          "deltaMaxDrawdownPct": 44.2184,
-          "deltaExpectancyPct": 1.0465
+          "deltaTotalReturnPct": 47.9523,
+          "deltaMaxDrawdownPct": 36.9949,
+          "deltaExpectancyPct": 0.8345
         }
       },
       "BREAKOUT_0_5PCT": {
         "FULL_RESEARCH_PERIOD": {
           "baselineV13": {
-            "totalReturnPct": -91.0356,
-            "cagrPct": -59.7505,
+            "totalReturnPct": -91.0357,
+            "cagrPct": -59.7506,
             "maxDrawdownPct": -92.5293,
             "tradeCount": 1230,
             "winRate": 0.3276,
@@ -1071,31 +1071,31 @@
             "avgCapitalUtilizationPct": 61.0251
           },
           "trainedRanker": {
-            "totalReturnPct": -70.5702,
-            "cagrPct": -36.9681,
-            "maxDrawdownPct": -83.7611,
-            "tradeCount": 952,
-            "winRate": 0.375,
-            "avgTradeNetReturnPct": -0.5477,
-            "avgWinPct": 9.3255,
-            "avgLossPct": -6.4716,
-            "payoffRatio": 1.441,
-            "expectancyPct": -0.5477,
-            "profitFactor": 0.8646,
+            "totalReturnPct": -75.701,
+            "cagrPct": -41.3635,
+            "maxDrawdownPct": -86.6354,
+            "tradeCount": 956,
+            "winRate": 0.3672,
+            "avgTradeNetReturnPct": -0.6453,
+            "avgWinPct": 9.3816,
+            "avgLossPct": -6.4626,
+            "payoffRatio": 1.4517,
+            "expectancyPct": -0.6453,
+            "profitFactor": 0.8422,
             "maxTradeGainPct": 29.003,
             "maxTradeLossPct": -18.463,
             "maxConsecutiveLosses": 15,
-            "avgCapitalUtilizationPct": 69.5805
+            "avgCapitalUtilizationPct": 69.4784
           },
-          "deltaTotalReturnPct": 20.4654,
-          "deltaMaxDrawdownPct": 8.7682,
-          "deltaExpectancyPct": 0.3864
+          "deltaTotalReturnPct": 15.3347,
+          "deltaMaxDrawdownPct": 5.8939,
+          "deltaExpectancyPct": 0.2888
         },
         "TRAIN_2024": {
           "baselineV13": {
-            "totalReturnPct": -58.6584,
-            "cagrPct": -58.0885,
-            "maxDrawdownPct": -63.8767,
+            "totalReturnPct": -58.6586,
+            "cagrPct": -58.0888,
+            "maxDrawdownPct": -63.8769,
             "tradeCount": 463,
             "winRate": 0.3261,
             "avgTradeNetReturnPct": -0.9249,
@@ -1110,25 +1110,25 @@
             "avgCapitalUtilizationPct": 60.4953
           },
           "trainedRanker": {
-            "totalReturnPct": 3.4819,
-            "cagrPct": 3.427,
-            "maxDrawdownPct": -38.3132,
-            "tradeCount": 341,
-            "winRate": 0.4252,
-            "avgTradeNetReturnPct": 0.1375,
-            "avgWinPct": 8.6295,
-            "avgLossPct": -6.1449,
-            "payoffRatio": 1.4043,
-            "expectancyPct": 0.1375,
-            "profitFactor": 1.0389,
+            "totalReturnPct": 7.4552,
+            "cagrPct": 7.3355,
+            "maxDrawdownPct": -36.1511,
+            "tradeCount": 343,
+            "winRate": 0.4198,
+            "avgTradeNetReturnPct": 0.1901,
+            "avgWinPct": 8.7848,
+            "avgLossPct": -6.0291,
+            "payoffRatio": 1.4571,
+            "expectancyPct": 0.1901,
+            "profitFactor": 1.0544,
             "maxTradeGainPct": 25.6326,
             "maxTradeLossPct": -12.8324,
             "maxConsecutiveLosses": 8,
-            "avgCapitalUtilizationPct": 70.1428
+            "avgCapitalUtilizationPct": 69.9751
           },
-          "deltaTotalReturnPct": 62.1403,
-          "deltaMaxDrawdownPct": 25.5635,
-          "deltaExpectancyPct": 1.0624
+          "deltaTotalReturnPct": 66.1138,
+          "deltaMaxDrawdownPct": 27.7258,
+          "deltaExpectancyPct": 1.115
         },
         "VALIDATION_2025": {
           "baselineV13": {
@@ -1149,25 +1149,25 @@
             "avgCapitalUtilizationPct": 62.1911
           },
           "trainedRanker": {
-            "totalReturnPct": -39.9656,
-            "cagrPct": -39.5711,
-            "maxDrawdownPct": -44.2876,
-            "tradeCount": 368,
-            "winRate": 0.3668,
-            "avgTradeNetReturnPct": -0.6008,
-            "avgWinPct": 8.8335,
-            "avgLossPct": -6.0671,
-            "payoffRatio": 1.456,
-            "expectancyPct": -0.6008,
-            "profitFactor": 0.8436,
+            "totalReturnPct": -45.803,
+            "cagrPct": -45.3752,
+            "maxDrawdownPct": -46.8347,
+            "tradeCount": 365,
+            "winRate": 0.3589,
+            "avgTradeNetReturnPct": -0.7438,
+            "avgWinPct": 8.6916,
+            "avgLossPct": -6.026,
+            "payoffRatio": 1.4423,
+            "expectancyPct": -0.7438,
+            "profitFactor": 0.8075,
             "maxTradeGainPct": 29.003,
             "maxTradeLossPct": -13.4999,
             "maxConsecutiveLosses": 15,
-            "avgCapitalUtilizationPct": 68.0601
+            "avgCapitalUtilizationPct": 68.3883
           },
-          "deltaTotalReturnPct": 12.1584,
-          "deltaMaxDrawdownPct": 13.6349,
-          "deltaExpectancyPct": 0.1857
+          "deltaTotalReturnPct": 6.321,
+          "deltaMaxDrawdownPct": 11.0878,
+          "deltaExpectancyPct": 0.0427
         },
         "TEST_2026_PLUS_DESCRIPTIVE": {
           "baselineV13": {
@@ -1188,25 +1188,25 @@
             "avgCapitalUtilizationPct": 57.6426
           },
           "trainedRanker": {
-            "totalReturnPct": -52.1734,
-            "cagrPct": -68.2221,
-            "maxDrawdownPct": -58.7346,
-            "tradeCount": 248,
-            "winRate": 0.3185,
-            "avgTradeNetReturnPct": -1.379,
-            "avgWinPct": 11.455,
-            "avgLossPct": -7.3783,
-            "payoffRatio": 1.5525,
-            "expectancyPct": -1.379,
-            "profitFactor": 0.7257,
+            "totalReturnPct": -57.8757,
+            "cagrPct": -73.9127,
+            "maxDrawdownPct": -63.6546,
+            "tradeCount": 253,
+            "winRate": 0.3083,
+            "avgTradeNetReturnPct": -1.6026,
+            "avgWinPct": 11.6523,
+            "avgLossPct": -7.5105,
+            "payoffRatio": 1.5515,
+            "expectancyPct": -1.6026,
+            "profitFactor": 0.6915,
             "maxTradeGainPct": 26.7042,
             "maxTradeLossPct": -18.463,
             "maxConsecutiveLosses": 11,
-            "avgCapitalUtilizationPct": 68.2844
+            "avgCapitalUtilizationPct": 67.6171
           },
-          "deltaTotalReturnPct": 2.5071,
-          "deltaMaxDrawdownPct": 0.6433,
-          "deltaExpectancyPct": -0.2409
+          "deltaTotalReturnPct": -3.1952,
+          "deltaMaxDrawdownPct": -4.2767,
+          "deltaExpectancyPct": -0.4645
         }
       }
     },
@@ -1214,9 +1214,9 @@
       "NEXT_OPEN": {
         "FULL_RESEARCH_PERIOD": {
           "baselineV13": {
-            "totalReturnPct": -37.1515,
-            "cagrPct": -16.2128,
-            "maxDrawdownPct": -54.1941,
+            "totalReturnPct": -37.1516,
+            "cagrPct": -16.2129,
+            "maxDrawdownPct": -54.1942,
             "tradeCount": 495,
             "winRate": 0.3939,
             "avgTradeNetReturnPct": -0.3989,
@@ -1231,31 +1231,31 @@
             "avgCapitalUtilizationPct": 27.0522
           },
           "trainedRanker": {
-            "totalReturnPct": -18.7732,
-            "cagrPct": -7.6137,
+            "totalReturnPct": -17.9769,
+            "cagrPct": -7.2698,
             "maxDrawdownPct": -38.6031,
-            "tradeCount": 459,
-            "winRate": 0.4009,
-            "avgTradeNetReturnPct": -0.0872,
-            "avgWinPct": 8.9258,
-            "avgLossPct": -6.1177,
-            "payoffRatio": 1.459,
-            "expectancyPct": -0.0872,
-            "profitFactor": 0.9762,
+            "tradeCount": 458,
+            "winRate": 0.4017,
+            "avgTradeNetReturnPct": -0.0771,
+            "avgWinPct": 8.919,
+            "avgLossPct": -6.1182,
+            "payoffRatio": 1.4578,
+            "expectancyPct": -0.0771,
+            "profitFactor": 0.9789,
             "maxTradeGainPct": 25.3364,
             "maxTradeLossPct": -13.7507,
             "maxConsecutiveLosses": 17,
-            "avgCapitalUtilizationPct": 31.4215
+            "avgCapitalUtilizationPct": 31.3303
           },
-          "deltaTotalReturnPct": 18.3783,
-          "deltaMaxDrawdownPct": 15.591,
-          "deltaExpectancyPct": 0.3117
+          "deltaTotalReturnPct": 19.1747,
+          "deltaMaxDrawdownPct": 15.5911,
+          "deltaExpectancyPct": 0.3218
         },
         "TRAIN_2024": {
           "baselineV13": {
             "totalReturnPct": -28.0553,
             "cagrPct": -29.1499,
-            "maxDrawdownPct": -31.0913,
+            "maxDrawdownPct": -31.0914,
             "tradeCount": 174,
             "winRate": 0.3563,
             "avgTradeNetReturnPct": -0.8815,
@@ -1270,29 +1270,29 @@
             "avgCapitalUtilizationPct": 29.8512
           },
           "trainedRanker": {
-            "totalReturnPct": -3.3739,
-            "cagrPct": -3.5282,
+            "totalReturnPct": -0.2625,
+            "cagrPct": -0.2747,
             "maxDrawdownPct": -27.6949,
             "tradeCount": 173,
-            "winRate": 0.3931,
-            "avgTradeNetReturnPct": 0.0251,
-            "avgWinPct": 9.2877,
-            "avgLossPct": -5.9735,
-            "payoffRatio": 1.5548,
-            "expectancyPct": 0.0251,
-            "profitFactor": 1.0069,
+            "winRate": 0.3988,
+            "avgTradeNetReturnPct": 0.1182,
+            "avgWinPct": 9.3001,
+            "avgLossPct": -5.9736,
+            "payoffRatio": 1.5569,
+            "expectancyPct": 0.1182,
+            "profitFactor": 1.0329,
             "maxTradeGainPct": 20.9927,
             "maxTradeLossPct": -11.0038,
             "maxConsecutiveLosses": 17,
-            "avgCapitalUtilizationPct": 32.1879
+            "avgCapitalUtilizationPct": 32.0163
           },
-          "deltaTotalReturnPct": 24.6814,
-          "deltaMaxDrawdownPct": 3.3964,
-          "deltaExpectancyPct": 0.9066
+          "deltaTotalReturnPct": 27.7928,
+          "deltaMaxDrawdownPct": 3.3965,
+          "deltaExpectancyPct": 0.9997
         },
         "VALIDATION_2025": {
           "baselineV13": {
-            "totalReturnPct": -20.6866,
+            "totalReturnPct": -20.6865,
             "cagrPct": -21.1102,
             "maxDrawdownPct": -35.567,
             "tradeCount": 170,
@@ -1311,7 +1311,7 @@
           "trainedRanker": {
             "totalReturnPct": -18.3142,
             "cagrPct": -18.6952,
-            "maxDrawdownPct": -31.5347,
+            "maxDrawdownPct": -31.5346,
             "tradeCount": 166,
             "winRate": 0.3795,
             "avgTradeNetReturnPct": -0.4951,
@@ -1325,8 +1325,8 @@
             "maxConsecutiveLosses": 11,
             "avgCapitalUtilizationPct": 27.8214
           },
-          "deltaTotalReturnPct": 2.3724,
-          "deltaMaxDrawdownPct": 4.0323,
+          "deltaTotalReturnPct": 2.3723,
+          "deltaMaxDrawdownPct": 4.0324,
           "deltaExpectancyPct": 0.1133
         },
         "TEST_2026_PLUS_DESCRIPTIVE": {
@@ -1348,32 +1348,32 @@
             "avgCapitalUtilizationPct": 26.2309
           },
           "trainedRanker": {
-            "totalReturnPct": 2.9102,
-            "cagrPct": 4.7239,
+            "totalReturnPct": 0.6772,
+            "cagrPct": 1.0919,
             "maxDrawdownPct": -19.9234,
-            "tradeCount": 120,
-            "winRate": 0.4417,
-            "avgTradeNetReturnPct": 0.3153,
-            "avgWinPct": 9.8884,
+            "tradeCount": 119,
+            "winRate": 0.437,
+            "avgTradeNetReturnPct": 0.2222,
+            "avgWinPct": 9.8594,
             "avgLossPct": -7.2575,
-            "payoffRatio": 1.3625,
-            "expectancyPct": 0.3153,
-            "profitFactor": 1.0778,
-            "maxTradeGainPct": 22.0868,
+            "payoffRatio": 1.3585,
+            "expectancyPct": 0.2222,
+            "profitFactor": 1.0544,
+            "maxTradeGainPct": 24.6218,
             "maxTradeLossPct": -13.7507,
             "maxConsecutiveLosses": 10,
-            "avgCapitalUtilizationPct": 38.8115
+            "avgCapitalUtilizationPct": 38.6907
           },
-          "deltaTotalReturnPct": -7.2308,
+          "deltaTotalReturnPct": -9.4638,
           "deltaMaxDrawdownPct": -3.8852,
-          "deltaExpectancyPct": -0.0779
+          "deltaExpectancyPct": -0.171
         }
       },
       "OPEN_NO_CHASE_3PCT": {
         "FULL_RESEARCH_PERIOD": {
           "baselineV13": {
-            "totalReturnPct": -32.5969,
-            "cagrPct": -13.9501,
+            "totalReturnPct": -32.597,
+            "cagrPct": -13.9502,
             "maxDrawdownPct": -50.9868,
             "tradeCount": 456,
             "winRate": 0.386,
@@ -1389,31 +1389,31 @@
             "avgCapitalUtilizationPct": 24.6737
           },
           "trainedRanker": {
-            "totalReturnPct": -9.9876,
-            "cagrPct": -3.9283,
+            "totalReturnPct": -16.0099,
+            "cagrPct": -6.4291,
             "maxDrawdownPct": -42.7247,
             "tradeCount": 437,
-            "winRate": 0.4005,
-            "avgTradeNetReturnPct": -0.0394,
-            "avgWinPct": 7.8508,
-            "avgLossPct": -5.3095,
-            "payoffRatio": 1.4786,
-            "expectancyPct": -0.0394,
-            "profitFactor": 0.9876,
+            "winRate": 0.3982,
+            "avgTradeNetReturnPct": -0.1218,
+            "avgWinPct": 7.7428,
+            "avgLossPct": -5.3251,
+            "payoffRatio": 1.454,
+            "expectancyPct": -0.1218,
+            "profitFactor": 0.962,
             "maxTradeGainPct": 19.2923,
             "maxTradeLossPct": -11.6427,
             "maxConsecutiveLosses": 12,
-            "avgCapitalUtilizationPct": 26.9895
+            "avgCapitalUtilizationPct": 26.8957
           },
-          "deltaTotalReturnPct": 22.6093,
+          "deltaTotalReturnPct": 16.5871,
           "deltaMaxDrawdownPct": 8.2621,
-          "deltaExpectancyPct": 0.3346
+          "deltaExpectancyPct": 0.2522
         },
         "TRAIN_2024": {
           "baselineV13": {
-            "totalReturnPct": -28.6988,
-            "cagrPct": -29.813,
-            "maxDrawdownPct": -31.4871,
+            "totalReturnPct": -28.6989,
+            "cagrPct": -29.8131,
+            "maxDrawdownPct": -31.4872,
             "tradeCount": 162,
             "winRate": 0.3333,
             "avgTradeNetReturnPct": -0.9858,
@@ -1428,9 +1428,9 @@
             "avgCapitalUtilizationPct": 27.3258
           },
           "trainedRanker": {
-            "totalReturnPct": -11.3962,
-            "cagrPct": -11.8939,
-            "maxDrawdownPct": -27.682,
+            "totalReturnPct": -11.3963,
+            "cagrPct": -11.8941,
+            "maxDrawdownPct": -27.6821,
             "tradeCount": 162,
             "winRate": 0.3827,
             "avgTradeNetReturnPct": -0.3041,
@@ -1506,33 +1506,33 @@
             "avgCapitalUtilizationPct": 23.8348
           },
           "trainedRanker": {
-            "totalReturnPct": 19.0416,
-            "cagrPct": 32.3736,
+            "totalReturnPct": 11.0773,
+            "cagrPct": 18.4165,
             "maxDrawdownPct": -18.8756,
             "tradeCount": 127,
-            "winRate": 0.4252,
-            "avgTradeNetReturnPct": 0.8148,
-            "avgWinPct": 9.2336,
-            "avgLossPct": -5.4128,
-            "payoffRatio": 1.7059,
-            "expectancyPct": 0.8148,
-            "profitFactor": 1.2619,
+            "winRate": 0.4173,
+            "avgTradeNetReturnPct": 0.531,
+            "avgWinPct": 8.9054,
+            "avgLossPct": -5.4668,
+            "payoffRatio": 1.629,
+            "expectancyPct": 0.531,
+            "profitFactor": 1.1667,
             "maxTradeGainPct": 17.7996,
             "maxTradeLossPct": -11.6427,
             "maxConsecutiveLosses": 12,
-            "avgCapitalUtilizationPct": 29.7074
+            "avgCapitalUtilizationPct": 29.3147
           },
-          "deltaTotalReturnPct": 6.698,
+          "deltaTotalReturnPct": -1.2663,
           "deltaMaxDrawdownPct": -8.4059,
-          "deltaExpectancyPct": 0.3376
+          "deltaExpectancyPct": 0.0538
         }
       },
       "PULLBACK_1PCT": {
         "FULL_RESEARCH_PERIOD": {
           "baselineV13": {
-            "totalReturnPct": -37.9163,
+            "totalReturnPct": -37.9162,
             "cagrPct": -16.6026,
-            "maxDrawdownPct": -44.9971,
+            "maxDrawdownPct": -44.997,
             "tradeCount": 470,
             "winRate": 0.3511,
             "avgTradeNetReturnPct": -0.4626,
@@ -1547,8 +1547,8 @@
             "avgCapitalUtilizationPct": 20.9127
           },
           "trainedRanker": {
-            "totalReturnPct": -2.0184,
-            "cagrPct": -0.7736,
+            "totalReturnPct": -1.9388,
+            "cagrPct": -0.7429,
             "maxDrawdownPct": -35.0889,
             "tradeCount": 438,
             "winRate": 0.3836,
@@ -1561,16 +1561,16 @@
             "maxTradeGainPct": 25.8806,
             "maxTradeLossPct": -12.1809,
             "maxConsecutiveLosses": 11,
-            "avgCapitalUtilizationPct": 24.4995
+            "avgCapitalUtilizationPct": 24.4997
           },
-          "deltaTotalReturnPct": 35.8979,
-          "deltaMaxDrawdownPct": 9.9082,
+          "deltaTotalReturnPct": 35.9774,
+          "deltaMaxDrawdownPct": 9.9081,
           "deltaExpectancyPct": 0.5006
         },
         "TRAIN_2024": {
           "baselineV13": {
             "totalReturnPct": -15.7528,
-            "cagrPct": -16.3797,
+            "cagrPct": -16.3796,
             "maxDrawdownPct": -18.5196,
             "tradeCount": 175,
             "winRate": 0.3486,
@@ -1588,7 +1588,7 @@
           "trainedRanker": {
             "totalReturnPct": 5.1207,
             "cagrPct": 5.3497,
-            "maxDrawdownPct": -14.2972,
+            "maxDrawdownPct": -14.2971,
             "tradeCount": 170,
             "winRate": 0.3824,
             "avgTradeNetReturnPct": 0.1989,
@@ -1598,12 +1598,12 @@
             "expectancyPct": 0.1989,
             "profitFactor": 1.0768,
             "maxTradeGainPct": 14.0232,
-            "maxTradeLossPct": -10.4875,
+            "maxTradeLossPct": -10.4876,
             "maxConsecutiveLosses": 9,
             "avgCapitalUtilizationPct": 26.0144
           },
           "deltaTotalReturnPct": 20.8735,
-          "deltaMaxDrawdownPct": 4.2224,
+          "deltaMaxDrawdownPct": 4.2225,
           "deltaExpectancyPct": 0.6422
         },
         "VALIDATION_2025": {
@@ -1625,7 +1625,7 @@
             "avgCapitalUtilizationPct": 20.042
           },
           "trainedRanker": {
-            "totalReturnPct": -22.639,
+            "totalReturnPct": -22.6391,
             "cagrPct": -23.0966,
             "maxDrawdownPct": -27.396,
             "tradeCount": 137,
@@ -1641,7 +1641,7 @@
             "maxConsecutiveLosses": 9,
             "avgCapitalUtilizationPct": 22.8121
           },
-          "deltaTotalReturnPct": 6.9916,
+          "deltaTotalReturnPct": 6.9915,
           "deltaMaxDrawdownPct": 3.3758,
           "deltaExpectancyPct": 0.2489
         },
@@ -1664,9 +1664,9 @@
             "avgCapitalUtilizationPct": 18.6042
           },
           "trainedRanker": {
-            "totalReturnPct": 20.4853,
-            "cagrPct": 34.9664,
-            "maxDrawdownPct": -19.7888,
+            "totalReturnPct": 20.5833,
+            "cagrPct": 35.143,
+            "maxDrawdownPct": -19.7236,
             "tradeCount": 131,
             "winRate": 0.4275,
             "avgTradeNetReturnPct": 0.8165,
@@ -1678,19 +1678,19 @@
             "maxTradeGainPct": 25.8806,
             "maxTradeLossPct": -12.1809,
             "maxConsecutiveLosses": 7,
-            "avgCapitalUtilizationPct": 26.9359
+            "avgCapitalUtilizationPct": 26.9366
           },
-          "deltaTotalReturnPct": 15.7631,
-          "deltaMaxDrawdownPct": -5.9547,
+          "deltaTotalReturnPct": 15.8611,
+          "deltaMaxDrawdownPct": -5.8895,
           "deltaExpectancyPct": 0.6052
         }
       },
       "BREAKOUT_0_5PCT": {
         "FULL_RESEARCH_PERIOD": {
           "baselineV13": {
-            "totalReturnPct": -22.0565,
-            "cagrPct": -9.0542,
-            "maxDrawdownPct": -52.0584,
+            "totalReturnPct": -22.0567,
+            "cagrPct": -9.0543,
+            "maxDrawdownPct": -52.0585,
             "tradeCount": 439,
             "winRate": 0.3941,
             "avgTradeNetReturnPct": -0.1914,
@@ -1705,9 +1705,9 @@
             "avgCapitalUtilizationPct": 29.699
           },
           "trainedRanker": {
-            "totalReturnPct": -26.3329,
-            "cagrPct": -10.9879,
-            "maxDrawdownPct": -47.6736,
+            "totalReturnPct": -26.3331,
+            "cagrPct": -10.988,
+            "maxDrawdownPct": -47.6737,
             "tradeCount": 413,
             "winRate": 0.3826,
             "avgTradeNetReturnPct": -0.2229,
@@ -1727,9 +1727,9 @@
         },
         "TRAIN_2024": {
           "baselineV13": {
-            "totalReturnPct": -26.704,
-            "cagrPct": -27.7566,
-            "maxDrawdownPct": -29.8276,
+            "totalReturnPct": -26.7042,
+            "cagrPct": -27.7568,
+            "maxDrawdownPct": -29.8277,
             "tradeCount": 161,
             "winRate": 0.3727,
             "avgTradeNetReturnPct": -0.8719,
@@ -1744,9 +1744,9 @@
             "avgCapitalUtilizationPct": 30.5892
           },
           "trainedRanker": {
-            "totalReturnPct": -17.894,
-            "cagrPct": -18.6443,
-            "maxDrawdownPct": -25.152,
+            "totalReturnPct": -17.8942,
+            "cagrPct": -18.6445,
+            "maxDrawdownPct": -25.1522,
             "tradeCount": 155,
             "winRate": 0.3613,
             "avgTradeNetReturnPct": -0.5532,
@@ -1761,7 +1761,7 @@
             "avgCapitalUtilizationPct": 32.0809
           },
           "deltaTotalReturnPct": 8.81,
-          "deltaMaxDrawdownPct": 4.6756,
+          "deltaMaxDrawdownPct": 4.6755,
           "deltaExpectancyPct": 0.3187
         },
         "VALIDATION_2025": {
@@ -1880,7 +1880,7 @@
       "model": "GAP_EXTENSION_BULL",
       "strategy": "NEXT_OPEN",
       "totalReturnPct": -18.3142,
-      "maxDrawdownPct": -31.5347,
+      "maxDrawdownPct": -31.5346,
       "expectancyPct": -0.4951,
       "profitFactor": 0.8555,
       "payoffRatio": 1.3987,
@@ -1889,12 +1889,12 @@
       "maxTradeGainPct": 25.3364,
       "maxTradeLossPct": -11.893,
       "tradeCount": 166,
-      "improvementVsV13ReturnPct": 2.3724
+      "improvementVsV13ReturnPct": 2.3723
     },
     {
       "model": "GAP_EXTENSION_BULL",
       "strategy": "PULLBACK_1PCT",
-      "totalReturnPct": -22.639,
+      "totalReturnPct": -22.6391,
       "maxDrawdownPct": -27.396,
       "expectancyPct": -0.906,
       "profitFactor": 0.7077,
@@ -1904,67 +1904,67 @@
       "maxTradeGainPct": 15.9035,
       "maxTradeLossPct": -9.4129,
       "tradeCount": 137,
-      "improvementVsV13ReturnPct": 6.9916
+      "improvementVsV13ReturnPct": 6.9915
     },
     {
       "model": "GLOBAL_EXTENDED",
       "strategy": "BREAKOUT_0_5PCT",
-      "totalReturnPct": -39.9656,
-      "maxDrawdownPct": -44.2876,
-      "expectancyPct": -0.6008,
-      "profitFactor": 0.8436,
-      "payoffRatio": 1.456,
-      "avgWinPct": 8.8335,
-      "avgLossPct": -6.0671,
+      "totalReturnPct": -45.803,
+      "maxDrawdownPct": -46.8347,
+      "expectancyPct": -0.7438,
+      "profitFactor": 0.8075,
+      "payoffRatio": 1.4423,
+      "avgWinPct": 8.6916,
+      "avgLossPct": -6.026,
       "maxTradeGainPct": 29.003,
       "maxTradeLossPct": -13.4999,
-      "tradeCount": 368,
-      "improvementVsV13ReturnPct": 12.1584
+      "tradeCount": 365,
+      "improvementVsV13ReturnPct": 6.321
     },
     {
       "model": "GLOBAL_EXTENDED",
       "strategy": "NEXT_OPEN",
-      "totalReturnPct": -45.8123,
-      "maxDrawdownPct": -54.1573,
-      "expectancyPct": -0.6133,
-      "profitFactor": 0.8078,
-      "payoffRatio": 1.4395,
-      "avgWinPct": 7.1707,
-      "avgLossPct": -4.9813,
+      "totalReturnPct": -46.268,
+      "maxDrawdownPct": -52.4582,
+      "expectancyPct": -0.6268,
+      "profitFactor": 0.8041,
+      "payoffRatio": 1.4569,
+      "avgWinPct": 7.2362,
+      "avgLossPct": -4.967,
       "maxTradeGainPct": 19.9169,
       "maxTradeLossPct": -11.3667,
-      "tradeCount": 434,
-      "improvementVsV13ReturnPct": 27.5627
+      "tradeCount": 433,
+      "improvementVsV13ReturnPct": 27.107
     },
     {
       "model": "GLOBAL_EXTENDED",
       "strategy": "PULLBACK_1PCT",
-      "totalReturnPct": -56.2434,
-      "maxDrawdownPct": -58.2914,
-      "expectancyPct": -1.0246,
-      "profitFactor": 0.6915,
-      "payoffRatio": 1.4099,
-      "avgWinPct": 6.9782,
-      "avgLossPct": -4.9493,
+      "totalReturnPct": -54.4357,
+      "maxDrawdownPct": -56.5683,
+      "expectancyPct": -0.9729,
+      "profitFactor": 0.7061,
+      "payoffRatio": 1.4177,
+      "avgWinPct": 7.0315,
+      "avgLossPct": -4.9597,
       "maxTradeGainPct": 28.902,
       "maxTradeLossPct": -10.7413,
-      "tradeCount": 389,
-      "improvementVsV13ReturnPct": 15.0885
+      "tradeCount": 388,
+      "improvementVsV13ReturnPct": 16.9187
     },
     {
       "model": "GLOBAL_EXTENDED",
       "strategy": "OPEN_NO_CHASE_3PCT",
-      "totalReturnPct": -66.7391,
-      "maxDrawdownPct": -69.6498,
-      "expectancyPct": -1.2579,
-      "profitFactor": 0.6264,
-      "payoffRatio": 1.327,
-      "avgWinPct": 6.5765,
-      "avgLossPct": -4.956,
+      "totalReturnPct": -63.7453,
+      "maxDrawdownPct": -67.1908,
+      "expectancyPct": -1.146,
+      "profitFactor": 0.6558,
+      "payoffRatio": 1.34,
+      "avgWinPct": 6.6459,
+      "avgLossPct": -4.9596,
       "maxTradeGainPct": 17.2949,
       "maxTradeLossPct": -11.2982,
-      "tradeCount": 421,
-      "improvementVsV13ReturnPct": 3.5296
+      "tradeCount": 423,
+      "improvementVsV13ReturnPct": 6.5234
     }
   ],
   "promotionGate": {
