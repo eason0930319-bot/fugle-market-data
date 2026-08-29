@@ -1,4 +1,4 @@
-name: Historical Taiwan Backtest V1.6
+name: Historical Taiwan Backtest V1.6.1
 
 on:
   workflow_dispatch:
@@ -22,8 +22,10 @@ on:
       - "scripts/backtest_ranker.py"
       - "scripts/backtest_ma5.py"
       - "scripts/backtest_ma5_stop.py"
+      - "scripts/backtest_ma5_robustness.py"
       - "scripts/backtest_v15_runner.py"
       - "scripts/backtest_v16_runner.py"
+      - "scripts/backtest_v161_runner.py"
       - "scripts/historical_backtest.py"
 
 permissions:
@@ -69,13 +71,15 @@ jobs:
           python -m py_compile scripts/backtest_ranker.py
           python -m py_compile scripts/backtest_ma5.py
           python -m py_compile scripts/backtest_ma5_stop.py
+          python -m py_compile scripts/backtest_ma5_robustness.py
           python -m py_compile scripts/historical_backtest.py
           python -m py_compile scripts/backtest_v15_runner.py
           python -m py_compile scripts/backtest_v16_runner.py
+          python -m py_compile scripts/backtest_v161_runner.py
 
       - name: Run historical backtest
         run: |
-          python scripts/backtest_v16_runner.py
+          python scripts/backtest_v161_runner.py
 
       - name: Show calibration summary
         run: |
@@ -84,27 +88,38 @@ jobs:
           from pathlib import Path
           p = json.loads(Path('data/backtest-summary.json').read_text(encoding='utf-8'))
           s = json.loads(Path('data/backtest-ma5-stop-summary.json').read_text(encoding='utf-8'))
+          r = json.loads(Path('data/backtest-ma5-robustness-summary.json').read_text(encoding='utf-8'))
           print('Version:', p.get('version'))
           print('Period:', p.get('period'))
           print('Coverage:', p.get('coverage'))
           print('V1.6 validation 2025 ranking:')
           for row in s.get('validation2025Ranking') or []:
               print(row)
-          print('Stop recovery audit:')
-          for name, item in (s.get('results') or {}).items():
-              v = ((item.get('scopes') or {}).get('VALIDATION_2025') or {})
-              print(name, v.get('stopRecovery'))
+          print('V1.6.1 robustness grid:', r.get('grid'))
+          print('Robust pass:', r.get('robustPassCount'), '/', (r.get('grid') or {}).get('variantCount'))
+          print('Top by worst train/validation return:')
+          for row in (r.get('topByWorstTrainValidationReturn') or [])[:10]:
+              print({
+                  'variant': row.get('variant'),
+                  'worstTrainValidationReturnPct': row.get('worstTrainValidationReturnPct'),
+                  'robustPass': row.get('robustTrainValidationPass'),
+                  '2024': (row.get('results') or {}).get('TRAIN_2024'),
+                  '2025': (row.get('results') or {}).get('VALIDATION_2025'),
+                  '2026': (row.get('results') or {}).get('TEST_2026_DESCRIPTIVE'),
+              })
+          print('ATR plateau:', r.get('atrMultiplierPlateau'))
+          print('Structure plateau:', r.get('structurePlateau'))
           PY
 
       - name: Commit backtest outputs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/backtest-summary.json data/backtest-signal-sample.json data/backtest-execution-summary.json data/backtest-execution-sample.json data/backtest-portfolio-summary.json data/backtest-ranking-summary.json data/backtest-ma5-summary.json data/backtest-ma5-stop-summary.json
+          git add data/backtest-summary.json data/backtest-signal-sample.json data/backtest-execution-summary.json data/backtest-execution-sample.json data/backtest-portfolio-summary.json data/backtest-ranking-summary.json data/backtest-ma5-summary.json data/backtest-ma5-stop-summary.json data/backtest-ma5-robustness-summary.json
           if git diff --cached --quiet; then
             echo "No backtest output changes."
             exit 0
           fi
-          git commit -m "Update historical Taiwan backtest V1.6"
+          git commit -m "Update historical Taiwan backtest V1.6.1"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push
