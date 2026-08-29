@@ -1,12 +1,12 @@
-name: Taiwan Market Discovery
+name: Taiwan Market Discovery + Screener
 
 on:
   workflow_dispatch:
 
   schedule:
-    # 台灣時間週一～週五 15:10
-    # UTC = 07:10
-    - cron: "10 7 * * 1-5"
+    # 台灣時間週一～週五 18:30
+    # UTC = 10:30
+    - cron: "30 10 * * 1-5"
 
 permissions:
   contents: write
@@ -18,7 +18,7 @@ concurrency:
 jobs:
   discovery:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
 
     env:
       MIN_TRADE_VALUE: "50000000"
@@ -30,6 +30,11 @@ jobs:
       DYNAMIC_TTL_HOURS: "72"
       BENCHMARK_SYMBOL: "0050"
       PINNED_SYMBOLS: "0050,00713,2303,2308,2330,2357,2408,2454,6757"
+
+      SCREENER_MIN_TRADE_VALUE: "50000000"
+      SCREENER_BUCKET_LIMIT: "30"
+      SCREENER_TOP_LIMIT: "50"
+      SCREENER_SECTOR_LIMIT: "20"
 
     steps:
       - name: Checkout
@@ -45,77 +50,121 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
+      - name: Set screener date-gate mode
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "SCREENER_STRICT_TODAY=0" >> "$GITHUB_ENV"
+            echo "Manual run: allow the latest matching TWSE/TPEx session for testing."
+          else
+            echo "SCREENER_STRICT_TODAY=1" >> "$GITHUB_ENV"
+            echo "Scheduled run: require the current Asia/Taipei trading date."
+          fi
+
       - name: Run discovery production scan
         run: |
           python scripts/discovery.py
 
-      - name: Show discovery summary
+      - name: Run full-market screener
+        run: |
+          python scripts/tw_screener.py
+
+      - name: Show discovery and screener summary
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
 
-          scan = json.loads(
-              Path("data/discovery-scan.json").read_text(
-                  encoding="utf-8"
+          scan_path = Path("data/discovery-scan.json")
+          screener_path = Path("data/tw-screener.json")
+
+          if scan_path.exists():
+              scan = json.loads(scan_path.read_text(encoding="utf-8"))
+              print("=== Discovery ===")
+              print("Version:", scan.get("version"))
+              print("Market date:", scan.get("marketDate"))
+              print("Market date gate:", scan.get("marketDateGate"))
+              print("Data integrity:", scan.get("dataIntegrityGate"))
+              print("Universe:", scan.get("commonStockUniverseCount"))
+              print("Eligible:", scan.get("eligibleCount"))
+              print("History enriched:", scan.get("historyEnrichedCount"))
+              print("History errors:", scan.get("historyErrorCount"))
+              print("Dynamic stats:", scan.get("dynamicPreviewStats"))
+
+          if screener_path.exists():
+              screener = json.loads(
+                  screener_path.read_text(encoding="utf-8")
               )
-          )
-
-          print("Version:", scan.get("version"))
-          print("Market date:", scan.get("marketDate"))
-          print("Data integrity:", scan.get("dataIntegrityGate"))
-          print("Universe:", scan.get("commonStockUniverseCount"))
-          print("Eligible:", scan.get("eligibleCount"))
-          print("History:", scan.get("historyEnrichedCount"))
-          print("History errors:", scan.get("historyErrorCount"))
-          print("Dynamic stats:", scan.get("dynamicPreviewStats"))
-
-          dynamic_path = Path("data/watchlist-dynamic.json")
-
-          if dynamic_path.exists():
-              dynamic = json.loads(
-                  dynamic_path.read_text(
-                      encoding="utf-8"
-                  )
-              )
+              print("\n=== Full-market Screener ===")
+              print("Version:", screener.get("version"))
+              print("Market date:", screener.get("marketDate"))
+              print("Gate:", screener.get("marketDateGate"))
+              print("Coverage:", screener.get("coverage"))
+              print("Breadth:", screener.get("breadth"))
 
               print(
-                  "Dynamic candidates:",
+                  "Top sectors:",
                   [
                       (
-                          x.get("symbol"),
-                          x.get("score"),
-                          x.get("setup"),
                           x.get("industry"),
+                          x.get("sectorStrengthScore"),
+                          x.get("medianChangePct"),
+                          x.get("advanceRatio"),
                       )
-                      for x in dynamic.get(
-                          "candidates",
-                          [],
-                      )
+                      for x in screener.get("sectorRanking", [])[:10]
                   ],
               )
 
               print(
-                  "Dynamic expires:",
-                  dynamic.get("expiresAt"),
+                  "Top candidates:",
+                  [
+                      (
+                          x.get("symbol"),
+                          x.get("name"),
+                          x.get("discoveryScore"),
+                          x.get("signals"),
+                      )
+                      for x in screener.get("topCandidates", [])[:15]
+                  ],
+              )
+
+              history = screener.get("historyLayer") or {}
+              print(
+                  "History layer:",
+                  {
+                      "available": history.get("available"),
+                      "version": history.get("version"),
+                      "historyEnrichedCount": history.get(
+                          "historyEnrichedCount"
+                      ),
+                      "historyErrorCount": history.get(
+                          "historyErrorCount"
+                      ),
+                  },
               )
           PY
 
-      - name: Commit discovery and dynamic watchlist
+      - name: Commit discovery, dynamic watchlist and screener
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add             data/discovery-scan.json             data/watchlist-dynamic.json
+          git add \
+            data/discovery-scan.json \
+            data/watchlist-dynamic.json \
+            data/tw-screener.json
 
           if git diff --cached --quiet
           then
-            echo "No discovery changes."
+            echo "No market-data changes."
             exit 0
           fi
 
-          git commit             -m "Update Taiwan discovery and dynamic watchlist"
+          git commit -m "Update Taiwan discovery and full-market screener"
 
-          git pull             --rebase             origin             "${GITHUB_REF_NAME}"
+          git pull \
+            --rebase \
+            origin \
+            "${GITHUB_REF_NAME}"
 
           git push
