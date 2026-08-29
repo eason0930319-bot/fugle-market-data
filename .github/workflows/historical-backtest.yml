@@ -1,4 +1,4 @@
-name: Historical Taiwan Backtest V1
+name: Historical Taiwan Backtest V1.1
 
 on:
   workflow_dispatch:
@@ -15,6 +15,9 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/historical-backtest.yml"
+      - "scripts/backtest_data.py"
+      - "scripts/backtest_model.py"
+      - "scripts/historical_backtest.py"
 
 permissions:
   contents: write
@@ -74,7 +77,12 @@ jobs:
           print('By setup:', p.get('bySetup'))
           print('By regime:', p.get('byMarketRegime'))
           print('By tier:', p.get('byDiscoveryTier'))
-          print('Thresholds:', p.get('discoveryScoreThresholdsBySplit'))
+          ext = p.get('extensionResearch') or {}
+          print('Extension overall:', ext.get('overall'))
+          print('Extension by subtype:', ext.get('bySubtype'))
+          print('Extension by flag:', ext.get('byFlag'))
+          print('Extension diagnostic rules:', ext.get('diagnosticRules'))
+          print('Extension rules by split:', ext.get('diagnosticRulesBySplit'))
           PY
 
       - name: Commit backtest outputs
@@ -86,6 +94,6 @@ jobs:
             echo "No backtest output changes."
             exit 0
           fi
-          git commit -m "Update historical Taiwan backtest"
+          git commit -m "Update historical Taiwan backtest V1.1"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push
