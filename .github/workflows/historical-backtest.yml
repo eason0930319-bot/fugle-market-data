@@ -1,0 +1,91 @@
+name: Historical Taiwan Backtest V1
+
+on:
+  workflow_dispatch:
+    inputs:
+      start:
+        description: Backtest start date (YYYY-MM-DD)
+        required: false
+        default: "2024-01-01"
+      end:
+        description: Backtest end date; blank = latest available
+        required: false
+        default: ""
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/historical-backtest.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: historical-taiwan-backtest
+  cancel-in-progress: false
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      BACKTEST_START: ${{ inputs.start || '2024-01-01' }}
+      BACKTEST_END: ${{ inputs.end || '' }}
+      BACKTEST_MIN_TRADE_VALUE: "50000000"
+      BACKTEST_DOWNLOAD_BATCH: "80"
+      BACKTEST_TOP_LIMIT: "50"
+      BACKTEST_HISTORY_LIMIT: "40"
+      BACKTEST_MIN_GROUP_SAMPLE: "30"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pandas numpy yfinance
+
+      - name: Syntax check
+        run: |
+          python -m py_compile scripts/backtest_data.py
+          python -m py_compile scripts/backtest_model.py
+          python -m py_compile scripts/historical_backtest.py
+
+      - name: Run historical backtest
+        run: |
+          python scripts/historical_backtest.py
+
+      - name: Show calibration summary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = json.loads(Path('data/backtest-summary.json').read_text(encoding='utf-8'))
+          print('Version:', p.get('version'))
+          print('Period:', p.get('period'))
+          print('Coverage:', p.get('coverage'))
+          print('Daily coverage:', p.get('dailyCoverage'))
+          print('Overall:', p.get('overall'))
+          print('By setup:', p.get('bySetup'))
+          print('By regime:', p.get('byMarketRegime'))
+          print('By tier:', p.get('byDiscoveryTier'))
+          print('Thresholds:', p.get('discoveryScoreThresholdsBySplit'))
+          PY
+
+      - name: Commit backtest outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/backtest-summary.json data/backtest-signal-sample.json
+          if git diff --cached --quiet; then
+            echo "No backtest output changes."
+            exit 0
+          fi
+          git commit -m "Update historical Taiwan backtest"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push
