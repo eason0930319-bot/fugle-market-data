@@ -3,6 +3,12 @@ name: Taiwan Market Discovery + Screener + Performance + Decision
 on:
   workflow_dispatch:
 
+  push:
+    branches: [main]
+    paths:
+      - "scripts/decision_tracker.py"
+      - ".github/workflows/discovery.yml"
+
   schedule:
     # 台灣時間週一～週五 18:30
     # UTC = 10:30
@@ -69,7 +75,7 @@ jobs:
             echo "Manual run: allow the latest matching TWSE/TPEx session for testing."
           else
             echo "SCREENER_STRICT_TODAY=1" >> "$GITHUB_ENV"
-            echo "Scheduled run: require the current Asia/Taipei trading date."
+            echo "Scheduled/push run: require the current Asia/Taipei trading date."
           fi
 
       - name: Run discovery production scan
