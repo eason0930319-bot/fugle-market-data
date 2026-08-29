@@ -1,4 +1,4 @@
-name: Taiwan Market Discovery + Screener + Performance
+name: Taiwan Market Discovery + Screener + Performance + Decision
 
 on:
   workflow_dispatch:
@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  issues: read
 
 concurrency:
   group: taiwan-market-discovery
@@ -39,6 +40,12 @@ jobs:
       PERFORMANCE_TRACK_LIMIT: "50"
       PERFORMANCE_MIN_SAMPLE: "100"
       PERFORMANCE_RETENTION_DAYS: "365"
+
+      DECISION_LEDGER_ISSUE: "1"
+      DECISION_MIN_SAMPLE: "50"
+      DECISION_RETENTION_DAYS: "540"
+      DECISION_MISSED_MOVE_PCT: "5"
+      DECISION_STOP_RECOVERY_PCT: "2"
 
     steps:
       - name: Checkout
@@ -73,11 +80,17 @@ jobs:
         run: |
           python scripts/tw_screener.py
 
-      - name: Update performance feedback layer
+      - name: Update discovery performance layer
         run: |
           python scripts/performance_tracker.py
 
-      - name: Show discovery, screener and performance summary
+      - name: Update V3.3 decision feedback layer
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/decision_tracker.py
+
+      - name: Show discovery, screener and feedback summary
         run: |
           python - <<'PY'
           import json
@@ -86,6 +99,7 @@ jobs:
           scan_path = Path("data/discovery-scan.json")
           screener_path = Path("data/tw-screener.json")
           performance_path = Path("data/performance-summary.json")
+          decision_path = Path("data/decision-summary.json")
 
           if scan_path.exists():
               scan = json.loads(scan_path.read_text(encoding="utf-8"))
@@ -101,16 +115,13 @@ jobs:
               print("Dynamic stats:", scan.get("dynamicPreviewStats"))
 
           if screener_path.exists():
-              screener = json.loads(
-                  screener_path.read_text(encoding="utf-8")
-              )
+              screener = json.loads(screener_path.read_text(encoding="utf-8"))
               print("\n=== Full-market Screener ===")
               print("Version:", screener.get("version"))
               print("Market date:", screener.get("marketDate"))
               print("Gate:", screener.get("marketDateGate"))
               print("Coverage:", screener.get("coverage"))
               print("Breadth:", screener.get("breadth"))
-
               print(
                   "Top sectors:",
                   [
@@ -123,7 +134,6 @@ jobs:
                       for x in screener.get("sectorRanking", [])[:10]
                   ],
               )
-
               print(
                   "Top candidates:",
                   [
@@ -136,46 +146,46 @@ jobs:
                       for x in screener.get("topCandidates", [])[:15]
                   ],
               )
-
               history = screener.get("historyLayer") or {}
               print(
                   "History layer:",
                   {
                       "available": history.get("available"),
                       "version": history.get("version"),
-                      "historyEnrichedCount": history.get(
-                          "historyEnrichedCount"
-                      ),
-                      "historyErrorCount": history.get(
-                          "historyErrorCount"
-                      ),
+                      "historyEnrichedCount": history.get("historyEnrichedCount"),
+                      "historyErrorCount": history.get("historyErrorCount"),
                   },
               )
 
           if performance_path.exists():
-              performance = json.loads(
-                  performance_path.read_text(encoding="utf-8")
-              )
-              print("\n=== Performance Feedback ===")
+              performance = json.loads(performance_path.read_text(encoding="utf-8"))
+              print("\n=== Discovery Performance ===")
               print("Version:", performance.get("version"))
               print("Market date:", performance.get("marketDate"))
               print("Records:", performance.get("recordCount"))
               print("Overall:", performance.get("overall"))
-              print(
-                  "Calibration:",
-                  performance.get("calibrationReadiness"),
-              )
-              print(
-                  "Observations:",
-                  performance.get("observations"),
-              )
-              print(
-                  "Last run:",
-                  performance.get("lastRun"),
-              )
+              print("Calibration:", performance.get("calibrationReadiness"))
+              print("Observations:", performance.get("observations"))
+              print("Last run:", performance.get("lastRun"))
+
+          if decision_path.exists():
+              decision = json.loads(decision_path.read_text(encoding="utf-8"))
+              print("\n=== V3.3 Decision Feedback ===")
+              print("Version:", decision.get("version"))
+              print("Market date:", decision.get("marketDate"))
+              print("Records:", decision.get("recordCount"))
+              print("Overall new:", decision.get("overallNew"))
+              print("By grade:", decision.get("byGrade"))
+              print("Trigger stats:", decision.get("triggerStats"))
+              print("B -> A:", decision.get("bToA"))
+              print("Missed move proxy:", decision.get("missedMoveProxy"))
+              print("Stop tightness proxy:", decision.get("stopTightnessProxy"))
+              print("Calibration:", decision.get("calibrationReadiness"))
+              print("Observations:", decision.get("observations"))
+              print("Last run:", decision.get("lastRun"))
           PY
 
-      - name: Commit discovery, screener and performance data
+      - name: Commit discovery, screener and feedback data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -185,7 +195,9 @@ jobs:
             data/watchlist-dynamic.json \
             data/tw-screener.json \
             data/performance-ledger.json \
-            data/performance-summary.json
+            data/performance-summary.json \
+            data/decision-ledger.json \
+            data/decision-summary.json
 
           if git diff --cached --quiet
           then
@@ -193,11 +205,6 @@ jobs:
             exit 0
           fi
 
-          git commit -m "Update Taiwan discovery, screener and performance"
-
-          git pull \
-            --rebase \
-            origin \
-            "${GITHUB_REF_NAME}"
-
+          git commit -m "Update Taiwan discovery, screener and feedback"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
           git push
