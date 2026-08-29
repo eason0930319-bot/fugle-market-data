@@ -5,16 +5,27 @@ from pathlib import Path
 
 import historical_backtest as hb
 from backtest_execution import build_execution_summary as _build_execution_summary
-from backtest_portfolio import build_portfolio_summary
+import backtest_portfolio as bp
 
 PORT_OUT = Path("data/backtest-portfolio-summary.json")
+_PRICE_CACHE = {}
+_ORIGINAL_PRICE_SERIES = bp._price_series
+
+
+def _cached_price_series(data, column):
+    # V1.3 runs many portfolio/cohort combinations over the same 1.4M-row history.
+    # Build each MultiIndex price series once instead of once per simulation.
+    if column not in _PRICE_CACHE:
+        _PRICE_CACHE[column] = _ORIGINAL_PRICE_SERIES(data, column)
+    return _PRICE_CACHE[column]
 
 
 def _wrapped_execution(ext, data, generated_at, min_group=30, *args, **kwargs):
     execution_summary, execution_sample, trades = _build_execution_summary(
         ext, data, generated_at, min_group, *args, **kwargs
     )
-    portfolio_summary = build_portfolio_summary(trades, data, generated_at)
+    bp._price_series = _cached_price_series
+    portfolio_summary = bp.build_portfolio_summary(trades, data, generated_at)
     PORT_OUT.parent.mkdir(exist_ok=True)
     PORT_OUT.write_text(
         json.dumps(portfolio_summary, ensure_ascii=False, indent=2),
