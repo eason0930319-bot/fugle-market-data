@@ -1,4 +1,4 @@
-name: Taiwan Market Discovery + Screener
+name: Taiwan Market Discovery + Screener + Performance
 
 on:
   workflow_dispatch:
@@ -36,6 +36,10 @@ jobs:
       SCREENER_TOP_LIMIT: "50"
       SCREENER_SECTOR_LIMIT: "20"
 
+      PERFORMANCE_TRACK_LIMIT: "50"
+      PERFORMANCE_MIN_SAMPLE: "100"
+      PERFORMANCE_RETENTION_DAYS: "365"
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -69,7 +73,11 @@ jobs:
         run: |
           python scripts/tw_screener.py
 
-      - name: Show discovery and screener summary
+      - name: Update performance feedback layer
+        run: |
+          python scripts/performance_tracker.py
+
+      - name: Show discovery, screener and performance summary
         run: |
           python - <<'PY'
           import json
@@ -77,6 +85,7 @@ jobs:
 
           scan_path = Path("data/discovery-scan.json")
           screener_path = Path("data/tw-screener.json")
+          performance_path = Path("data/performance-summary.json")
 
           if scan_path.exists():
               scan = json.loads(scan_path.read_text(encoding="utf-8"))
@@ -142,9 +151,31 @@ jobs:
                       ),
                   },
               )
+
+          if performance_path.exists():
+              performance = json.loads(
+                  performance_path.read_text(encoding="utf-8")
+              )
+              print("\n=== Performance Feedback ===")
+              print("Version:", performance.get("version"))
+              print("Market date:", performance.get("marketDate"))
+              print("Records:", performance.get("recordCount"))
+              print("Overall:", performance.get("overall"))
+              print(
+                  "Calibration:",
+                  performance.get("calibrationReadiness"),
+              )
+              print(
+                  "Observations:",
+                  performance.get("observations"),
+              )
+              print(
+                  "Last run:",
+                  performance.get("lastRun"),
+              )
           PY
 
-      - name: Commit discovery, dynamic watchlist and screener
+      - name: Commit discovery, screener and performance data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -152,7 +183,9 @@ jobs:
           git add \
             data/discovery-scan.json \
             data/watchlist-dynamic.json \
-            data/tw-screener.json
+            data/tw-screener.json \
+            data/performance-ledger.json \
+            data/performance-summary.json
 
           if git diff --cached --quiet
           then
@@ -160,7 +193,7 @@ jobs:
             exit 0
           fi
 
-          git commit -m "Update Taiwan discovery and full-market screener"
+          git commit -m "Update Taiwan discovery, screener and performance"
 
           git pull \
             --rebase \
