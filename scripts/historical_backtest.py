@@ -8,9 +8,10 @@ import numpy as np
 import pandas as pd
 
 from backtest_data import add_features, adjusted_prices, download_history, normalize_frame, security_master, yf_download
+from backtest_execution import build_execution_summary
 from backtest_model import grouped_stats, perf_stats, rnd, build_day
 
-VERSION = "historical-backtest-v1.1"
+VERSION = "historical-backtest-v1.2"
 TZ = timezone(timedelta(hours=8))
 START = os.getenv("BACKTEST_START", "2024-01-01")
 END = os.getenv("BACKTEST_END", "").strip()
@@ -21,6 +22,8 @@ HIST_TOP = int(os.getenv("BACKTEST_HISTORY_LIMIT", "40"))
 MIN_GROUP = int(os.getenv("BACKTEST_MIN_GROUP_SAMPLE", "30"))
 OUT = Path("data/backtest-summary.json")
 SAMPLE = Path("data/backtest-signal-sample.json")
+EXEC_OUT = Path("data/backtest-execution-summary.json")
+EXEC_SAMPLE = Path("data/backtest-execution-sample.json")
 
 
 def benchmark(start, end):
@@ -69,11 +72,9 @@ def consistency_table(ext):
         values = sorted(set(ext[dim].dropna().astype(str)))
         for value in values:
             item = {"dimension": dim, "value": value}
-            ok = True
             for split in ["TRAIN_2024", "VALIDATION_2025", "TEST_2026_PLUS"]:
                 g = ext[(ext[dim].astype(str) == value) & (ext.split == split)]
-                s = perf_stats(g, 5)
-                item[split] = s
+                item[split] = perf_stats(g, 5)
             tr = item["TRAIN_2024"]
             va = item["VALIDATION_2025"]
             item["trainValidationSameSign"] = bool(
@@ -93,7 +94,7 @@ def main():
     if end < start:
         raise RuntimeError("BACKTEST_END before BACKTEST_START")
     fetch_start = (start - pd.Timedelta(days=120)).date().isoformat()
-    fetch_end = (end + pd.Timedelta(days=7)).date().isoformat()
+    fetch_end = (end + pd.Timedelta(days=14)).date().isoformat()
 
     tse = security_master(2, "TSE")
     otc = security_master(4, "OTC")
@@ -135,7 +136,7 @@ def main():
     selected = f[f.source.isin(["DISCOVERY_V2", "SCREENER"])].copy()
     ext = f[f.source == "EXTENSION_RESEARCH"].copy()
     if ext.empty:
-        raise RuntimeError("V1.1 extension research produced no records")
+        raise RuntimeError("V1.2 extension research produced no records")
 
     thresholds = {}
     for sp, g in dv.groupby("split"):
@@ -182,11 +183,14 @@ def main():
         },
     }
 
+    generated_at = datetime.now(timezone.utc).isoformat()
+    execution_summary, execution_sample, _ = build_execution_summary(ext, data, generated_at, MIN_GROUP)
+
     summary = {
         "ok": True,
         "schemaVersion": 1,
         "version": VERSION,
-        "generatedAt": datetime.now(timezone.utc).isoformat(),
+        "generatedAt": generated_at,
         "period": {
             "requestedStart": START,
             "effectiveStart": days[0]["date"],
@@ -213,11 +217,12 @@ def main():
             "marketRegimeCounts": d.marketRegime.value_counts().to_dict(),
         },
         "methodology": {
-            "purpose": "Historical calibration of mechanical Screener/Discovery setup/regime/sector skeleton, with V1.1 dedicated EXTENDED taxonomy; NOT historical full V3.3.",
+            "purpose": "Historical calibration of mechanical Screener/Discovery setup/regime/sector skeleton plus V1.2 next-day execution research; NOT historical full V3.3.",
             "walkForward": "2024 train, 2025 validation, 2026+ untouched test reporting",
             "priceBasis": "Yahoo OHLC scaled by Adj Close/Close; unadjusted volume",
             "rrProxy": "Exploratory only: nearest MA20/prior10Low - 0.25 ATR vs prior60High; never production V3.3 R/R",
             "extensionResearch": "All liquid stocks meeting existing EXTENDED definition, not capped by Discovery's daily extended quota.",
+            "executionResearch": "Signal generated after close; execution starts next trading day with four standardized entry styles, 1.5ATR/structure stop, 2R target and 5-day time exit.",
         },
         "knownBiases": [
             "SURVIVORSHIP_BIAS: current security master; delisted historical names absent",
@@ -225,7 +230,8 @@ def main():
             "Yahoo/yfinance is not official archival bulk data",
             "No historical fundamentals/catalysts/valuation/flows",
             "Not a backfill of final V3.3 Opportunity or ChatGPT A/B/C decisions",
-            "Extension taxonomy thresholds are hypothesis-driven diagnostics, not optimized production parameters",
+            "Extension taxonomy and execution thresholds are hypothesis-driven diagnostics, not optimized production parameters",
+            "Daily OHLC creates intraday path ambiguity; V1.2 handles ambiguous stop/target ordering conservatively",
         ],
         "overall": {src: {"recordCount": len(g), "1d": perf_stats(g, 1), "3d": perf_stats(g, 3), "5d": perf_stats(g, 5)} for src, g in f.groupby("source")},
         "bySplit": grouped_stats(selected, "split", MIN_GROUP),
@@ -235,6 +241,12 @@ def main():
         "byScreenerSignal": grouped_stats(f[f.source == "SCREENER"], "signals", MIN_GROUP, True),
         "discoveryScoreThresholdsBySplit": thresholds,
         "extensionResearch": extension_research,
+        "executionResearch": {
+            "outputFile": str(EXEC_OUT),
+            "overallByStrategy": execution_summary["overallByStrategy"],
+            "focusComparisons": execution_summary["focusComparisons"],
+            "costModel": execution_summary["costModel"],
+        },
         "calibrationPolicy": {
             "automaticProductionChanges": False,
             "rule": "Only consider changes consistent in 2024 train and 2025 validation; never tune on 2026+ test; confirm with forward Decision Ledger.",
@@ -252,6 +264,9 @@ def main():
         "extensionExamples": ext.groupby("extensionSubtype", group_keys=False).head(12).to_dict("records"),
     }
     SAMPLE.write_text(json.dumps(sample, ensure_ascii=False, indent=2), encoding="utf-8")
+    EXEC_OUT.write_text(json.dumps(execution_summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    EXEC_SAMPLE.write_text(json.dumps(execution_sample, ensure_ascii=False, indent=2), encoding="utf-8")
+
     print(json.dumps({
         "ok": True,
         "version": VERSION,
@@ -260,7 +275,10 @@ def main():
         "extensionResearch": {
             "overall": extension_research["overall"],
             "bySubtype": extension_research["bySubtype"],
-            "diagnosticRules": extension_research["diagnosticRules"],
+        },
+        "executionResearch": {
+            "overallByStrategy": execution_summary["overallByStrategy"],
+            "focusComparisons": execution_summary["focusComparisons"],
         },
     }, ensure_ascii=False, indent=2))
 
