@@ -1,4 +1,4 @@
-name: Historical Taiwan Backtest V1.3
+name: Historical Taiwan Backtest V1.4
 
 on:
   workflow_dispatch:
@@ -19,7 +19,8 @@ on:
       - "scripts/backtest_model.py"
       - "scripts/backtest_execution.py"
       - "scripts/backtest_portfolio.py"
-      - "scripts/backtest_v13_runner.py"
+      - "scripts/backtest_ranker.py"
+      - "scripts/backtest_v14_runner.py"
       - "scripts/historical_backtest.py"
 
 permissions:
@@ -62,12 +63,13 @@ jobs:
           python -m py_compile scripts/backtest_model.py
           python -m py_compile scripts/backtest_execution.py
           python -m py_compile scripts/backtest_portfolio.py
+          python -m py_compile scripts/backtest_ranker.py
           python -m py_compile scripts/historical_backtest.py
-          python -m py_compile scripts/backtest_v13_runner.py
+          python -m py_compile scripts/backtest_v14_runner.py
 
       - name: Run historical backtest
         run: |
-          python scripts/backtest_v13_runner.py
+          python scripts/backtest_v14_runner.py
 
       - name: Show calibration summary
         run: |
@@ -75,28 +77,25 @@ jobs:
           import json
           from pathlib import Path
           p = json.loads(Path('data/backtest-summary.json').read_text(encoding='utf-8'))
-          e = json.loads(Path('data/backtest-execution-summary.json').read_text(encoding='utf-8'))
           q = json.loads(Path('data/backtest-portfolio-summary.json').read_text(encoding='utf-8'))
+          r = json.loads(Path('data/backtest-ranking-summary.json').read_text(encoding='utf-8'))
           print('Version:', p.get('version'))
           print('Period:', p.get('period'))
           print('Coverage:', p.get('coverage'))
-          print('Extension overall:', (p.get('extensionResearch') or {}).get('overall'))
-          print('Execution cost model:', e.get('costModel'))
-          print('Execution focus:', e.get('focusComparisons'))
-          print('Portfolio assumptions:', q.get('portfolioAssumptions'))
-          print('Portfolio full-period top 10:', (q.get('descriptiveRankingByFullPeriodTotalReturn') or [])[:10])
-          print('Portfolio validation-2025 top 10:', (q.get('validation2025RankingByTotalReturn') or [])[:10])
+          print('Portfolio validation-2025 top 5:', (q.get('validation2025RankingByTotalReturn') or [])[:5])
+          print('Ranker training policy:', r.get('trainingPolicy'))
+          print('Ranker validation-2025 top 10:', (r.get('validation2025Ranking') or [])[:10])
           PY
 
       - name: Commit backtest outputs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/backtest-summary.json data/backtest-signal-sample.json data/backtest-execution-summary.json data/backtest-execution-sample.json data/backtest-portfolio-summary.json
+          git add data/backtest-summary.json data/backtest-signal-sample.json data/backtest-execution-summary.json data/backtest-execution-sample.json data/backtest-portfolio-summary.json data/backtest-ranking-summary.json
           if git diff --cached --quiet; then
             echo "No backtest output changes."
             exit 0
           fi
-          git commit -m "Update historical Taiwan backtest V1.3"
+          git commit -m "Update historical Taiwan backtest V1.4"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push
