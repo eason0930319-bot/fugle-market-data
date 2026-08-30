@@ -1,4 +1,4 @@
-name: Historical Taiwan Backtest V1.7A Frozen Execution
+name: Historical Taiwan Backtest V1.7B Frozen Exit
 
 on:
   workflow_dispatch:
@@ -21,6 +21,7 @@ on:
       - "scripts/backtest_model.py"
       - "scripts/backtest_execution.py"
       - "scripts/backtest_execution_v17.py"
+      - "scripts/backtest_exit_v17b.py"
       - "scripts/backtest_portfolio.py"
       - "scripts/backtest_ranker.py"
       - "scripts/backtest_ma5.py"
@@ -82,6 +83,7 @@ jobs:
           python -m py_compile scripts/backtest_model.py
           python -m py_compile scripts/backtest_execution.py
           python -m py_compile scripts/backtest_execution_v17.py
+          python -m py_compile scripts/backtest_exit_v17b.py
           python -m py_compile scripts/backtest_portfolio.py
           python -m py_compile scripts/backtest_ranker.py
           python -m py_compile scripts/backtest_ma5.py
@@ -157,8 +159,8 @@ jobs:
           import json
           from pathlib import Path
           p = json.loads(Path('data/backtest-summary.json').read_text(encoding='utf-8'))
-          r = json.loads(Path('data/backtest-ma5-regime-reentry-summary.json').read_text(encoding='utf-8'))
           e = json.loads(Path('data/backtest-execution-v17-summary.json').read_text(encoding='utf-8'))
+          x = json.loads(Path('data/backtest-exit-v17b-summary.json').read_text(encoding='utf-8'))
           q = json.loads(Path('data/backtest-reproducibility.json').read_text(encoding='utf-8'))
           f = json.loads(Path('data/backtest-freeze-manifest.json').read_text(encoding='utf-8'))
           print('Backtest version:', p.get('version'))
@@ -167,13 +169,14 @@ jobs:
           print('Coverage:', p.get('coverage'))
           print('Deterministic across two runs:', q.get('deterministicAcrossTwoConsecutiveRuns'))
           print('Mismatched outputs:', q.get('mismatchedOutputs'))
-          print('V1.6.2 both-year basic pass:', r.get('bothYearsBasicPassCount'))
-          print('V1.7A entry modes:', e.get('entryModeCount'))
-          print('V1.7A both-year basic pass:', e.get('bothYearsBasicPassCount'))
-          print('V1.7A ranked entry modes:')
-          for row in (e.get('topByWorstTrainValidationReturn') or []):
+          print('V1.7A entry winner:', (e.get('topByWorstTrainValidationReturn') or [{}])[0].get('entryMode'))
+          print('V1.7B baseline parity:', x.get('baselineParityWithV17A'))
+          print('V1.7B exit modes:', x.get('exitModeCount'))
+          print('V1.7B both-year basic pass:', x.get('bothYearsBasicPassCount'))
+          print('V1.7B ranked exit modes:')
+          for row in (x.get('topByWorstTrainValidationReturn') or []):
               print({
-                  'entryMode': row.get('entryMode'),
+                  'exitMode': row.get('exitMode'),
                   'bothYearsBasicPass': row.get('bothYearsBasicPass'),
                   'worstTrainValidationReturnPct': row.get('worstTrainValidationReturnPct'),
                   '2024': (row.get('results') or {}).get('TRAIN_2024'),
@@ -198,12 +201,13 @@ jobs:
             data/backtest-ma5-robustness-summary.json \
             data/backtest-ma5-regime-reentry-summary.json \
             data/backtest-execution-v17-summary.json \
+            data/backtest-exit-v17b-summary.json \
             data/backtest-freeze-manifest.json \
             data/backtest-reproducibility.json
           if git diff --cached --quiet; then
             echo "No frozen backtest output changes."
             exit 0
           fi
-          git commit -m "Update reproducible frozen Taiwan execution backtest V1.7A"
+          git commit -m "Update reproducible frozen Taiwan exit backtest V1.7B"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push
