@@ -9,10 +9,12 @@ import backtest_v162_runner as v162
 import backtest_v163_runner as v163
 from backtest_execution_v17 import build_execution_v17_summary
 from backtest_exit_v17b import build_exit_v17b_summary
+from backtest_allocation_v17c import build_allocation_v17c_summary
 
-VERSION = "historical-backtest-execution-v1.7b"
+VERSION = "historical-backtest-execution-v1.7c"
 EXEC17_OUT = Path("data/backtest-execution-v17-summary.json")
 EXIT17B_OUT = Path("data/backtest-exit-v17b-summary.json")
+ALLOC17C_OUT = Path("data/backtest-allocation-v17c-summary.json")
 
 
 def _wrapped_execution(ext, data, generated_at, min_group=30, *args, **kwargs):
@@ -29,6 +31,13 @@ def _wrapped_execution(ext, data, generated_at, min_group=30, *args, **kwargs):
         v17a_summary=entry_research,
     )
     EXIT17B_OUT.write_text(json.dumps(exit_research, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    allocation_research = build_allocation_v17c_summary(
+        data,
+        generated_at,
+        v17b_summary=exit_research,
+    )
+    ALLOC17C_OUT.write_text(json.dumps(allocation_research, ensure_ascii=False, indent=2), encoding="utf-8")
     return execution_summary, execution_sample, trades
 
 
@@ -40,10 +49,11 @@ def main():
     hb.build_execution_summary = _wrapped_execution
     hb.main()
 
-    if hb.OUT.exists() and EXEC17_OUT.exists() and EXIT17B_OUT.exists():
+    if hb.OUT.exists() and EXEC17_OUT.exists() and EXIT17B_OUT.exists() and ALLOC17C_OUT.exists():
         summary = json.loads(hb.OUT.read_text(encoding="utf-8"))
         entry_research = json.loads(EXEC17_OUT.read_text(encoding="utf-8"))
         exit_research = json.loads(EXIT17B_OUT.read_text(encoding="utf-8"))
+        allocation_research = json.loads(ALLOC17C_OUT.read_text(encoding="utf-8"))
         summary["dailyExecutionResearch"] = {
             "entry": {
                 "version": entry_research.get("version"),
@@ -59,6 +69,14 @@ def main():
                 "bothYearsBasicPassCount": exit_research.get("bothYearsBasicPassCount"),
                 "baselineParityWithV17A": exit_research.get("baselineParityWithV17A"),
                 "topByWorstTrainValidationReturn": (exit_research.get("topByWorstTrainValidationReturn") or [])[:6],
+            },
+            "allocation": {
+                "version": allocation_research.get("version"),
+                "outputFile": str(ALLOC17C_OUT),
+                "variantCount": allocation_research.get("variantCount"),
+                "bothYearsBasicPassCount": allocation_research.get("bothYearsBasicPassCount"),
+                "baselineParityWithV17B": allocation_research.get("baselineParityWithV17B"),
+                "topByWorstTrainValidationReturn": (allocation_research.get("topByWorstTrainValidationReturn") or [])[:6],
             },
             "automaticProductionChanges": False,
         }
@@ -79,7 +97,7 @@ def main():
             "DATA_FREEZE: market rows/prices/universe are immutable for reproducible strategy comparisons; create a new freezeId to extend the sample."
         )
         summary.setdefault("knownBiases", []).append(
-            "EXECUTION_V1.7A_B: entry and exit timing are tested on a fixed MA5 mechanical signal/risk architecture and are not yet the final production V3.3 candidate stream."
+            "EXECUTION_V1.7A_B_C: entry, exit and sizing are tested on a fixed MA5 mechanical research stream and are not yet the final production V3.3 candidate stream."
         )
         hb.OUT.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
 
