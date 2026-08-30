@@ -1,4 +1,4 @@
-name: Historical Taiwan Backtest V1.7B Frozen Exit
+name: Historical Taiwan Backtest V1.7C Frozen Allocation
 
 on:
   workflow_dispatch:
@@ -22,6 +22,7 @@ on:
       - "scripts/backtest_execution.py"
       - "scripts/backtest_execution_v17.py"
       - "scripts/backtest_exit_v17b.py"
+      - "scripts/backtest_allocation_v17c.py"
       - "scripts/backtest_portfolio.py"
       - "scripts/backtest_ranker.py"
       - "scripts/backtest_ma5.py"
@@ -84,6 +85,7 @@ jobs:
           python -m py_compile scripts/backtest_execution.py
           python -m py_compile scripts/backtest_execution_v17.py
           python -m py_compile scripts/backtest_exit_v17b.py
+          python -m py_compile scripts/backtest_allocation_v17c.py
           python -m py_compile scripts/backtest_portfolio.py
           python -m py_compile scripts/backtest_ranker.py
           python -m py_compile scripts/backtest_ma5.py
@@ -161,24 +163,27 @@ jobs:
           p = json.loads(Path('data/backtest-summary.json').read_text(encoding='utf-8'))
           e = json.loads(Path('data/backtest-execution-v17-summary.json').read_text(encoding='utf-8'))
           x = json.loads(Path('data/backtest-exit-v17b-summary.json').read_text(encoding='utf-8'))
+          a = json.loads(Path('data/backtest-allocation-v17c-summary.json').read_text(encoding='utf-8'))
           q = json.loads(Path('data/backtest-reproducibility.json').read_text(encoding='utf-8'))
           f = json.loads(Path('data/backtest-freeze-manifest.json').read_text(encoding='utf-8'))
           print('Backtest version:', p.get('version'))
           print('Freeze:', f.get('freezeId'), f.get('dataFileSha256'))
           print('Frozen period:', f.get('targetStart'), 'to', f.get('targetEnd'))
-          print('Coverage:', p.get('coverage'))
           print('Deterministic across two runs:', q.get('deterministicAcrossTwoConsecutiveRuns'))
           print('Mismatched outputs:', q.get('mismatchedOutputs'))
           print('V1.7A entry winner:', (e.get('topByWorstTrainValidationReturn') or [{}])[0].get('entryMode'))
-          print('V1.7B baseline parity:', x.get('baselineParityWithV17A'))
-          print('V1.7B exit modes:', x.get('exitModeCount'))
-          print('V1.7B both-year basic pass:', x.get('bothYearsBasicPassCount'))
-          print('V1.7B ranked exit modes:')
-          for row in (x.get('topByWorstTrainValidationReturn') or []):
+          print('V1.7B exit winner:', (x.get('topByWorstTrainValidationReturn') or [{}])[0].get('exitMode'))
+          print('V1.7C baseline parity:', a.get('baselineParityWithV17B'))
+          print('V1.7C allocation variants:', a.get('variantCount'))
+          print('V1.7C both-year basic pass:', a.get('bothYearsBasicPassCount'))
+          print('V1.7C ranked allocation variants:')
+          for row in (a.get('topByWorstTrainValidationReturn') or []):
               print({
-                  'exitMode': row.get('exitMode'),
+                  'variant': row.get('variant'),
+                  'parameters': row.get('parameters'),
                   'bothYearsBasicPass': row.get('bothYearsBasicPass'),
                   'worstTrainValidationReturnPct': row.get('worstTrainValidationReturnPct'),
+                  'worstTrainValidationDrawdownPct': row.get('worstTrainValidationDrawdownPct'),
                   '2024': (row.get('results') or {}).get('TRAIN_2024'),
                   '2025': (row.get('results') or {}).get('VALIDATION_2025'),
                   '2026': (row.get('results') or {}).get('TEST_2026_DESCRIPTIVE'),
@@ -202,12 +207,13 @@ jobs:
             data/backtest-ma5-regime-reentry-summary.json \
             data/backtest-execution-v17-summary.json \
             data/backtest-exit-v17b-summary.json \
+            data/backtest-allocation-v17c-summary.json \
             data/backtest-freeze-manifest.json \
             data/backtest-reproducibility.json
           if git diff --cached --quiet; then
             echo "No frozen backtest output changes."
             exit 0
           fi
-          git commit -m "Update reproducible frozen Taiwan exit backtest V1.7B"
+          git commit -m "Update reproducible frozen Taiwan allocation backtest V1.7C"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push
