@@ -2,7 +2,7 @@
   "ok": true,
   "schemaVersion": 1,
   "version": "historical-backtest-v1.2",
-  "generatedAt": "2026-08-30T03:55:33.093391+00:00",
+  "generatedAt": "2026-08-30T06:50:41.404069+00:00",
   "period": {
     "requestedStart": "2024-01-01",
     "effectiveStart": "2024-01-02",
@@ -53,7 +53,7 @@
     "Extension taxonomy and execution thresholds are hypothesis-driven diagnostics, not optimized production parameters",
     "Daily OHLC creates intraday path ambiguity; V1.2 handles ambiguous stop/target ordering conservatively",
     "DATA_FREEZE: market rows/prices/universe are immutable for reproducible strategy comparisons; create a new freezeId to extend the sample.",
-    "EXECUTION_V1.7A: entry timing is tested on a fixed MA5 mechanical signal/risk architecture and is not yet the final production V3.3 candidate stream."
+    "EXECUTION_V1.7A_B: entry and exit timing are tested on a fixed MA5 mechanical signal/risk architecture and are not yet the final production V3.3 candidate stream."
   ],
   "overall": {
     "DISCOVERY_V2": {
@@ -6205,344 +6205,819 @@
     "rule": "Only consider changes consistent in 2024 train and 2025 validation; never tune on 2026+ test; confirm with forward Decision Ledger."
   },
   "dailyExecutionResearch": {
-    "version": "daily-execution-entry-backtest-v1.7a",
-    "outputFile": "data/backtest-execution-v17-summary.json",
-    "researchPolicy": {
-      "signal": "MA5 rising cross signal from V1.5 is held fixed across entry variants.",
-      "fixedRiskArchitecture": {
-        "stop": {
-          "kind": "ATR_STRUCT",
-          "atr_mult": 1.25,
-          "use_structure": true,
-          "struct_col": "l10",
-          "struct_atr_offset": 0.0
-        },
-        "marketRegimeGate": "NO_BEAR: allow BULL and NEUTRAL signal-day entries only.",
-        "cooldownAfterStopSessions": 5,
-        "trendExit": "MA5 down-cross confirmed at close; exit next session open."
-      },
-      "train": "2024 historical development evidence",
-      "validation": "2025 historical secondary evidence; no longer pristine because earlier research has inspected it.",
-      "test2026": "Descriptive only.",
-      "ranking": "Rank by min(2024 total return, 2025 total return), not by best single-year result.",
-      "automaticProductionChanges": false
-    },
-    "entryModeCount": 4,
-    "bothYearsBasicPassCount": 2,
-    "topByWorstTrainValidationReturn": [
-      {
-        "entryMode": "NEXT_OPEN",
-        "audit": {
+    "entry": {
+      "version": "daily-execution-entry-backtest-v1.7a",
+      "outputFile": "data/backtest-execution-v17-summary.json",
+      "entryModeCount": 4,
+      "bothYearsBasicPassCount": 2,
+      "topByWorstTrainValidationReturn": [
+        {
           "entryMode": "NEXT_OPEN",
-          "entrySignalsSeen": 29951,
-          "skippedRegimeSignals": 4377,
-          "skippedCooldownSignals": 1750,
-          "skippedWhileInTradeSignals": 7248,
-          "noFillSignals": 0,
-          "missingStopLevelCount": 178,
-          "enteredTrades": 16576,
-          "sameDayIntradayEntryStopCount": 0
-        },
-        "results": {
-          "TRAIN_2024": {
-            "totalReturnPct": 53.0509,
-            "maxDrawdownPct": -21.7812,
-            "expectancyPct": 2.0448,
-            "profitFactor": 1.4956,
-            "payoffRatio": 4.1695,
-            "winRate": 0.264,
-            "avgWinPct": 23.3742,
-            "avgLossPct": -5.606,
-            "avgHoldingDays": 9.03,
-            "maxTradeGainPct": 85.2157,
-            "maxTradeLossPct": -11.9201,
-            "tradeCount": 125,
-            "candidateTradeCount": 6213,
-            "skippedCapacity": 6088
+          "audit": {
+            "entryMode": "NEXT_OPEN",
+            "entrySignalsSeen": 29951,
+            "skippedRegimeSignals": 4377,
+            "skippedCooldownSignals": 1750,
+            "skippedWhileInTradeSignals": 7248,
+            "noFillSignals": 0,
+            "missingStopLevelCount": 178,
+            "enteredTrades": 16576,
+            "sameDayIntradayEntryStopCount": 0
           },
-          "VALIDATION_2025": {
-            "totalReturnPct": 22.8436,
-            "maxDrawdownPct": -39.539,
-            "expectancyPct": 1.5224,
-            "profitFactor": 1.3451,
-            "payoffRatio": 3.7979,
-            "winRate": 0.2615,
-            "avgWinPct": 22.6878,
-            "avgLossPct": -5.9737,
-            "avgHoldingDays": 9.18,
-            "maxTradeGainPct": 109.1985,
-            "maxTradeLossPct": -14.0913,
-            "tradeCount": 130,
-            "candidateTradeCount": 4900,
-            "skippedCapacity": 4770
+          "results": {
+            "TRAIN_2024": {
+              "totalReturnPct": 53.0509,
+              "maxDrawdownPct": -21.7812,
+              "expectancyPct": 2.0448,
+              "profitFactor": 1.4956,
+              "payoffRatio": 4.1695,
+              "winRate": 0.264,
+              "avgWinPct": 23.3742,
+              "avgLossPct": -5.606,
+              "avgHoldingDays": 9.03,
+              "maxTradeGainPct": 85.2157,
+              "maxTradeLossPct": -11.9201,
+              "tradeCount": 125,
+              "candidateTradeCount": 6213,
+              "skippedCapacity": 6088
+            },
+            "VALIDATION_2025": {
+              "totalReturnPct": 22.8436,
+              "maxDrawdownPct": -39.539,
+              "expectancyPct": 1.5224,
+              "profitFactor": 1.3451,
+              "payoffRatio": 3.7979,
+              "winRate": 0.2615,
+              "avgWinPct": 22.6878,
+              "avgLossPct": -5.9737,
+              "avgHoldingDays": 9.18,
+              "maxTradeGainPct": 109.1985,
+              "maxTradeLossPct": -14.0913,
+              "tradeCount": 130,
+              "candidateTradeCount": 4900,
+              "skippedCapacity": 4770
+            },
+            "TEST_2026_DESCRIPTIVE": {
+              "totalReturnPct": 27.8644,
+              "maxDrawdownPct": -27.5762,
+              "expectancyPct": 2.4859,
+              "profitFactor": 1.5561,
+              "payoffRatio": 3.705,
+              "winRate": 0.2958,
+              "avgWinPct": 23.518,
+              "avgLossPct": -6.3476,
+              "avgHoldingDays": 10.17,
+              "maxTradeGainPct": 104.8253,
+              "maxTradeLossPct": -12.158,
+              "tradeCount": 71,
+              "candidateTradeCount": 3863,
+              "skippedCapacity": 3792
+            }
           },
-          "TEST_2026_DESCRIPTIVE": {
-            "totalReturnPct": 27.8644,
-            "maxDrawdownPct": -27.5762,
-            "expectancyPct": 2.4859,
-            "profitFactor": 1.5561,
-            "payoffRatio": 3.705,
-            "winRate": 0.2958,
-            "avgWinPct": 23.518,
-            "avgLossPct": -6.3476,
-            "avgHoldingDays": 10.17,
-            "maxTradeGainPct": 104.8253,
-            "maxTradeLossPct": -12.158,
-            "tradeCount": 71,
-            "candidateTradeCount": 3863,
-            "skippedCapacity": 3792
+          "train2024Pass": true,
+          "validation2025Pass": true,
+          "bothYearsBasicPass": true,
+          "worstTrainValidationReturnPct": 22.8436,
+          "vsNextOpen": {
+            "TRAIN_2024": {
+              "returnDeltaVsNextOpenPct": 0.0,
+              "drawdownImprovementVsNextOpenPctPoint": 0.0
+            },
+            "VALIDATION_2025": {
+              "returnDeltaVsNextOpenPct": 0.0,
+              "drawdownImprovementVsNextOpenPctPoint": 0.0
+            }
           }
         },
-        "train2024Pass": true,
-        "validation2025Pass": true,
-        "bothYearsBasicPass": true,
-        "worstTrainValidationReturnPct": 22.8436,
-        "vsNextOpen": {
-          "TRAIN_2024": {
-            "returnDeltaVsNextOpenPct": 0.0,
-            "drawdownImprovementVsNextOpenPctPoint": 0.0
-          },
-          "VALIDATION_2025": {
-            "returnDeltaVsNextOpenPct": 0.0,
-            "drawdownImprovementVsNextOpenPctPoint": 0.0
-          }
-        }
-      },
-      {
-        "entryMode": "PULLBACK_1PCT",
-        "audit": {
+        {
           "entryMode": "PULLBACK_1PCT",
-          "entrySignalsSeen": 29951,
-          "skippedRegimeSignals": 5146,
-          "skippedCooldownSignals": 854,
-          "skippedWhileInTradeSignals": 4603,
-          "noFillSignals": 8389,
-          "missingStopLevelCount": 90,
-          "enteredTrades": 10959,
-          "sameDayIntradayEntryStopCount": 436
-        },
-        "results": {
-          "TRAIN_2024": {
-            "totalReturnPct": 2.4565,
-            "maxDrawdownPct": -21.9125,
-            "expectancyPct": 0.231,
-            "profitFactor": 1.0618,
-            "payoffRatio": 3.83,
-            "winRate": 0.2171,
-            "avgWinPct": 18.2886,
-            "avgLossPct": -4.7751,
-            "avgHoldingDays": 8.62,
-            "maxTradeGainPct": 117.1268,
-            "maxTradeLossPct": -11.6717,
-            "tradeCount": 129,
-            "candidateTradeCount": 4135,
-            "skippedCapacity": 4006
+          "audit": {
+            "entryMode": "PULLBACK_1PCT",
+            "entrySignalsSeen": 29951,
+            "skippedRegimeSignals": 5146,
+            "skippedCooldownSignals": 854,
+            "skippedWhileInTradeSignals": 4603,
+            "noFillSignals": 8389,
+            "missingStopLevelCount": 90,
+            "enteredTrades": 10959,
+            "sameDayIntradayEntryStopCount": 436
           },
-          "VALIDATION_2025": {
-            "totalReturnPct": 0.2857,
-            "maxDrawdownPct": -31.2339,
-            "expectancyPct": 0.3558,
-            "profitFactor": 1.0872,
-            "payoffRatio": 3.1214,
-            "winRate": 0.2583,
-            "avgWinPct": 17.1655,
-            "avgLossPct": -5.4992,
-            "avgHoldingDays": 9.49,
-            "maxTradeGainPct": 66.1545,
-            "maxTradeLossPct": -13.232,
-            "tradeCount": 120,
-            "candidateTradeCount": 3257,
-            "skippedCapacity": 3137
+          "results": {
+            "TRAIN_2024": {
+              "totalReturnPct": 2.4565,
+              "maxDrawdownPct": -21.9125,
+              "expectancyPct": 0.231,
+              "profitFactor": 1.0618,
+              "payoffRatio": 3.83,
+              "winRate": 0.2171,
+              "avgWinPct": 18.2886,
+              "avgLossPct": -4.7751,
+              "avgHoldingDays": 8.62,
+              "maxTradeGainPct": 117.1268,
+              "maxTradeLossPct": -11.6717,
+              "tradeCount": 129,
+              "candidateTradeCount": 4135,
+              "skippedCapacity": 4006
+            },
+            "VALIDATION_2025": {
+              "totalReturnPct": 0.2857,
+              "maxDrawdownPct": -31.2339,
+              "expectancyPct": 0.3558,
+              "profitFactor": 1.0872,
+              "payoffRatio": 3.1214,
+              "winRate": 0.2583,
+              "avgWinPct": 17.1655,
+              "avgLossPct": -5.4992,
+              "avgHoldingDays": 9.49,
+              "maxTradeGainPct": 66.1545,
+              "maxTradeLossPct": -13.232,
+              "tradeCount": 120,
+              "candidateTradeCount": 3257,
+              "skippedCapacity": 3137
+            },
+            "TEST_2026_DESCRIPTIVE": {
+              "totalReturnPct": 53.6695,
+              "maxDrawdownPct": -36.5602,
+              "expectancyPct": 4.424,
+              "profitFactor": 2.0978,
+              "payoffRatio": 5.4101,
+              "winRate": 0.2794,
+              "avgWinPct": 30.2564,
+              "avgLossPct": -5.5926,
+              "avgHoldingDays": 10.68,
+              "maxTradeGainPct": 107.1426,
+              "maxTradeLossPct": -12.8222,
+              "tradeCount": 68,
+              "candidateTradeCount": 2601,
+              "skippedCapacity": 2533
+            }
           },
-          "TEST_2026_DESCRIPTIVE": {
-            "totalReturnPct": 53.6695,
-            "maxDrawdownPct": -36.5602,
-            "expectancyPct": 4.424,
-            "profitFactor": 2.0978,
-            "payoffRatio": 5.4101,
-            "winRate": 0.2794,
-            "avgWinPct": 30.2564,
-            "avgLossPct": -5.5926,
-            "avgHoldingDays": 10.68,
-            "maxTradeGainPct": 107.1426,
-            "maxTradeLossPct": -12.8222,
-            "tradeCount": 68,
-            "candidateTradeCount": 2601,
-            "skippedCapacity": 2533
+          "train2024Pass": true,
+          "validation2025Pass": true,
+          "bothYearsBasicPass": true,
+          "worstTrainValidationReturnPct": 0.2857,
+          "vsNextOpen": {
+            "TRAIN_2024": {
+              "returnDeltaVsNextOpenPct": -50.5944,
+              "drawdownImprovementVsNextOpenPctPoint": -0.1313
+            },
+            "VALIDATION_2025": {
+              "returnDeltaVsNextOpenPct": -22.5579,
+              "drawdownImprovementVsNextOpenPctPoint": 8.3051
+            }
           }
         },
-        "train2024Pass": true,
-        "validation2025Pass": true,
-        "bothYearsBasicPass": true,
-        "worstTrainValidationReturnPct": 0.2857,
-        "vsNextOpen": {
-          "TRAIN_2024": {
-            "returnDeltaVsNextOpenPct": -50.5944,
-            "drawdownImprovementVsNextOpenPctPoint": -0.1313
-          },
-          "VALIDATION_2025": {
-            "returnDeltaVsNextOpenPct": -22.5579,
-            "drawdownImprovementVsNextOpenPctPoint": 8.3051
-          }
-        }
-      },
-      {
-        "entryMode": "BREAKOUT_0_5PCT",
-        "audit": {
+        {
           "entryMode": "BREAKOUT_0_5PCT",
-          "entrySignalsSeen": 29951,
-          "skippedRegimeSignals": 5001,
-          "skippedCooldownSignals": 1382,
-          "skippedWhileInTradeSignals": 4686,
-          "noFillSignals": 8631,
-          "missingStopLevelCount": 104,
-          "enteredTrades": 10251,
-          "sameDayIntradayEntryStopCount": 436
-        },
-        "results": {
-          "TRAIN_2024": {
-            "totalReturnPct": -9.3007,
-            "maxDrawdownPct": -29.4406,
-            "expectancyPct": -0.4422,
-            "profitFactor": 0.9058,
-            "payoffRatio": 2.7174,
-            "winRate": 0.25,
-            "avgWinPct": 17.0109,
-            "avgLossPct": -6.2599,
-            "avgHoldingDays": 8.24,
-            "maxTradeGainPct": 92.7908,
-            "maxTradeLossPct": -12.7697,
-            "tradeCount": 136,
-            "candidateTradeCount": 3660,
-            "skippedCapacity": 3524
+          "audit": {
+            "entryMode": "BREAKOUT_0_5PCT",
+            "entrySignalsSeen": 29951,
+            "skippedRegimeSignals": 5001,
+            "skippedCooldownSignals": 1382,
+            "skippedWhileInTradeSignals": 4686,
+            "noFillSignals": 8631,
+            "missingStopLevelCount": 104,
+            "enteredTrades": 10251,
+            "sameDayIntradayEntryStopCount": 436
           },
-          "VALIDATION_2025": {
-            "totalReturnPct": 18.2237,
-            "maxDrawdownPct": -34.7274,
-            "expectancyPct": 1.5466,
-            "profitFactor": 1.3582,
-            "payoffRatio": 3.2357,
-            "winRate": 0.2957,
-            "avgWinPct": 19.8357,
-            "avgLossPct": -6.1303,
-            "avgHoldingDays": 10.17,
-            "maxTradeGainPct": 109.1985,
-            "maxTradeLossPct": -15.5549,
-            "tradeCount": 115,
-            "candidateTradeCount": 2913,
-            "skippedCapacity": 2798
+          "results": {
+            "TRAIN_2024": {
+              "totalReturnPct": -9.3007,
+              "maxDrawdownPct": -29.4406,
+              "expectancyPct": -0.4422,
+              "profitFactor": 0.9058,
+              "payoffRatio": 2.7174,
+              "winRate": 0.25,
+              "avgWinPct": 17.0109,
+              "avgLossPct": -6.2599,
+              "avgHoldingDays": 8.24,
+              "maxTradeGainPct": 92.7908,
+              "maxTradeLossPct": -12.7697,
+              "tradeCount": 136,
+              "candidateTradeCount": 3660,
+              "skippedCapacity": 3524
+            },
+            "VALIDATION_2025": {
+              "totalReturnPct": 18.2237,
+              "maxDrawdownPct": -34.7274,
+              "expectancyPct": 1.5466,
+              "profitFactor": 1.3582,
+              "payoffRatio": 3.2357,
+              "winRate": 0.2957,
+              "avgWinPct": 19.8357,
+              "avgLossPct": -6.1303,
+              "avgHoldingDays": 10.17,
+              "maxTradeGainPct": 109.1985,
+              "maxTradeLossPct": -15.5549,
+              "tradeCount": 115,
+              "candidateTradeCount": 2913,
+              "skippedCapacity": 2798
+            },
+            "TEST_2026_DESCRIPTIVE": {
+              "totalReturnPct": 13.2126,
+              "maxDrawdownPct": -36.7536,
+              "expectancyPct": 2.3987,
+              "profitFactor": 1.4733,
+              "payoffRatio": 3.7221,
+              "winRate": 0.2836,
+              "avgWinPct": 26.3296,
+              "avgLossPct": -7.074,
+              "avgHoldingDays": 10.87,
+              "maxTradeGainPct": 104.051,
+              "maxTradeLossPct": -12.1227,
+              "tradeCount": 67,
+              "candidateTradeCount": 2701,
+              "skippedCapacity": 2634
+            }
           },
-          "TEST_2026_DESCRIPTIVE": {
-            "totalReturnPct": 13.2126,
-            "maxDrawdownPct": -36.7536,
-            "expectancyPct": 2.3987,
-            "profitFactor": 1.4733,
-            "payoffRatio": 3.7221,
-            "winRate": 0.2836,
-            "avgWinPct": 26.3296,
-            "avgLossPct": -7.074,
-            "avgHoldingDays": 10.87,
-            "maxTradeGainPct": 104.051,
-            "maxTradeLossPct": -12.1227,
-            "tradeCount": 67,
-            "candidateTradeCount": 2701,
-            "skippedCapacity": 2634
+          "train2024Pass": false,
+          "validation2025Pass": true,
+          "bothYearsBasicPass": false,
+          "worstTrainValidationReturnPct": -9.3007,
+          "vsNextOpen": {
+            "TRAIN_2024": {
+              "returnDeltaVsNextOpenPct": -62.3516,
+              "drawdownImprovementVsNextOpenPctPoint": -7.6594
+            },
+            "VALIDATION_2025": {
+              "returnDeltaVsNextOpenPct": -4.6199,
+              "drawdownImprovementVsNextOpenPctPoint": 4.8116
+            }
           }
         },
-        "train2024Pass": false,
-        "validation2025Pass": true,
-        "bothYearsBasicPass": false,
-        "worstTrainValidationReturnPct": -9.3007,
-        "vsNextOpen": {
-          "TRAIN_2024": {
-            "returnDeltaVsNextOpenPct": -62.3516,
-            "drawdownImprovementVsNextOpenPctPoint": -7.6594
-          },
-          "VALIDATION_2025": {
-            "returnDeltaVsNextOpenPct": -4.6199,
-            "drawdownImprovementVsNextOpenPctPoint": 4.8116
-          }
-        }
-      },
-      {
-        "entryMode": "NO_CHASE_3PCT",
-        "audit": {
+        {
           "entryMode": "NO_CHASE_3PCT",
-          "entrySignalsSeen": 29951,
-          "skippedRegimeSignals": 4488,
-          "skippedCooldownSignals": 1616,
-          "skippedWhileInTradeSignals": 7023,
-          "noFillSignals": 1070,
-          "missingStopLevelCount": 171,
-          "enteredTrades": 15754,
-          "sameDayIntradayEntryStopCount": 0
-        },
-        "results": {
-          "TRAIN_2024": {
-            "totalReturnPct": -12.1467,
-            "maxDrawdownPct": -32.0204,
-            "expectancyPct": -0.1034,
-            "profitFactor": 0.9764,
-            "payoffRatio": 3.433,
-            "winRate": 0.2214,
-            "avgWinPct": 19.2877,
-            "avgLossPct": -5.6183,
-            "avgHoldingDays": 8.1,
-            "maxTradeGainPct": 85.2157,
-            "maxTradeLossPct": -11.9201,
-            "tradeCount": 140,
-            "candidateTradeCount": 5962,
-            "skippedCapacity": 5822
+          "audit": {
+            "entryMode": "NO_CHASE_3PCT",
+            "entrySignalsSeen": 29951,
+            "skippedRegimeSignals": 4488,
+            "skippedCooldownSignals": 1616,
+            "skippedWhileInTradeSignals": 7023,
+            "noFillSignals": 1070,
+            "missingStopLevelCount": 171,
+            "enteredTrades": 15754,
+            "sameDayIntradayEntryStopCount": 0
           },
-          "VALIDATION_2025": {
-            "totalReturnPct": 4.8081,
-            "maxDrawdownPct": -33.851,
-            "expectancyPct": 0.7656,
-            "profitFactor": 1.1716,
-            "payoffRatio": 3.2047,
-            "winRate": 0.2677,
-            "avgWinPct": 19.5237,
-            "avgLossPct": -6.0922,
-            "avgHoldingDays": 9.42,
-            "maxTradeGainPct": 108.2857,
-            "maxTradeLossPct": -14.0913,
-            "tradeCount": 127,
-            "candidateTradeCount": 4714,
-            "skippedCapacity": 4587
+          "results": {
+            "TRAIN_2024": {
+              "totalReturnPct": -12.1467,
+              "maxDrawdownPct": -32.0204,
+              "expectancyPct": -0.1034,
+              "profitFactor": 0.9764,
+              "payoffRatio": 3.433,
+              "winRate": 0.2214,
+              "avgWinPct": 19.2877,
+              "avgLossPct": -5.6183,
+              "avgHoldingDays": 8.1,
+              "maxTradeGainPct": 85.2157,
+              "maxTradeLossPct": -11.9201,
+              "tradeCount": 140,
+              "candidateTradeCount": 5962,
+              "skippedCapacity": 5822
+            },
+            "VALIDATION_2025": {
+              "totalReturnPct": 4.8081,
+              "maxDrawdownPct": -33.851,
+              "expectancyPct": 0.7656,
+              "profitFactor": 1.1716,
+              "payoffRatio": 3.2047,
+              "winRate": 0.2677,
+              "avgWinPct": 19.5237,
+              "avgLossPct": -6.0922,
+              "avgHoldingDays": 9.42,
+              "maxTradeGainPct": 108.2857,
+              "maxTradeLossPct": -14.0913,
+              "tradeCount": 127,
+              "candidateTradeCount": 4714,
+              "skippedCapacity": 4587
+            },
+            "TEST_2026_DESCRIPTIVE": {
+              "totalReturnPct": 69.5571,
+              "maxDrawdownPct": -24.3621,
+              "expectancyPct": 5.7056,
+              "profitFactor": 2.469,
+              "payoffRatio": 4.3769,
+              "winRate": 0.3607,
+              "avgWinPct": 26.589,
+              "avgLossPct": -6.0748,
+              "avgHoldingDays": 12.13,
+              "maxTradeGainPct": 104.8253,
+              "maxTradeLossPct": -11.5133,
+              "tradeCount": 61,
+              "candidateTradeCount": 3521,
+              "skippedCapacity": 3460
+            }
           },
-          "TEST_2026_DESCRIPTIVE": {
-            "totalReturnPct": 69.5571,
-            "maxDrawdownPct": -24.3621,
-            "expectancyPct": 5.7056,
-            "profitFactor": 2.469,
-            "payoffRatio": 4.3769,
-            "winRate": 0.3607,
-            "avgWinPct": 26.589,
-            "avgLossPct": -6.0748,
-            "avgHoldingDays": 12.13,
-            "maxTradeGainPct": 104.8253,
-            "maxTradeLossPct": -11.5133,
-            "tradeCount": 61,
-            "candidateTradeCount": 3521,
-            "skippedCapacity": 3460
-          }
-        },
-        "train2024Pass": false,
-        "validation2025Pass": true,
-        "bothYearsBasicPass": false,
-        "worstTrainValidationReturnPct": -12.1467,
-        "vsNextOpen": {
-          "TRAIN_2024": {
-            "returnDeltaVsNextOpenPct": -65.1976,
-            "drawdownImprovementVsNextOpenPctPoint": -10.2392
-          },
-          "VALIDATION_2025": {
-            "returnDeltaVsNextOpenPct": -18.0355,
-            "drawdownImprovementVsNextOpenPctPoint": 5.688
+          "train2024Pass": false,
+          "validation2025Pass": true,
+          "bothYearsBasicPass": false,
+          "worstTrainValidationReturnPct": -12.1467,
+          "vsNextOpen": {
+            "TRAIN_2024": {
+              "returnDeltaVsNextOpenPct": -65.1976,
+              "drawdownImprovementVsNextOpenPctPoint": -10.2392
+            },
+            "VALIDATION_2025": {
+              "returnDeltaVsNextOpenPct": -18.0355,
+              "drawdownImprovementVsNextOpenPctPoint": 5.688
+            }
           }
         }
-      }
-    ],
+      ]
+    },
+    "exit": {
+      "version": "daily-execution-exit-backtest-v1.7b",
+      "outputFile": "data/backtest-exit-v17b-summary.json",
+      "exitModeCount": 6,
+      "bothYearsBasicPassCount": 3,
+      "baselineParityWithV17A": {
+        "checked": true,
+        "matches": true,
+        "mismatches": []
+      },
+      "topByWorstTrainValidationReturn": [
+        {
+          "exitMode": "MA5_MA10_DEATH_CROSS",
+          "audit": {
+            "exitMode": "MA5_MA10_DEATH_CROSS",
+            "entrySignalsSeen": 29951,
+            "skippedRegimeSignals": 4423,
+            "skippedCooldownSignals": 2079,
+            "skippedWhileInTradeSignals": 6807,
+            "missingStopLevelCount": 176,
+            "enteredTrades": 16642,
+            "hardStopExits": 8191,
+            "trailingStopExits": 0,
+            "closeSignalExits": 8231,
+            "partialTargetHits": 0
+          },
+          "results": {
+            "TRAIN_2024": {
+              "totalReturnPct": 62.181,
+              "maxDrawdownPct": -23.191,
+              "expectancyPct": 2.1569,
+              "profitFactor": 1.5361,
+              "payoffRatio": 3.4094,
+              "winRate": 0.3106,
+              "avgWinPct": 19.8971,
+              "avgLossPct": -5.8359,
+              "avgHoldingDays": 8.43,
+              "maxTradeGainPct": 70.7002,
+              "maxTradeLossPct": -17.9137,
+              "tradeCount": 132,
+              "candidateTradeCount": 6181,
+              "skippedCapacity": 6049
+            },
+            "VALIDATION_2025": {
+              "totalReturnPct": 49.08,
+              "maxDrawdownPct": -28.8456,
+              "expectancyPct": 1.8716,
+              "profitFactor": 1.4499,
+              "payoffRatio": 3.1898,
+              "winRate": 0.3125,
+              "avgWinPct": 19.3006,
+              "avgLossPct": -6.0507,
+              "avgHoldingDays": 7.94,
+              "maxTradeGainPct": 139.4884,
+              "maxTradeLossPct": -14.0913,
+              "tradeCount": 144,
+              "candidateTradeCount": 4941,
+              "skippedCapacity": 4797
+            },
+            "TEST_2026_DESCRIPTIVE": {
+              "totalReturnPct": 10.192,
+              "maxDrawdownPct": -24.7907,
+              "expectancyPct": 0.8232,
+              "profitFactor": 1.1614,
+              "payoffRatio": 3.6425,
+              "winRate": 0.2418,
+              "avgWinPct": 24.5074,
+              "avgLossPct": -6.7282,
+              "avgHoldingDays": 7.64,
+              "maxTradeGainPct": 74.3978,
+              "maxTradeLossPct": -13.521,
+              "tradeCount": 91,
+              "candidateTradeCount": 3926,
+              "skippedCapacity": 3835
+            }
+          },
+          "train2024Pass": true,
+          "validation2025Pass": true,
+          "bothYearsBasicPass": true,
+          "worstTrainValidationReturnPct": 49.08,
+          "vsMA5Baseline": {
+            "TRAIN_2024": {
+              "returnDeltaVsMA5PctPoint": 9.1301,
+              "drawdownImprovementVsMA5PctPoint": -1.4098
+            },
+            "VALIDATION_2025": {
+              "returnDeltaVsMA5PctPoint": 26.2364,
+              "drawdownImprovementVsMA5PctPoint": 10.6934
+            }
+          }
+        },
+        {
+          "exitMode": "MA5_DOWN_CROSS",
+          "audit": {
+            "entryMode": "NEXT_OPEN",
+            "entrySignalsSeen": 29951,
+            "skippedRegimeSignals": 4377,
+            "skippedCooldownSignals": 1750,
+            "skippedWhileInTradeSignals": 7248,
+            "noFillSignals": 0,
+            "missingStopLevelCount": 178,
+            "enteredTrades": 16576,
+            "sameDayIntradayEntryStopCount": 0,
+            "exitMode": "MA5_DOWN_CROSS",
+            "baselineFromV17A": true
+          },
+          "results": {
+            "TRAIN_2024": {
+              "totalReturnPct": 53.0509,
+              "maxDrawdownPct": -21.7812,
+              "expectancyPct": 2.0448,
+              "profitFactor": 1.4956,
+              "payoffRatio": 4.1695,
+              "winRate": 0.264,
+              "avgWinPct": 23.3742,
+              "avgLossPct": -5.606,
+              "avgHoldingDays": 9.03,
+              "maxTradeGainPct": 85.2157,
+              "maxTradeLossPct": -11.9201,
+              "tradeCount": 125,
+              "candidateTradeCount": 6213,
+              "skippedCapacity": 6088
+            },
+            "VALIDATION_2025": {
+              "totalReturnPct": 22.8436,
+              "maxDrawdownPct": -39.539,
+              "expectancyPct": 1.5224,
+              "profitFactor": 1.3451,
+              "payoffRatio": 3.7979,
+              "winRate": 0.2615,
+              "avgWinPct": 22.6878,
+              "avgLossPct": -5.9737,
+              "avgHoldingDays": 9.18,
+              "maxTradeGainPct": 109.1985,
+              "maxTradeLossPct": -14.0913,
+              "tradeCount": 130,
+              "candidateTradeCount": 4900,
+              "skippedCapacity": 4770
+            },
+            "TEST_2026_DESCRIPTIVE": {
+              "totalReturnPct": 27.8644,
+              "maxDrawdownPct": -27.5762,
+              "expectancyPct": 2.4859,
+              "profitFactor": 1.5561,
+              "payoffRatio": 3.705,
+              "winRate": 0.2958,
+              "avgWinPct": 23.518,
+              "avgLossPct": -6.3476,
+              "avgHoldingDays": 10.17,
+              "maxTradeGainPct": 104.8253,
+              "maxTradeLossPct": -12.158,
+              "tradeCount": 71,
+              "candidateTradeCount": 3863,
+              "skippedCapacity": 3792
+            }
+          },
+          "train2024Pass": true,
+          "validation2025Pass": true,
+          "bothYearsBasicPass": true,
+          "worstTrainValidationReturnPct": 22.8436,
+          "vsMA5Baseline": {
+            "TRAIN_2024": {
+              "returnDeltaVsMA5PctPoint": 0.0,
+              "drawdownImprovementVsMA5PctPoint": 0.0
+            },
+            "VALIDATION_2025": {
+              "returnDeltaVsMA5PctPoint": 0.0,
+              "drawdownImprovementVsMA5PctPoint": 0.0
+            }
+          }
+        },
+        {
+          "exitMode": "PARTIAL_2R_THEN_MA5",
+          "audit": {
+            "exitMode": "PARTIAL_2R_THEN_MA5",
+            "entrySignalsSeen": 29951,
+            "skippedRegimeSignals": 4377,
+            "skippedCooldownSignals": 1750,
+            "skippedWhileInTradeSignals": 7248,
+            "missingStopLevelCount": 178,
+            "enteredTrades": 16576,
+            "hardStopExits": 7039,
+            "trailingStopExits": 0,
+            "closeSignalExits": 9291,
+            "partialTargetHits": 4175
+          },
+          "results": {
+            "TRAIN_2024": {
+              "totalReturnPct": 24.3753,
+              "maxDrawdownPct": -17.4054,
+              "expectancyPct": 1.0349,
+              "profitFactor": 1.2771,
+              "payoffRatio": 2.5238,
+              "winRate": 0.336,
+              "avgWinPct": 14.1965,
+              "avgLossPct": -5.6251,
+              "avgHoldingDays": 9.03,
+              "maxTradeGainPct": 48.4628,
+              "maxTradeLossPct": -11.9201,
+              "tradeCount": 125,
+              "candidateTradeCount": 6213,
+              "skippedCapacity": 6088
+            },
+            "VALIDATION_2025": {
+              "totalReturnPct": 6.8711,
+              "maxDrawdownPct": -33.5623,
+              "expectancyPct": 0.5146,
+              "profitFactor": 1.1271,
+              "payoffRatio": 2.3616,
+              "winRate": 0.3231,
+              "avgWinPct": 14.1215,
+              "avgLossPct": -5.9796,
+              "avgHoldingDays": 9.18,
+              "maxTradeGainPct": 61.2897,
+              "maxTradeLossPct": -14.0913,
+              "tradeCount": 130,
+              "candidateTradeCount": 4900,
+              "skippedCapacity": 4770
+            },
+            "TEST_2026_DESCRIPTIVE": {
+              "totalReturnPct": 18.0992,
+              "maxDrawdownPct": -21.5796,
+              "expectancyPct": 1.5162,
+              "profitFactor": 1.3901,
+              "payoffRatio": 2.2654,
+              "winRate": 0.3803,
+              "avgWinPct": 14.2065,
+              "avgLossPct": -6.2711,
+              "avgHoldingDays": 10.17,
+              "maxTradeGainPct": 59.7795,
+              "maxTradeLossPct": -12.158,
+              "tradeCount": 71,
+              "candidateTradeCount": 3863,
+              "skippedCapacity": 3792
+            }
+          },
+          "train2024Pass": true,
+          "validation2025Pass": true,
+          "bothYearsBasicPass": true,
+          "worstTrainValidationReturnPct": 6.8711,
+          "vsMA5Baseline": {
+            "TRAIN_2024": {
+              "returnDeltaVsMA5PctPoint": -28.6756,
+              "drawdownImprovementVsMA5PctPoint": 4.3758
+            },
+            "VALIDATION_2025": {
+              "returnDeltaVsMA5PctPoint": -15.9725,
+              "drawdownImprovementVsMA5PctPoint": 5.9767
+            }
+          }
+        },
+        {
+          "exitMode": "ATR_TRAIL_2P0",
+          "audit": {
+            "exitMode": "ATR_TRAIL_2P0",
+            "entrySignalsSeen": 29951,
+            "skippedRegimeSignals": 3966,
+            "skippedCooldownSignals": 3751,
+            "skippedWhileInTradeSignals": 7213,
+            "missingStopLevelCount": 176,
+            "enteredTrades": 15021,
+            "hardStopExits": 7434,
+            "trailingStopExits": 7352,
+            "closeSignalExits": 0,
+            "partialTargetHits": 0
+          },
+          "results": {
+            "TRAIN_2024": {
+              "totalReturnPct": 22.685,
+              "maxDrawdownPct": -20.5908,
+              "expectancyPct": 1.1726,
+              "profitFactor": 1.2685,
+              "payoffRatio": 3.6564,
+              "winRate": 0.2576,
+              "avgWinPct": 21.5054,
+              "avgLossPct": -5.8816,
+              "avgHoldingDays": 8.39,
+              "maxTradeGainPct": 78.0363,
+              "maxTradeLossPct": -17.9137,
+              "tradeCount": 132,
+              "candidateTradeCount": 5587,
+              "skippedCapacity": 5455
+            },
+            "VALIDATION_2025": {
+              "totalReturnPct": -3.5377,
+              "maxDrawdownPct": -34.8521,
+              "expectancyPct": -0.0808,
+              "profitFactor": 0.9817,
+              "payoffRatio": 2.492,
+              "winRate": 0.2826,
+              "avgWinPct": 15.3293,
+              "avgLossPct": -6.1514,
+              "avgHoldingDays": 7.86,
+              "maxTradeGainPct": 91.6265,
+              "maxTradeLossPct": -14.0913,
+              "tradeCount": 138,
+              "candidateTradeCount": 4401,
+              "skippedCapacity": 4263
+            },
+            "TEST_2026_DESCRIPTIVE": {
+              "totalReturnPct": 83.7737,
+              "maxDrawdownPct": -28.6286,
+              "expectancyPct": 5.1006,
+              "profitFactor": 2.1159,
+              "payoffRatio": 3.6272,
+              "winRate": 0.3684,
+              "avgWinPct": 26.2514,
+              "avgLossPct": -7.2374,
+              "avgHoldingDays": 9.13,
+              "maxTradeGainPct": 73.0766,
+              "maxTradeLossPct": -14.3619,
+              "tradeCount": 76,
+              "candidateTradeCount": 3612,
+              "skippedCapacity": 3536
+            }
+          },
+          "train2024Pass": true,
+          "validation2025Pass": false,
+          "bothYearsBasicPass": false,
+          "worstTrainValidationReturnPct": -3.5377,
+          "vsMA5Baseline": {
+            "TRAIN_2024": {
+              "returnDeltaVsMA5PctPoint": -30.3659,
+              "drawdownImprovementVsMA5PctPoint": 1.1904
+            },
+            "VALIDATION_2025": {
+              "returnDeltaVsMA5PctPoint": -26.3813,
+              "drawdownImprovementVsMA5PctPoint": 4.6869
+            }
+          }
+        },
+        {
+          "exitMode": "CLOSE_BELOW_MA10",
+          "audit": {
+            "exitMode": "CLOSE_BELOW_MA10",
+            "entrySignalsSeen": 29951,
+            "skippedRegimeSignals": 4854,
+            "skippedCooldownSignals": 1425,
+            "skippedWhileInTradeSignals": 5355,
+            "missingStopLevelCount": 176,
+            "enteredTrades": 18317,
+            "hardStopExits": 5239,
+            "trailingStopExits": 0,
+            "closeSignalExits": 12865,
+            "partialTargetHits": 0
+          },
+          "results": {
+            "TRAIN_2024": {
+              "totalReturnPct": -12.7904,
+              "maxDrawdownPct": -30.7571,
+              "expectancyPct": -0.2675,
+              "profitFactor": 0.9351,
+              "payoffRatio": 3.1473,
+              "winRate": 0.2291,
+              "avgWinPct": 16.8152,
+              "avgLossPct": -5.3428,
+              "avgHoldingDays": 6.03,
+              "maxTradeGainPct": 91.3303,
+              "maxTradeLossPct": -17.9137,
+              "tradeCount": 179,
+              "candidateTradeCount": 6830,
+              "skippedCapacity": 6651
+            },
+            "VALIDATION_2025": {
+              "totalReturnPct": -20.4435,
+              "maxDrawdownPct": -32.668,
+              "expectancyPct": -0.5576,
+              "profitFactor": 0.8658,
+              "payoffRatio": 2.5167,
+              "winRate": 0.256,
+              "avgWinPct": 14.0494,
+              "avgLossPct": -5.5823,
+              "avgHoldingDays": 6.41,
+              "maxTradeGainPct": 82.2845,
+              "maxTradeLossPct": -14.0913,
+              "tradeCount": 168,
+              "candidateTradeCount": 5377,
+              "skippedCapacity": 5209
+            },
+            "TEST_2026_DESCRIPTIVE": {
+              "totalReturnPct": 60.926,
+              "maxDrawdownPct": -26.7427,
+              "expectancyPct": 3.3144,
+              "profitFactor": 1.7685,
+              "payoffRatio": 3.8792,
+              "winRate": 0.3131,
+              "avgWinPct": 24.3581,
+              "avgLossPct": -6.2791,
+              "avgHoldingDays": 7.13,
+              "maxTradeGainPct": 60.98,
+              "maxTradeLossPct": -13.521,
+              "tradeCount": 99,
+              "candidateTradeCount": 4345,
+              "skippedCapacity": 4246
+            }
+          },
+          "train2024Pass": false,
+          "validation2025Pass": false,
+          "bothYearsBasicPass": false,
+          "worstTrainValidationReturnPct": -20.4435,
+          "vsMA5Baseline": {
+            "TRAIN_2024": {
+              "returnDeltaVsMA5PctPoint": -65.8413,
+              "drawdownImprovementVsMA5PctPoint": -8.9759
+            },
+            "VALIDATION_2025": {
+              "returnDeltaVsMA5PctPoint": -43.2871,
+              "drawdownImprovementVsMA5PctPoint": 6.871
+            }
+          }
+        },
+        {
+          "exitMode": "CLOSE_DRAWDOWN_2ATR",
+          "audit": {
+            "exitMode": "CLOSE_DRAWDOWN_2ATR",
+            "entrySignalsSeen": 29951,
+            "skippedRegimeSignals": 3865,
+            "skippedCooldownSignals": 2180,
+            "skippedWhileInTradeSignals": 9198,
+            "missingStopLevelCount": 176,
+            "enteredTrades": 14708,
+            "hardStopExits": 8833,
+            "trailingStopExits": 0,
+            "closeSignalExits": 5582,
+            "partialTargetHits": 0
+          },
+          "results": {
+            "TRAIN_2024": {
+              "totalReturnPct": 30.3772,
+              "maxDrawdownPct": -25.6179,
+              "expectancyPct": 1.2504,
+              "profitFactor": 1.2722,
+              "payoffRatio": 3.9984,
+              "winRate": 0.2414,
+              "avgWinPct": 24.2113,
+              "avgLossPct": -6.0553,
+              "avgHoldingDays": 9.95,
+              "maxTradeGainPct": 162.4173,
+              "maxTradeLossPct": -16.5742,
+              "tradeCount": 116,
+              "candidateTradeCount": 5469,
+              "skippedCapacity": 5353
+            },
+            "VALIDATION_2025": {
+              "totalReturnPct": -23.9824,
+              "maxDrawdownPct": -40.5213,
+              "expectancyPct": -1.0337,
+              "profitFactor": 0.7884,
+              "payoffRatio": 2.6371,
+              "winRate": 0.2302,
+              "avgWinPct": 16.736,
+              "avgLossPct": -6.3464,
+              "avgHoldingDays": 8.97,
+              "maxTradeGainPct": 77.907,
+              "maxTradeLossPct": -14.0913,
+              "tradeCount": 126,
+              "candidateTradeCount": 4328,
+              "skippedCapacity": 4202
+            },
+            "TEST_2026_DESCRIPTIVE": {
+              "totalReturnPct": 64.4409,
+              "maxDrawdownPct": -20.6381,
+              "expectancyPct": 5.7086,
+              "profitFactor": 2.1284,
+              "payoffRatio": 4.1503,
+              "winRate": 0.339,
+              "avgWinPct": 31.7646,
+              "avgLossPct": -7.6535,
+              "avgHoldingDays": 12.49,
+              "maxTradeGainPct": 94.5181,
+              "maxTradeLossPct": -15.407,
+              "tradeCount": 59,
+              "candidateTradeCount": 3510,
+              "skippedCapacity": 3451
+            }
+          },
+          "train2024Pass": true,
+          "validation2025Pass": false,
+          "bothYearsBasicPass": false,
+          "worstTrainValidationReturnPct": -23.9824,
+          "vsMA5Baseline": {
+            "TRAIN_2024": {
+              "returnDeltaVsMA5PctPoint": -22.6737,
+              "drawdownImprovementVsMA5PctPoint": -3.8367
+            },
+            "VALIDATION_2025": {
+              "returnDeltaVsMA5PctPoint": -46.826,
+              "drawdownImprovementVsMA5PctPoint": -0.9823
+            }
+          }
+        }
+      ]
+    },
     "automaticProductionChanges": false
   },
   "dataReproducibility": {
