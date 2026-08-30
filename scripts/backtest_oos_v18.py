@@ -4,6 +4,7 @@ from datetime import datetime
 
 import pandas as pd
 
+from backtest_data import add_features
 from backtest_ma5 import CostModel
 from backtest_exit_v17b import _build_variant_trades, _prepare_exit
 from backtest_allocation_v17c import _basic_pass, _simulate_allocation
@@ -44,7 +45,13 @@ def build_oos_v18_summary(
     costs = costs or CostModel()
     generated_at = generated_at or datetime.utcnow().isoformat() + "Z"
 
-    d = _prepare_exit(data)
+    # The immutable snapshot stores canonical adjusted OHLCV rows, not derived
+    # indicators. Rebuild the exact point-in-time daily features deterministically
+    # from the frozen rows before feeding the already-fixed V1.7C logic. Keep the
+    # 0050 benchmark outside the stock universe so it cannot affect breadth/regime.
+    equities = data[data.market != "BENCH"].copy()
+    d = _prepare_exit(add_features(equities))
+
     trades, trade_audit = _build_variant_trades(d, FIXED_EXIT)
     if trades.empty:
         trades["entryYear"] = pd.Series(dtype=int)
@@ -56,7 +63,7 @@ def build_oos_v18_summary(
         g = trades[trades.entryYear == year].copy()
         row = _simulate_allocation(g, d, costs, FIXED_ALLOCATION)
         row["basicPass"] = _basic_pass(row)
-        row["benchmark0050PriceReturnPct"] = _benchmark_return(d, year)
+        row["benchmark0050PriceReturnPct"] = _benchmark_return(data, year)
         yearly[str(year)] = row
 
     combined_trades = trades[trades.entryYear.isin(OOS_YEARS)].copy()
