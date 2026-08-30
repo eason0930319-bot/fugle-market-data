@@ -19,6 +19,7 @@ OUTPUTS = [
     "data/backtest-ma5-regime-reentry-summary.json",
     "data/backtest-execution-v17-summary.json",
     "data/backtest-exit-v17b-summary.json",
+    "data/backtest-allocation-v17c-summary.json",
 ]
 VOLATILE_KEYS = {"generatedAt", "createdAt", "updatedAt", "fetchedAt", "runAt"}
 
