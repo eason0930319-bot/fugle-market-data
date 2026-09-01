@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "experimentId": "V1.9A_ENGINE_STATE_AUDIT",
+  "status": "PREREGISTERED_BEFORE_FIRST_RUN",
+  "purpose": "Audit the V1.7/V1.8 portfolio chronology and test whether the fixed strategy's trade expectancy differs across a slow, predeclared market-state classification. This experiment is diagnostic only and must not tune strategy parameters or change production rules.",
+  "data": {
+    "freezeId": "tw-history-2022-20260828-v1",
+    "expectedSha256": "0dda6a1504e114424de3c37f3b5662bf7a2d2bbac42cfa2802592bdeb1220d42",
+    "period": "2022-01-01 through 2026-08-28, with frozen lookback rows from 2021-09-03",
+    "knownLimitation": "Current-universe survivorship bias remains; this experiment does not claim point-in-time universe correctness."
+  },
+  "fixedStrategy": {
+    "entrySignal": "MA5 rising, close above MA5, previous close at/below previous MA5",
+    "legacyRegimeGate": "NO_BEAR",
+    "entry": "next trading day's daily open proxy",
+    "initialStop": "max(entry - 1.25*ATR14, prior 10-session low)",
+    "cooldownAfterHardStopSessions": 5,
+    "exit": "MA5/MA10 death cross confirmed at close, exit next open",
+    "selectionPriority": "higher MA5 slope, then higher signal-day trade value, then symbol",
+    "allocation": "maximum 5 simultaneous names, target 20% each"
+  },
+  "engineAudit": {
+    "legacyControl": "Preserve V1.7C simulator output as the control.",
+    "cleanChronology": [
+      "Never use current-session close to size an opening trade.",
+      "Size opening trades from prior-session close equity only.",
+      "Process same-open scheduled exits before new entries so exit proceeds are available in the clean-recycle variant.",
+      "Also report a conservative no-same-open-recycle variant as a bound.",
+      "Use integer share quantities; no fractional shares. Daily open remains only an execution proxy because historical 09:10 odd-lot prices are not in this freeze."
+    ],
+    "comparisonPolicy": "Report the numerical impact of chronology and share granularity. Do not choose whichever variant has the best return."
+  },
+  "marketState": {
+    "benchmarkProxy": "0050 frozen benchmark rows",
+    "featuresKnownBySignalClose": [
+      "0050 close relative to MA120",
+      "0050 MA60 20-session slope",
+      "cross-sectional percentage of eligible equity rows closing above MA60",
+      "20-session mean advance ratio as a diagnostic only"
+    ],
+    "classification": {
+      "RISK_ON": "0050 close > MA120 AND MA60 20-session slope > 0 AND breadthAboveMA60 >= 55%",
+      "RISK_OFF": "0050 close < MA120 AND MA60 20-session slope < 0 AND breadthAboveMA60 <= 45%",
+      "TRANSITION": "all other valid states",
+      "UNKNOWN": "insufficient lookback or fewer than 700 valid equity observations"
+    },
+    "important": "These thresholds are predeclared for diagnosis and will not be optimized on 2022-2026 results."
+  },
+  "outputs": [
+    "legacy versus clean portfolio results by calendar year 2022-2026",
+    "fixed-strategy candidate-trade count, win rate, expectancy, profit factor and payoff ratio by signal-day market state",
+    "same trade-state metrics by year to expose regime instability",
+    "monthly market-state distribution and latest frozen state",
+    "deterministic two-pass fingerprint report"
+  ],
+  "decisionPolicy": {
+    "automaticProductionChanges": false,
+    "noParameterSearch": true,
+    "noGatingOptimization": true,
+    "interpretation": "If a market state shows weak expectancy, treat it as a hypothesis for a future strategy generation. Do not immediately add a filter using these already-inspected years.",
+    "nextStepIfStateDependenceAppears": "Build a separate point-in-time universe and an earlier/rolling development set, then preregister a second-generation regime model before testing it."
+  }
+}
