@@ -1,0 +1,1850 @@
+{
+  "ok": true,
+  "schemaVersion": 1,
+  "version": "engine-market-state-audit-v1.9a",
+  "generatedAt": "2026-09-01T04:15:02.215310+00:00",
+  "purpose": "Preregistered V1.9A audit of portfolio chronology/share granularity plus slow market-state diagnosis of the fixed V1.7C strategy.",
+  "researchPolicy": {
+    "preregisteredFile": "research/v19a-preregister.json",
+    "noParameterSearch": true,
+    "noGatingOptimization": true,
+    "automaticProductionChanges": false,
+    "important": "2022-2026 are already inspected; these state results are diagnostic, not clean OOS evidence."
+  },
+  "fixedStrategy": {
+    "entry": "NEXT_OPEN daily-open proxy",
+    "legacyRegime": "NO_BEAR",
+    "initialStop": "max(entry - 1.25*ATR14, prior 10-session low)",
+    "cooldownAfterHardStopSessions": 5,
+    "exit": "MA5_MA10_DEATH_CROSS",
+    "allocation": {
+      "name": "EQUAL_5_FIXED",
+      "sizingMode": "EQUAL_SLOT",
+      "maxPositions": 5,
+      "riskBudgetPct": null,
+      "maxWeightPct": 20.0
+    },
+    "selectionPriority": "higher MA5 slope, then higher signal-day trade value, then symbol"
+  },
+  "costModel": {
+    "buy_commission": 0.001425,
+    "sell_commission": 0.001425,
+    "sell_tax": 0.003,
+    "slippage_each_side": 0.0005
+  },
+  "tradeAudit": {
+    "exitMode": "MA5_MA10_DEATH_CROSS",
+    "entrySignalsSeen": 45589,
+    "skippedRegimeSignals": 6235,
+    "skippedCooldownSignals": 3074,
+    "skippedWhileInTradeSignals": 10551,
+    "missingStopLevelCount": 186,
+    "enteredTrades": 25729,
+    "hardStopExits": 12572,
+    "trailingStopExits": 0,
+    "closeSignalExits": 12937,
+    "partialTargetHits": 0
+  },
+  "engineAudit": {
+    "legacyIssue": "V1.7C sizes opening trades using same-session closes and releases same-day exit cash after entries.",
+    "cleanRule": "Prior-session close equity for opening sizing; scheduled opening exits free slots first; integer shares; report recycle and no-recycle bounds.",
+    "dailyOpenProxyLimitation": "Daily OHLC cannot represent Taiwan 09:10 odd-lot matching.",
+    "yearly": {
+      "2022": {
+        "legacyV17C": {
+          "initialCapital": 100000.0,
+          "endingCapital": 71586.05,
+          "totalReturnPct": -28.4139,
+          "maxDrawdownPct": -41.8355,
+          "selectedTradeCount": 156,
+          "candidateTradeCount": 4006,
+          "selectionRate": 0.0389,
+          "skippedCapacity": 3850,
+          "skippedDuplicateSymbol": 0,
+          "skippedCash": 0,
+          "skippedInvalidRisk": 0,
+          "avgCapitalUtilizationPct": 16.2043,
+          "avgAllocationPctAtEntry": 19.0847,
+          "avgPlannedInitialRiskPctOfEquity": null,
+          "maxConcurrentPositions": 5,
+          "tradeCount": 156,
+          "winRate": 0.2692,
+          "avgTradeNetReturnPct": -0.8991,
+          "avgWinPct": 12.118,
+          "avgLossPct": -5.6949,
+          "payoffRatio": 2.1279,
+          "expectancyPct": -0.8991,
+          "profitFactor": 0.784,
+          "maxTradeGainPct": 75.1657,
+          "maxTradeLossPct": -11.0938,
+          "avgHoldingDays": 7.29,
+          "medianHoldingDays": 5.0,
+          "avgMfePct": 10.1181,
+          "avgMaePct": -6.0762,
+          "worstInTradeMaePct": -15.478,
+          "maxConsecutiveLosses": 14,
+          "exitReasonCounts": {
+            "STOP_HARD_INTRADAY": 89,
+            "MA5_MA10_DEATH_CROSS": 60,
+            "STOP_HARD_GAP": 7
+          },
+          "bestTrade": {
+            "symbol": "8033",
+            "signalDate": "2022-11-01",
+            "entryDate": "2022-11-02",
+            "exitDate": "2022-11-30",
+            "netReturnPct": 75.1657,
+            "exitReason": "MA5_MA10_DEATH_CROSS"
+          },
+          "worstTrade": {
+            "symbol": "4931",
+            "signalDate": "2022-05-05",
+            "entryDate": "2022-05-06",
+            "exitDate": "2022-05-10",
+            "netReturnPct": -11.0938,
+            "exitReason": "STOP_HARD_INTRADAY"
+          }
+        },
+        "cleanPriorCloseRecycle": {
+          "initialCapital": 100000.0,
+          "endingCapital": 80433.6,
+          "totalReturnPct": -19.5664,
+          "maxDrawdownPct": -38.5478,
+          "selectedTradeCount": 169,
+          "candidateTradeCount": 4006,
+          "selectionRate": 0.0422,
+          "skippedCapacity": 3837,
+          "skippedCash": 0,
+          "skippedBelowOneShare": 0,
+          "maxConcurrentPositions": 5,
+          "avgAllocationPctAtEntry": 18.8008,
+          "avgCapitalUtilizationPct": 18.3014,
+          "tradeCount": 169,
+          "winRate": 0.284,
+          "avgTradeNetReturnPct": -0.6048,
+          "avgWinPct": 12.2873,
+          "avgLossPct": -5.719,
+          "payoffRatio": 2.1485,
+          "expectancyPct": -0.6048,
+          "profitFactor": 0.8523,
+          "maxTradeGainPct": 49.683,
+          "maxTradeLossPct": -11.7849,
+          "avgHoldingDays": 7.56,
+          "medianHoldingDays": 5.0,
+          "avgMfePct": 10.1299,
+          "avgMaePct": -6.029,
+          "worstInTradeMaePct": -15.478,
+          "maxConsecutiveLosses": 21,
+          "exitReasonCounts": {
+            "STOP_HARD_INTRADAY": 95,
+            "MA5_MA10_DEATH_CROSS": 68,
+            "STOP_HARD_GAP": 6
+          },
+          "bestTrade": {
+            "symbol": "6118",
+            "signalDate": "2022-07-04",
+            "entryDate": "2022-07-05",
+            "exitDate": "2022-08-11",
+            "netReturnPct": 49.683,
+            "exitReason": "MA5_MA10_DEATH_CROSS"
+          },
+          "worstTrade": {
+            "symbol": "2736",
+            "signalDate": "2022-06-23",
+            "entryDate": "2022-06-24",
+            "exitDate": "2022-07-04",
+            "netReturnPct": -11.7849,
+            "exitReason": "STOP_HARD_INTRADAY"
+          }
+        },
+        "cleanPriorCloseNoRecycle": {
+          "initialCapital": 100000.0,
+          "endingCapital": 67237.05,
+          "totalReturnPct": -32.763,
+          "maxDrawdownPct": -40.1203,
+          "selectedTradeCount": 169,
+          "candidateTradeCount": 4006,
+          "selectionRate": 0.0422,
+          "skippedCapacity": 3476,
+          "skippedCash": 0,
+          "skippedBelowOneShare": 361,
+          "maxConcurrentPositions": 5,
+          "avgAllocationPctAtEntry": 15.831,
+          "avgCapitalUtilizationPct": 15.0677,
+          "tradeCount": 169,
+          "winRate": 0.2663,
+          "avgTradeNetReturnPct": -1.3741,
+          "avgWinPct": 10.1632,
+          "avgLossPct": -5.561,
+          "payoffRatio": 1.8276,
+          "expectancyPct": -1.3741,
+          "profitFactor": 0.6632,
+          "maxTradeGainPct": 49.683,
+          "maxTradeLossPct": -11.7849,
+          "avgHoldingDays": 7.4,
+          "medianHoldingDays": 5.0,
+          "avgMfePct": 9.0617,
+          "avgMaePct": -5.9308,
+          "worstInTradeMaePct": -15.478,
+          "maxConsecutiveLosses": 14,
+          "exitReasonCounts": {
+            "STOP_HARD_INTRADAY": 94,
+            "MA5_MA10_DEATH_CROSS": 69,
+            "STOP_HARD_GAP": 6
+          },
+          "bestTrade": {
+            "symbol": "6118",
+            "signalDate": "2022-07-04",
+            "entryDate": "2022-07-05",
+            "exitDate": "2022-08-11",
+            "netReturnPct": 49.683,
+            "exitReason": "MA5_MA10_DEATH_CROSS"
+          },
+          "worstTrade": {
+            "symbol": "2736",
+            "signalDate": "2022-06-23",
+            "entryDate": "2022-06-24",
+            "exitDate": "2022-07-04",
+            "netReturnPct": -11.7849,
+            "exitReason": "STOP_HARD_INTRADAY"
+          }
+        },
+        "impactVsLegacy": {
+          "recycleReturnDeltaPctPoint": 8.8475,
+          "noRecycleReturnDeltaPctPoint": -4.3491,
+          "recycleDrawdownDeltaPctPoint": 3.2877,
+          "noRecycleDrawdownDeltaPctPoint": 1.7152
+        }
+      },
+      "2023": {
+        "legacyV17C": {
+          "initialCapital": 100000.0,
+          "endingCapital": 113294.88,
+          "totalReturnPct": 13.2949,
+          "maxDrawdownPct": -19.6777,
+          "selectedTradeCount": 132,
+          "candidateTradeCount": 4949,
+          "selectionRate": 0.0267,
+          "skippedCapacity": 4817,
+          "skippedDuplicateSymbol": 0,
+          "skippedCash": 0,
+          "skippedInvalidRisk": 0,
+          "avgCapitalUtilizationPct": 16.6387,
+          "avgAllocationPctAtEntry": 19.0235,
+          "avgPlannedInitialRiskPctOfEquity": null,
+          "maxConcurrentPositions": 5,
+          "tradeCount": 132,
+          "winRate": 0.3106,
+          "avgTradeNetReturnPct": 0.6308,
+          "avgWinPct": 13.0092,
+          "avgLossPct": -4.9463,
+          "payoffRatio": 2.6301,
+          "expectancyPct": 0.6308,
+          "profitFactor": 1.185,
+          "maxTradeGainPct": 42.3598,
+          "maxTradeLossPct": -10.808,
+          "avgHoldingDays": 8.57,
+          "medianHoldingDays": 6.5,
+          "avgMfePct": 11.9666,
+          "avgMaePct": -5.0482,
+          "worstInTradeMaePct": -15.4856,
+          "maxConsecutiveLosses": 10,
+          "exitReasonCounts": {
+            "STOP_HARD_INTRADAY": 62,
+            "MA5_MA10_DEATH_CROSS": 61,
+            "STOP_HARD_GAP": 9
+          },
+          "bestTrade": {
+            "symbol": "2363",
+            "signalDate": "2023-08-17",
+            "entryDate": "2023-08-18",
+            "exitDate": "2023-09-15",
+            "netReturnPct": 42.3598,
+            "exitReason": "MA5_MA10_DEATH_CROSS"
+          },
+          "worstTrade": {
+            "symbol": "5426",
+            "signalDate": "2023-12-26",
+            "entryDate": "2023-12-27",
+            "exitDate": "2023-12-29",
+            "netReturnPct": -10.808,
+            "exitReason": "STOP_HARD_GAP"
+          }
+        },
+        "cleanPriorCloseRecycle": {
+          "initialCapital": 100000.0,
+          "endingCapital": 122647.52,
+          "totalReturnPct": 22.6475,
+          "maxDrawdownPct": -18.6909,
+          "selectedTradeCount": 160,
+          "candidateTradeCount": 4949,
+          "selectionRate": 0.0323,
+          "skippedCapacity": 4789,
+          "skippedCash": 0,
+          "skippedBelowOneShare": 0,
+          "maxConcurrentPositions": 5,
+          "avgAllocationPctAtEntry": 18.91,
+          "avgCapitalUtilizationPct": 17.896,
+          "tradeCount": 160,
+          "winRate": 0.3063,
+          "avgTradeNetReturnPct": 0.7821,
+          "avgWinPct": 14.3502,
+          "avgLossPct": -5.2075,
+          "payoffRatio": 2.7557,
+          "expectancyPct": 0.7821,
+          "profitFactor": 1.2165,
+          "maxTradeGainPct": 60.9437,
+          "maxTradeLossPct": -11.056,
+          "avgHoldingDays": 7.74,
+          "medianHoldingDays": 4.0,
+          "avgMfePct": 11.6989,
+          "avgMaePct": -5.1307,
+          "worstInTradeMaePct": -15.4856,
+          "maxConsecutiveLosses": 13,
+          "exitReasonCounts": {
+            "STOP_HARD_INTRADAY": 82,
+            "MA5_MA10_DEATH_CROSS": 67,
+            "STOP_HARD_GAP": 11
+          },
+          "bestTrade": {
+            "symbol": "2419",
+            "signalDate": "2023-06-28",
+            "entryDate": "2023-06-29",
+            "exitDate": "2023-07-28",
+            "netReturnPct": 60.9437,
+            "exitReason": "MA5_MA10_DEATH_CROSS"
+          },
+          "worstTrade": {
+            "symbol": "3432",
+            "signalDate": "2023-03-29",
+            "entryDate": "2023-03-30",
+            "exitDate": "2023-04-06",
+            "netReturnPct": -11.056,
+            "exitReason": "STOP_HARD_GAP"
+          }
+        },
+        "cleanPriorCloseNoRecycle": {
+          "initialCapital": 100000.0,
+          "endingCapital": 107515.92,
+          "totalReturnPct": 7.5159,
+          "maxDrawdownPct": -27.8409,
+          "selectedTradeCount": 153,
+          "candidateTradeCount": 4949,
+          "selectionRate": 0.0309,
+          "skippedCapacity": 4415,
+          "skippedCash": 0,
+          "skippedBelowOneShare": 381,
+          "maxConcurrentPositions": 5,
+          "avgAllocationPctAtEntry": 16.142,
+          "avgCapitalUtilizationPct": 14.7884,
+          "tradeCount": 153,
+          "winRate": 0.3203,
+          "avgTradeNetReturnPct": 1.0464,
+          "avgWinPct": 14.007,
+          "avgLossPct": -5.06,
+          "payoffRatio": 2.7682,
+          "expectancyPct": 1.0464,
+          "profitFactor": 1.3042,
+          "maxTradeGainPct": 60.9437,
+          "maxTradeLossPct": -11.056,
+          "avgHoldingDays": 7.99,
+          "medianHoldingDays": 5.0,
+          "avgMfePct": 12.1516,
+          "avgMaePct": -4.8832,
+          "worstInTradeMaePct": -14.652,
+          "maxConsecutiveLosses": 13,
+          "exitReasonCounts": {
+            "STOP_HARD_INTRADAY": 75,
+            "MA5_MA10_DEATH_CROSS": 67,
+            "STOP_HARD_GAP": 11
+          },
+          "bestTrade": {
+            "symbol": "2419",
+            "signalDate": "2023-06-28",
+            "entryDate": "2023-06-29",
+            "exitDate": "2023-07-28",
+            "netReturnPct": 60.9437,
+            "exitReason": "MA5_MA10_DEATH_CROSS"
+          },
+          "worstTrade": {
+            "symbol": "3432",
+            "signalDate": "2023-03-29",
+            "entryDate": "2023-03-30",
+            "exitDate": "2023-04-06",
+            "netReturnPct": -11.056,
+            "exitReason": "STOP_HARD_GAP"
+          }
+        },
+        "impactVsLegacy": {
+          "recycleReturnDeltaPctPoint": 9.3526,
+          "noRecycleReturnDeltaPctPoint": -5.779,
+          "recycleDrawdownDeltaPctPoint": 0.9868,
+          "noRecycleDrawdownDeltaPctPoint": -8.1632
+        }
+      },
+      "2024": {
+        "legacyV17C": {
+          "initialCapital": 100000.0,
+          "endingCapital": 151093.4,
+          "totalReturnPct": 51.0934,
+          "maxDrawdownPct": -24.5787,
+          "selectedTradeCount": 131,
+          "candidateTradeCount": 6177,
+          "selectionRate": 0.0212,
+          "skippedCapacity": 6046,
+          "skippedDuplicateSymbol": 0,
+          "skippedCash": 0,
+          "skippedInvalidRisk": 0,
+          "avgCapitalUtilizationPct": 16.3565,
+          "avgAllocationPctAtEntry": 18.6182,
+          "avgPlannedInitialRiskPctOfEquity": null,
+          "maxConcurrentPositions": 5,
+          "tradeCount": 131,
+          "winRate": 0.2901,
+          "avgTradeNetReturnPct": 1.864,
+          "avgWinPct": 20.8121,
+          "avgLossPct": -5.8783,
+          "payoffRatio": 3.5405,
+          "expectancyPct": 1.864,
+          "profitFactor": 1.4467,
+          "maxTradeGainPct": 70.7002,
+          "maxTradeLossPct": -17.9137,
+          "avgHoldingDays": 8.48,
+          "medianHoldingDays": 7.0,
+          "avgMfePct": 15.8704,
+          "avgMaePct": -5.9514,
+          "worstInTradeMaePct": -24.3772,
+          "maxConsecutiveLosses": 13,
+          "exitReasonCounts": {
+            "STOP_HARD_INTRADAY": 66,
+            "MA5_MA10_DEATH_CROSS": 55,
+            "STOP_HARD_GAP": 10
+          },
+          "bestTrade": {
+            "symbol": "6763",
+            "signalDate": "2024-10-14",
+            "entryDate": "2024-10-15",
+            "exitDate": "2024-11-06",
+            "netReturnPct": 70.7002,
+            "exitReason": "MA5_MA10_DEATH_CROSS"
+          },
+          "worstTrade": {
+            "symbol": "8162",
+            "signalDate": "2024-03-04",
+            "entryDate": "2024-03-05",
+            "exitDate": "2024-03-08",
+            "netReturnPct": -17.9137,
+            "exitReason": "STOP_HARD_GAP"
+          }
+        },
+        "cleanPriorCloseRecycle": {
+          "initialCapital": 100000.0,
+          "endingCapital": 106885.44,
+          "totalReturnPct": 6.8854,
+          "maxDrawdownPct": -29.2816,
+          "selectedTradeCount": 144,
+          "candidateTradeCount": 6177,
+          "selectionRate": 0.0233,
+          "skippedCapacity": 6033,
+          "skippedCash": 0,
+          "skippedBelowOneShare": 0,
+          "maxConcurrentPositions": 5,
+          "avgAllocationPctAtEntry": 18.9443,
+          "avgCapitalUtilizationPct": 17.67,
+          "tradeCount": 144,
+          "winRate": 0.2847,
+          "avgTradeNetReturnPct": 0.4766,
+          "avgWinPct": 16.4558,
+          "avgLossPct": -5.884,
+          "payoffRatio": 2.7967,
+          "expectancyPct": 0.4766,
+          "profitFactor": 1.1133,
+          "maxTradeGainPct": 70.7002,
+          "maxTradeLossPct": -17.9137,
+          "avgHoldingDays": 8.4,
+          "medianHoldingDays": 7.0,
+          "avgMfePct": 14.1324,
+          "avgMaePct": -6.1647,
+          "worstInTradeMaePct": -24.3772,
+          "maxConsecutiveLosses": 12,
+          "exitReasonCounts": {
+            "STOP_HARD_INTRADAY": 70,
+            "MA5_MA10_DEATH_CROSS": 62,
+            "STOP_HARD_GAP": 12
+          },
+          "bestTrade": {
+            "symbol": "6763",
+            "signalDate": "2024-10-14",
+            "entryDate": "2024-10-15",
+            "exitDate": "2024-11-06",
+            "netReturnPct": 70.7002,
+            "exitReason": "MA5_MA10_DEATH_CROSS"
+          },
+          "worstTrade": {
+            "symbol": "8162",
+            "signalDate": "2024-03-04",
+            "entryDate": "2024-03-05",
+            "exitDate": "2024-03-08",
+            "netReturnPct": -17.9137,
+            "exitReason": "STOP_HARD_GAP"
+          }
+        },
+        "cleanPriorCloseNoRecycle": {
+          "initialCapital": 100000.0,
+          "endingCapital": 122361.91,
+          "totalReturnPct": 22.3619,
+          "maxDrawdownPct": -23.9655,
+          "selectedTradeCount": 144,
+          "candidateTradeCount": 6177,
+          "selectionRate": 0.0233,
+          "skippedCapacity": 5685,
+          "skippedCash": 0,
+          "skippedBelowOneShare": 348,
+          "maxConcurrentPositions": 5,
+          "avgAllocationPctAtEntry": 15.6699,
+          "avgCapitalUtilizationPct": 15.5519,
+          "tradeCount": 144,
+          "winRate": 0.2778,
+          "avgTradeNetReturnPct": 0.3553,
+          "avgWinPct": 15.9933,
+          "avgLossPct": -5.6594,
+          "payoffRatio": 2.826,
+          "expectancyPct": 0.3553,
+          "profitFactor": 1.0869,
+          "maxTradeGainPct": 70.7002,
+          "maxTradeLossPct": -17.9137,
+          "avgHoldingDays": 8.31,
+          "medianHoldingDays": 7.0,
+          "avgMfePct": 13.9557,
+          "avgMaePct": -5.9241,
+          "worstInTradeMaePct": -24.3772,
+          "maxConsecutiveLosses": 9,
+          "exitReasonCounts": {
+            "STOP_HARD_INTRADAY": 73,
+            "MA5_MA10_DEATH_CROSS": 61,
+            "STOP_HARD_GAP": 10
+          },
+          "bestTrade": {
+            "symbol": "6763",
+            "signalDate": "2024-10-14",
+            "entryDate": "2024-10-15",
+            "exitDate": "2024-11-06",
+            "netReturnPct": 70.7002,
+            "exitReason": "MA5_MA10_DEATH_CROSS"
+          },
+          "worstTrade": {
+            "symbol": "8162",
+            "signalDate": "2024-03-04",
+            "entryDate": "2024-03-05",
+            "exitDate": "2024-03-08",
+            "netReturnPct": -17.9137,
+            "exitReason": "STOP_HARD_GAP"
+          }
+        },
+        "impactVsLegacy": {
+          "recycleReturnDeltaPctPoint": -44.208,
+          "noRecycleReturnDeltaPctPoint": -28.7315,
+          "recycleDrawdownDeltaPctPoint": -4.7029,
+          "noRecycleDrawdownDeltaPctPoint": 0.6132
+        }
+      },
+      "2025": {
+        "legacyV17C": {
+          "initialCapital": 100000.0,
+          "endingCapital": 148384.29,
+          "totalReturnPct": 48.3843,
+          "maxDrawdownPct": -28.8456,
+          "selectedTradeCount": 144,
+          "candidateTradeCount": 4945,
+          "selectionRate": 0.0291,
+          "skippedCapacity": 4801,
+          "skippedDuplicateSymbol": 0,
+          "skippedCash": 0,
+          "skippedInvalidRisk": 0,
+          "avgCapitalUtilizationPct": 16.906,
+          "avgAllocationPctAtEntry": 18.8946,
+          "avgPlannedInitialRiskPctOfEquity": null,
+          "maxConcurrentPositions": 5,
+          "tradeCount": 144,
+          "winRate": 0.3125,
+          "avgTradeNetReturnPct": 1.8559,
+          "avgWinPct": 19.3006,
+          "avgLossPct": -6.0736,
+          "payoffRatio": 3.1778,
+          "expectancyPct": 1.8559,
+          "profitFactor": 1.4445,
+          "maxTradeGainPct": 139.4884,
+          "maxTradeLossPct": -14.0913,
+          "avgHoldingDays": 7.95,
+          "medianHoldingDays": 5.0,
+          "avgMfePct": 12.8106,
+          "avgMaePct": -5.7231,
+          "worstInTradeMaePct": -15.5769,
+          "maxConsecutiveLosses": 9,
+          "exitReasonCounts": {
+            "STOP_HARD_INTRADAY": 72,
+            "MA5_MA10_DEATH_CROSS": 62,
+            "STOP_HARD_GAP": 10
+          },
+          "bestTrade": {
+            "symbol": "2337",
+            "signalDate": "2025-12-12",
+            "entryDate": "2025-12-15",
+            "exitDate": "2026-02-11",
+            "netReturnPct": 139.4884,
+            "exitReason": "MA5_MA10_DEATH_CROSS"
+          },
+          "worstTrade": {
+            "symbol": "4949",
+            "signalDate": "2025-04-01",
+            "entryDate": "2025-04-02",
+            "exitDate": "2025-04-07",
+            "netReturnPct": -14.0913,
+            "exitReason": "STOP_HARD_GAP"
+          }
+        },
+        "cleanPriorCloseRecycle": {
+          "initialCapital": 100000.0,
+          "endingCapital": 91625.61,
+          "totalReturnPct": -8.3744,
+          "maxDrawdownPct": -39.388,
+          "selectedTradeCount": 175,
+          "candidateTradeCount": 4945,
+          "selectionRate": 0.0354,
+          "skippedCapacity": 4770,
+          "skippedCash": 0,
+          "skippedBelowOneShare": 0,
+          "maxConcurrentPositions": 5,
+          "avgAllocationPctAtEntry": 18.6887,
+          "avgCapitalUtilizationPct": 17.3793,
+          "tradeCount": 175,
+          "winRate": 0.2743,
+          "avgTradeNetReturnPct": -0.1393,
+          "avgWinPct": 15.5849,
+          "avgLossPct": -6.0824,
+          "payoffRatio": 2.5623,
+          "expectancyPct": -0.1393,
+          "profitFactor": 0.9684,
+          "maxTradeGainPct": 57.7477,
+          "maxTradeLossPct": -14.0913,
+          "avgHoldingDays": 6.95,
+          "medianHoldingDays": 4.0,
+          "avgMfePct": 10.219,
+          "avgMaePct": -5.8272,
+          "worstInTradeMaePct": -15.5769,
+          "maxConsecutiveLosses": 10,
+          "exitReasonCounts": {
+            "STOP_HARD_INTRADAY": 91,
+            "MA5_MA10_DEATH_CROSS": 70,
+            "STOP_HARD_GAP": 14
+          },
+          "bestTrade": {
+            "symbol": "8072",
+            "signalDate": "2025-04-10",
+            "entryDate": "2025-04-11",
+            "exitDate": "2025-05-09",
+            "netReturnPct": 57.7477,
+            "exitReason": "MA5_MA10_DEATH_CROSS"
+          },
+          "worstTrade": {
+            "symbol": "4949",
+            "signalDate": "2025-04-01",
+            "entryDate": "2025-04-02",
+            "exitDate": "2025-04-07",
+            "netReturnPct": -14.0913,
+            "exitReason": "STOP_HARD_GAP"
+          }
+        },
+        "cleanPriorCloseNoRecycle": {
+          "initialCapital": 100000.0,
+          "endingCapital": 82600.6,
+          "totalReturnPct": -17.3994,
+          "maxDrawdownPct": -30.4027,
+          "selectedTradeCount": 164,
+          "candidateTradeCount": 4945,
+          "selectionRate": 0.0332,
+          "skippedCapacity": 4479,
+          "skippedCash": 0,
+          "skippedBelowOneShare": 302,
+          "maxConcurrentPositions": 5,
+          "avgAllocationPctAtEntry": 16.6615,
+          "avgCapitalUtilizationPct": 14.1037,
+          "tradeCount": 164,
+          "winRate": 0.2927,
+          "avgTradeNetReturnPct": -0.2801,
+          "avgWinPct": 13.3975,
+          "avgLossPct": -5.9398,
+          "payoffRatio": 2.2555,
+          "expectancyPct": -0.2801,
+          "profitFactor": 0.9333,
+          "maxTradeGainPct": 57.7477,
+          "maxTradeLossPct": -14.0913,
+          "avgHoldingDays": 7.32,
+          "medianHoldingDays": 4.5,
+          "avgMfePct": 9.9274,
+          "avgMaePct": -5.7274,
+          "worstInTradeMaePct": -15.5769,
+          "maxConsecutiveLosses": 10,
+          "exitReasonCounts": {
+            "STOP_HARD_INTRADAY": 87,
+            "MA5_MA10_DEATH_CROSS": 68,
+            "STOP_HARD_GAP": 9
+          },
+          "bestTrade": {
+            "symbol": "8072",
+            "signalDate": "2025-04-10",
+            "entryDate": "2025-04-11",
+            "exitDate": "2025-05-09",
+            "netReturnPct": 57.7477,
+            "exitReason": "MA5_MA10_DEATH_CROSS"
+          },
+          "worstTrade": {
+            "symbol": "4949",
+            "signalDate": "2025-04-01",
+            "entryDate": "2025-04-02",
+            "exitDate": "2025-04-07",
+            "netReturnPct": -14.0913,
+            "exitReason": "STOP_HARD_GAP"
+          }
+        },
+        "impactVsLegacy": {
+          "recycleReturnDeltaPctPoint": -56.7587,
+          "noRecycleReturnDeltaPctPoint": -65.7837,
+          "recycleDrawdownDeltaPctPoint": -10.5424,
+          "noRecycleDrawdownDeltaPctPoint": -1.5571
+        }
+      },
+      "2026": {
+        "legacyV17C": {
+          "initialCapital": 100000.0,
+          "endingCapital": 110192.01,
+          "totalReturnPct": 10.192,
+          "maxDrawdownPct": -24.7907,
+          "selectedTradeCount": 91,
+          "candidateTradeCount": 3925,
+          "selectionRate": 0.0232,
+          "skippedCapacity": 3834,
+          "skippedDuplicateSymbol": 0,
+          "skippedCash": 0,
+          "skippedInvalidRisk": 0,
+          "avgCapitalUtilizationPct": 10.1047,
+          "avgAllocationPctAtEntry": 18.6362,
+          "avgPlannedInitialRiskPctOfEquity": null,
+          "maxConcurrentPositions": 5,
+          "tradeCount": 91,
+          "winRate": 0.2418,
+          "avgTradeNetReturnPct": 0.8232,
+          "avgWinPct": 24.5074,
+          "avgLossPct": -6.7282,
+          "payoffRatio": 3.6425,
+          "expectancyPct": 0.8232,
+          "profitFactor": 1.1614,
+          "maxTradeGainPct": 74.3978,
+          "maxTradeLossPct": -13.521,
+          "avgHoldingDays": 7.64,
+          "medianHoldingDays": 6.0,
+          "avgMfePct": 15.063,
+          "avgMaePct": -7.3182,
+          "worstInTradeMaePct": -18.896,
+          "maxConsecutiveLosses": 11,
+          "exitReasonCounts": {
+            "STOP_HARD_INTRADAY": 46,
+            "MA5_MA10_DEATH_CROSS": 34,
+            "STOP_HARD_GAP": 6,
+            "END_OF_DATA": 5
+          },
+          "bestTrade": {
+            "symbol": "3167",
+            "signalDate": "2026-04-01",
+            "entryDate": "2026-04-02",
+            "exitDate": "2026-04-27",
+            "netReturnPct": 74.3978,
+            "exitReason": "MA5_MA10_DEATH_CROSS"
+          },
+          "worstTrade": {
+            "symbol": "6443",
+            "signalDate": "2026-03-05",
+            "entryDate": "2026-03-06",
+            "exitDate": "2026-03-09",
+            "netReturnPct": -13.521,
+            "exitReason": "STOP_HARD_GAP"
+          }
+        },
+        "cleanPriorCloseRecycle": {
+          "initialCapital": 100000.0,
+          "endingCapital": 112064.48,
+          "totalReturnPct": 12.0645,
+          "maxDrawdownPct": -29.514,
+          "selectedTradeCount": 99,
+          "candidateTradeCount": 3925,
+          "selectionRate": 0.0252,
+          "skippedCapacity": 3826,
+          "skippedCash": 0,
+          "skippedBelowOneShare": 0,
+          "maxConcurrentPositions": 5,
+          "avgAllocationPctAtEntry": 18.9754,
+          "avgCapitalUtilizationPct": 10.9427,
+          "tradeCount": 99,
+          "winRate": 0.2525,
+          "avgTradeNetReturnPct": 1.0324,
+          "avgWinPct": 22.3373,
+          "avgLossPct": -6.1653,
+          "payoffRatio": 3.6231,
+          "expectancyPct": 1.0324,
+          "profitFactor": 1.224,
+          "maxTradeGainPct": 53.219,
+          "maxTradeLossPct": -13.521,
+          "avgHoldingDays": 7.7,
+          "medianHoldingDays": 6.0,
+          "avgMfePct": 15.3045,
+          "avgMaePct": -6.8155,
+          "worstInTradeMaePct": -18.896,
+          "maxConsecutiveLosses": 14,
+          "exitReasonCounts": {
+            "STOP_HARD_INTRADAY": 43,
+            "MA5_MA10_DEATH_CROSS": 41,
+            "END_OF_DATA": 10,
+            "STOP_HARD_GAP": 5
+          },
+          "bestTrade": {
+            "symbol": "3430",
+            "signalDate": "2026-04-28",
+            "entryDate": "2026-04-29",
+            "exitDate": "2026-05-22",
+            "netReturnPct": 53.219,
+            "exitReason": "MA5_MA10_DEATH_CROSS"
+          },
+          "worstTrade": {
+            "symbol": "6443",
+            "signalDate": "2026-03-05",
+            "entryDate": "2026-03-06",
+            "exitDate": "2026-03-09",
+            "netReturnPct": -13.521,
+            "exitReason": "STOP_HARD_GAP"
+          }
+        },
+        "cleanPriorCloseNoRecycle": {
+          "initialCapital": 100000.0,
+          "endingCapital": 102850.65,
+          "totalReturnPct": 2.8507,
+          "maxDrawdownPct": -25.4735,
+          "selectedTradeCount": 94,
+          "candidateTradeCount": 3925,
+          "selectionRate": 0.0239,
+          "skippedCapacity": 3629,
+          "skippedCash": 0,
+          "skippedBelowOneShare": 202,
+          "maxConcurrentPositions": 5,
+          "avgAllocationPctAtEntry": 16.1513,
+          "avgCapitalUtilizationPct": 9.639,
+          "tradeCount": 94,
+          "winRate": 0.2553,
+          "avgTradeNetReturnPct": 1.0281,
+          "avgWinPct": 22.2522,
+          "avgLossPct": -6.2487,
+          "payoffRatio": 3.5611,
+          "expectancyPct": 1.0281,
+          "profitFactor": 1.2209,
+          "maxTradeGainPct": 53.219,
+          "maxTradeLossPct": -13.521,
+          "avgHoldingDays": 8.04,
+          "medianHoldingDays": 6.0,
+          "avgMfePct": 16.1109,
+          "avgMaePct": -6.7294,
+          "worstInTradeMaePct": -18.896,
+          "maxConsecutiveLosses": 15,
+          "exitReasonCounts": {
+            "STOP_HARD_INTRADAY": 43,
+            "MA5_MA10_DEATH_CROSS": 40,
+            "STOP_HARD_GAP": 6,
+            "END_OF_DATA": 5
+          },
+          "bestTrade": {
+            "symbol": "3430",
+            "signalDate": "2026-04-28",
+            "entryDate": "2026-04-29",
+            "exitDate": "2026-05-22",
+            "netReturnPct": 53.219,
+            "exitReason": "MA5_MA10_DEATH_CROSS"
+          },
+          "worstTrade": {
+            "symbol": "6443",
+            "signalDate": "2026-03-05",
+            "entryDate": "2026-03-06",
+            "exitDate": "2026-03-09",
+            "netReturnPct": -13.521,
+            "exitReason": "STOP_HARD_GAP"
+          }
+        },
+        "impactVsLegacy": {
+          "recycleReturnDeltaPctPoint": 1.8725,
+          "noRecycleReturnDeltaPctPoint": -7.3413,
+          "recycleDrawdownDeltaPctPoint": -4.7233,
+          "noRecycleDrawdownDeltaPctPoint": -0.6828
+        }
+      }
+    }
+  },
+  "marketStateDefinition": {
+    "benchmarkProxy": "0050",
+    "RISK_ON": "0050 close > MA120 AND MA60 20-session slope > 0 AND breadthAboveMA60 >= 55%",
+    "RISK_OFF": "0050 close < MA120 AND MA60 20-session slope < 0 AND breadthAboveMA60 <= 45%",
+    "TRANSITION": "all other valid observations",
+    "UNKNOWN": "insufficient lookback or breadthValidCount < 700",
+    "stateAssignedOn": "signal-day close using only data available by that close"
+  },
+  "tradePerformanceBySignalState": {
+    "RISK_OFF": {
+      "tradeCount": 3100,
+      "winRate": 0.3397,
+      "expectancyPct": 0.3096,
+      "profitFactor": 1.1073,
+      "payoffRatio": 2.1525,
+      "avgHoldingDays": 9.08,
+      "avgWinPct": 9.4058,
+      "avgLossPct": -4.3697
+    },
+    "RISK_ON": {
+      "tradeCount": 8267,
+      "winRate": 0.2469,
+      "expectancyPct": -0.5173,
+      "profitFactor": 0.8361,
+      "payoffRatio": 2.5504,
+      "avgHoldingDays": 7.7,
+      "avgWinPct": 10.6865,
+      "avgLossPct": -4.1902
+    },
+    "TRANSITION": {
+      "tradeCount": 12037,
+      "winRate": 0.2906,
+      "expectancyPct": 0.2292,
+      "profitFactor": 1.0727,
+      "payoffRatio": 2.6185,
+      "avgHoldingDays": 8.41,
+      "avgWinPct": 11.6393,
+      "avgLossPct": -4.445
+    },
+    "UNKNOWN": {
+      "tradeCount": 2325,
+      "winRate": 0.2538,
+      "expectancyPct": -0.9682,
+      "profitFactor": 0.6986,
+      "payoffRatio": 2.0543,
+      "avgHoldingDays": 8.36,
+      "avgWinPct": 8.8434,
+      "avgLossPct": -4.3047
+    }
+  },
+  "tradePerformanceByYearAndSignalState": {
+    "2022": {
+      "RISK_OFF": {
+        "tradeCount": 1887,
+        "winRate": 0.3286,
+        "expectancyPct": 0.1435,
+        "profitFactor": 1.0482,
+        "payoffRatio": 2.1421,
+        "avgHoldingDays": 9.02,
+        "avgWinPct": 9.4988,
+        "avgLossPct": -4.4344
+      },
+      "RISK_ON": {
+        "tradeCount": 165,
+        "winRate": 0.1152,
+        "expectancyPct": -2.2333,
+        "profitFactor": 0.3822,
+        "payoffRatio": 2.9366,
+        "avgHoldingDays": 5.39,
+        "avgWinPct": 11.996,
+        "avgLossPct": -4.0851
+      },
+      "TRANSITION": {
+        "tradeCount": 1356,
+        "winRate": 0.2537,
+        "expectancyPct": -1.1589,
+        "profitFactor": 0.6209,
+        "payoffRatio": 1.8267,
+        "avgHoldingDays": 7.36,
+        "avgWinPct": 7.4834,
+        "avgLossPct": -4.0966
+      },
+      "UNKNOWN": {
+        "tradeCount": 598,
+        "winRate": 0.1689,
+        "expectancyPct": -2.2761,
+        "profitFactor": 0.3503,
+        "payoffRatio": 1.7238,
+        "avgHoldingDays": 6.54,
+        "avgWinPct": 7.2664,
+        "avgLossPct": -4.2153
+      }
+    },
+    "2023": {
+      "RISK_OFF": {
+        "tradeCount": 467,
+        "winRate": 0.2912,
+        "expectancyPct": 0.1796,
+        "profitFactor": 1.0667,
+        "payoffRatio": 2.5962,
+        "avgHoldingDays": 8.77,
+        "avgWinPct": 9.8622,
+        "avgLossPct": -3.7987
+      },
+      "RISK_ON": {
+        "tradeCount": 3007,
+        "winRate": 0.2883,
+        "expectancyPct": 0.0629,
+        "profitFactor": 1.0239,
+        "payoffRatio": 2.5273,
+        "avgHoldingDays": 8.35,
+        "avgWinPct": 9.338,
+        "avgLossPct": -3.6948
+      },
+      "TRANSITION": {
+        "tradeCount": 1475,
+        "winRate": 0.3627,
+        "expectancyPct": 1.2508,
+        "profitFactor": 1.4995,
+        "payoffRatio": 2.6347,
+        "avgHoldingDays": 9.83,
+        "avgWinPct": 10.3517,
+        "avgLossPct": -3.929
+      }
+    },
+    "2024": {
+      "RISK_ON": {
+        "tradeCount": 2860,
+        "winRate": 0.2455,
+        "expectancyPct": -0.3491,
+        "profitFactor": 0.8835,
+        "payoffRatio": 2.7158,
+        "avgHoldingDays": 7.84,
+        "avgWinPct": 10.7798,
+        "avgLossPct": -3.9693
+      },
+      "TRANSITION": {
+        "tradeCount": 3317,
+        "winRate": 0.2481,
+        "expectancyPct": -0.9822,
+        "profitFactor": 0.6986,
+        "payoffRatio": 2.1171,
+        "avgHoldingDays": 8.06,
+        "avgWinPct": 9.1776,
+        "avgLossPct": -4.3349
+      }
+    },
+    "2025": {
+      "RISK_OFF": {
+        "tradeCount": 746,
+        "winRate": 0.3981,
+        "expectancyPct": 0.8108,
+        "profitFactor": 1.2924,
+        "payoffRatio": 1.9538,
+        "avgHoldingDays": 9.42,
+        "avgWinPct": 9.0029,
+        "avgLossPct": -4.6079
+      },
+      "RISK_ON": {
+        "tradeCount": 1105,
+        "winRate": 0.2353,
+        "expectancyPct": -0.6112,
+        "profitFactor": 0.8112,
+        "payoffRatio": 2.6364,
+        "avgHoldingDays": 7.23,
+        "avgWinPct": 11.159,
+        "avgLossPct": -4.2327
+      },
+      "TRANSITION": {
+        "tradeCount": 3094,
+        "winRate": 0.2708,
+        "expectancyPct": 0.2934,
+        "profitFactor": 1.0986,
+        "payoffRatio": 2.9577,
+        "avgHoldingDays": 8.43,
+        "avgWinPct": 12.0651,
+        "avgLossPct": -4.0793
+      }
+    },
+    "2026": {
+      "RISK_ON": {
+        "tradeCount": 1130,
+        "winRate": 0.1708,
+        "expectancyPct": -2.1449,
+        "profitFactor": 0.5546,
+        "payoffRatio": 2.6927,
+        "avgHoldingDays": 6.4,
+        "avgWinPct": 15.6395,
+        "avgLossPct": -5.8081
+      },
+      "TRANSITION": {
+        "tradeCount": 2795,
+        "winRate": 0.3428,
+        "expectancyPct": 1.73,
+        "profitFactor": 1.4786,
+        "payoffRatio": 2.8353,
+        "avgHoldingDays": 8.57,
+        "avgWinPct": 15.5929,
+        "avgLossPct": -5.4996
+      }
+    }
+  },
+  "monthlyMarketStates": [
+    {
+      "month": "2021-09",
+      "sessionCount": 18,
+      "dominantState": null,
+      "stateCounts": {
+        "UNKNOWN": 18
+      },
+      "avgBreadthAboveMA60": null,
+      "avgAdvanceRatio20": 0.4127
+    },
+    {
+      "month": "2021-10",
+      "sessionCount": 20,
+      "dominantState": null,
+      "stateCounts": {
+        "UNKNOWN": 20
+      },
+      "avgBreadthAboveMA60": null,
+      "avgAdvanceRatio20": 0.4322
+    },
+    {
+      "month": "2021-11",
+      "sessionCount": 22,
+      "dominantState": null,
+      "stateCounts": {
+        "UNKNOWN": 22
+      },
+      "avgBreadthAboveMA60": 0.6156,
+      "avgAdvanceRatio20": 0.4707
+    },
+    {
+      "month": "2021-12",
+      "sessionCount": 22,
+      "dominantState": null,
+      "stateCounts": {
+        "UNKNOWN": 22
+      },
+      "avgBreadthAboveMA60": 0.6756,
+      "avgAdvanceRatio20": 0.4396
+    },
+    {
+      "month": "2022-01",
+      "sessionCount": 18,
+      "dominantState": null,
+      "stateCounts": {
+        "UNKNOWN": 18
+      },
+      "avgBreadthAboveMA60": 0.5056,
+      "avgAdvanceRatio20": 0.4078
+    },
+    {
+      "month": "2022-02",
+      "sessionCount": 15,
+      "dominantState": null,
+      "stateCounts": {
+        "UNKNOWN": 15
+      },
+      "avgBreadthAboveMA60": 0.4455,
+      "avgAdvanceRatio20": 0.4117
+    },
+    {
+      "month": "2022-03",
+      "sessionCount": 23,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 12,
+        "RISK_OFF": 7,
+        "UNKNOWN": 4
+      },
+      "avgBreadthAboveMA60": 0.3872,
+      "avgAdvanceRatio20": 0.4492
+    },
+    {
+      "month": "2022-04",
+      "sessionCount": 19,
+      "dominantState": "RISK_OFF",
+      "stateCounts": {
+        "RISK_OFF": 17,
+        "TRANSITION": 2
+      },
+      "avgBreadthAboveMA60": 0.3836,
+      "avgAdvanceRatio20": 0.4248
+    },
+    {
+      "month": "2022-05",
+      "sessionCount": 21,
+      "dominantState": "RISK_OFF",
+      "stateCounts": {
+        "RISK_OFF": 21
+      },
+      "avgBreadthAboveMA60": 0.2511,
+      "avgAdvanceRatio20": 0.4159
+    },
+    {
+      "month": "2022-06",
+      "sessionCount": 21,
+      "dominantState": "RISK_OFF",
+      "stateCounts": {
+        "RISK_OFF": 19,
+        "TRANSITION": 2
+      },
+      "avgBreadthAboveMA60": 0.3335,
+      "avgAdvanceRatio20": 0.4465
+    },
+    {
+      "month": "2022-07",
+      "sessionCount": 21,
+      "dominantState": "RISK_OFF",
+      "stateCounts": {
+        "RISK_OFF": 20,
+        "TRANSITION": 1
+      },
+      "avgBreadthAboveMA60": 0.2848,
+      "avgAdvanceRatio20": 0.4355
+    },
+    {
+      "month": "2022-08",
+      "sessionCount": 23,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 20,
+        "RISK_OFF": 3
+      },
+      "avgBreadthAboveMA60": 0.6232,
+      "avgAdvanceRatio20": 0.4943
+    },
+    {
+      "month": "2022-09",
+      "sessionCount": 21,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 16,
+        "RISK_OFF": 5
+      },
+      "avgBreadthAboveMA60": 0.5563,
+      "avgAdvanceRatio20": 0.4228
+    },
+    {
+      "month": "2022-10",
+      "sessionCount": 20,
+      "dominantState": "RISK_OFF",
+      "stateCounts": {
+        "RISK_OFF": 20
+      },
+      "avgBreadthAboveMA60": 0.1653,
+      "avgAdvanceRatio20": 0.3949
+    },
+    {
+      "month": "2022-11",
+      "sessionCount": 22,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 12,
+        "RISK_OFF": 10
+      },
+      "avgBreadthAboveMA60": 0.3922,
+      "avgAdvanceRatio20": 0.4874
+    },
+    {
+      "month": "2022-12",
+      "sessionCount": 22,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 16,
+        "RISK_ON": 6
+      },
+      "avgBreadthAboveMA60": 0.7155,
+      "avgAdvanceRatio20": 0.4608
+    },
+    {
+      "month": "2023-01",
+      "sessionCount": 13,
+      "dominantState": "RISK_ON",
+      "stateCounts": {
+        "RISK_ON": 10,
+        "TRANSITION": 3
+      },
+      "avgBreadthAboveMA60": 0.6754,
+      "avgAdvanceRatio20": 0.4215
+    },
+    {
+      "month": "2023-02",
+      "sessionCount": 18,
+      "dominantState": "RISK_ON",
+      "stateCounts": {
+        "RISK_ON": 18
+      },
+      "avgBreadthAboveMA60": 0.8168,
+      "avgAdvanceRatio20": 0.4904
+    },
+    {
+      "month": "2023-03",
+      "sessionCount": 23,
+      "dominantState": "RISK_ON",
+      "stateCounts": {
+        "RISK_ON": 23
+      },
+      "avgBreadthAboveMA60": 0.7879,
+      "avgAdvanceRatio20": 0.4742
+    },
+    {
+      "month": "2023-04",
+      "sessionCount": 17,
+      "dominantState": "RISK_ON",
+      "stateCounts": {
+        "RISK_ON": 15,
+        "TRANSITION": 2
+      },
+      "avgBreadthAboveMA60": 0.7096,
+      "avgAdvanceRatio20": 0.4635
+    },
+    {
+      "month": "2023-05",
+      "sessionCount": 22,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 13,
+        "RISK_ON": 9
+      },
+      "avgBreadthAboveMA60": 0.5573,
+      "avgAdvanceRatio20": 0.4498
+    },
+    {
+      "month": "2023-06",
+      "sessionCount": 20,
+      "dominantState": "RISK_ON",
+      "stateCounts": {
+        "RISK_ON": 20
+      },
+      "avgBreadthAboveMA60": 0.6656,
+      "avgAdvanceRatio20": 0.4709
+    },
+    {
+      "month": "2023-07",
+      "sessionCount": 21,
+      "dominantState": "RISK_ON",
+      "stateCounts": {
+        "RISK_ON": 14,
+        "TRANSITION": 7
+      },
+      "avgBreadthAboveMA60": 0.5722,
+      "avgAdvanceRatio20": 0.4237
+    },
+    {
+      "month": "2023-08",
+      "sessionCount": 22,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 22
+      },
+      "avgBreadthAboveMA60": 0.3616,
+      "avgAdvanceRatio20": 0.4017
+    },
+    {
+      "month": "2023-09",
+      "sessionCount": 20,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 14,
+        "RISK_OFF": 6
+      },
+      "avgBreadthAboveMA60": 0.4141,
+      "avgAdvanceRatio20": 0.4441
+    },
+    {
+      "month": "2023-10",
+      "sessionCount": 20,
+      "dominantState": "RISK_OFF",
+      "stateCounts": {
+        "RISK_OFF": 11,
+        "TRANSITION": 9
+      },
+      "avgBreadthAboveMA60": 0.3747,
+      "avgAdvanceRatio20": 0.3983
+    },
+    {
+      "month": "2023-11",
+      "sessionCount": 22,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 12,
+        "RISK_ON": 8,
+        "RISK_OFF": 2
+      },
+      "avgBreadthAboveMA60": 0.5682,
+      "avgAdvanceRatio20": 0.4579
+    },
+    {
+      "month": "2023-12",
+      "sessionCount": 21,
+      "dominantState": "RISK_ON",
+      "stateCounts": {
+        "RISK_ON": 21
+      },
+      "avgBreadthAboveMA60": 0.7495,
+      "avgAdvanceRatio20": 0.4576
+    },
+    {
+      "month": "2024-01",
+      "sessionCount": 22,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 12,
+        "RISK_ON": 10
+      },
+      "avgBreadthAboveMA60": 0.5457,
+      "avgAdvanceRatio20": 0.3984
+    },
+    {
+      "month": "2024-02",
+      "sessionCount": 13,
+      "dominantState": "RISK_ON",
+      "stateCounts": {
+        "RISK_ON": 9,
+        "TRANSITION": 4
+      },
+      "avgBreadthAboveMA60": 0.5719,
+      "avgAdvanceRatio20": 0.446
+    },
+    {
+      "month": "2024-03",
+      "sessionCount": 21,
+      "dominantState": "RISK_ON",
+      "stateCounts": {
+        "RISK_ON": 14,
+        "TRANSITION": 7
+      },
+      "avgBreadthAboveMA60": 0.5772,
+      "avgAdvanceRatio20": 0.4276
+    },
+    {
+      "month": "2024-04",
+      "sessionCount": 20,
+      "dominantState": "RISK_ON",
+      "stateCounts": {
+        "RISK_ON": 11,
+        "TRANSITION": 9
+      },
+      "avgBreadthAboveMA60": 0.5517,
+      "avgAdvanceRatio20": 0.4259
+    },
+    {
+      "month": "2024-05",
+      "sessionCount": 22,
+      "dominantState": "RISK_ON",
+      "stateCounts": {
+        "RISK_ON": 19,
+        "TRANSITION": 3
+      },
+      "avgBreadthAboveMA60": 0.5916,
+      "avgAdvanceRatio20": 0.4626
+    },
+    {
+      "month": "2024-06",
+      "sessionCount": 19,
+      "dominantState": "RISK_ON",
+      "stateCounts": {
+        "RISK_ON": 19
+      },
+      "avgBreadthAboveMA60": 0.6693,
+      "avgAdvanceRatio20": 0.4529
+    },
+    {
+      "month": "2024-07",
+      "sessionCount": 21,
+      "dominantState": "RISK_ON",
+      "stateCounts": {
+        "RISK_ON": 15,
+        "TRANSITION": 6
+      },
+      "avgBreadthAboveMA60": 0.6224,
+      "avgAdvanceRatio20": 0.4462
+    },
+    {
+      "month": "2024-08",
+      "sessionCount": 22,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 22
+      },
+      "avgBreadthAboveMA60": 0.3409,
+      "avgAdvanceRatio20": 0.4514
+    },
+    {
+      "month": "2024-09",
+      "sessionCount": 20,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 20
+      },
+      "avgBreadthAboveMA60": 0.3771,
+      "avgAdvanceRatio20": 0.4505
+    },
+    {
+      "month": "2024-10",
+      "sessionCount": 19,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 19
+      },
+      "avgBreadthAboveMA60": 0.4593,
+      "avgAdvanceRatio20": 0.4316
+    },
+    {
+      "month": "2024-11",
+      "sessionCount": 21,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 21
+      },
+      "avgBreadthAboveMA60": 0.3486,
+      "avgAdvanceRatio20": 0.4003
+    },
+    {
+      "month": "2024-12",
+      "sessionCount": 22,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 22
+      },
+      "avgBreadthAboveMA60": 0.3029,
+      "avgAdvanceRatio20": 0.4087
+    },
+    {
+      "month": "2025-01",
+      "sessionCount": 15,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 15
+      },
+      "avgBreadthAboveMA60": 0.2602,
+      "avgAdvanceRatio20": 0.3961
+    },
+    {
+      "month": "2025-02",
+      "sessionCount": 19,
+      "dominantState": "RISK_ON",
+      "stateCounts": {
+        "RISK_ON": 10,
+        "TRANSITION": 9
+      },
+      "avgBreadthAboveMA60": 0.5392,
+      "avgAdvanceRatio20": 0.4805
+    },
+    {
+      "month": "2025-03",
+      "sessionCount": 21,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 19,
+        "RISK_OFF": 2
+      },
+      "avgBreadthAboveMA60": 0.5081,
+      "avgAdvanceRatio20": 0.4208
+    },
+    {
+      "month": "2025-04",
+      "sessionCount": 20,
+      "dominantState": "RISK_OFF",
+      "stateCounts": {
+        "RISK_OFF": 20
+      },
+      "avgBreadthAboveMA60": 0.1019,
+      "avgAdvanceRatio20": 0.408
+    },
+    {
+      "month": "2025-05",
+      "sessionCount": 20,
+      "dominantState": "RISK_OFF",
+      "stateCounts": {
+        "RISK_OFF": 20
+      },
+      "avgBreadthAboveMA60": 0.3158,
+      "avgAdvanceRatio20": 0.5145
+    },
+    {
+      "month": "2025-06",
+      "sessionCount": 21,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 13,
+        "RISK_OFF": 6,
+        "RISK_ON": 2
+      },
+      "avgBreadthAboveMA60": 0.4429,
+      "avgAdvanceRatio20": 0.4174
+    },
+    {
+      "month": "2025-07",
+      "sessionCount": 23,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 20,
+        "RISK_ON": 3
+      },
+      "avgBreadthAboveMA60": 0.4764,
+      "avgAdvanceRatio20": 0.4299
+    },
+    {
+      "month": "2025-08",
+      "sessionCount": 21,
+      "dominantState": "RISK_ON",
+      "stateCounts": {
+        "RISK_ON": 14,
+        "TRANSITION": 6,
+        "UNKNOWN": 1
+      },
+      "avgBreadthAboveMA60": 0.5842,
+      "avgAdvanceRatio20": 0.4596
+    },
+    {
+      "month": "2025-09",
+      "sessionCount": 21,
+      "dominantState": "RISK_ON",
+      "stateCounts": {
+        "RISK_ON": 16,
+        "TRANSITION": 5
+      },
+      "avgBreadthAboveMA60": 0.5777,
+      "avgAdvanceRatio20": 0.4312
+    },
+    {
+      "month": "2025-10",
+      "sessionCount": 20,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 20
+      },
+      "avgBreadthAboveMA60": 0.4314,
+      "avgAdvanceRatio20": 0.4006
+    },
+    {
+      "month": "2025-11",
+      "sessionCount": 20,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 20
+      },
+      "avgBreadthAboveMA60": 0.3052,
+      "avgAdvanceRatio20": 0.3912
+    },
+    {
+      "month": "2025-12",
+      "sessionCount": 22,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 22
+      },
+      "avgBreadthAboveMA60": 0.4082,
+      "avgAdvanceRatio20": 0.4418
+    },
+    {
+      "month": "2026-01",
+      "sessionCount": 21,
+      "dominantState": "RISK_ON",
+      "stateCounts": {
+        "RISK_ON": 12,
+        "TRANSITION": 9
+      },
+      "avgBreadthAboveMA60": 0.5602,
+      "avgAdvanceRatio20": 0.4329
+    },
+    {
+      "month": "2026-02",
+      "sessionCount": 12,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 8,
+        "RISK_ON": 4
+      },
+      "avgBreadthAboveMA60": 0.4974,
+      "avgAdvanceRatio20": 0.4181
+    },
+    {
+      "month": "2026-03",
+      "sessionCount": 22,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 21,
+        "RISK_ON": 1
+      },
+      "avgBreadthAboveMA60": 0.4027,
+      "avgAdvanceRatio20": 0.4374
+    },
+    {
+      "month": "2026-04",
+      "sessionCount": 20,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 18,
+        "RISK_ON": 2
+      },
+      "avgBreadthAboveMA60": 0.4592,
+      "avgAdvanceRatio20": 0.4475
+    },
+    {
+      "month": "2026-05",
+      "sessionCount": 20,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 20
+      },
+      "avgBreadthAboveMA60": 0.4936,
+      "avgAdvanceRatio20": 0.4294
+    },
+    {
+      "month": "2026-06",
+      "sessionCount": 21,
+      "dominantState": "RISK_ON",
+      "stateCounts": {
+        "RISK_ON": 15,
+        "TRANSITION": 6
+      },
+      "avgBreadthAboveMA60": 0.5823,
+      "avgAdvanceRatio20": 0.4572
+    },
+    {
+      "month": "2026-07",
+      "sessionCount": 23,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 19,
+        "RISK_ON": 4
+      },
+      "avgBreadthAboveMA60": 0.4399,
+      "avgAdvanceRatio20": 0.413
+    },
+    {
+      "month": "2026-08",
+      "sessionCount": 19,
+      "dominantState": "TRANSITION",
+      "stateCounts": {
+        "TRANSITION": 19
+      },
+      "avgBreadthAboveMA60": 0.3731,
+      "avgAdvanceRatio20": 0.4351
+    }
+  ],
+  "latestFrozenMarketState": {
+    "date": "2026-08-27",
+    "state": "TRANSITION",
+    "benchClose": 106.05,
+    "benchMA120": 95.2532,
+    "benchMA60Slope20Pct": 1.9688,
+    "breadthAboveMA60": 0.4391,
+    "advanceRatio20": 0.4996
+  },
+  "counts": {
+    "strategyTrades": 25729,
+    "annotatedTrades": 25729,
+    "marketStateSessions": 1210,
+    "stateSessionCounts": {
+      "TRANSITION": 577,
+      "RISK_ON": 324,
+      "RISK_OFF": 189,
+      "UNKNOWN": 120
+    }
+  },
+  "knownLimitations": [
+    "Current-universe survivorship bias remains in this frozen Yahoo-based snapshot.",
+    "Historical liquidity filter still inherits adjusted-price times unadjusted-volume tradeValue from earlier research code.",
+    "Daily OHLC cannot model 09:10 odd-lot matching, queue position or exact intraday slippage.",
+    "State thresholds are predeclared diagnostic rules and must not be retuned on these inspected years.",
+    "Point-in-time universe and actual historical transaction-value data are still required for production-grade inference."
+  ],
+  "automaticProductionChanges": false,
+  "runnerVersion": "historical-backtest-engine-state-v1.9a",
+  "dataFreeze": {
+    "mode": "IMMUTABLE_FROZEN_SNAPSHOT",
+    "freezeId": "tw-history-2022-20260828-v1",
+    "dataFileSha256": "0dda6a1504e114424de3c37f3b5662bf7a2d2bbac42cfa2802592bdeb1220d42",
+    "targetStart": "2022-01-01",
+    "targetEnd": "2026-08-28",
+    "effectiveEquityStart": "2021-09-03",
+    "effectiveEquityEnd": "2026-08-28",
+    "universe": {
+      "total": 1975,
+      "TSE": 1085,
+      "OTC": 890,
+      "tickersWithData": 1975,
+      "coverageRatio": 1.0,
+      "failedTickerCount": 0,
+      "failedTickers": []
+    },
+    "rows": {
+      "equity": 2291974,
+      "benchmark": 1210,
+      "total": 2293184
+    },
+    "priceBasis": "Yahoo OHLC scaled by Adj Close/Close at snapshot creation; unadjusted volume",
+    "policy": {
+      "immutable": true,
+      "refreshRule": "Create a new freezeId/release asset to extend or replace history; never overwrite this freeze.",
+      "purpose": "Make strategy and execution comparisons use identical historical rows and prices across runs."
+    }
+  },
+  "preregistration": {
+    "schemaVersion": 1,
+    "experimentId": "V1.9A_ENGINE_STATE_AUDIT",
+    "status": "PREREGISTERED_BEFORE_FIRST_RUN",
+    "purpose": "Audit the V1.7/V1.8 portfolio chronology and test whether the fixed strategy's trade expectancy differs across a slow, predeclared market-state classification. This experiment is diagnostic only and must not tune strategy parameters or change production rules.",
+    "data": {
+      "freezeId": "tw-history-2022-20260828-v1",
+      "expectedSha256": "0dda6a1504e114424de3c37f3b5662bf7a2d2bbac42cfa2802592bdeb1220d42",
+      "period": "2022-01-01 through 2026-08-28, with frozen lookback rows from 2021-09-03",
+      "knownLimitation": "Current-universe survivorship bias remains; this experiment does not claim point-in-time universe correctness."
+    },
+    "fixedStrategy": {
+      "entrySignal": "MA5 rising, close above MA5, previous close at/below previous MA5",
+      "legacyRegimeGate": "NO_BEAR",
+      "entry": "next trading day's daily open proxy",
+      "initialStop": "max(entry - 1.25*ATR14, prior 10-session low)",
+      "cooldownAfterHardStopSessions": 5,
+      "exit": "MA5/MA10 death cross confirmed at close, exit next open",
+      "selectionPriority": "higher MA5 slope, then higher signal-day trade value, then symbol",
+      "allocation": "maximum 5 simultaneous names, target 20% each"
+    },
+    "engineAudit": {
+      "legacyControl": "Preserve V1.7C simulator output as the control.",
+      "cleanChronology": [
+        "Never use current-session close to size an opening trade.",
+        "Size opening trades from prior-session close equity only.",
+        "Process same-open scheduled exits before new entries so exit proceeds are available in the clean-recycle variant.",
+        "Also report a conservative no-same-open-recycle variant as a bound.",
+        "Use integer share quantities; no fractional shares. Daily open remains only an execution proxy because historical 09:10 odd-lot prices are not in this freeze."
+      ],
+      "comparisonPolicy": "Report the numerical impact of chronology and share granularity. Do not choose whichever variant has the best return."
+    },
+    "marketState": {
+      "benchmarkProxy": "0050 frozen benchmark rows",
+      "featuresKnownBySignalClose": [
+        "0050 close relative to MA120",
+        "0050 MA60 20-session slope",
+        "cross-sectional percentage of eligible equity rows closing above MA60",
+        "20-session mean advance ratio as a diagnostic only"
+      ],
+      "classification": {
+        "RISK_ON": "0050 close > MA120 AND MA60 20-session slope > 0 AND breadthAboveMA60 >= 55%",
+        "RISK_OFF": "0050 close < MA120 AND MA60 20-session slope < 0 AND breadthAboveMA60 <= 45%",
+        "TRANSITION": "all other valid states",
+        "UNKNOWN": "insufficient lookback or fewer than 700 valid equity observations"
+      },
+      "important": "These thresholds are predeclared for diagnosis and will not be optimized on 2022-2026 results."
+    },
+    "outputs": [
+      "legacy versus clean portfolio results by calendar year 2022-2026",
+      "fixed-strategy candidate-trade count, win rate, expectancy, profit factor and payoff ratio by signal-day market state",
+      "same trade-state metrics by year to expose regime instability",
+      "monthly market-state distribution and latest frozen state",
+      "deterministic two-pass fingerprint report"
+    ],
+    "decisionPolicy": {
+      "automaticProductionChanges": false,
+      "noParameterSearch": true,
+      "noGatingOptimization": true,
+      "interpretation": "If a market state shows weak expectancy, treat it as a hypothesis for a future strategy generation. Do not immediately add a filter using these already-inspected years.",
+      "nextStepIfStateDependenceAppears": "Build a separate point-in-time universe and an earlier/rolling development set, then preregister a second-generation regime model before testing it."
+    }
+  }
+}
