@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-09-22T05:31:44.293Z",
+  "updatedAt": "2026-09-23T01:28:41.110Z",
   "source": "Fugle Market Data API",
   "bridgeVersion": "3.2.3",
   "triggerContext": {
-    "cron": "31 5 * * MON-FRI",
-    "scheduledTime": "2026-09-22T05:31:34.000Z"
+    "cron": "28 1 * * MON-FRI",
+    "scheduledTime": "2026-09-23T01:28:34.000Z"
   },
   "market": "TW",
   "watchlist": [
@@ -63,14 +63,34 @@
   "symbolCount": 9,
   "dailyContext": {
     "version": 2,
-    "cacheDate": "2026-09-22",
+    "cacheDate": "2026-09-23",
     "historicalAdjusted": true,
-    "staleAtStart": 0,
+    "staleAtStart": 9,
     "refreshBudget": 8,
-    "refreshAttempted": [],
-    "refreshedThisRun": [],
-    "remainingAfterRun": 0,
-    "pendingSymbols": [],
+    "refreshAttempted": [
+      "0050",
+      "00713",
+      "2303",
+      "2308",
+      "2330",
+      "2357",
+      "2408",
+      "2454"
+    ],
+    "refreshedThisRun": [
+      "0050",
+      "00713",
+      "2303",
+      "2308",
+      "2330",
+      "2357",
+      "2408",
+      "2454"
+    ],
+    "remainingAfterRun": 1,
+    "pendingSymbols": [
+      "6757"
+    ],
     "note": "Daily indicators use completed historical daily candles and are cached through the previous GitHub snapshot for the same Taipei calendar date. projectedDaily combines that prior completed-day background with the current live session without an extra historical subrequest."
   },
   "health": {
@@ -85,8 +105,10 @@
     "currentTradingDateLikely": true,
     "freshWithin7mSymbolCount": 9,
     "freshWithin7mSymbolRatio": 1,
-    "dailyPendingCount": 0,
-    "dailyPendingSymbols": [],
+    "dailyPendingCount": 1,
+    "dailyPendingSymbols": [
+      "6757"
+    ],
     "externalSubrequestLimit": 50,
     "subrequestSafetyMargin": 1,
     "watchlistMax": 20
@@ -96,377 +118,344 @@
       "ok": true,
       "symbol": "2303",
       "name": "聯電",
-      "date": "2026-09-22",
+      "date": "2026-09-23",
       "price": 160,
-      "referencePrice": 157,
-      "previousClose": 157,
-      "open": 161,
-      "high": 168.5,
-      "low": 160,
-      "change": 3,
-      "changePercent": 1.91,
-      "avgPrice": 163.96,
+      "referencePrice": 160,
+      "previousClose": 160,
+      "open": 163,
+      "high": 163,
+      "low": 158.5,
+      "change": 0,
+      "changePercent": 0,
+      "avgPrice": 160.47,
       "bid": {
-        "price": 160,
-        "size": 2467
+        "price": 159.5,
+        "size": 865
       },
       "ask": {
-        "price": 160.5,
-        "size": 478
+        "price": 160,
+        "size": 788
       },
-      "tradeVolume": 281177,
-      "transaction": 42184,
-      "earlyHigh": 165,
-      "earlyLow": 160.5,
+      "tradeVolume": 39687,
+      "transaction": 7262,
+      "earlyHigh": 163,
+      "earlyLow": 158.5,
       "aboveAverage": false,
-      "last5Volume": 13478,
-      "previous5Volume": 3509,
-      "volumeAcceleration": 3.84,
-      "intradayLast5Volume": 5092,
-      "intradayPrevious5Volume": 3007,
-      "intradayVolumeAcceleration": 1.69,
+      "last5Volume": 2035,
+      "previous5Volume": 1630,
+      "volumeAcceleration": 1.25,
+      "intradayLast5Volume": 2035,
+      "intradayPrevious5Volume": 1630,
+      "intradayVolumeAcceleration": 1.25,
       "intradayLast5BarCount": 5,
       "intradayPrevious5BarCount": 5,
-      "intradayVolumeWindowLatestBarAt": "2026-09-22T13:24:00.000+08:00",
-      "closingAuctionVolume": 9199,
-      "closingAuctionPrice": 160,
-      "closingAuctionDetected": true,
-      "volumeAccelerationIncludesClosingAuction": true,
+      "intradayVolumeWindowLatestBarAt": "2026-09-23T09:28:00.000+08:00",
+      "closingAuctionVolume": null,
+      "closingAuctionPrice": null,
+      "closingAuctionDetected": false,
+      "volumeAccelerationIncludesClosingAuction": false,
       "recentCandles": [
         {
-          "date": "2026-09-22T12:56:00.000+08:00",
-          "open": 161,
-          "high": 161.5,
+          "date": "2026-09-23T09:00:00.000+08:00",
+          "open": 163,
+          "high": 163,
           "low": 161,
-          "close": 161.5,
-          "volume": 340,
-          "average": 164.32
+          "close": 162,
+          "volume": 6620,
+          "average": 162.38
         },
         {
-          "date": "2026-09-22T12:57:00.000+08:00",
-          "open": 161,
-          "high": 161.5,
-          "low": 161,
-          "close": 161.5,
-          "volume": 191,
-          "average": 164.32
-        },
-        {
-          "date": "2026-09-22T12:58:00.000+08:00",
-          "open": 161.5,
-          "high": 161.5,
-          "low": 161,
-          "close": 161,
-          "volume": 166,
-          "average": 164.32
-        },
-        {
-          "date": "2026-09-22T12:59:00.000+08:00",
-          "open": 161,
-          "high": 161.5,
-          "low": 161,
-          "close": 161.5,
-          "volume": 334,
-          "average": 164.31
-        },
-        {
-          "date": "2026-09-22T13:00:00.000+08:00",
-          "open": 161.5,
-          "high": 161.5,
-          "low": 161,
-          "close": 161,
-          "volume": 155,
-          "average": 164.31
-        },
-        {
-          "date": "2026-09-22T13:01:00.000+08:00",
-          "open": 161,
-          "high": 161.5,
-          "low": 161,
-          "close": 161.5,
-          "volume": 209,
-          "average": 164.31
-        },
-        {
-          "date": "2026-09-22T13:02:00.000+08:00",
-          "open": 161,
-          "high": 161.5,
-          "low": 161,
-          "close": 161,
-          "volume": 1790,
-          "average": 164.28
-        },
-        {
-          "date": "2026-09-22T13:03:00.000+08:00",
-          "open": 161,
-          "high": 161.5,
-          "low": 161,
-          "close": 161,
-          "volume": 724,
-          "average": 164.27
-        },
-        {
-          "date": "2026-09-22T13:04:00.000+08:00",
-          "open": 161,
-          "high": 161.5,
-          "low": 161,
-          "close": 161,
-          "volume": 541,
-          "average": 164.27
-        },
-        {
-          "date": "2026-09-22T13:05:00.000+08:00",
-          "open": 161,
-          "high": 161.5,
-          "low": 161,
-          "close": 161,
-          "volume": 488,
-          "average": 164.26
-        },
-        {
-          "date": "2026-09-22T13:06:00.000+08:00",
-          "open": 161,
-          "high": 161.5,
-          "low": 161,
-          "close": 161,
-          "volume": 381,
-          "average": 164.26
-        },
-        {
-          "date": "2026-09-22T13:07:00.000+08:00",
-          "open": 161,
-          "high": 161.5,
-          "low": 161,
-          "close": 161,
-          "volume": 340,
-          "average": 164.25
-        },
-        {
-          "date": "2026-09-22T13:08:00.000+08:00",
-          "open": 161,
-          "high": 161.5,
-          "low": 161,
-          "close": 161,
-          "volume": 703,
-          "average": 164.24
-        },
-        {
-          "date": "2026-09-22T13:09:00.000+08:00",
-          "open": 161,
-          "high": 161.5,
-          "low": 161,
-          "close": 161,
-          "volume": 887,
-          "average": 164.23
-        },
-        {
-          "date": "2026-09-22T13:10:00.000+08:00",
-          "open": 161,
-          "high": 161.5,
+          "date": "2026-09-23T09:01:00.000+08:00",
+          "open": 162,
+          "high": 162.5,
           "low": 160.5,
           "close": 161,
-          "volume": 738,
-          "average": 164.22
+          "volume": 3848,
+          "average": 161.98
         },
         {
-          "date": "2026-09-22T13:11:00.000+08:00",
+          "date": "2026-09-23T09:02:00.000+08:00",
           "open": 161,
-          "high": 161.5,
-          "low": 160.5,
-          "close": 161,
-          "volume": 352,
-          "average": 164.22
-        },
-        {
-          "date": "2026-09-22T13:12:00.000+08:00",
-          "open": 161,
-          "high": 161.5,
-          "low": 161,
-          "close": 161,
-          "volume": 254,
-          "average": 164.22
-        },
-        {
-          "date": "2026-09-22T13:13:00.000+08:00",
-          "open": 161,
-          "high": 161.5,
-          "low": 161,
-          "close": 161,
-          "volume": 202,
-          "average": 164.21
-        },
-        {
-          "date": "2026-09-22T13:14:00.000+08:00",
-          "open": 161,
-          "high": 161.5,
-          "low": 161,
-          "close": 161,
-          "volume": 952,
-          "average": 164.2
-        },
-        {
-          "date": "2026-09-22T13:15:00.000+08:00",
-          "open": 161,
-          "high": 161.5,
-          "low": 161,
-          "close": 161,
-          "volume": 311,
-          "average": 164.2
-        },
-        {
-          "date": "2026-09-22T13:16:00.000+08:00",
-          "open": 161.5,
-          "high": 161.5,
-          "low": 161,
-          "close": 161.5,
-          "volume": 191,
-          "average": 164.2
-        },
-        {
-          "date": "2026-09-22T13:17:00.000+08:00",
-          "open": 161,
-          "high": 161.5,
-          "low": 161,
-          "close": 161,
-          "volume": 432,
-          "average": 164.19
-        },
-        {
-          "date": "2026-09-22T13:18:00.000+08:00",
-          "open": 161,
-          "high": 161.5,
-          "low": 160.5,
-          "close": 160.5,
-          "volume": 1502,
-          "average": 164.17
-        },
-        {
-          "date": "2026-09-22T13:19:00.000+08:00",
-          "open": 160.5,
-          "high": 161,
-          "low": 160.5,
-          "close": 161,
-          "volume": 571,
-          "average": 164.17
-        },
-        {
-          "date": "2026-09-22T13:20:00.000+08:00",
-          "open": 161,
-          "high": 161,
-          "low": 160.5,
-          "close": 160.5,
-          "volume": 813,
-          "average": 164.16
-        },
-        {
-          "date": "2026-09-22T13:21:00.000+08:00",
-          "open": 160.5,
-          "high": 161,
-          "low": 160.5,
-          "close": 160.5,
-          "volume": 854,
-          "average": 164.14
-        },
-        {
-          "date": "2026-09-22T13:22:00.000+08:00",
-          "open": 160.5,
           "high": 161,
           "low": 160,
           "close": 160.5,
-          "volume": 1105,
-          "average": 164.13
+          "volume": 2932,
+          "average": 161.63
         },
         {
-          "date": "2026-09-22T13:23:00.000+08:00",
+          "date": "2026-09-23T09:03:00.000+08:00",
+          "open": 160.5,
+          "high": 160.5,
+          "low": 159.5,
+          "close": 160.5,
+          "volume": 2795,
+          "average": 161.36
+        },
+        {
+          "date": "2026-09-23T09:04:00.000+08:00",
           "open": 160.5,
           "high": 161,
           "low": 160,
-          "close": 160.5,
-          "volume": 1122,
-          "average": 164.11
+          "close": 161,
+          "volume": 1756,
+          "average": 161.29
         },
         {
-          "date": "2026-09-22T13:24:00.000+08:00",
+          "date": "2026-09-23T09:05:00.000+08:00",
+          "open": 161,
+          "high": 161,
+          "low": 160.5,
+          "close": 161,
+          "volume": 553,
+          "average": 161.28
+        },
+        {
+          "date": "2026-09-23T09:06:00.000+08:00",
+          "open": 161,
+          "high": 161,
+          "low": 160.5,
+          "close": 161,
+          "volume": 758,
+          "average": 161.27
+        },
+        {
+          "date": "2026-09-23T09:07:00.000+08:00",
+          "open": 161,
+          "high": 161.5,
+          "low": 160.5,
+          "close": 161,
+          "volume": 1191,
+          "average": 161.25
+        },
+        {
+          "date": "2026-09-23T09:08:00.000+08:00",
+          "open": 161,
+          "high": 161,
+          "low": 160,
+          "close": 160.5,
+          "volume": 1877,
+          "average": 161.19
+        },
+        {
+          "date": "2026-09-23T09:09:00.000+08:00",
           "open": 160,
-          "high": 161,
-          "low": 160,
-          "close": 160.5,
-          "volume": 1198,
-          "average": 164.1
-        },
-        {
-          "date": "2026-09-22T13:30:00.000+08:00",
-          "open": 160,
-          "high": 160,
+          "high": 160.5,
           "low": 160,
           "close": 160,
-          "volume": 9199,
-          "average": 163.96
+          "volume": 379,
+          "average": 161.18
+        },
+        {
+          "date": "2026-09-23T09:10:00.000+08:00",
+          "open": 160.5,
+          "high": 160.5,
+          "low": 160,
+          "close": 160.5,
+          "volume": 462,
+          "average": 161.16
+        },
+        {
+          "date": "2026-09-23T09:11:00.000+08:00",
+          "open": 160.5,
+          "high": 160.5,
+          "low": 160,
+          "close": 160.5,
+          "volume": 327,
+          "average": 161.15
+        },
+        {
+          "date": "2026-09-23T09:12:00.000+08:00",
+          "open": 160.5,
+          "high": 160.5,
+          "low": 159,
+          "close": 159,
+          "volume": 5186,
+          "average": 160.9
+        },
+        {
+          "date": "2026-09-23T09:13:00.000+08:00",
+          "open": 159,
+          "high": 159.5,
+          "low": 159,
+          "close": 159,
+          "volume": 1029,
+          "average": 160.84
+        },
+        {
+          "date": "2026-09-23T09:14:00.000+08:00",
+          "open": 159,
+          "high": 159.5,
+          "low": 158.5,
+          "close": 159,
+          "volume": 1413,
+          "average": 160.75
+        },
+        {
+          "date": "2026-09-23T09:15:00.000+08:00",
+          "open": 159,
+          "high": 159.5,
+          "low": 158.5,
+          "close": 159.5,
+          "volume": 2006,
+          "average": 160.66
+        },
+        {
+          "date": "2026-09-23T09:16:00.000+08:00",
+          "open": 159.5,
+          "high": 160,
+          "low": 159.5,
+          "close": 160,
+          "volume": 1000,
+          "average": 160.63
+        },
+        {
+          "date": "2026-09-23T09:17:00.000+08:00",
+          "open": 160,
+          "high": 160,
+          "low": 159.5,
+          "close": 159.5,
+          "volume": 421,
+          "average": 160.62
+        },
+        {
+          "date": "2026-09-23T09:18:00.000+08:00",
+          "open": 160,
+          "high": 160,
+          "low": 159,
+          "close": 159,
+          "volume": 1469,
+          "average": 160.57
+        },
+        {
+          "date": "2026-09-23T09:19:00.000+08:00",
+          "open": 159,
+          "high": 159.5,
+          "low": 159,
+          "close": 159.5,
+          "volume": 349,
+          "average": 160.56
+        },
+        {
+          "date": "2026-09-23T09:20:00.000+08:00",
+          "open": 159.5,
+          "high": 159.5,
+          "low": 159,
+          "close": 159.5,
+          "volume": 224,
+          "average": 160.55
+        },
+        {
+          "date": "2026-09-23T09:21:00.000+08:00",
+          "open": 159.5,
+          "high": 159.5,
+          "low": 159,
+          "close": 159.5,
+          "volume": 246,
+          "average": 160.55
+        },
+        {
+          "date": "2026-09-23T09:22:00.000+08:00",
+          "open": 159.5,
+          "high": 159.5,
+          "low": 159,
+          "close": 159.5,
+          "volume": 308,
+          "average": 160.54
+        },
+        {
+          "date": "2026-09-23T09:23:00.000+08:00",
+          "open": 159.5,
+          "high": 159.5,
+          "low": 159,
+          "close": 159.5,
+          "volume": 503,
+          "average": 160.52
+        },
+        {
+          "date": "2026-09-23T09:24:00.000+08:00",
+          "open": 159,
+          "high": 159.5,
+          "low": 159,
+          "close": 159.5,
+          "volume": 319,
+          "average": 160.51
+        },
+        {
+          "date": "2026-09-23T09:25:00.000+08:00",
+          "open": 159.5,
+          "high": 160,
+          "low": 159,
+          "close": 160,
+          "volume": 348,
+          "average": 160.5
+        },
+        {
+          "date": "2026-09-23T09:26:00.000+08:00",
+          "open": 159.5,
+          "high": 160,
+          "low": 159,
+          "close": 159.5,
+          "volume": 1133,
+          "average": 160.47
+        },
+        {
+          "date": "2026-09-23T09:27:00.000+08:00",
+          "open": 159.5,
+          "high": 160,
+          "low": 159.5,
+          "close": 160,
+          "volume": 178,
+          "average": 160.47
+        },
+        {
+          "date": "2026-09-23T09:28:00.000+08:00",
+          "open": 160,
+          "high": 160,
+          "low": 159.5,
+          "close": 160,
+          "volume": 57,
+          "average": 160.47
         }
       ],
       "latestCandle": {
-        "date": "2026-09-22T13:30:00.000+08:00",
+        "date": "2026-09-23T09:28:00.000+08:00",
         "open": 160,
         "high": 160,
-        "low": 160,
+        "low": 159.5,
         "close": 160,
-        "volume": 9199,
-        "average": 163.96
+        "volume": 57,
+        "average": 160.47
       },
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-22",
-        "asOf": "2026-09-21",
-        "fetchedAt": "2026-09-22T01:28:41.468Z",
-        "cacheSource": "github-cache",
+        "cacheDate": "2026-09-23",
+        "asOf": "2026-09-22",
+        "fetchedAt": "2026-09-23T01:28:40.178Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
-        "rowCount": 145,
+        "rowCount": 146,
         "projectionBase": {
           "close19Count": 19,
           "close59Count": 59,
-          "lastClose": 157,
-          "close19Sum": 2602.5,
-          "close59Sum": 7959.84,
-          "high19": 160.5,
+          "lastClose": 160,
+          "close19Sum": 2639,
+          "close59Sum": 7958.11,
+          "high19": 168.5,
           "low19": 117,
-          "high59": 170.58,
+          "high59": 170.09,
           "low59": 102.5
         },
-        "ma20": 136.375,
-        "ma60": 135.3513,
-        "ma20Slope5": 7.55,
-        "ma60Slope5": -1.5865,
-        "ma20Slope5Pct": 5.861,
-        "ma60Slope5Pct": -1.159,
-        "atr14": 7.3789,
-        "atr14PctOfClose": 4.7,
-        "avgVolume20": 190305026,
-        "avgVolume20Unit": "shares",
-        "high20": 160.5,
-        "low20": 117,
-        "high60": 170.58,
-        "low60": 102.5,
-        "lastSwingHigh": {
-          "date": "2026-09-10",
-          "price": 145.5
-        },
-        "lastSwingLow": {
-          "date": "2026-09-14",
-          "price": 135
-        }
-      },
-      "projectedDaily": {
-        "ok": true,
-        "source": "live-projected",
-        "asOf": "2026-09-22",
-        "basedOnDailyAsOf": "2026-09-21",
-        "sessionComplete": true,
-        "scaleDiffPct": 0,
         "ma20": 138.125,
         "ma60": 135.3307,
+        "ma20Slope5": 8.325,
+        "ma60Slope5": -1.2937,
+        "ma20Slope5Pct": 6.414,
+        "ma60Slope5Pct": -0.947,
         "atr14": 7.6733,
         "atr14PctOfClose": 4.796,
+        "avgVolume20": 198384963,
+        "avgVolume20Unit": "shares",
         "high20": 168.5,
         "low20": 117,
         "high60": 170.58,
@@ -480,389 +469,380 @@
           "price": 135
         }
       },
-      "fugleLastUpdated": 1790055000000000,
-      "fugleLastUpdatedAt": "2026-09-22T05:30:00.000Z",
-      "sourceAgeSeconds": 103,
+      "projectedDaily": {
+        "ok": true,
+        "source": "live-projected",
+        "asOf": "2026-09-23",
+        "basedOnDailyAsOf": "2026-09-22",
+        "sessionComplete": false,
+        "scaleDiffPct": 0,
+        "ma20": 139.95,
+        "ma60": 135.3018,
+        "atr14": 7.4466,
+        "atr14PctOfClose": 4.654,
+        "high20": 168.5,
+        "low20": 117,
+        "high60": 170.09,
+        "low60": 102.5,
+        "lastSwingHigh": {
+          "date": "2026-09-10",
+          "price": 145.5
+        },
+        "lastSwingLow": {
+          "date": "2026-09-14",
+          "price": 135
+        }
+      },
+      "fugleLastUpdated": 1790126919750721,
+      "fugleLastUpdatedAt": "2026-09-23T01:28:39.750Z",
+      "sourceAgeSeconds": 0,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
-      "isClose": true,
-      "fetchedAt": "2026-09-22T05:31:43.402Z"
+      "isClose": null,
+      "fetchedAt": "2026-09-23T01:28:40.178Z"
     },
     "2308": {
       "ok": true,
       "symbol": "2308",
       "name": "台達電",
-      "date": "2026-09-22",
-      "price": 1900,
-      "referencePrice": 1875,
-      "previousClose": 1875,
-      "open": 1965,
-      "high": 1965,
-      "low": 1900,
-      "change": 25,
-      "changePercent": 1.33,
-      "avgPrice": 1924.03,
+      "date": "2026-09-23",
+      "price": 1910,
+      "referencePrice": 1900,
+      "previousClose": 1900,
+      "open": 1910,
+      "high": 1920,
+      "low": 1895,
+      "change": 10,
+      "changePercent": 0.53,
+      "avgPrice": 1907.84,
       "bid": {
-        "price": 1900,
-        "size": 99
+        "price": 1905,
+        "size": 67
       },
       "ask": {
-        "price": 1905,
-        "size": 28
+        "price": 1910,
+        "size": 60
       },
-      "tradeVolume": 15351,
-      "transaction": 6293,
-      "earlyHigh": 1965,
-      "earlyLow": 1905,
-      "aboveAverage": false,
-      "last5Volume": 1220,
-      "previous5Volume": 239,
-      "volumeAcceleration": 5.1,
-      "intradayLast5Volume": 314,
-      "intradayPrevious5Volume": 238,
-      "intradayVolumeAcceleration": 1.32,
+      "tradeVolume": 2582,
+      "transaction": 618,
+      "earlyHigh": 1920,
+      "earlyLow": 1895,
+      "aboveAverage": true,
+      "last5Volume": 133,
+      "previous5Volume": 360,
+      "volumeAcceleration": 0.37,
+      "intradayLast5Volume": 133,
+      "intradayPrevious5Volume": 360,
+      "intradayVolumeAcceleration": 0.37,
       "intradayLast5BarCount": 5,
       "intradayPrevious5BarCount": 5,
-      "intradayVolumeWindowLatestBarAt": "2026-09-22T13:24:00.000+08:00",
-      "closingAuctionVolume": 938,
-      "closingAuctionPrice": 1900,
-      "closingAuctionDetected": true,
-      "volumeAccelerationIncludesClosingAuction": true,
+      "intradayVolumeWindowLatestBarAt": "2026-09-23T09:28:00.000+08:00",
+      "closingAuctionVolume": null,
+      "closingAuctionPrice": null,
+      "closingAuctionDetected": false,
+      "volumeAccelerationIncludesClosingAuction": false,
       "recentCandles": [
         {
-          "date": "2026-09-22T12:56:00.000+08:00",
-          "open": 1915,
-          "high": 1915,
-          "low": 1910,
-          "close": 1910,
-          "volume": 12,
-          "average": 1927.19
-        },
-        {
-          "date": "2026-09-22T12:57:00.000+08:00",
-          "open": 1915,
-          "high": 1915,
-          "low": 1910,
-          "close": 1915,
-          "volume": 13,
-          "average": 1927.18
-        },
-        {
-          "date": "2026-09-22T12:58:00.000+08:00",
-          "open": 1915,
-          "high": 1915,
-          "low": 1910,
-          "close": 1910,
-          "volume": 35,
-          "average": 1927.14
-        },
-        {
-          "date": "2026-09-22T12:59:00.000+08:00",
-          "open": 1915,
-          "high": 1915,
-          "low": 1910,
-          "close": 1910,
-          "volume": 25,
-          "average": 1927.11
-        },
-        {
-          "date": "2026-09-22T13:00:00.000+08:00",
-          "open": 1915,
-          "high": 1915,
-          "low": 1910,
-          "close": 1915,
-          "volume": 44,
-          "average": 1927.07
-        },
-        {
-          "date": "2026-09-22T13:01:00.000+08:00",
-          "open": 1915,
-          "high": 1915,
-          "low": 1910,
-          "close": 1915,
-          "volume": 17,
-          "average": 1927.06
-        },
-        {
-          "date": "2026-09-22T13:02:00.000+08:00",
-          "open": 1915,
-          "high": 1915,
-          "low": 1910,
-          "close": 1915,
-          "volume": 19,
-          "average": 1927.04
-        },
-        {
-          "date": "2026-09-22T13:03:00.000+08:00",
-          "open": 1915,
-          "high": 1915,
-          "low": 1910,
-          "close": 1915,
-          "volume": 32,
-          "average": 1927
-        },
-        {
-          "date": "2026-09-22T13:04:00.000+08:00",
-          "open": 1915,
-          "high": 1915,
-          "low": 1910,
-          "close": 1910,
-          "volume": 39,
-          "average": 1926.96
-        },
-        {
-          "date": "2026-09-22T13:05:00.000+08:00",
-          "open": 1915,
-          "high": 1915,
-          "low": 1910,
-          "close": 1915,
-          "volume": 24,
-          "average": 1926.93
-        },
-        {
-          "date": "2026-09-22T13:06:00.000+08:00",
+          "date": "2026-09-23T09:00:00.000+08:00",
           "open": 1910,
           "high": 1915,
-          "low": 1910,
-          "close": 1910,
-          "volume": 25,
-          "average": 1926.91
+          "low": 1900,
+          "close": 1905,
+          "volume": 547,
+          "average": 1908.84
         },
         {
-          "date": "2026-09-22T13:07:00.000+08:00",
+          "date": "2026-09-23T09:01:00.000+08:00",
           "open": 1910,
           "high": 1915,
-          "low": 1910,
-          "close": 1910,
-          "volume": 27,
-          "average": 1926.87
+          "low": 1900,
+          "close": 1915,
+          "volume": 294,
+          "average": 1908.1
         },
         {
-          "date": "2026-09-22T13:08:00.000+08:00",
+          "date": "2026-09-23T09:02:00.000+08:00",
+          "open": 1915,
+          "high": 1920,
+          "low": 1900,
+          "close": 1915,
+          "volume": 215,
+          "average": 1908.4
+        },
+        {
+          "date": "2026-09-23T09:03:00.000+08:00",
           "open": 1910,
           "high": 1915,
-          "low": 1910,
-          "close": 1910,
-          "volume": 114,
-          "average": 1926.74
-        },
-        {
-          "date": "2026-09-22T13:09:00.000+08:00",
-          "open": 1910,
-          "high": 1910,
           "low": 1905,
           "close": 1905,
+          "volume": 74,
+          "average": 1908.33
+        },
+        {
+          "date": "2026-09-23T09:04:00.000+08:00",
+          "open": 1900,
+          "high": 1910,
+          "low": 1900,
+          "close": 1910,
           "volume": 48,
-          "average": 1926.67
+          "average": 1908.24
         },
         {
-          "date": "2026-09-22T13:10:00.000+08:00",
-          "open": 1910,
-          "high": 1910,
-          "low": 1905,
-          "close": 1905,
-          "volume": 26,
-          "average": 1926.63
-        },
-        {
-          "date": "2026-09-22T13:11:00.000+08:00",
+          "date": "2026-09-23T09:05:00.000+08:00",
           "open": 1905,
           "high": 1910,
           "low": 1905,
+          "close": 1910,
+          "volume": 24,
+          "average": 1908.24
+        },
+        {
+          "date": "2026-09-23T09:06:00.000+08:00",
+          "open": 1910,
+          "high": 1910,
+          "low": 1910,
+          "close": 1910,
+          "volume": 23,
+          "average": 1908.28
+        },
+        {
+          "date": "2026-09-23T09:07:00.000+08:00",
+          "open": 1910,
+          "high": 1915,
+          "low": 1910,
+          "close": 1915,
+          "volume": 45,
+          "average": 1908.44
+        },
+        {
+          "date": "2026-09-23T09:08:00.000+08:00",
+          "open": 1915,
+          "high": 1920,
+          "low": 1915,
+          "close": 1920,
+          "volume": 24,
+          "average": 1908.59
+        },
+        {
+          "date": "2026-09-23T09:09:00.000+08:00",
+          "open": 1920,
+          "high": 1920,
+          "low": 1910,
+          "close": 1915,
+          "volume": 58,
+          "average": 1908.86
+        },
+        {
+          "date": "2026-09-23T09:10:00.000+08:00",
+          "open": 1910,
+          "high": 1910,
+          "low": 1905,
+          "close": 1910,
+          "volume": 106,
+          "average": 1908.93
+        },
+        {
+          "date": "2026-09-23T09:11:00.000+08:00",
+          "open": 1910,
+          "high": 1915,
+          "low": 1910,
+          "close": 1910,
+          "volume": 15,
+          "average": 1908.98
+        },
+        {
+          "date": "2026-09-23T09:12:00.000+08:00",
+          "open": 1910,
+          "high": 1915,
+          "low": 1910,
+          "close": 1915,
+          "volume": 10,
+          "average": 1909.01
+        },
+        {
+          "date": "2026-09-23T09:13:00.000+08:00",
+          "open": 1915,
+          "high": 1920,
+          "low": 1910,
+          "close": 1920,
+          "volume": 167,
+          "average": 1909.77
+        },
+        {
+          "date": "2026-09-23T09:14:00.000+08:00",
+          "open": 1920,
+          "high": 1920,
+          "low": 1915,
+          "close": 1920,
+          "volume": 15,
+          "average": 1909.85
+        },
+        {
+          "date": "2026-09-23T09:15:00.000+08:00",
+          "open": 1915,
+          "high": 1920,
+          "low": 1915,
+          "close": 1915,
+          "volume": 78,
+          "average": 1910.1
+        },
+        {
+          "date": "2026-09-23T09:16:00.000+08:00",
+          "open": 1915,
+          "high": 1915,
+          "low": 1905,
+          "close": 1910,
+          "volume": 113,
+          "average": 1910.09
+        },
+        {
+          "date": "2026-09-23T09:17:00.000+08:00",
+          "open": 1905,
+          "high": 1910,
+          "low": 1900,
+          "close": 1905,
+          "volume": 199,
+          "average": 1909.6
+        },
+        {
+          "date": "2026-09-23T09:18:00.000+08:00",
+          "open": 1905,
+          "high": 1905,
+          "low": 1900,
+          "close": 1900,
+          "volume": 34,
+          "average": 1909.51
+        },
+        {
+          "date": "2026-09-23T09:19:00.000+08:00",
+          "open": 1905,
+          "high": 1905,
+          "low": 1900,
           "close": 1905,
           "volume": 22,
-          "average": 1926.6
+          "average": 1909.46
         },
         {
-          "date": "2026-09-22T13:12:00.000+08:00",
+          "date": "2026-09-23T09:20:00.000+08:00",
           "open": 1905,
-          "high": 1910,
-          "low": 1905,
-          "close": 1905,
-          "volume": 36,
-          "average": 1926.55
+          "high": 1905,
+          "low": 1900,
+          "close": 1900,
+          "volume": 28,
+          "average": 1909.38
         },
         {
-          "date": "2026-09-22T13:13:00.000+08:00",
-          "open": 1905,
-          "high": 1910,
-          "low": 1905,
+          "date": "2026-09-23T09:21:00.000+08:00",
+          "open": 1900,
+          "high": 1905,
+          "low": 1900,
           "close": 1905,
           "volume": 18,
-          "average": 1926.52
+          "average": 1909.31
         },
         {
-          "date": "2026-09-22T13:14:00.000+08:00",
+          "date": "2026-09-23T09:22:00.000+08:00",
           "open": 1905,
-          "high": 1910,
-          "low": 1905,
-          "close": 1905,
-          "volume": 23,
-          "average": 1926.49
+          "high": 1905,
+          "low": 1895,
+          "close": 1895,
+          "volume": 180,
+          "average": 1908.52
         },
         {
-          "date": "2026-09-22T13:15:00.000+08:00",
-          "open": 1905,
-          "high": 1910,
-          "low": 1905,
-          "close": 1905,
-          "volume": 31,
-          "average": 1926.44
-        },
-        {
-          "date": "2026-09-22T13:16:00.000+08:00",
-          "open": 1905,
-          "high": 1910,
-          "low": 1905,
-          "close": 1905,
-          "volume": 32,
-          "average": 1926.4
-        },
-        {
-          "date": "2026-09-22T13:17:00.000+08:00",
-          "open": 1905,
-          "high": 1910,
-          "low": 1905,
-          "close": 1905,
-          "volume": 121,
-          "average": 1926.22
-        },
-        {
-          "date": "2026-09-22T13:18:00.000+08:00",
+          "date": "2026-09-23T09:23:00.000+08:00",
           "open": 1900,
-          "high": 1905,
-          "low": 1900,
+          "high": 1900,
+          "low": 1895,
           "close": 1900,
-          "volume": 21,
-          "average": 1926.18
+          "volume": 112,
+          "average": 1908.12
         },
         {
-          "date": "2026-09-22T13:19:00.000+08:00",
-          "open": 1900,
-          "high": 1905,
-          "low": 1900,
-          "close": 1900,
-          "volume": 33,
-          "average": 1926.12
-        },
-        {
-          "date": "2026-09-22T13:20:00.000+08:00",
-          "open": 1900,
-          "high": 1905,
-          "low": 1900,
-          "close": 1900,
-          "volume": 32,
-          "average": 1926.06
-        },
-        {
-          "date": "2026-09-22T13:21:00.000+08:00",
-          "open": 1900,
-          "high": 1905,
-          "low": 1900,
-          "close": 1905,
-          "volume": 56,
-          "average": 1925.97
-        },
-        {
-          "date": "2026-09-22T13:22:00.000+08:00",
-          "open": 1900,
-          "high": 1905,
-          "low": 1900,
-          "close": 1900,
-          "volume": 31,
-          "average": 1925.92
-        },
-        {
-          "date": "2026-09-22T13:23:00.000+08:00",
-          "open": 1905,
-          "high": 1905,
-          "low": 1900,
-          "close": 1900,
-          "volume": 60,
-          "average": 1925.82
-        },
-        {
-          "date": "2026-09-22T13:24:00.000+08:00",
-          "open": 1905,
-          "high": 1905,
-          "low": 1900,
-          "close": 1905,
-          "volume": 135,
-          "average": 1925.59
-        },
-        {
-          "date": "2026-09-22T13:30:00.000+08:00",
+          "date": "2026-09-23T09:24:00.000+08:00",
           "open": 1900,
           "high": 1900,
           "low": 1900,
           "close": 1900,
-          "volume": 938,
-          "average": 1924.03
+          "volume": 29,
+          "average": 1908.02
+        },
+        {
+          "date": "2026-09-23T09:25:00.000+08:00",
+          "open": 1900,
+          "high": 1905,
+          "low": 1900,
+          "close": 1900,
+          "volume": 49,
+          "average": 1907.94
+        },
+        {
+          "date": "2026-09-23T09:26:00.000+08:00",
+          "open": 1905,
+          "high": 1905,
+          "low": 1900,
+          "close": 1905,
+          "volume": 27,
+          "average": 1907.87
+        },
+        {
+          "date": "2026-09-23T09:27:00.000+08:00",
+          "open": 1905,
+          "high": 1910,
+          "low": 1905,
+          "close": 1910,
+          "volume": 25,
+          "average": 1907.84
+        },
+        {
+          "date": "2026-09-23T09:28:00.000+08:00",
+          "open": 1905,
+          "high": 1910,
+          "low": 1905,
+          "close": 1910,
+          "volume": 3,
+          "average": 1907.84
         }
       ],
       "latestCandle": {
-        "date": "2026-09-22T13:30:00.000+08:00",
-        "open": 1900,
-        "high": 1900,
-        "low": 1900,
-        "close": 1900,
-        "volume": 938,
-        "average": 1924.03
+        "date": "2026-09-23T09:28:00.000+08:00",
+        "open": 1905,
+        "high": 1910,
+        "low": 1905,
+        "close": 1910,
+        "volume": 3,
+        "average": 1907.84
       },
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-22",
-        "asOf": "2026-09-21",
-        "fetchedAt": "2026-09-22T01:28:41.467Z",
-        "cacheSource": "github-cache",
+        "cacheDate": "2026-09-23",
+        "asOf": "2026-09-22",
+        "fetchedAt": "2026-09-23T01:28:40.183Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
-        "rowCount": 145,
+        "rowCount": 146,
         "projectionBase": {
           "close19Count": 19,
           "close59Count": 59,
-          "lastClose": 1875,
-          "close19Sum": 33410,
-          "close59Sum": 105180,
-          "high19": 1885,
+          "lastClose": 1900,
+          "close19Sum": 33560,
+          "close59Sum": 105130,
+          "high19": 1965,
           "low19": 1560,
           "high59": 2135,
           "low59": 1425
         },
-        "ma20": 1756,
-        "ma60": 1784.75,
-        "ma20Slope5": -7,
-        "ma60Slope5": -22.4167,
-        "ma20Slope5Pct": -0.397,
-        "ma60Slope5Pct": -1.24,
-        "atr14": 90.9358,
-        "atr14PctOfClose": 4.85,
-        "avgVolume20": 11648701,
-        "avgVolume20Unit": "shares",
-        "high20": 1885,
-        "low20": 1560,
-        "high60": 2135,
-        "low60": 1425,
-        "lastSwingHigh": {
-          "date": "2026-09-07",
-          "price": 1885
-        },
-        "lastSwingLow": {
-          "date": "2026-09-14",
-          "price": 1560
-        }
-      },
-      "projectedDaily": {
-        "ok": true,
-        "source": "live-projected",
-        "asOf": "2026-09-22",
-        "basedOnDailyAsOf": "2026-09-21",
-        "sessionComplete": true,
-        "scaleDiffPct": 0,
         "ma20": 1765.5,
         "ma60": 1784.6667,
+        "ma20Slope5": 10,
+        "ma60Slope5": -14.5,
+        "ma20Slope5Pct": 0.57,
+        "ma60Slope5Pct": -0.806,
         "atr14": 90.869,
         "atr14PctOfClose": 4.783,
+        "avgVolume20": 11969728,
+        "avgVolume20Unit": "shares",
         "high20": 1965,
         "low20": 1560,
         "high60": 2135,
@@ -876,389 +856,380 @@
           "price": 1560
         }
       },
-      "fugleLastUpdated": 1790055000000000,
-      "fugleLastUpdatedAt": "2026-09-22T05:30:00.000Z",
-      "sourceAgeSeconds": 103,
+      "projectedDaily": {
+        "ok": true,
+        "source": "live-projected",
+        "asOf": "2026-09-23",
+        "basedOnDailyAsOf": "2026-09-22",
+        "sessionComplete": false,
+        "scaleDiffPct": 0,
+        "ma20": 1773.5,
+        "ma60": 1784,
+        "atr14": 86.1641,
+        "atr14PctOfClose": 4.511,
+        "high20": 1965,
+        "low20": 1560,
+        "high60": 2135,
+        "low60": 1425,
+        "lastSwingHigh": {
+          "date": "2026-09-07",
+          "price": 1885
+        },
+        "lastSwingLow": {
+          "date": "2026-09-14",
+          "price": 1560
+        }
+      },
+      "fugleLastUpdated": 1790126919569416,
+      "fugleLastUpdatedAt": "2026-09-23T01:28:39.569Z",
+      "sourceAgeSeconds": 1,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
-      "isClose": true,
-      "fetchedAt": "2026-09-22T05:31:43.399Z"
+      "isClose": null,
+      "fetchedAt": "2026-09-23T01:28:40.183Z"
     },
     "2330": {
       "ok": true,
       "symbol": "2330",
       "name": "台積電",
-      "date": "2026-09-22",
-      "price": 2460,
-      "referencePrice": 2480,
-      "previousClose": 2480,
-      "open": 2505,
-      "high": 2510,
-      "low": 2460,
-      "change": -20,
-      "changePercent": -0.81,
-      "avgPrice": 2483.93,
+      "date": "2026-09-23",
+      "price": 2500,
+      "referencePrice": 2460,
+      "previousClose": 2460,
+      "open": 2475,
+      "high": 2505,
+      "low": 2475,
+      "change": 40,
+      "changePercent": 1.63,
+      "avgPrice": 2491.77,
       "bid": {
-        "price": 2460,
-        "size": 1000
+        "price": 2495,
+        "size": 349
       },
       "ask": {
-        "price": 2465,
-        "size": 20
+        "price": 2500,
+        "size": 910
       },
-      "tradeVolume": 18876,
-      "transaction": 5786,
-      "earlyHigh": 2510,
-      "earlyLow": 2485,
-      "aboveAverage": false,
-      "last5Volume": 2873,
-      "previous5Volume": 409,
-      "volumeAcceleration": 7.02,
-      "intradayLast5Volume": 397,
-      "intradayPrevious5Volume": 205,
-      "intradayVolumeAcceleration": 1.94,
+      "tradeVolume": 8484,
+      "transaction": 1846,
+      "earlyHigh": 2505,
+      "earlyLow": 2475,
+      "aboveAverage": true,
+      "last5Volume": 116,
+      "previous5Volume": 616,
+      "volumeAcceleration": 0.19,
+      "intradayLast5Volume": 116,
+      "intradayPrevious5Volume": 616,
+      "intradayVolumeAcceleration": 0.19,
       "intradayLast5BarCount": 5,
       "intradayPrevious5BarCount": 5,
-      "intradayVolumeWindowLatestBarAt": "2026-09-22T13:24:00.000+08:00",
-      "closingAuctionVolume": 2697,
-      "closingAuctionPrice": 2460,
-      "closingAuctionDetected": true,
-      "volumeAccelerationIncludesClosingAuction": true,
+      "intradayVolumeWindowLatestBarAt": "2026-09-23T09:28:00.000+08:00",
+      "closingAuctionVolume": null,
+      "closingAuctionPrice": null,
+      "closingAuctionDetected": false,
+      "volumeAccelerationIncludesClosingAuction": false,
       "recentCandles": [
         {
-          "date": "2026-09-22T12:56:00.000+08:00",
+          "date": "2026-09-23T09:00:00.000+08:00",
           "open": 2475,
-          "high": 2475,
-          "low": 2470,
-          "close": 2475,
-          "volume": 28,
-          "average": 2489.74
+          "high": 2490,
+          "low": 2475,
+          "close": 2485,
+          "volume": 2175,
+          "average": 2476.71
         },
         {
-          "date": "2026-09-22T12:57:00.000+08:00",
-          "open": 2470,
-          "high": 2475,
-          "low": 2470,
-          "close": 2470,
+          "date": "2026-09-23T09:01:00.000+08:00",
+          "open": 2485,
+          "high": 2490,
+          "low": 2485,
+          "close": 2490,
+          "volume": 104,
+          "average": 2477.14
+        },
+        {
+          "date": "2026-09-23T09:02:00.000+08:00",
+          "open": 2490,
+          "high": 2490,
+          "low": 2485,
+          "close": 2485,
+          "volume": 101,
+          "average": 2477.53
+        },
+        {
+          "date": "2026-09-23T09:03:00.000+08:00",
+          "open": 2485,
+          "high": 2490,
+          "low": 2485,
+          "close": 2485,
+          "volume": 188,
+          "average": 2478.1
+        },
+        {
+          "date": "2026-09-23T09:04:00.000+08:00",
+          "open": 2485,
+          "high": 2490,
+          "low": 2485,
+          "close": 2485,
+          "volume": 51,
+          "average": 2478.28
+        },
+        {
+          "date": "2026-09-23T09:05:00.000+08:00",
+          "open": 2485,
+          "high": 2490,
+          "low": 2485,
+          "close": 2490,
+          "volume": 53,
+          "average": 2478.48
+        },
+        {
+          "date": "2026-09-23T09:06:00.000+08:00",
+          "open": 2485,
+          "high": 2490,
+          "low": 2485,
+          "close": 2490,
           "volume": 34,
-          "average": 2489.7
+          "average": 2478.59
         },
         {
-          "date": "2026-09-22T12:58:00.000+08:00",
-          "open": 2470,
-          "high": 2475,
-          "low": 2470,
-          "close": 2470,
-          "volume": 41,
-          "average": 2489.65
+          "date": "2026-09-23T09:07:00.000+08:00",
+          "open": 2490,
+          "high": 2500,
+          "low": 2485,
+          "close": 2500,
+          "volume": 1297,
+          "average": 2482.97
         },
         {
-          "date": "2026-09-22T12:59:00.000+08:00",
-          "open": 2475,
-          "high": 2475,
-          "low": 2470,
-          "close": 2475,
-          "volume": 27,
-          "average": 2489.61
+          "date": "2026-09-23T09:08:00.000+08:00",
+          "open": 2500,
+          "high": 2500,
+          "low": 2495,
+          "close": 2500,
+          "volume": 173,
+          "average": 2483.64
         },
         {
-          "date": "2026-09-22T13:00:00.000+08:00",
-          "open": 2470,
-          "high": 2475,
-          "low": 2470,
-          "close": 2475,
-          "volume": 24,
-          "average": 2489.58
+          "date": "2026-09-23T09:09:00.000+08:00",
+          "open": 2495,
+          "high": 2500,
+          "low": 2495,
+          "close": 2500,
+          "volume": 104,
+          "average": 2483.99
         },
         {
-          "date": "2026-09-22T13:01:00.000+08:00",
-          "open": 2470,
-          "high": 2475,
-          "low": 2470,
-          "close": 2470,
-          "volume": 19,
-          "average": 2489.56
+          "date": "2026-09-23T09:10:00.000+08:00",
+          "open": 2500,
+          "high": 2500,
+          "low": 2495,
+          "close": 2500,
+          "volume": 243,
+          "average": 2484.83
         },
         {
-          "date": "2026-09-22T13:02:00.000+08:00",
-          "open": 2470,
-          "high": 2475,
-          "low": 2470,
-          "close": 2470,
-          "volume": 33,
-          "average": 2489.52
+          "date": "2026-09-23T09:11:00.000+08:00",
+          "open": 2500,
+          "high": 2500,
+          "low": 2495,
+          "close": 2500,
+          "volume": 70,
+          "average": 2485.02
         },
         {
-          "date": "2026-09-22T13:03:00.000+08:00",
-          "open": 2470,
-          "high": 2475,
-          "low": 2470,
-          "close": 2470,
+          "date": "2026-09-23T09:12:00.000+08:00",
+          "open": 2495,
+          "high": 2500,
+          "low": 2495,
+          "close": 2495,
+          "volume": 148,
+          "average": 2485.44
+        },
+        {
+          "date": "2026-09-23T09:13:00.000+08:00",
+          "open": 2500,
+          "high": 2505,
+          "low": 2495,
+          "close": 2505,
+          "volume": 1735,
+          "average": 2489.4
+        },
+        {
+          "date": "2026-09-23T09:14:00.000+08:00",
+          "open": 2505,
+          "high": 2505,
+          "low": 2500,
+          "close": 2500,
+          "volume": 232,
+          "average": 2489.9
+        },
+        {
+          "date": "2026-09-23T09:15:00.000+08:00",
+          "open": 2505,
+          "high": 2505,
+          "low": 2500,
+          "close": 2500,
+          "volume": 91,
+          "average": 2490.05
+        },
+        {
+          "date": "2026-09-23T09:16:00.000+08:00",
+          "open": 2500,
+          "high": 2505,
+          "low": 2495,
+          "close": 2500,
+          "volume": 303,
+          "average": 2490.49
+        },
+        {
+          "date": "2026-09-23T09:17:00.000+08:00",
+          "open": 2500,
+          "high": 2505,
+          "low": 2500,
+          "close": 2500,
+          "volume": 506,
+          "average": 2491.15
+        },
+        {
+          "date": "2026-09-23T09:18:00.000+08:00",
+          "open": 2500,
+          "high": 2505,
+          "low": 2500,
+          "close": 2500,
+          "volume": 144,
+          "average": 2491.32
+        },
+        {
+          "date": "2026-09-23T09:19:00.000+08:00",
+          "open": 2500,
+          "high": 2505,
+          "low": 2495,
+          "close": 2500,
+          "volume": 120,
+          "average": 2491.45
+        },
+        {
+          "date": "2026-09-23T09:20:00.000+08:00",
+          "open": 2500,
+          "high": 2505,
+          "low": 2495,
+          "close": 2495,
+          "volume": 40,
+          "average": 2491.49
+        },
+        {
+          "date": "2026-09-23T09:21:00.000+08:00",
+          "open": 2495,
+          "high": 2500,
+          "low": 2495,
+          "close": 2500,
           "volume": 16,
-          "average": 2489.5
+          "average": 2491.51
         },
         {
-          "date": "2026-09-22T13:04:00.000+08:00",
-          "open": 2470,
-          "high": 2475,
-          "low": 2470,
-          "close": 2470,
-          "volume": 48,
-          "average": 2489.43
+          "date": "2026-09-23T09:22:00.000+08:00",
+          "open": 2500,
+          "high": 2500,
+          "low": 2495,
+          "close": 2495,
+          "volume": 16,
+          "average": 2491.52
         },
         {
-          "date": "2026-09-22T13:05:00.000+08:00",
-          "open": 2470,
-          "high": 2475,
-          "low": 2465,
-          "close": 2475,
-          "volume": 277,
-          "average": 2489.08
+          "date": "2026-09-23T09:23:00.000+08:00",
+          "open": 2495,
+          "high": 2500,
+          "low": 2495,
+          "close": 2495,
+          "volume": 424,
+          "average": 2491.7
         },
         {
-          "date": "2026-09-22T13:06:00.000+08:00",
-          "open": 2470,
-          "high": 2475,
-          "low": 2465,
-          "close": 2475,
-          "volume": 76,
-          "average": 2488.98
-        },
-        {
-          "date": "2026-09-22T13:07:00.000+08:00",
-          "open": 2470,
-          "high": 2475,
-          "low": 2465,
-          "close": 2470,
-          "volume": 64,
-          "average": 2488.9
-        },
-        {
-          "date": "2026-09-22T13:08:00.000+08:00",
-          "open": 2470,
-          "high": 2470,
-          "low": 2465,
-          "close": 2470,
-          "volume": 32,
-          "average": 2488.86
-        },
-        {
-          "date": "2026-09-22T13:09:00.000+08:00",
-          "open": 2470,
-          "high": 2475,
-          "low": 2465,
-          "close": 2470,
-          "volume": 95,
-          "average": 2488.75
-        },
-        {
-          "date": "2026-09-22T13:10:00.000+08:00",
-          "open": 2470,
-          "high": 2475,
-          "low": 2470,
-          "close": 2470,
-          "volume": 12,
-          "average": 2488.73
-        },
-        {
-          "date": "2026-09-22T13:11:00.000+08:00",
-          "open": 2470,
-          "high": 2475,
-          "low": 2470,
-          "close": 2470,
+          "date": "2026-09-23T09:24:00.000+08:00",
+          "open": 2495,
+          "high": 2500,
+          "low": 2495,
+          "close": 2495,
           "volume": 30,
-          "average": 2488.7
+          "average": 2491.72
         },
         {
-          "date": "2026-09-22T13:12:00.000+08:00",
-          "open": 2470,
-          "high": 2475,
-          "low": 2470,
-          "close": 2475,
-          "volume": 19,
-          "average": 2488.68
+          "date": "2026-09-23T09:25:00.000+08:00",
+          "open": 2495,
+          "high": 2500,
+          "low": 2495,
+          "close": 2495,
+          "volume": 25,
+          "average": 2491.73
         },
         {
-          "date": "2026-09-22T13:13:00.000+08:00",
-          "open": 2475,
-          "high": 2475,
-          "low": 2470,
-          "close": 2475,
-          "volume": 16,
-          "average": 2488.66
+          "date": "2026-09-23T09:26:00.000+08:00",
+          "open": 2495,
+          "high": 2500,
+          "low": 2495,
+          "close": 2500,
+          "volume": 29,
+          "average": 2491.74
         },
         {
-          "date": "2026-09-22T13:14:00.000+08:00",
-          "open": 2475,
-          "high": 2475,
-          "low": 2470,
-          "close": 2475,
-          "volume": 14,
-          "average": 2488.65
+          "date": "2026-09-23T09:27:00.000+08:00",
+          "open": 2495,
+          "high": 2500,
+          "low": 2495,
+          "close": 2495,
+          "volume": 20,
+          "average": 2491.76
         },
         {
-          "date": "2026-09-22T13:15:00.000+08:00",
-          "open": 2470,
-          "high": 2475,
-          "low": 2470,
-          "close": 2470,
-          "volume": 17,
-          "average": 2488.63
-        },
-        {
-          "date": "2026-09-22T13:16:00.000+08:00",
-          "open": 2475,
-          "high": 2475,
-          "low": 2470,
-          "close": 2470,
-          "volume": 18,
-          "average": 2488.61
-        },
-        {
-          "date": "2026-09-22T13:17:00.000+08:00",
-          "open": 2470,
-          "high": 2475,
-          "low": 2470,
-          "close": 2470,
-          "volume": 50,
-          "average": 2488.55
-        },
-        {
-          "date": "2026-09-22T13:18:00.000+08:00",
-          "open": 2470,
-          "high": 2475,
-          "low": 2470,
-          "close": 2470,
-          "volume": 45,
-          "average": 2488.5
-        },
-        {
-          "date": "2026-09-22T13:19:00.000+08:00",
-          "open": 2470,
-          "high": 2475,
-          "low": 2470,
-          "close": 2470,
-          "volume": 75,
-          "average": 2488.41
-        },
-        {
-          "date": "2026-09-22T13:20:00.000+08:00",
-          "open": 2470,
-          "high": 2470,
-          "low": 2465,
-          "close": 2470,
-          "volume": 221,
-          "average": 2488.14
-        },
-        {
-          "date": "2026-09-22T13:21:00.000+08:00",
-          "open": 2470,
-          "high": 2470,
-          "low": 2465,
-          "close": 2470,
-          "volume": 45,
-          "average": 2488.09
-        },
-        {
-          "date": "2026-09-22T13:22:00.000+08:00",
-          "open": 2470,
-          "high": 2470,
-          "low": 2465,
-          "close": 2465,
-          "volume": 23,
-          "average": 2488.06
-        },
-        {
-          "date": "2026-09-22T13:23:00.000+08:00",
-          "open": 2465,
-          "high": 2470,
-          "low": 2465,
-          "close": 2465,
-          "volume": 33,
-          "average": 2488.02
-        },
-        {
-          "date": "2026-09-22T13:24:00.000+08:00",
-          "open": 2470,
-          "high": 2470,
-          "low": 2465,
-          "close": 2465,
-          "volume": 75,
-          "average": 2487.92
-        },
-        {
-          "date": "2026-09-22T13:30:00.000+08:00",
-          "open": 2460,
-          "high": 2460,
-          "low": 2460,
-          "close": 2460,
-          "volume": 2697,
-          "average": 2483.93
+          "date": "2026-09-23T09:28:00.000+08:00",
+          "open": 2500,
+          "high": 2500,
+          "low": 2495,
+          "close": 2500,
+          "volume": 12,
+          "average": 2491.77
         }
       ],
       "latestCandle": {
-        "date": "2026-09-22T13:30:00.000+08:00",
-        "open": 2460,
-        "high": 2460,
-        "low": 2460,
-        "close": 2460,
-        "volume": 2697,
-        "average": 2483.93
+        "date": "2026-09-23T09:28:00.000+08:00",
+        "open": 2500,
+        "high": 2500,
+        "low": 2495,
+        "close": 2500,
+        "volume": 12,
+        "average": 2491.77
       },
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-22",
-        "asOf": "2026-09-21",
-        "fetchedAt": "2026-09-22T01:28:42.154Z",
-        "cacheSource": "github-cache",
+        "cacheDate": "2026-09-23",
+        "asOf": "2026-09-22",
+        "fetchedAt": "2026-09-23T01:28:40.478Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
-        "rowCount": 145,
+        "rowCount": 146,
         "projectionBase": {
           "close19Count": 19,
           "close59Count": 59,
-          "lastClose": 2480,
-          "close19Sum": 45933.49,
-          "close59Sum": 141203.05,
-          "high19": 2497.65,
+          "lastClose": 2460,
+          "close19Sum": 45985.58,
+          "close59Sum": 141260.12,
+          "high19": 2510,
           "low19": 2368.03,
-          "high59": 2497.65,
+          "high59": 2510,
           "low59": 2173.6
         },
-        "ma20": 2416.3225,
-        "ma60": 2392.7682,
-        "ma20Slope5": 13.395,
-        "ma60Slope5": 0.6428,
-        "ma20Slope5Pct": 0.557,
-        "ma60Slope5Pct": 0.027,
-        "atr14": 40.9822,
-        "atr14PctOfClose": 1.653,
-        "avgVolume20": 21637399,
-        "avgVolume20Unit": "shares",
-        "high20": 2497.65,
-        "low20": 2343.1,
-        "high60": 2497.65,
-        "low60": 2173.6,
-        "lastSwingHigh": {
-          "date": "2026-09-08",
-          "price": 2497.65
-        },
-        "lastSwingLow": {
-          "date": "2026-09-14",
-          "price": 2373.01
-        }
-      },
-      "projectedDaily": {
-        "ok": true,
-        "source": "live-projected",
-        "asOf": "2026-09-22",
-        "basedOnDailyAsOf": "2026-09-21",
-        "sessionComplete": true,
-        "scaleDiffPct": 0,
         "ma20": 2419.6745,
         "ma60": 2394.3842,
+        "ma20Slope5": 16.4975,
+        "ma60Slope5": 4.336,
+        "ma20Slope5Pct": 0.686,
+        "ma60Slope5Pct": 0.181,
         "atr14": 41.6263,
         "atr14PctOfClose": 1.692,
+        "avgVolume20": 22060973,
+        "avgVolume20Unit": "shares",
         "high20": 2510,
         "low20": 2368.03,
         "high60": 2510,
@@ -1272,364 +1243,379 @@
           "price": 2373.01
         }
       },
-      "fugleLastUpdated": 1790055000000000,
-      "fugleLastUpdatedAt": "2026-09-22T05:30:00.000Z",
-      "sourceAgeSeconds": 104,
+      "projectedDaily": {
+        "ok": true,
+        "source": "live-projected",
+        "asOf": "2026-09-23",
+        "basedOnDailyAsOf": "2026-09-22",
+        "sessionComplete": false,
+        "scaleDiffPct": 0,
+        "ma20": 2424.279,
+        "ma60": 2396.002,
+        "atr14": 41.8673,
+        "atr14PctOfClose": 1.675,
+        "high20": 2510,
+        "low20": 2368.03,
+        "high60": 2510,
+        "low60": 2173.6,
+        "lastSwingHigh": {
+          "date": "2026-09-08",
+          "price": 2497.65
+        },
+        "lastSwingLow": {
+          "date": "2026-09-14",
+          "price": 2373.01
+        }
+      },
+      "fugleLastUpdated": 1790126920123676,
+      "fugleLastUpdatedAt": "2026-09-23T01:28:40.123Z",
+      "sourceAgeSeconds": 0,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
-      "isClose": true,
-      "fetchedAt": "2026-09-22T05:31:43.686Z"
+      "isClose": null,
+      "fetchedAt": "2026-09-23T01:28:40.486Z"
     },
     "2357": {
       "ok": true,
       "symbol": "2357",
       "name": "華碩",
-      "date": "2026-09-22",
-      "price": 953,
-      "referencePrice": 946,
-      "previousClose": 946,
-      "open": 956,
-      "high": 956,
-      "low": 942,
-      "change": 7,
-      "changePercent": 0.74,
-      "avgPrice": 950.48,
+      "date": "2026-09-23",
+      "price": 948,
+      "referencePrice": 953,
+      "previousClose": 953,
+      "open": 953,
+      "high": 953,
+      "low": 944,
+      "change": -5,
+      "changePercent": -0.52,
+      "avgPrice": 948.21,
       "bid": {
-        "price": 950,
-        "size": 1
+        "price": 946,
+        "size": 10
       },
       "ask": {
-        "price": 953,
-        "size": 30
+        "price": 948,
+        "size": 2
       },
-      "tradeVolume": 1286,
-      "transaction": 573,
-      "earlyHigh": 956,
+      "tradeVolume": 235,
+      "transaction": 118,
+      "earlyHigh": 953,
       "earlyLow": 944,
-      "aboveAverage": true,
-      "last5Volume": 306,
-      "previous5Volume": 68,
-      "volumeAcceleration": 4.5,
-      "intradayLast5Volume": 45,
-      "intradayPrevious5Volume": 60,
-      "intradayVolumeAcceleration": 0.75,
+      "aboveAverage": false,
+      "last5Volume": 31,
+      "previous5Volume": 11,
+      "volumeAcceleration": 2.82,
+      "intradayLast5Volume": 31,
+      "intradayPrevious5Volume": 11,
+      "intradayVolumeAcceleration": 2.82,
       "intradayLast5BarCount": 5,
       "intradayPrevious5BarCount": 5,
-      "intradayVolumeWindowLatestBarAt": "2026-09-22T13:24:00.000+08:00",
-      "closingAuctionVolume": 270,
-      "closingAuctionPrice": 953,
-      "closingAuctionDetected": true,
-      "volumeAccelerationIncludesClosingAuction": true,
+      "intradayVolumeWindowLatestBarAt": "2026-09-23T09:28:00.000+08:00",
+      "closingAuctionVolume": null,
+      "closingAuctionPrice": null,
+      "closingAuctionDetected": false,
+      "volumeAccelerationIncludesClosingAuction": false,
       "recentCandles": [
         {
-          "date": "2026-09-22T12:51:00.000+08:00",
+          "date": "2026-09-23T09:00:00.000+08:00",
+          "open": 953,
+          "high": 953,
+          "low": 946,
+          "close": 949,
+          "volume": 50,
+          "average": 950.52
+        },
+        {
+          "date": "2026-09-23T09:01:00.000+08:00",
           "open": 949,
           "high": 950,
-          "low": 948,
+          "low": 949,
           "close": 949,
+          "volume": 10,
+          "average": 950.32
+        },
+        {
+          "date": "2026-09-23T09:02:00.000+08:00",
+          "open": 950,
+          "high": 950,
+          "low": 950,
+          "close": 950,
+          "volume": 1,
+          "average": 950.31
+        },
+        {
+          "date": "2026-09-23T09:03:00.000+08:00",
+          "open": 949,
+          "high": 950,
+          "low": 949,
+          "close": 950,
+          "volume": 2,
+          "average": 950.29
+        },
+        {
+          "date": "2026-09-23T09:04:00.000+08:00",
+          "open": 950,
+          "high": 951,
+          "low": 949,
+          "close": 951,
+          "volume": 3,
+          "average": 950.27
+        },
+        {
+          "date": "2026-09-23T09:05:00.000+08:00",
+          "open": 951,
+          "high": 951,
+          "low": 951,
+          "close": 951,
           "volume": 5,
-          "average": 950
+          "average": 950.32
         },
         {
-          "date": "2026-09-22T12:53:00.000+08:00",
-          "open": 948,
-          "high": 948,
-          "low": 948,
-          "close": 948,
+          "date": "2026-09-23T09:06:00.000+08:00",
+          "open": 952,
+          "high": 952,
+          "low": 952,
+          "close": 952,
           "volume": 1,
-          "average": 950
+          "average": 950.35
         },
         {
-          "date": "2026-09-22T12:55:00.000+08:00",
-          "open": 948,
-          "high": 948,
-          "low": 948,
-          "close": 948,
-          "volume": 1,
-          "average": 950
-        },
-        {
-          "date": "2026-09-22T12:57:00.000+08:00",
-          "open": 949,
-          "high": 949,
-          "low": 949,
-          "close": 949,
-          "volume": 1,
-          "average": 950
-        },
-        {
-          "date": "2026-09-22T12:58:00.000+08:00",
-          "open": 948,
-          "high": 948,
-          "low": 948,
-          "close": 948,
-          "volume": 1,
-          "average": 949.99
-        },
-        {
-          "date": "2026-09-22T12:59:00.000+08:00",
+          "date": "2026-09-23T09:07:00.000+08:00",
           "open": 950,
           "high": 950,
           "low": 950,
           "close": 950,
-          "volume": 2,
-          "average": 949.99
+          "volume": 7,
+          "average": 950.32
         },
         {
-          "date": "2026-09-22T13:00:00.000+08:00",
-          "open": 949,
-          "high": 950,
-          "low": 949,
-          "close": 950,
-          "volume": 2,
-          "average": 949.99
+          "date": "2026-09-23T09:08:00.000+08:00",
+          "open": 951,
+          "high": 951,
+          "low": 951,
+          "close": 951,
+          "volume": 1,
+          "average": 950.33
         },
         {
-          "date": "2026-09-22T13:01:00.000+08:00",
+          "date": "2026-09-23T09:09:00.000+08:00",
           "open": 949,
-          "high": 949,
+          "high": 951,
           "low": 949,
-          "close": 949,
+          "close": 951,
           "volume": 3,
-          "average": 949.99
+          "average": 950.3
         },
         {
-          "date": "2026-09-22T13:03:00.000+08:00",
-          "open": 949,
+          "date": "2026-09-23T09:10:00.000+08:00",
+          "open": 951,
+          "high": 951,
+          "low": 948,
+          "close": 948,
+          "volume": 14,
+          "average": 950.11
+        },
+        {
+          "date": "2026-09-23T09:11:00.000+08:00",
+          "open": 948,
           "high": 949,
-          "low": 949,
-          "close": 949,
-          "volume": 2,
-          "average": 949.99
-        },
-        {
-          "date": "2026-09-22T13:04:00.000+08:00",
-          "open": 949,
-          "high": 950,
-          "low": 949,
-          "close": 950,
-          "volume": 2,
-          "average": 949.99
-        },
-        {
-          "date": "2026-09-22T13:05:00.000+08:00",
-          "open": 950,
-          "high": 950,
-          "low": 949,
-          "close": 949,
-          "volume": 9,
-          "average": 949.98
-        },
-        {
-          "date": "2026-09-22T13:06:00.000+08:00",
-          "open": 950,
-          "high": 950,
-          "low": 950,
-          "close": 950,
-          "volume": 1,
-          "average": 949.98
-        },
-        {
-          "date": "2026-09-22T13:07:00.000+08:00",
-          "open": 950,
-          "high": 950,
-          "low": 950,
-          "close": 950,
-          "volume": 1,
-          "average": 949.98
-        },
-        {
-          "date": "2026-09-22T13:08:00.000+08:00",
-          "open": 949,
-          "high": 949,
-          "low": 949,
-          "close": 949,
-          "volume": 1,
-          "average": 949.98
-        },
-        {
-          "date": "2026-09-22T13:10:00.000+08:00",
-          "open": 950,
-          "high": 950,
-          "low": 949,
-          "close": 949,
-          "volume": 3,
-          "average": 949.98
-        },
-        {
-          "date": "2026-09-22T13:11:00.000+08:00",
-          "open": 949,
-          "high": 950,
-          "low": 949,
+          "low": 947,
           "close": 949,
           "volume": 4,
-          "average": 949.98
+          "average": 950.02
         },
         {
-          "date": "2026-09-22T13:12:00.000+08:00",
-          "open": 949,
-          "high": 949,
-          "low": 949,
-          "close": 949,
-          "volume": 1,
-          "average": 949.98
-        },
-        {
-          "date": "2026-09-22T13:13:00.000+08:00",
-          "open": 949,
-          "high": 949,
-          "low": 949,
-          "close": 949,
-          "volume": 1,
-          "average": 949.98
-        },
-        {
-          "date": "2026-09-22T13:14:00.000+08:00",
-          "open": 950,
-          "high": 950,
-          "low": 949,
-          "close": 949,
-          "volume": 6,
-          "average": 949.97
-        },
-        {
-          "date": "2026-09-22T13:15:00.000+08:00",
-          "open": 950,
-          "high": 950,
-          "low": 950,
-          "close": 950,
-          "volume": 1,
-          "average": 949.97
-        },
-        {
-          "date": "2026-09-22T13:16:00.000+08:00",
-          "open": 949,
-          "high": 950,
-          "low": 949,
-          "close": 949,
-          "volume": 5,
-          "average": 949.97
-        },
-        {
-          "date": "2026-09-22T13:17:00.000+08:00",
-          "open": 950,
-          "high": 950,
-          "low": 949,
-          "close": 950,
-          "volume": 6,
-          "average": 949.97
-        },
-        {
-          "date": "2026-09-22T13:18:00.000+08:00",
-          "open": 949,
-          "high": 950,
-          "low": 947,
-          "close": 947,
-          "volume": 40,
-          "average": 949.9
-        },
-        {
-          "date": "2026-09-22T13:19:00.000+08:00",
+          "date": "2026-09-23T09:12:00.000+08:00",
           "open": 947,
           "high": 948,
           "low": 947,
-          "close": 947,
-          "volume": 8,
+          "close": 948,
+          "volume": 6,
           "average": 949.88
         },
         {
-          "date": "2026-09-22T13:20:00.000+08:00",
-          "open": 948,
-          "high": 949,
-          "low": 948,
-          "close": 949,
-          "volume": 9,
+          "date": "2026-09-23T09:13:00.000+08:00",
+          "open": 949,
+          "high": 950,
+          "low": 949,
+          "close": 950,
+          "volume": 2,
           "average": 949.87
         },
         {
-          "date": "2026-09-22T13:21:00.000+08:00",
+          "date": "2026-09-23T09:14:00.000+08:00",
+          "open": 950,
+          "high": 950,
+          "low": 947,
+          "close": 947,
+          "volume": 19,
+          "average": 949.75
+        },
+        {
+          "date": "2026-09-23T09:15:00.000+08:00",
+          "open": 947,
+          "high": 947,
+          "low": 945,
+          "close": 945,
+          "volume": 47,
+          "average": 948.61
+        },
+        {
+          "date": "2026-09-23T09:16:00.000+08:00",
+          "open": 945,
+          "high": 945,
+          "low": 944,
+          "close": 945,
+          "volume": 12,
+          "average": 948.36
+        },
+        {
+          "date": "2026-09-23T09:17:00.000+08:00",
+          "open": 945,
+          "high": 946,
+          "low": 945,
+          "close": 946,
+          "volume": 4,
+          "average": 948.3
+        },
+        {
+          "date": "2026-09-23T09:18:00.000+08:00",
+          "open": 946,
+          "high": 947,
+          "low": 946,
+          "close": 947,
+          "volume": 2,
+          "average": 948.28
+        },
+        {
+          "date": "2026-09-23T09:19:00.000+08:00",
+          "open": 948,
+          "high": 948,
+          "low": 948,
+          "close": 948,
+          "volume": 2,
+          "average": 948.28
+        },
+        {
+          "date": "2026-09-23T09:20:00.000+08:00",
+          "open": 949,
+          "high": 949,
+          "low": 948,
+          "close": 948,
+          "volume": 6,
+          "average": 948.29
+        },
+        {
+          "date": "2026-09-23T09:21:00.000+08:00",
           "open": 949,
           "high": 949,
           "low": 949,
           "close": 949,
-          "volume": 5,
-          "average": 949.86
+          "volume": 1,
+          "average": 948.29
         },
         {
-          "date": "2026-09-22T13:22:00.000+08:00",
+          "date": "2026-09-23T09:22:00.000+08:00",
+          "open": 950,
+          "high": 950,
+          "low": 950,
+          "close": 950,
+          "volume": 1,
+          "average": 948.3
+        },
+        {
+          "date": "2026-09-23T09:23:00.000+08:00",
+          "open": 950,
+          "high": 950,
+          "low": 950,
+          "close": 950,
+          "volume": 1,
+          "average": 948.31
+        },
+        {
+          "date": "2026-09-23T09:24:00.000+08:00",
+          "open": 950,
+          "high": 950,
+          "low": 949,
+          "close": 949,
+          "volume": 2,
+          "average": 948.32
+        },
+        {
+          "date": "2026-09-23T09:25:00.000+08:00",
           "open": 949,
           "high": 949,
-          "low": 948,
-          "close": 948,
-          "volume": 9,
-          "average": 949.85
+          "low": 946,
+          "close": 946,
+          "volume": 16,
+          "average": 948.29
         },
         {
-          "date": "2026-09-22T13:23:00.000+08:00",
-          "open": 948,
-          "high": 949,
-          "low": 947,
+          "date": "2026-09-23T09:26:00.000+08:00",
+          "open": 946,
+          "high": 946,
+          "low": 946,
+          "close": 946,
+          "volume": 1,
+          "average": 948.28
+        },
+        {
+          "date": "2026-09-23T09:27:00.000+08:00",
+          "open": 947,
+          "high": 948,
+          "low": 946,
           "close": 947,
           "volume": 6,
-          "average": 949.84
+          "average": 948.24
         },
         {
-          "date": "2026-09-22T13:24:00.000+08:00",
-          "open": 949,
-          "high": 950,
+          "date": "2026-09-23T09:28:00.000+08:00",
+          "open": 947,
+          "high": 948,
           "low": 947,
           "close": 948,
-          "volume": 16,
-          "average": 949.81
-        },
-        {
-          "date": "2026-09-22T13:30:00.000+08:00",
-          "open": 953,
-          "high": 953,
-          "low": 953,
-          "close": 953,
-          "volume": 270,
-          "average": 950.48
+          "volume": 6,
+          "average": 948.21
         }
       ],
       "latestCandle": {
-        "date": "2026-09-22T13:30:00.000+08:00",
-        "open": 953,
-        "high": 953,
-        "low": 953,
-        "close": 953,
-        "volume": 270,
-        "average": 950.48
+        "date": "2026-09-23T09:28:00.000+08:00",
+        "open": 947,
+        "high": 948,
+        "low": 947,
+        "close": 948,
+        "volume": 6,
+        "average": 948.21
       },
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-22",
-        "asOf": "2026-09-21",
-        "fetchedAt": "2026-09-22T01:28:42.154Z",
-        "cacheSource": "github-cache",
+        "cacheDate": "2026-09-23",
+        "asOf": "2026-09-22",
+        "fetchedAt": "2026-09-23T01:28:40.511Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
-        "rowCount": 145,
+        "rowCount": 146,
         "projectionBase": {
           "close19Count": 19,
           "close59Count": 59,
-          "lastClose": 946,
-          "close19Sum": 18433,
-          "close59Sum": 49837,
+          "lastClose": 953,
+          "close19Sum": 18415,
+          "close59Sum": 50132,
           "high19": 1030,
           "low19": 900,
           "high59": 1030,
           "low59": 635
         },
-        "ma20": 967.9,
-        "ma60": 841.6303,
-        "ma20Slope5": 6.45,
-        "ma60Slope5": 19.2597,
-        "ma20Slope5Pct": 0.671,
-        "ma60Slope5Pct": 2.342,
-        "atr14": 35.2879,
-        "atr14PctOfClose": 3.73,
-        "avgVolume20": 3504853,
+        "ma20": 969.3,
+        "ma60": 846.5,
+        "ma20Slope5": 6.95,
+        "ma60Slope5": 21.008,
+        "ma20Slope5Pct": 0.722,
+        "ma60Slope5Pct": 2.545,
+        "atr14": 33.7673,
+        "atr14PctOfClose": 3.543,
+        "avgVolume20": 3472973,
         "avgVolume20Unit": "shares",
         "high20": 1030,
         "low20": 900,
@@ -1647,14 +1633,14 @@
       "projectedDaily": {
         "ok": true,
         "source": "live-projected",
-        "asOf": "2026-09-22",
-        "basedOnDailyAsOf": "2026-09-21",
-        "sessionComplete": true,
+        "asOf": "2026-09-23",
+        "basedOnDailyAsOf": "2026-09-22",
+        "sessionComplete": false,
         "scaleDiffPct": 0,
-        "ma20": 969.3,
-        "ma60": 846.5,
-        "atr14": 33.7673,
-        "atr14PctOfClose": 3.543,
+        "ma20": 968.15,
+        "ma60": 851.3333,
+        "atr14": 31.9982,
+        "atr14PctOfClose": 3.375,
         "high20": 1030,
         "low20": 900,
         "high60": 1030,
@@ -1668,364 +1654,355 @@
           "price": 900
         }
       },
-      "fugleLastUpdated": 1790055000000000,
-      "fugleLastUpdatedAt": "2026-09-22T05:30:00.000Z",
-      "sourceAgeSeconds": 104,
+      "fugleLastUpdated": 1790126920146140,
+      "fugleLastUpdatedAt": "2026-09-23T01:28:40.146Z",
+      "sourceAgeSeconds": 0,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
-      "isClose": true,
-      "fetchedAt": "2026-09-22T05:31:43.692Z"
+      "isClose": null,
+      "fetchedAt": "2026-09-23T01:28:40.511Z"
     },
     "2408": {
       "ok": true,
       "symbol": "2408",
       "name": "南亞科",
-      "date": "2026-09-22",
-      "price": 497,
-      "referencePrice": 516,
-      "previousClose": 516,
-      "open": 530,
-      "high": 533,
-      "low": 496,
-      "change": -19,
-      "changePercent": -3.68,
-      "avgPrice": 508.59,
+      "date": "2026-09-23",
+      "price": 522,
+      "referencePrice": 497,
+      "previousClose": 497,
+      "open": 514,
+      "high": 524,
+      "low": 513,
+      "change": 25,
+      "changePercent": 5.03,
+      "avgPrice": 520.02,
       "bid": {
-        "price": 497,
-        "size": 136
+        "price": 522,
+        "size": 115
       },
       "ask": {
-        "price": 497.5,
-        "size": 119
+        "price": 523,
+        "size": 593
       },
-      "tradeVolume": 60311,
-      "transaction": 16087,
-      "earlyHigh": 533,
+      "tradeVolume": 28248,
+      "transaction": 6511,
+      "earlyHigh": 524,
       "earlyLow": 513,
-      "aboveAverage": false,
-      "last5Volume": 4531,
-      "previous5Volume": 1198,
-      "volumeAcceleration": 3.78,
-      "intradayLast5Volume": 1518,
-      "intradayPrevious5Volume": 1156,
-      "intradayVolumeAcceleration": 1.31,
+      "aboveAverage": true,
+      "last5Volume": 1930,
+      "previous5Volume": 4437,
+      "volumeAcceleration": 0.43,
+      "intradayLast5Volume": 1930,
+      "intradayPrevious5Volume": 4437,
+      "intradayVolumeAcceleration": 0.43,
       "intradayLast5BarCount": 5,
       "intradayPrevious5BarCount": 5,
-      "intradayVolumeWindowLatestBarAt": "2026-09-22T13:24:00.000+08:00",
-      "closingAuctionVolume": 3202,
-      "closingAuctionPrice": 497,
-      "closingAuctionDetected": true,
-      "volumeAccelerationIncludesClosingAuction": true,
+      "intradayVolumeWindowLatestBarAt": "2026-09-23T09:28:00.000+08:00",
+      "closingAuctionVolume": null,
+      "closingAuctionPrice": null,
+      "closingAuctionDetected": false,
+      "volumeAccelerationIncludesClosingAuction": false,
       "recentCandles": [
         {
-          "date": "2026-09-22T12:56:00.000+08:00",
-          "open": 501,
-          "high": 501,
-          "low": 500,
-          "close": 500,
-          "volume": 83,
-          "average": 511.07
+          "date": "2026-09-23T09:00:00.000+08:00",
+          "open": 514,
+          "high": 523,
+          "low": 513,
+          "close": 520,
+          "volume": 5912,
+          "average": 517.62
         },
         {
-          "date": "2026-09-22T12:57:00.000+08:00",
-          "open": 500,
-          "high": 500,
-          "low": 499,
-          "close": 499.5,
-          "volume": 388,
-          "average": 510.99
+          "date": "2026-09-23T09:01:00.000+08:00",
+          "open": 519,
+          "high": 521,
+          "low": 518,
+          "close": 520,
+          "volume": 2429,
+          "average": 518.26
         },
         {
-          "date": "2026-09-22T12:58:00.000+08:00",
-          "open": 499.5,
-          "high": 499.5,
-          "low": 499,
-          "close": 499,
-          "volume": 119,
-          "average": 510.96
+          "date": "2026-09-23T09:02:00.000+08:00",
+          "open": 520,
+          "high": 524,
+          "low": 519,
+          "close": 521,
+          "volume": 3391,
+          "average": 519.3
         },
         {
-          "date": "2026-09-22T12:59:00.000+08:00",
-          "open": 499.5,
-          "high": 499.5,
-          "low": 499,
-          "close": 499.5,
-          "volume": 91,
-          "average": 510.94
+          "date": "2026-09-23T09:03:00.000+08:00",
+          "open": 522,
+          "high": 522,
+          "low": 520,
+          "close": 520,
+          "volume": 887,
+          "average": 519.39
         },
         {
-          "date": "2026-09-22T13:00:00.000+08:00",
-          "open": 499,
-          "high": 499.5,
-          "low": 499,
-          "close": 499.5,
-          "volume": 63,
-          "average": 510.92
+          "date": "2026-09-23T09:04:00.000+08:00",
+          "open": 520,
+          "high": 521,
+          "low": 518,
+          "close": 519,
+          "volume": 1491,
+          "average": 519.4
         },
         {
-          "date": "2026-09-22T13:01:00.000+08:00",
-          "open": 499,
-          "high": 499.5,
-          "low": 499,
-          "close": 499,
-          "volume": 65,
-          "average": 510.91
+          "date": "2026-09-23T09:05:00.000+08:00",
+          "open": 520,
+          "high": 521,
+          "low": 518,
+          "close": 519,
+          "volume": 768,
+          "average": 519.42
         },
         {
-          "date": "2026-09-22T13:02:00.000+08:00",
-          "open": 499,
-          "high": 499.5,
-          "low": 499,
-          "close": 499,
-          "volume": 114,
-          "average": 510.88
+          "date": "2026-09-23T09:06:00.000+08:00",
+          "open": 519,
+          "high": 522,
+          "low": 519,
+          "close": 522,
+          "volume": 1164,
+          "average": 519.5
         },
         {
-          "date": "2026-09-22T13:03:00.000+08:00",
-          "open": 499.5,
-          "high": 499.5,
-          "low": 499,
-          "close": 499,
+          "date": "2026-09-23T09:07:00.000+08:00",
+          "open": 521,
+          "high": 523,
+          "low": 520,
+          "close": 520,
+          "volume": 1987,
+          "average": 519.82
+        },
+        {
+          "date": "2026-09-23T09:08:00.000+08:00",
+          "open": 521,
+          "high": 521,
+          "low": 519,
+          "close": 519,
+          "volume": 485,
+          "average": 519.82
+        },
+        {
+          "date": "2026-09-23T09:09:00.000+08:00",
+          "open": 519,
+          "high": 521,
+          "low": 518,
+          "close": 520,
+          "volume": 966,
+          "average": 519.8
+        },
+        {
+          "date": "2026-09-23T09:10:00.000+08:00",
+          "open": 521,
+          "high": 521,
+          "low": 518,
+          "close": 519,
+          "volume": 588,
+          "average": 519.8
+        },
+        {
+          "date": "2026-09-23T09:11:00.000+08:00",
+          "open": 518,
+          "high": 518,
+          "low": 516,
+          "close": 518,
+          "volume": 299,
+          "average": 519.76
+        },
+        {
+          "date": "2026-09-23T09:12:00.000+08:00",
+          "open": 517,
+          "high": 518,
+          "low": 517,
+          "close": 517,
+          "volume": 254,
+          "average": 519.73
+        },
+        {
+          "date": "2026-09-23T09:13:00.000+08:00",
+          "open": 517,
+          "high": 518,
+          "low": 516,
+          "close": 517,
+          "volume": 272,
+          "average": 519.69
+        },
+        {
+          "date": "2026-09-23T09:14:00.000+08:00",
+          "open": 517,
+          "high": 518,
+          "low": 516,
+          "close": 517,
+          "volume": 259,
+          "average": 519.66
+        },
+        {
+          "date": "2026-09-23T09:15:00.000+08:00",
+          "open": 517,
+          "high": 518,
+          "low": 516,
+          "close": 517,
+          "volume": 246,
+          "average": 519.63
+        },
+        {
+          "date": "2026-09-23T09:16:00.000+08:00",
+          "open": 517,
+          "high": 517,
+          "low": 516,
+          "close": 517,
+          "volume": 222,
+          "average": 519.6
+        },
+        {
+          "date": "2026-09-23T09:17:00.000+08:00",
+          "open": 517,
+          "high": 518,
+          "low": 516,
+          "close": 517,
+          "volume": 158,
+          "average": 519.58
+        },
+        {
+          "date": "2026-09-23T09:18:00.000+08:00",
+          "open": 517,
+          "high": 518,
+          "low": 517,
+          "close": 517,
           "volume": 103,
-          "average": 510.86
+          "average": 519.57
         },
         {
-          "date": "2026-09-22T13:04:00.000+08:00",
-          "open": 499,
-          "high": 499.5,
-          "low": 498.5,
-          "close": 498.5,
-          "volume": 334,
-          "average": 510.78
+          "date": "2026-09-23T09:19:00.000+08:00",
+          "open": 517,
+          "high": 520,
+          "low": 517,
+          "close": 519,
+          "volume": 684,
+          "average": 519.53
         },
         {
-          "date": "2026-09-22T13:05:00.000+08:00",
-          "open": 498.5,
-          "high": 499,
-          "low": 498,
-          "close": 498,
-          "volume": 287,
-          "average": 510.71
+          "date": "2026-09-23T09:20:00.000+08:00",
+          "open": 520,
+          "high": 520,
+          "low": 518,
+          "close": 519,
+          "volume": 221,
+          "average": 519.53
         },
         {
-          "date": "2026-09-22T13:06:00.000+08:00",
-          "open": 498.5,
-          "high": 498.5,
-          "low": 498,
-          "close": 498.5,
-          "volume": 161,
-          "average": 510.67
-        },
-        {
-          "date": "2026-09-22T13:07:00.000+08:00",
-          "open": 498,
-          "high": 498.5,
-          "low": 498,
-          "close": 498,
-          "volume": 193,
-          "average": 510.62
-        },
-        {
-          "date": "2026-09-22T13:08:00.000+08:00",
-          "open": 498,
-          "high": 498.5,
-          "low": 498,
-          "close": 498,
-          "volume": 282,
-          "average": 510.55
-        },
-        {
-          "date": "2026-09-22T13:09:00.000+08:00",
-          "open": 498,
-          "high": 498,
-          "low": 497,
-          "close": 497.5,
-          "volume": 1134,
-          "average": 510.27
-        },
-        {
-          "date": "2026-09-22T13:10:00.000+08:00",
-          "open": 498,
-          "high": 498.5,
-          "low": 497.5,
-          "close": 497.5,
-          "volume": 523,
-          "average": 510.15
-        },
-        {
-          "date": "2026-09-22T13:11:00.000+08:00",
-          "open": 497.5,
-          "high": 497.5,
-          "low": 497,
-          "close": 497,
-          "volume": 251,
-          "average": 510.09
-        },
-        {
-          "date": "2026-09-22T13:12:00.000+08:00",
-          "open": 497,
-          "high": 497.5,
-          "low": 496.5,
-          "close": 497,
-          "volume": 256,
-          "average": 510.03
-        },
-        {
-          "date": "2026-09-22T13:13:00.000+08:00",
-          "open": 496.5,
-          "high": 497,
-          "low": 496,
-          "close": 496.5,
-          "volume": 338,
-          "average": 509.94
-        },
-        {
-          "date": "2026-09-22T13:14:00.000+08:00",
-          "open": 497,
-          "high": 497,
-          "low": 496.5,
-          "close": 497,
-          "volume": 314,
-          "average": 509.87
-        },
-        {
-          "date": "2026-09-22T13:15:00.000+08:00",
-          "open": 497,
-          "high": 497,
-          "low": 496.5,
-          "close": 497,
-          "volume": 147,
-          "average": 509.83
-        },
-        {
-          "date": "2026-09-22T13:16:00.000+08:00",
-          "open": 497,
-          "high": 497,
-          "low": 496.5,
-          "close": 497,
-          "volume": 120,
-          "average": 509.8
-        },
-        {
-          "date": "2026-09-22T13:17:00.000+08:00",
-          "open": 497,
-          "high": 497,
-          "low": 496.5,
-          "close": 496.5,
-          "volume": 156,
-          "average": 509.77
-        },
-        {
-          "date": "2026-09-22T13:18:00.000+08:00",
-          "open": 496.5,
-          "high": 497,
-          "low": 496.5,
-          "close": 496.5,
-          "volume": 265,
-          "average": 509.7
-        },
-        {
-          "date": "2026-09-22T13:19:00.000+08:00",
-          "open": 496.5,
-          "high": 497,
-          "low": 496,
-          "close": 496,
-          "volume": 468,
-          "average": 509.59
-        },
-        {
-          "date": "2026-09-22T13:20:00.000+08:00",
-          "open": 496.5,
-          "high": 496.5,
-          "low": 496,
-          "close": 496.5,
-          "volume": 189,
-          "average": 509.55
-        },
-        {
-          "date": "2026-09-22T13:21:00.000+08:00",
-          "open": 496.5,
-          "high": 496.5,
-          "low": 496,
-          "close": 496.5,
-          "volume": 212,
-          "average": 509.5
-        },
-        {
-          "date": "2026-09-22T13:22:00.000+08:00",
-          "open": 496,
-          "high": 496.5,
-          "low": 496,
-          "close": 496,
+          "date": "2026-09-23T09:21:00.000+08:00",
+          "open": 519,
+          "high": 520,
+          "low": 518,
+          "close": 519,
           "volume": 319,
-          "average": 509.42
+          "average": 519.53
         },
         {
-          "date": "2026-09-22T13:23:00.000+08:00",
-          "open": 496.5,
-          "high": 497,
-          "low": 496,
-          "close": 496.5,
-          "volume": 402,
-          "average": 509.33
+          "date": "2026-09-23T09:22:00.000+08:00",
+          "open": 520,
+          "high": 522,
+          "low": 519,
+          "close": 522,
+          "volume": 1020,
+          "average": 519.57
         },
         {
-          "date": "2026-09-22T13:24:00.000+08:00",
-          "open": 496.5,
-          "high": 497.5,
-          "low": 496.5,
-          "close": 497,
-          "volume": 396,
-          "average": 509.24
+          "date": "2026-09-23T09:23:00.000+08:00",
+          "open": 521,
+          "high": 524,
+          "low": 521,
+          "close": 523,
+          "volume": 2193,
+          "average": 519.83
         },
         {
-          "date": "2026-09-22T13:30:00.000+08:00",
-          "open": 497,
-          "high": 497,
-          "low": 497,
-          "close": 497,
-          "volume": 3202,
-          "average": 508.59
+          "date": "2026-09-23T09:24:00.000+08:00",
+          "open": 522,
+          "high": 524,
+          "low": 522,
+          "close": 522,
+          "volume": 561,
+          "average": 519.9
+        },
+        {
+          "date": "2026-09-23T09:25:00.000+08:00",
+          "open": 522,
+          "high": 523,
+          "low": 522,
+          "close": 523,
+          "volume": 420,
+          "average": 519.94
+        },
+        {
+          "date": "2026-09-23T09:26:00.000+08:00",
+          "open": 522,
+          "high": 523,
+          "low": 522,
+          "close": 522,
+          "volume": 306,
+          "average": 519.96
+        },
+        {
+          "date": "2026-09-23T09:27:00.000+08:00",
+          "open": 522,
+          "high": 523,
+          "low": 521,
+          "close": 522,
+          "volume": 388,
+          "average": 520
+        },
+        {
+          "date": "2026-09-23T09:28:00.000+08:00",
+          "open": 522,
+          "high": 523,
+          "low": 522,
+          "close": 522,
+          "volume": 255,
+          "average": 520.02
         }
       ],
       "latestCandle": {
-        "date": "2026-09-22T13:30:00.000+08:00",
-        "open": 497,
-        "high": 497,
-        "low": 497,
-        "close": 497,
-        "volume": 3202,
-        "average": 508.59
+        "date": "2026-09-23T09:28:00.000+08:00",
+        "open": 522,
+        "high": 523,
+        "low": 522,
+        "close": 522,
+        "volume": 255,
+        "average": 520.02
       },
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-22",
-        "asOf": "2026-09-21",
-        "fetchedAt": "2026-09-22T01:28:42.516Z",
-        "cacheSource": "github-cache",
+        "cacheDate": "2026-09-23",
+        "asOf": "2026-09-22",
+        "fetchedAt": "2026-09-23T01:28:40.824Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
-        "rowCount": 145,
+        "rowCount": 146,
         "projectionBase": {
           "close19Count": 19,
           "close59Count": 59,
-          "lastClose": 516,
-          "close19Sum": 9689.5,
-          "close59Sum": 27412.24,
+          "lastClose": 497,
+          "close19Sum": 9669.5,
+          "close59Sum": 27458.19,
           "high19": 569,
           "low19": 465.5,
           "high59": 569,
           "low59": 322
         },
-        "ma20": 509.975,
-        "ma60": 464.3965,
-        "ma20Slope5": -2.75,
-        "ma60Slope5": 2.7578,
-        "ma20Slope5Pct": -0.536,
-        "ma60Slope5Pct": 0.597,
-        "atr14": 27.3989,
-        "atr14PctOfClose": 5.31,
-        "avgVolume20": 67258366,
+        "ma20": 509.325,
+        "ma60": 465.154,
+        "ma20Slope5": -0.925,
+        "ma60Slope5": 4.1467,
+        "ma20Slope5Pct": -0.181,
+        "ma60Slope5Pct": 0.899,
+        "atr14": 28.0847,
+        "atr14PctOfClose": 5.651,
+        "avgVolume20": 67080411,
         "avgVolume20Unit": "shares",
         "high20": 569,
         "low20": 465.5,
@@ -2043,14 +2020,14 @@
       "projectedDaily": {
         "ok": true,
         "source": "live-projected",
-        "asOf": "2026-09-22",
-        "basedOnDailyAsOf": "2026-09-21",
-        "sessionComplete": true,
+        "asOf": "2026-09-23",
+        "basedOnDailyAsOf": "2026-09-22",
+        "sessionComplete": false,
         "scaleDiffPct": 0,
-        "ma20": 509.325,
-        "ma60": 465.154,
-        "atr14": 28.0847,
-        "atr14PctOfClose": 5.651,
+        "ma20": 509.575,
+        "ma60": 466.3365,
+        "atr14": 28.0072,
+        "atr14PctOfClose": 5.365,
         "high20": 569,
         "low20": 465.5,
         "high60": 569,
@@ -2064,389 +2041,356 @@
           "price": 465.5
         }
       },
-      "fugleLastUpdated": 1790055000000000,
-      "fugleLastUpdatedAt": "2026-09-22T05:30:00.000Z",
-      "sourceAgeSeconds": 104,
+      "fugleLastUpdated": 1790126920505455,
+      "fugleLastUpdatedAt": "2026-09-23T01:28:40.505Z",
+      "sourceAgeSeconds": 0,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
-      "isClose": true,
-      "fetchedAt": "2026-09-22T05:31:43.979Z"
+      "isClose": null,
+      "fetchedAt": "2026-09-23T01:28:40.824Z"
     },
     "2454": {
       "ok": true,
       "symbol": "2454",
       "name": "聯發科",
-      "date": "2026-09-22",
+      "date": "2026-09-23",
       "price": 5180,
-      "referencePrice": 5010,
-      "previousClose": 5010,
-      "open": 5280,
-      "high": 5480,
-      "low": 5150,
-      "change": 170,
-      "changePercent": 3.39,
-      "avgPrice": 5321.35,
+      "referencePrice": 5180,
+      "previousClose": 5180,
+      "open": 5220,
+      "high": 5245,
+      "low": 5140,
+      "change": 0,
+      "changePercent": 0,
+      "avgPrice": 5188.17,
       "bid": {
-        "price": 5180,
-        "size": 17
+        "price": 5175,
+        "size": 15
       },
       "ask": {
-        "price": 5185,
-        "size": 1
+        "price": 5180,
+        "size": 7
       },
-      "tradeVolume": 10513,
-      "transaction": 4523,
-      "earlyHigh": 5480,
-      "earlyLow": 5250,
+      "tradeVolume": 1856,
+      "transaction": 912,
+      "earlyHigh": 5245,
+      "earlyLow": 5140,
       "aboveAverage": false,
-      "last5Volume": 615,
-      "previous5Volume": 133,
-      "volumeAcceleration": 4.62,
-      "intradayLast5Volume": 158,
-      "intradayPrevious5Volume": 101,
-      "intradayVolumeAcceleration": 1.56,
+      "last5Volume": 60,
+      "previous5Volume": 112,
+      "volumeAcceleration": 0.54,
+      "intradayLast5Volume": 60,
+      "intradayPrevious5Volume": 112,
+      "intradayVolumeAcceleration": 0.54,
       "intradayLast5BarCount": 5,
       "intradayPrevious5BarCount": 5,
-      "intradayVolumeWindowLatestBarAt": "2026-09-22T13:24:00.000+08:00",
-      "closingAuctionVolume": 498,
-      "closingAuctionPrice": 5180,
-      "closingAuctionDetected": true,
-      "volumeAccelerationIncludesClosingAuction": true,
+      "intradayVolumeWindowLatestBarAt": "2026-09-23T09:28:00.000+08:00",
+      "closingAuctionVolume": null,
+      "closingAuctionPrice": null,
+      "closingAuctionDetected": false,
+      "volumeAccelerationIncludesClosingAuction": false,
       "recentCandles": [
         {
-          "date": "2026-09-22T12:56:00.000+08:00",
+          "date": "2026-09-23T09:00:00.000+08:00",
+          "open": 5220,
+          "high": 5245,
+          "low": 5205,
+          "close": 5220,
+          "volume": 454,
+          "average": 5221.09
+        },
+        {
+          "date": "2026-09-23T09:01:00.000+08:00",
+          "open": 5215,
+          "high": 5225,
+          "low": 5170,
+          "close": 5175,
+          "volume": 261,
+          "average": 5213.59
+        },
+        {
+          "date": "2026-09-23T09:02:00.000+08:00",
           "open": 5170,
-          "high": 5185,
+          "high": 5195,
           "low": 5170,
           "close": 5185,
-          "volume": 41,
-          "average": 5337.95
+          "volume": 69,
+          "average": 5211.09
         },
         {
-          "date": "2026-09-22T12:57:00.000+08:00",
-          "open": 5185,
+          "date": "2026-09-23T09:03:00.000+08:00",
+          "open": 5180,
           "high": 5185,
-          "low": 5180,
+          "low": 5170,
           "close": 5180,
-          "volume": 3,
-          "average": 5337.9
+          "volume": 97,
+          "average": 5207.48
         },
         {
-          "date": "2026-09-22T12:58:00.000+08:00",
-          "open": 5185,
-          "high": 5185,
-          "low": 5185,
+          "date": "2026-09-23T09:04:00.000+08:00",
+          "open": 5180,
+          "high": 5190,
+          "low": 5180,
           "close": 5185,
-          "volume": 5,
-          "average": 5337.82
+          "volume": 77,
+          "average": 5205.7
         },
         {
-          "date": "2026-09-22T12:59:00.000+08:00",
+          "date": "2026-09-23T09:05:00.000+08:00",
           "open": 5185,
           "high": 5185,
-          "low": 5185,
-          "close": 5185,
-          "volume": 2,
-          "average": 5337.79
+          "low": 5145,
+          "close": 5145,
+          "volume": 183,
+          "average": 5198.76
         },
         {
-          "date": "2026-09-22T13:00:00.000+08:00",
-          "open": 5185,
+          "date": "2026-09-23T09:06:00.000+08:00",
+          "open": 5150,
+          "high": 5175,
+          "low": 5140,
+          "close": 5170,
+          "volume": 82,
+          "average": 5195.65
+        },
+        {
+          "date": "2026-09-23T09:07:00.000+08:00",
+          "open": 5165,
+          "high": 5180,
+          "low": 5165,
+          "close": 5180,
+          "volume": 39,
+          "average": 5194.96
+        },
+        {
+          "date": "2026-09-23T09:08:00.000+08:00",
+          "open": 5180,
           "high": 5185,
-          "low": 5175,
+          "low": 5170,
+          "close": 5170,
+          "volume": 92,
+          "average": 5193.66
+        },
+        {
+          "date": "2026-09-23T09:09:00.000+08:00",
+          "open": 5175,
+          "high": 5175,
+          "low": 5160,
           "close": 5175,
           "volume": 27,
-          "average": 5337.34
+          "average": 5193.22
         },
         {
-          "date": "2026-09-22T13:01:00.000+08:00",
-          "open": 5180,
-          "high": 5180,
-          "low": 5175,
-          "close": 5180,
-          "volume": 14,
-          "average": 5337.11
-        },
-        {
-          "date": "2026-09-22T13:02:00.000+08:00",
-          "open": 5180,
-          "high": 5185,
-          "low": 5180,
-          "close": 5180,
-          "volume": 7,
-          "average": 5336.99
-        },
-        {
-          "date": "2026-09-22T13:03:00.000+08:00",
-          "open": 5185,
-          "high": 5185,
-          "low": 5175,
-          "close": 5180,
-          "volume": 10,
-          "average": 5336.83
-        },
-        {
-          "date": "2026-09-22T13:04:00.000+08:00",
+          "date": "2026-09-23T09:10:00.000+08:00",
           "open": 5175,
-          "high": 5180,
+          "high": 5195,
           "low": 5175,
-          "close": 5180,
-          "volume": 4,
-          "average": 5336.76
+          "close": 5195,
+          "volume": 90,
+          "average": 5192.97
         },
         {
-          "date": "2026-09-22T13:05:00.000+08:00",
-          "open": 5175,
-          "high": 5180,
-          "low": 5175,
-          "close": 5175,
-          "volume": 12,
-          "average": 5336.56
-        },
-        {
-          "date": "2026-09-22T13:06:00.000+08:00",
-          "open": 5175,
-          "high": 5180,
-          "low": 5175,
-          "close": 5175,
-          "volume": 12,
-          "average": 5336.35
-        },
-        {
-          "date": "2026-09-22T13:07:00.000+08:00",
-          "open": 5175,
-          "high": 5175,
-          "low": 5165,
-          "close": 5165,
-          "volume": 24,
-          "average": 5335.93
-        },
-        {
-          "date": "2026-09-22T13:08:00.000+08:00",
-          "open": 5165,
-          "high": 5165,
-          "low": 5160,
-          "close": 5160,
-          "volume": 42,
-          "average": 5335.18
-        },
-        {
-          "date": "2026-09-22T13:09:00.000+08:00",
-          "open": 5160,
-          "high": 5170,
-          "low": 5160,
-          "close": 5170,
-          "volume": 43,
-          "average": 5334.42
-        },
-        {
-          "date": "2026-09-22T13:10:00.000+08:00",
-          "open": 5170,
-          "high": 5180,
-          "low": 5165,
-          "close": 5180,
-          "volume": 30,
-          "average": 5333.91
-        },
-        {
-          "date": "2026-09-22T13:11:00.000+08:00",
-          "open": 5180,
-          "high": 5180,
-          "low": 5175,
-          "close": 5175,
-          "volume": 8,
-          "average": 5333.78
-        },
-        {
-          "date": "2026-09-22T13:12:00.000+08:00",
-          "open": 5175,
-          "high": 5180,
-          "low": 5175,
-          "close": 5175,
-          "volume": 14,
-          "average": 5333.55
-        },
-        {
-          "date": "2026-09-22T13:13:00.000+08:00",
-          "open": 5175,
-          "high": 5175,
-          "low": 5170,
-          "close": 5170,
-          "volume": 9,
-          "average": 5333.4
-        },
-        {
-          "date": "2026-09-22T13:14:00.000+08:00",
-          "open": 5170,
-          "high": 5190,
-          "low": 5170,
-          "close": 5190,
-          "volume": 55,
-          "average": 5332.53
-        },
-        {
-          "date": "2026-09-22T13:15:00.000+08:00",
+          "date": "2026-09-23T09:11:00.000+08:00",
           "open": 5195,
           "high": 5195,
           "low": 5190,
-          "close": 5195,
-          "volume": 9,
-          "average": 5332.4
+          "close": 5190,
+          "volume": 29,
+          "average": 5192.94
         },
         {
-          "date": "2026-09-22T13:16:00.000+08:00",
+          "date": "2026-09-23T09:12:00.000+08:00",
           "open": 5190,
-          "high": 5195,
-          "low": 5185,
-          "close": 5185,
-          "volume": 21,
-          "average": 5332.09
-        },
-        {
-          "date": "2026-09-22T13:17:00.000+08:00",
-          "open": 5185,
-          "high": 5185,
+          "high": 5190,
           "low": 5175,
           "close": 5180,
-          "volume": 28,
-          "average": 5331.66
+          "volume": 53,
+          "average": 5192.56
         },
         {
-          "date": "2026-09-22T13:18:00.000+08:00",
-          "open": 5170,
-          "high": 5180,
-          "low": 5165,
-          "close": 5165,
-          "volume": 28,
-          "average": 5331.21
-        },
-        {
-          "date": "2026-09-22T13:19:00.000+08:00",
-          "open": 5165,
-          "high": 5165,
-          "low": 5165,
-          "close": 5165,
-          "volume": 15,
-          "average": 5330.95
-        },
-        {
-          "date": "2026-09-22T13:20:00.000+08:00",
-          "open": 5170,
-          "high": 5170,
-          "low": 5165,
-          "close": 5170,
-          "volume": 41,
-          "average": 5330.28
-        },
-        {
-          "date": "2026-09-22T13:21:00.000+08:00",
+          "date": "2026-09-23T09:13:00.000+08:00",
           "open": 5175,
+          "high": 5180,
+          "low": 5170,
+          "close": 5170,
+          "volume": 20,
+          "average": 5192.34
+        },
+        {
+          "date": "2026-09-23T09:14:00.000+08:00",
+          "open": 5170,
           "high": 5175,
           "low": 5170,
           "close": 5175,
-          "volume": 16,
-          "average": 5330.03
+          "volume": 12,
+          "average": 5192.2
         },
         {
-          "date": "2026-09-22T13:22:00.000+08:00",
+          "date": "2026-09-23T09:15:00.000+08:00",
           "open": 5175,
           "high": 5175,
-          "low": 5170,
+          "low": 5165,
           "close": 5170,
-          "volume": 39,
-          "average": 5329.4
+          "volume": 33,
+          "average": 5191.73
         },
         {
-          "date": "2026-09-22T13:23:00.000+08:00",
+          "date": "2026-09-23T09:16:00.000+08:00",
           "open": 5170,
           "high": 5170,
           "low": 5160,
           "close": 5160,
-          "volume": 22,
-          "average": 5329.04
+          "volume": 23,
+          "average": 5191.34
         },
         {
-          "date": "2026-09-22T13:24:00.000+08:00",
+          "date": "2026-09-23T09:17:00.000+08:00",
+          "open": 5165,
+          "high": 5175,
+          "low": 5155,
+          "close": 5175,
+          "volume": 36,
+          "average": 5190.7
+        },
+        {
+          "date": "2026-09-23T09:18:00.000+08:00",
+          "open": 5165,
+          "high": 5170,
+          "low": 5165,
+          "close": 5165,
+          "volume": 7,
+          "average": 5190.6
+        },
+        {
+          "date": "2026-09-23T09:19:00.000+08:00",
+          "open": 5170,
+          "high": 5170,
+          "low": 5165,
+          "close": 5170,
+          "volume": 10,
+          "average": 5190.46
+        },
+        {
+          "date": "2026-09-23T09:20:00.000+08:00",
           "open": 5160,
+          "high": 5165,
+          "low": 5150,
+          "close": 5150,
+          "volume": 62,
+          "average": 5189.16
+        },
+        {
+          "date": "2026-09-23T09:21:00.000+08:00",
+          "open": 5150,
+          "high": 5160,
+          "low": 5150,
+          "close": 5160,
+          "volume": 17,
+          "average": 5188.82
+        },
+        {
+          "date": "2026-09-23T09:22:00.000+08:00",
+          "open": 5165,
           "high": 5175,
           "low": 5160,
           "close": 5175,
-          "volume": 40,
-          "average": 5328.38
+          "volume": 18,
+          "average": 5188.6
         },
         {
-          "date": "2026-09-22T13:30:00.000+08:00",
+          "date": "2026-09-23T09:23:00.000+08:00",
+          "open": 5170,
+          "high": 5175,
+          "low": 5170,
+          "close": 5170,
+          "volume": 5,
+          "average": 5188.55
+        },
+        {
+          "date": "2026-09-23T09:24:00.000+08:00",
+          "open": 5175,
+          "high": 5175,
+          "low": 5170,
+          "close": 5175,
+          "volume": 8,
+          "average": 5188.48
+        },
+        {
+          "date": "2026-09-23T09:25:00.000+08:00",
+          "open": 5170,
+          "high": 5180,
+          "low": 5170,
+          "close": 5180,
+          "volume": 14,
+          "average": 5188.37
+        },
+        {
+          "date": "2026-09-23T09:26:00.000+08:00",
           "open": 5180,
           "high": 5180,
-          "low": 5180,
+          "low": 5175,
+          "close": 5175,
+          "volume": 10,
+          "average": 5188.31
+        },
+        {
+          "date": "2026-09-23T09:27:00.000+08:00",
+          "open": 5175,
+          "high": 5180,
+          "low": 5175,
           "close": 5180,
-          "volume": 498,
-          "average": 5321.35
+          "volume": 15,
+          "average": 5188.23
+        },
+        {
+          "date": "2026-09-23T09:28:00.000+08:00",
+          "open": 5180,
+          "high": 5180,
+          "low": 5175,
+          "close": 5180,
+          "volume": 13,
+          "average": 5188.17
         }
       ],
       "latestCandle": {
-        "date": "2026-09-22T13:30:00.000+08:00",
+        "date": "2026-09-23T09:28:00.000+08:00",
         "open": 5180,
         "high": 5180,
-        "low": 5180,
+        "low": 5175,
         "close": 5180,
-        "volume": 498,
-        "average": 5321.35
+        "volume": 13,
+        "average": 5188.17
       },
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-22",
-        "asOf": "2026-09-21",
-        "fetchedAt": "2026-09-22T01:28:42.548Z",
-        "cacheSource": "github-cache",
+        "cacheDate": "2026-09-23",
+        "asOf": "2026-09-22",
+        "fetchedAt": "2026-09-23T01:28:40.825Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
-        "rowCount": 145,
+        "rowCount": 146,
         "projectionBase": {
           "close19Count": 19,
           "close59Count": 59,
-          "lastClose": 5010,
-          "close19Sum": 84205,
-          "close59Sum": 237783.81,
-          "high19": 5035,
-          "low19": 3710,
-          "high59": 5035,
+          "lastClose": 5180,
+          "close19Sum": 85440,
+          "close59Sum": 238744.02,
+          "high19": 5480,
+          "low19": 3820,
+          "high59": 5480,
           "low59": 2990
         },
-        "ma20": 4397,
-        "ma60": 4027.8432,
-        "ma20Slope5": 209.75,
-        "ma60Slope5": 30.5427,
-        "ma20Slope5Pct": 5.009,
-        "ma60Slope5Pct": 0.764,
-        "atr14": 215.8408,
-        "atr14PctOfClose": 4.308,
-        "avgVolume20": 8461991,
-        "avgVolume20Unit": "shares",
-        "high20": 5035,
-        "low20": 3655,
-        "high60": 5035,
-        "low60": 2990,
-        "lastSwingHigh": {
-          "date": "2026-09-07",
-          "price": 4855
-        },
-        "lastSwingLow": {
-          "date": "2026-09-15",
-          "price": 4430
-        }
-      },
-      "projectedDaily": {
-        "ok": true,
-        "source": "live-projected",
-        "asOf": "2026-09-22",
-        "basedOnDailyAsOf": "2026-09-21",
-        "sessionComplete": true,
-        "scaleDiffPct": 0,
         "ma20": 4469.25,
         "ma60": 4049.3968,
+        "ma20Slope5": 254.75,
+        "ma60Slope5": 52.2377,
+        "ma20Slope5Pct": 6.045,
+        "ma60Slope5Pct": 1.307,
         "atr14": 233.995,
         "atr14PctOfClose": 4.517,
+        "avgVolume20": 8798401,
+        "avgVolume20Unit": "shares",
         "high20": 5480,
         "low20": 3710,
         "high60": 5480,
@@ -2460,342 +2404,258 @@
           "price": 4430
         }
       },
-      "fugleLastUpdated": 1790055000000000,
-      "fugleLastUpdatedAt": "2026-09-22T05:30:00.000Z",
-      "sourceAgeSeconds": 104,
+      "projectedDaily": {
+        "ok": true,
+        "source": "live-projected",
+        "asOf": "2026-09-23",
+        "basedOnDailyAsOf": "2026-09-22",
+        "sessionComplete": false,
+        "scaleDiffPct": 0,
+        "ma20": 4531,
+        "ma60": 4065.4003,
+        "atr14": 224.7811,
+        "atr14PctOfClose": 4.339,
+        "high20": 5480,
+        "low20": 3820,
+        "high60": 5480,
+        "low60": 2990,
+        "lastSwingHigh": {
+          "date": "2026-09-07",
+          "price": 4855
+        },
+        "lastSwingLow": {
+          "date": "2026-09-15",
+          "price": 4430
+        }
+      },
+      "fugleLastUpdated": 1790126919982981,
+      "fugleLastUpdatedAt": "2026-09-23T01:28:39.982Z",
+      "sourceAgeSeconds": 1,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
-      "isClose": true,
-      "fetchedAt": "2026-09-22T05:31:43.992Z"
+      "isClose": null,
+      "fetchedAt": "2026-09-23T01:28:40.825Z"
     },
     "6757": {
       "ok": true,
       "symbol": "6757",
       "name": "台灣虎航",
-      "date": "2026-09-22",
-      "price": 54.3,
-      "referencePrice": 54.2,
-      "previousClose": 54.2,
+      "date": "2026-09-23",
+      "price": 54.2,
+      "referencePrice": 54.3,
+      "previousClose": 54.3,
       "open": 54.5,
       "high": 54.5,
-      "low": 54,
-      "change": 0.1,
-      "changePercent": 0.18,
-      "avgPrice": 54.25,
+      "low": 54.2,
+      "change": -0.1,
+      "changePercent": -0.18,
+      "avgPrice": 54.41,
       "bid": {
         "price": 54.2,
-        "size": 11
-      },
-      "ask": {
-        "price": 54.3,
         "size": 3
       },
-      "tradeVolume": 391,
-      "transaction": 145,
+      "ask": {
+        "price": 54.4,
+        "size": 16
+      },
+      "tradeVolume": 77,
+      "transaction": 26,
       "earlyHigh": 54.5,
-      "earlyLow": 54,
-      "aboveAverage": true,
-      "last5Volume": 30,
-      "previous5Volume": 14,
-      "volumeAcceleration": 2.14,
-      "intradayLast5Volume": 15,
-      "intradayPrevious5Volume": 2,
-      "intradayVolumeAcceleration": 7.5,
+      "earlyLow": 54.2,
+      "aboveAverage": false,
+      "last5Volume": 23,
+      "previous5Volume": 16,
+      "volumeAcceleration": 1.44,
+      "intradayLast5Volume": 10,
+      "intradayPrevious5Volume": 21,
+      "intradayVolumeAcceleration": 0.48,
       "intradayLast5BarCount": 3,
-      "intradayPrevious5BarCount": 2,
-      "intradayVolumeWindowLatestBarAt": "2026-09-22T13:24:00.000+08:00",
-      "closingAuctionVolume": 14,
-      "closingAuctionPrice": 54.3,
-      "closingAuctionDetected": true,
-      "volumeAccelerationIncludesClosingAuction": true,
+      "intradayPrevious5BarCount": 4,
+      "intradayVolumeWindowLatestBarAt": "2026-09-23T09:28:00.000+08:00",
+      "closingAuctionVolume": null,
+      "closingAuctionPrice": null,
+      "closingAuctionDetected": false,
+      "volumeAccelerationIncludesClosingAuction": false,
       "recentCandles": [
         {
-          "date": "2026-09-22T12:07:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
+          "date": "2026-09-23T09:00:00.000+08:00",
+          "open": 54.5,
+          "high": 54.5,
+          "low": 54.5,
+          "close": 54.5,
+          "volume": 23,
+          "average": 54.5
+        },
+        {
+          "date": "2026-09-23T09:01:00.000+08:00",
+          "open": 54.4,
+          "high": 54.4,
+          "low": 54.4,
+          "close": 54.4,
           "volume": 1,
-          "average": 54.27
+          "average": 54.5
         },
         {
-          "date": "2026-09-22T12:19:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
-          "volume": 5,
-          "average": 54.26
-        },
-        {
-          "date": "2026-09-22T12:20:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
+          "date": "2026-09-23T09:02:00.000+08:00",
+          "open": 54.4,
+          "high": 54.4,
+          "low": 54.4,
+          "close": 54.4,
           "volume": 1,
-          "average": 54.26
+          "average": 54.49
         },
         {
-          "date": "2026-09-22T12:21:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
+          "date": "2026-09-23T09:04:00.000+08:00",
+          "open": 54.4,
+          "high": 54.5,
+          "low": 54.4,
+          "close": 54.4,
           "volume": 6,
-          "average": 54.26
+          "average": 54.48
         },
         {
-          "date": "2026-09-22T12:24:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
-          "volume": 1,
-          "average": 54.26
-        },
-        {
-          "date": "2026-09-22T12:32:00.000+08:00",
-          "open": 54.2,
-          "high": 54.3,
-          "low": 54.2,
-          "close": 54.2,
-          "volume": 4,
-          "average": 54.26
-        },
-        {
-          "date": "2026-09-22T12:33:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
-          "volume": 2,
-          "average": 54.26
-        },
-        {
-          "date": "2026-09-22T12:34:00.000+08:00",
+          "date": "2026-09-23T09:06:00.000+08:00",
           "open": 54.3,
           "high": 54.3,
           "low": 54.3,
           "close": 54.3,
-          "volume": 1,
-          "average": 54.26
-        },
-        {
-          "date": "2026-09-22T12:36:00.000+08:00",
-          "open": 54.3,
-          "high": 54.3,
-          "low": 54.3,
-          "close": 54.3,
-          "volume": 1,
-          "average": 54.26
-        },
-        {
-          "date": "2026-09-22T12:39:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
-          "volume": 1,
-          "average": 54.26
-        },
-        {
-          "date": "2026-09-22T12:42:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
-          "volume": 10,
-          "average": 54.26
-        },
-        {
-          "date": "2026-09-22T12:44:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
-          "volume": 10,
-          "average": 54.26
-        },
-        {
-          "date": "2026-09-22T12:47:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
-          "volume": 1,
-          "average": 54.26
-        },
-        {
-          "date": "2026-09-22T12:48:00.000+08:00",
-          "open": 54.3,
-          "high": 54.3,
-          "low": 54.3,
-          "close": 54.3,
-          "volume": 2,
-          "average": 54.26
-        },
-        {
-          "date": "2026-09-22T12:51:00.000+08:00",
-          "open": 54.3,
-          "high": 54.3,
-          "low": 54.3,
-          "close": 54.3,
-          "volume": 1,
-          "average": 54.26
-        },
-        {
-          "date": "2026-09-22T12:53:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
-          "volume": 10,
-          "average": 54.26
-        },
-        {
-          "date": "2026-09-22T12:54:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
-          "volume": 6,
-          "average": 54.26
-        },
-        {
-          "date": "2026-09-22T12:55:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
-          "volume": 2,
-          "average": 54.26
-        },
-        {
-          "date": "2026-09-22T13:00:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
-          "volume": 4,
-          "average": 54.25
-        },
-        {
-          "date": "2026-09-22T13:05:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
-          "volume": 1,
-          "average": 54.25
-        },
-        {
-          "date": "2026-09-22T13:06:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
-          "volume": 1,
-          "average": 54.25
-        },
-        {
-          "date": "2026-09-22T13:11:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
-          "volume": 8,
-          "average": 54.25
-        },
-        {
-          "date": "2026-09-22T13:12:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
-          "volume": 2,
-          "average": 54.25
-        },
-        {
-          "date": "2026-09-22T13:14:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
-          "volume": 2,
-          "average": 54.25
-        },
-        {
-          "date": "2026-09-22T13:16:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
-          "volume": 1,
-          "average": 54.25
-        },
-        {
-          "date": "2026-09-22T13:18:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
-          "volume": 1,
-          "average": 54.25
-        },
-        {
-          "date": "2026-09-22T13:20:00.000+08:00",
-          "open": 54.2,
-          "high": 54.2,
-          "low": 54.2,
-          "close": 54.2,
           "volume": 3,
-          "average": 54.25
+          "average": 54.46
         },
         {
-          "date": "2026-09-22T13:21:00.000+08:00",
+          "date": "2026-09-23T09:07:00.000+08:00",
+          "open": 54.3,
+          "high": 54.3,
+          "low": 54.3,
+          "close": 54.3,
+          "volume": 2,
+          "average": 54.46
+        },
+        {
+          "date": "2026-09-23T09:08:00.000+08:00",
+          "open": 54.4,
+          "high": 54.4,
+          "low": 54.4,
+          "close": 54.4,
+          "volume": 1,
+          "average": 54.45
+        },
+        {
+          "date": "2026-09-23T09:10:00.000+08:00",
+          "open": 54.4,
+          "high": 54.4,
+          "low": 54.4,
+          "close": 54.4,
+          "volume": 1,
+          "average": 54.45
+        },
+        {
+          "date": "2026-09-23T09:12:00.000+08:00",
+          "open": 54.4,
+          "high": 54.4,
+          "low": 54.4,
+          "close": 54.4,
+          "volume": 2,
+          "average": 54.45
+        },
+        {
+          "date": "2026-09-23T09:13:00.000+08:00",
+          "open": 54.4,
+          "high": 54.5,
+          "low": 54.4,
+          "close": 54.5,
+          "volume": 2,
+          "average": 54.45
+        },
+        {
+          "date": "2026-09-23T09:15:00.000+08:00",
+          "open": 54.5,
+          "high": 54.5,
+          "low": 54.5,
+          "close": 54.5,
+          "volume": 4,
+          "average": 54.45
+        },
+        {
+          "date": "2026-09-23T09:20:00.000+08:00",
+          "open": 54.5,
+          "high": 54.5,
+          "low": 54.4,
+          "close": 54.4,
+          "volume": 6,
+          "average": 54.46
+        },
+        {
+          "date": "2026-09-23T09:21:00.000+08:00",
+          "open": 54.4,
+          "high": 54.4,
+          "low": 54.4,
+          "close": 54.4,
+          "volume": 2,
+          "average": 54.45
+        },
+        {
+          "date": "2026-09-23T09:22:00.000+08:00",
+          "open": 54.4,
+          "high": 54.4,
+          "low": 54.4,
+          "close": 54.4,
+          "volume": 11,
+          "average": 54.44
+        },
+        {
+          "date": "2026-09-23T09:23:00.000+08:00",
+          "open": 54.3,
+          "high": 54.3,
+          "low": 54.3,
+          "close": 54.3,
+          "volume": 2,
+          "average": 54.44
+        },
+        {
+          "date": "2026-09-23T09:25:00.000+08:00",
+          "open": 54.3,
+          "high": 54.3,
+          "low": 54.3,
+          "close": 54.3,
+          "volume": 1,
+          "average": 54.44
+        },
+        {
+          "date": "2026-09-23T09:26:00.000+08:00",
+          "open": 54.3,
+          "high": 54.3,
+          "low": 54.3,
+          "close": 54.3,
+          "volume": 1,
+          "average": 54.44
+        },
+        {
+          "date": "2026-09-23T09:28:00.000+08:00",
           "open": 54.2,
           "high": 54.2,
           "low": 54.2,
           "close": 54.2,
           "volume": 8,
-          "average": 54.25
-        },
-        {
-          "date": "2026-09-22T13:24:00.000+08:00",
-          "open": 54.2,
-          "high": 54.3,
-          "low": 54.2,
-          "close": 54.3,
-          "volume": 4,
-          "average": 54.25
-        },
-        {
-          "date": "2026-09-22T13:30:00.000+08:00",
-          "open": 54.3,
-          "high": 54.3,
-          "low": 54.3,
-          "close": 54.3,
-          "volume": 14,
-          "average": 54.25
+          "average": 54.41
         }
       ],
       "latestCandle": {
-        "date": "2026-09-22T13:30:00.000+08:00",
-        "open": 54.3,
-        "high": 54.3,
-        "low": 54.3,
-        "close": 54.3,
-        "volume": 14,
-        "average": 54.25
+        "date": "2026-09-23T09:28:00.000+08:00",
+        "open": 54.2,
+        "high": 54.2,
+        "low": 54.2,
+        "close": 54.2,
+        "volume": 8,
+        "average": 54.41
       },
       "dailyIndicators": {
-        "ok": true,
+        "ok": false,
         "version": 2,
         "cacheDate": "2026-09-22",
         "asOf": "2026-09-21",
         "fetchedAt": "2026-09-22T02:18:40.077Z",
-        "cacheSource": "github-cache",
+        "cacheSource": "stale-github-cache",
         "adjusted": true,
         "rowCount": 145,
         "projectionBase": {
@@ -2830,415 +2690,346 @@
         "lastSwingLow": {
           "date": "2026-09-16",
           "price": 52.6
-        }
+        },
+        "stale": true,
+        "refreshPending": true
       },
       "projectedDaily": {
-        "ok": true,
-        "source": "live-projected",
-        "asOf": "2026-09-22",
-        "basedOnDailyAsOf": "2026-09-21",
-        "sessionComplete": true,
-        "scaleDiffPct": 0,
-        "ma20": 54.805,
-        "ma60": 55.5545,
-        "atr14": 0.9935,
-        "atr14PctOfClose": 1.83,
-        "high20": 56.6,
-        "low20": 52.6,
-        "high60": 59.87,
-        "low60": 51.45,
-        "lastSwingHigh": {
-          "date": "2026-09-07",
-          "price": 56.3
-        },
-        "lastSwingLow": {
-          "date": "2026-09-16",
-          "price": 52.6
-        }
+        "ok": false,
+        "reason": "projection-base-unavailable"
       },
-      "fugleLastUpdated": 1790055000000000,
-      "fugleLastUpdatedAt": "2026-09-22T05:30:00.000Z",
-      "sourceAgeSeconds": 104,
+      "fugleLastUpdated": 1790126920727360,
+      "fugleLastUpdatedAt": "2026-09-23T01:28:40.727Z",
+      "sourceAgeSeconds": 0,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
-      "isClose": true,
-      "fetchedAt": "2026-09-22T05:31:44.293Z"
+      "isClose": null,
+      "fetchedAt": "2026-09-23T01:28:41.110Z"
     },
     "0050": {
       "ok": true,
       "symbol": "0050",
       "name": "元大台灣50",
-      "date": "2026-09-22",
-      "price": 111.85,
-      "referencePrice": 111.35,
-      "previousClose": 111.35,
-      "open": 113.35,
-      "high": 113.75,
-      "low": 111.85,
-      "change": 0.5,
-      "changePercent": 0.45,
-      "avgPrice": 112.91,
+      "date": "2026-09-23",
+      "price": 112.95,
+      "referencePrice": 111.85,
+      "previousClose": 111.85,
+      "open": 112.8,
+      "high": 113.15,
+      "low": 112.75,
+      "change": 1.1,
+      "changePercent": 0.98,
+      "avgPrice": 112.95,
       "bid": {
-        "price": 111.8,
-        "size": 352
+        "price": 112.95,
+        "size": 94
       },
       "ask": {
-        "price": 111.85,
-        "size": 411
+        "price": 113,
+        "size": 855
       },
-      "tradeVolume": 80015,
-      "transaction": 15204,
-      "earlyHigh": 113.75,
-      "earlyLow": 112.9,
+      "tradeVolume": 12185,
+      "transaction": 1734,
+      "earlyHigh": 113.15,
+      "earlyLow": 112.75,
       "aboveAverage": false,
-      "last5Volume": 2612,
-      "previous5Volume": 1751,
-      "volumeAcceleration": 1.49,
-      "intradayLast5Volume": 1643,
-      "intradayPrevious5Volume": 1641,
-      "intradayVolumeAcceleration": 1,
+      "last5Volume": 796,
+      "previous5Volume": 978,
+      "volumeAcceleration": 0.81,
+      "intradayLast5Volume": 796,
+      "intradayPrevious5Volume": 978,
+      "intradayVolumeAcceleration": 0.81,
       "intradayLast5BarCount": 5,
       "intradayPrevious5BarCount": 5,
-      "intradayVolumeWindowLatestBarAt": "2026-09-22T13:24:00.000+08:00",
-      "closingAuctionVolume": 1177,
-      "closingAuctionPrice": 111.85,
-      "closingAuctionDetected": true,
-      "volumeAccelerationIncludesClosingAuction": true,
+      "intradayVolumeWindowLatestBarAt": "2026-09-23T09:28:00.000+08:00",
+      "closingAuctionVolume": null,
+      "closingAuctionPrice": null,
+      "closingAuctionDetected": false,
+      "volumeAccelerationIncludesClosingAuction": false,
       "recentCandles": [
         {
-          "date": "2026-09-22T12:56:00.000+08:00",
-          "open": 112.15,
-          "high": 112.15,
-          "low": 112.1,
-          "close": 112.15,
-          "volume": 110,
-          "average": 113.01
+          "date": "2026-09-23T09:02:00.000+08:00",
+          "open": 112.8,
+          "high": 112.9,
+          "low": 112.75,
+          "close": 112.85,
+          "volume": 1611,
+          "average": 112.81
         },
         {
-          "date": "2026-09-22T12:57:00.000+08:00",
-          "open": 112.15,
-          "high": 112.15,
-          "low": 112.1,
-          "close": 112.1,
-          "volume": 68,
-          "average": 113.01
-        },
-        {
-          "date": "2026-09-22T12:58:00.000+08:00",
-          "open": 112.15,
-          "high": 112.15,
-          "low": 112.1,
-          "close": 112.15,
-          "volume": 140,
-          "average": 113
-        },
-        {
-          "date": "2026-09-22T12:59:00.000+08:00",
-          "open": 112.15,
-          "high": 112.2,
-          "low": 112.1,
-          "close": 112.15,
-          "volume": 230,
-          "average": 113
-        },
-        {
-          "date": "2026-09-22T13:00:00.000+08:00",
-          "open": 112.15,
-          "high": 112.2,
-          "low": 112.1,
-          "close": 112.15,
-          "volume": 109,
-          "average": 113
-        },
-        {
-          "date": "2026-09-22T13:01:00.000+08:00",
-          "open": 112.1,
-          "high": 112.2,
-          "low": 112.1,
-          "close": 112.15,
-          "volume": 119,
-          "average": 113
-        },
-        {
-          "date": "2026-09-22T13:02:00.000+08:00",
-          "open": 112.15,
-          "high": 112.2,
-          "low": 112.1,
-          "close": 112.2,
-          "volume": 68,
-          "average": 113
-        },
-        {
-          "date": "2026-09-22T13:03:00.000+08:00",
-          "open": 112.2,
-          "high": 112.2,
-          "low": 112.15,
-          "close": 112.15,
-          "volume": 146,
-          "average": 113
-        },
-        {
-          "date": "2026-09-22T13:04:00.000+08:00",
-          "open": 112.2,
-          "high": 112.2,
-          "low": 112.1,
-          "close": 112.15,
-          "volume": 296,
-          "average": 112.99
-        },
-        {
-          "date": "2026-09-22T13:05:00.000+08:00",
-          "open": 112.15,
-          "high": 112.15,
-          "low": 112.05,
-          "close": 112.1,
+          "date": "2026-09-23T09:03:00.000+08:00",
+          "open": 112.85,
+          "high": 112.9,
+          "low": 112.75,
+          "close": 112.8,
           "volume": 512,
-          "average": 112.99
+          "average": 112.82
         },
         {
-          "date": "2026-09-22T13:06:00.000+08:00",
-          "open": 112.15,
-          "high": 112.15,
-          "low": 112,
-          "close": 112.1,
-          "volume": 168,
-          "average": 112.98
+          "date": "2026-09-23T09:04:00.000+08:00",
+          "open": 112.75,
+          "high": 112.85,
+          "low": 112.75,
+          "close": 112.85,
+          "volume": 312,
+          "average": 112.81
         },
         {
-          "date": "2026-09-22T13:07:00.000+08:00",
-          "open": 112.1,
-          "high": 112.15,
-          "low": 112.05,
-          "close": 112.1,
-          "volume": 193,
-          "average": 112.98
+          "date": "2026-09-23T09:05:00.000+08:00",
+          "open": 112.8,
+          "high": 112.85,
+          "low": 112.75,
+          "close": 112.8,
+          "volume": 746,
+          "average": 112.81
         },
         {
-          "date": "2026-09-22T13:08:00.000+08:00",
-          "open": 112.1,
-          "high": 112.15,
-          "low": 112.05,
-          "close": 112.05,
-          "volume": 240,
-          "average": 112.98
+          "date": "2026-09-23T09:06:00.000+08:00",
+          "open": 112.85,
+          "high": 112.9,
+          "low": 112.8,
+          "close": 112.85,
+          "volume": 317,
+          "average": 112.81
         },
         {
-          "date": "2026-09-22T13:09:00.000+08:00",
-          "open": 112.1,
-          "high": 112.1,
-          "low": 112,
-          "close": 112,
-          "volume": 306,
-          "average": 112.98
+          "date": "2026-09-23T09:07:00.000+08:00",
+          "open": 112.85,
+          "high": 113.1,
+          "low": 112.85,
+          "close": 113.1,
+          "volume": 1911,
+          "average": 112.87
         },
         {
-          "date": "2026-09-22T13:10:00.000+08:00",
-          "open": 112.1,
-          "high": 112.1,
-          "low": 112,
-          "close": 112.1,
-          "volume": 232,
-          "average": 112.97
+          "date": "2026-09-23T09:08:00.000+08:00",
+          "open": 113.1,
+          "high": 113.15,
+          "low": 113.05,
+          "close": 113.1,
+          "volume": 452,
+          "average": 112.89
         },
         {
-          "date": "2026-09-22T13:11:00.000+08:00",
-          "open": 112.1,
-          "high": 112.15,
-          "low": 112.05,
-          "close": 112.15,
-          "volume": 343,
-          "average": 112.97
+          "date": "2026-09-23T09:09:00.000+08:00",
+          "open": 113.1,
+          "high": 113.1,
+          "low": 113,
+          "close": 113,
+          "volume": 443,
+          "average": 112.9
         },
         {
-          "date": "2026-09-22T13:12:00.000+08:00",
-          "open": 112.15,
-          "high": 112.15,
-          "low": 112.05,
-          "close": 112.1,
-          "volume": 240,
-          "average": 112.97
+          "date": "2026-09-23T09:10:00.000+08:00",
+          "open": 113,
+          "high": 113.15,
+          "low": 113,
+          "close": 113.05,
+          "volume": 664,
+          "average": 112.91
         },
         {
-          "date": "2026-09-22T13:13:00.000+08:00",
-          "open": 112.15,
-          "high": 112.15,
-          "low": 112.1,
-          "close": 112.1,
-          "volume": 129,
-          "average": 112.96
-        },
-        {
-          "date": "2026-09-22T13:14:00.000+08:00",
-          "open": 112.15,
-          "high": 112.15,
-          "low": 112.1,
-          "close": 112.1,
-          "volume": 85,
-          "average": 112.96
-        },
-        {
-          "date": "2026-09-22T13:15:00.000+08:00",
-          "open": 112.1,
-          "high": 112.15,
-          "low": 112.1,
-          "close": 112.15,
-          "volume": 98,
-          "average": 112.96
-        },
-        {
-          "date": "2026-09-22T13:16:00.000+08:00",
-          "open": 112.15,
-          "high": 112.15,
-          "low": 112.1,
-          "close": 112.15,
-          "volume": 165,
-          "average": 112.96
-        },
-        {
-          "date": "2026-09-22T13:17:00.000+08:00",
-          "open": 112.1,
-          "high": 112.15,
-          "low": 112.05,
-          "close": 112.1,
-          "volume": 412,
-          "average": 112.96
-        },
-        {
-          "date": "2026-09-22T13:18:00.000+08:00",
-          "open": 112.05,
-          "high": 112.1,
-          "low": 112,
-          "close": 112,
-          "volume": 674,
-          "average": 112.95
-        },
-        {
-          "date": "2026-09-22T13:19:00.000+08:00",
-          "open": 112,
-          "high": 112,
-          "low": 111.95,
-          "close": 111.95,
-          "volume": 292,
-          "average": 112.94
-        },
-        {
-          "date": "2026-09-22T13:20:00.000+08:00",
-          "open": 111.95,
-          "high": 112,
-          "low": 111.9,
-          "close": 111.95,
-          "volume": 208,
-          "average": 112.94
-        },
-        {
-          "date": "2026-09-22T13:21:00.000+08:00",
-          "open": 111.95,
-          "high": 112,
-          "low": 111.95,
-          "close": 112,
-          "volume": 396,
-          "average": 112.94
-        },
-        {
-          "date": "2026-09-22T13:22:00.000+08:00",
-          "open": 112,
-          "high": 112,
-          "low": 111.9,
-          "close": 111.95,
-          "volume": 449,
-          "average": 112.93
-        },
-        {
-          "date": "2026-09-22T13:23:00.000+08:00",
-          "open": 111.9,
-          "high": 111.95,
-          "low": 111.85,
-          "close": 111.85,
-          "volume": 395,
-          "average": 112.93
-        },
-        {
-          "date": "2026-09-22T13:24:00.000+08:00",
-          "open": 111.85,
-          "high": 111.9,
-          "low": 111.85,
-          "close": 111.9,
-          "volume": 195,
+          "date": "2026-09-23T09:11:00.000+08:00",
+          "open": 113.05,
+          "high": 113.1,
+          "low": 113,
+          "close": 113.05,
+          "volume": 527,
           "average": 112.92
         },
         {
-          "date": "2026-09-22T13:30:00.000+08:00",
-          "open": 111.85,
-          "high": 111.85,
-          "low": 111.85,
-          "close": 111.85,
-          "volume": 1177,
-          "average": 112.91
+          "date": "2026-09-23T09:12:00.000+08:00",
+          "open": 113.05,
+          "high": 113.1,
+          "low": 113,
+          "close": 113,
+          "volume": 500,
+          "average": 112.93
+        },
+        {
+          "date": "2026-09-23T09:13:00.000+08:00",
+          "open": 113,
+          "high": 113.1,
+          "low": 113,
+          "close": 113,
+          "volume": 800,
+          "average": 112.94
+        },
+        {
+          "date": "2026-09-23T09:14:00.000+08:00",
+          "open": 113.05,
+          "high": 113.05,
+          "low": 113,
+          "close": 113,
+          "volume": 207,
+          "average": 112.94
+        },
+        {
+          "date": "2026-09-23T09:15:00.000+08:00",
+          "open": 113.05,
+          "high": 113.1,
+          "low": 113,
+          "close": 113.05,
+          "volume": 365,
+          "average": 112.94
+        },
+        {
+          "date": "2026-09-23T09:16:00.000+08:00",
+          "open": 113.1,
+          "high": 113.1,
+          "low": 113,
+          "close": 113.05,
+          "volume": 123,
+          "average": 112.95
+        },
+        {
+          "date": "2026-09-23T09:17:00.000+08:00",
+          "open": 113.05,
+          "high": 113.1,
+          "low": 113,
+          "close": 113,
+          "volume": 729,
+          "average": 112.96
+        },
+        {
+          "date": "2026-09-23T09:18:00.000+08:00",
+          "open": 113.05,
+          "high": 113.05,
+          "low": 113,
+          "close": 113,
+          "volume": 192,
+          "average": 112.96
+        },
+        {
+          "date": "2026-09-23T09:19:00.000+08:00",
+          "open": 113.05,
+          "high": 113.05,
+          "low": 112.95,
+          "close": 113,
+          "volume": 167,
+          "average": 112.96
+        },
+        {
+          "date": "2026-09-23T09:20:00.000+08:00",
+          "open": 113,
+          "high": 113.05,
+          "low": 112.9,
+          "close": 112.95,
+          "volume": 285,
+          "average": 112.96
+        },
+        {
+          "date": "2026-09-23T09:21:00.000+08:00",
+          "open": 112.95,
+          "high": 112.95,
+          "low": 112.9,
+          "close": 112.95,
+          "volume": 160,
+          "average": 112.96
+        },
+        {
+          "date": "2026-09-23T09:22:00.000+08:00",
+          "open": 112.9,
+          "high": 112.95,
+          "low": 112.85,
+          "close": 112.9,
+          "volume": 163,
+          "average": 112.96
+        },
+        {
+          "date": "2026-09-23T09:23:00.000+08:00",
+          "open": 112.9,
+          "high": 112.95,
+          "low": 112.85,
+          "close": 112.9,
+          "volume": 203,
+          "average": 112.96
+        },
+        {
+          "date": "2026-09-23T09:24:00.000+08:00",
+          "open": 112.95,
+          "high": 112.95,
+          "low": 112.85,
+          "close": 112.85,
+          "volume": 140,
+          "average": 112.95
+        },
+        {
+          "date": "2026-09-23T09:25:00.000+08:00",
+          "open": 112.9,
+          "high": 112.95,
+          "low": 112.85,
+          "close": 112.9,
+          "volume": 355,
+          "average": 112.95
+        },
+        {
+          "date": "2026-09-23T09:26:00.000+08:00",
+          "open": 112.95,
+          "high": 112.95,
+          "low": 112.9,
+          "close": 112.95,
+          "volume": 71,
+          "average": 112.95
+        },
+        {
+          "date": "2026-09-23T09:27:00.000+08:00",
+          "open": 112.9,
+          "high": 113,
+          "low": 112.9,
+          "close": 112.95,
+          "volume": 189,
+          "average": 112.95
+        },
+        {
+          "date": "2026-09-23T09:28:00.000+08:00",
+          "open": 112.95,
+          "high": 113,
+          "low": 112.95,
+          "close": 112.95,
+          "volume": 41,
+          "average": 112.95
         }
       ],
       "latestCandle": {
-        "date": "2026-09-22T13:30:00.000+08:00",
-        "open": 111.85,
-        "high": 111.85,
-        "low": 111.85,
-        "close": 111.85,
-        "volume": 1177,
-        "average": 112.91
+        "date": "2026-09-23T09:28:00.000+08:00",
+        "open": 112.95,
+        "high": 113,
+        "low": 112.95,
+        "close": 112.95,
+        "volume": 41,
+        "average": 112.95
       },
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-22",
-        "asOf": "2026-09-21",
-        "fetchedAt": "2026-09-22T01:28:40.961Z",
-        "cacheSource": "github-cache",
+        "cacheDate": "2026-09-23",
+        "asOf": "2026-09-22",
+        "fetchedAt": "2026-09-23T01:28:39.577Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
-        "rowCount": 145,
+        "rowCount": 146,
         "projectionBase": {
           "close19Count": 19,
           "close59Count": 59,
-          "lastClose": 111.35,
-          "close19Sum": 2049.85,
-          "close59Sum": 6195.39,
-          "high19": 111.45,
-          "low19": 103.5,
-          "high59": 111.45,
+          "lastClose": 111.85,
+          "close19Sum": 2055.8,
+          "close59Sum": 6200.09,
+          "high19": 113.75,
+          "low19": 105,
+          "high59": 113.75,
           "low59": 91.8
         },
-        "ma20": 107.7125,
-        "ma60": 104.9868,
-        "ma20Slope5": 1.1075,
-        "ma60Slope5": 0.116,
-        "ma20Slope5Pct": 1.039,
-        "ma60Slope5Pct": 0.111,
-        "atr14": 1.7844,
-        "atr14PctOfClose": 1.603,
-        "avgVolume20": 75474339,
-        "avgVolume20Unit": "shares",
-        "high20": 111.45,
-        "low20": 102.4,
-        "high60": 111.45,
-        "low60": 91.8,
-        "lastSwingHigh": {
-          "date": "2026-09-08",
-          "price": 110.75
-        },
-        "lastSwingLow": {
-          "date": "2026-09-14",
-          "price": 105.85
-        }
-      },
-      "projectedDaily": {
-        "ok": true,
-        "source": "live-projected",
-        "asOf": "2026-09-22",
-        "basedOnDailyAsOf": "2026-09-21",
-        "sessionComplete": true,
-        "scaleDiffPct": 0,
         "ma20": 108.085,
         "ma60": 105.1207,
+        "ma20Slope5": 1.4125,
+        "ma60Slope5": 0.3203,
+        "ma20Slope5Pct": 1.324,
+        "ma60Slope5Pct": 0.306,
         "atr14": 1.8284,
         "atr14PctOfClose": 1.635,
+        "avgVolume20": 76631698,
+        "avgVolume20Unit": "shares",
         "high20": 113.75,
         "low20": 103.5,
         "high60": 113.75,
@@ -3252,367 +3043,355 @@
           "price": 105.85
         }
       },
-      "fugleLastUpdated": 1790055000000000,
-      "fugleLastUpdatedAt": "2026-09-22T05:30:00.000Z",
-      "sourceAgeSeconds": 103,
+      "projectedDaily": {
+        "ok": true,
+        "source": "live-projected",
+        "asOf": "2026-09-23",
+        "basedOnDailyAsOf": "2026-09-22",
+        "sessionComplete": false,
+        "scaleDiffPct": 0,
+        "ma20": 108.4375,
+        "ma60": 105.2173,
+        "atr14": 1.7907,
+        "atr14PctOfClose": 1.585,
+        "high20": 113.75,
+        "low20": 105,
+        "high60": 113.75,
+        "low60": 91.8,
+        "lastSwingHigh": {
+          "date": "2026-09-08",
+          "price": 110.75
+        },
+        "lastSwingLow": {
+          "date": "2026-09-14",
+          "price": 105.85
+        }
+      },
+      "fugleLastUpdated": 1790126919284578,
+      "fugleLastUpdatedAt": "2026-09-23T01:28:39.284Z",
+      "sourceAgeSeconds": 0,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
-      "isClose": true,
-      "fetchedAt": "2026-09-22T05:31:43.117Z"
+      "isClose": null,
+      "fetchedAt": "2026-09-23T01:28:39.677Z"
     },
     "00713": {
       "ok": true,
       "symbol": "00713",
       "name": "元大台灣高息低波",
-      "date": "2026-09-22",
-      "price": 63.7,
-      "referencePrice": 63.75,
-      "previousClose": 63.75,
-      "open": 63.8,
+      "date": "2026-09-23",
+      "price": 63.6,
+      "referencePrice": 63.7,
+      "previousClose": 63.7,
+      "open": 63.85,
       "high": 63.85,
-      "low": 63.55,
-      "change": -0.05,
-      "changePercent": -0.08,
-      "avgPrice": 63.66,
+      "low": 63.5,
+      "change": -0.1,
+      "changePercent": -0.16,
+      "avgPrice": 63.6,
       "bid": {
-        "price": 63.6,
-        "size": 4
+        "price": 63.55,
+        "size": 5
       },
       "ask": {
-        "price": 63.7,
-        "size": 205
+        "price": 63.6,
+        "size": 36
       },
-      "tradeVolume": 5106,
-      "transaction": 1014,
+      "tradeVolume": 622,
+      "transaction": 127,
       "earlyHigh": 63.85,
-      "earlyLow": 63.65,
-      "aboveAverage": true,
-      "last5Volume": 243,
-      "previous5Volume": 370,
-      "volumeAcceleration": 0.66,
-      "intradayLast5Volume": 223,
-      "intradayPrevious5Volume": 368,
-      "intradayVolumeAcceleration": 0.61,
+      "earlyLow": 63.5,
+      "aboveAverage": false,
+      "last5Volume": 71,
+      "previous5Volume": 109,
+      "volumeAcceleration": 0.65,
+      "intradayLast5Volume": 71,
+      "intradayPrevious5Volume": 109,
+      "intradayVolumeAcceleration": 0.65,
       "intradayLast5BarCount": 5,
       "intradayPrevious5BarCount": 5,
-      "intradayVolumeWindowLatestBarAt": "2026-09-22T13:24:00.000+08:00",
-      "closingAuctionVolume": 63,
-      "closingAuctionPrice": 63.7,
-      "closingAuctionDetected": true,
-      "volumeAccelerationIncludesClosingAuction": true,
+      "intradayVolumeWindowLatestBarAt": "2026-09-23T09:28:00.000+08:00",
+      "closingAuctionVolume": null,
+      "closingAuctionPrice": null,
+      "closingAuctionDetected": false,
+      "volumeAccelerationIncludesClosingAuction": false,
       "recentCandles": [
         {
-          "date": "2026-09-22T12:54:00.000+08:00",
+          "date": "2026-09-23T09:02:00.000+08:00",
+          "open": 63.85,
+          "high": 63.85,
+          "low": 63.75,
+          "close": 63.75,
+          "volume": 49,
+          "average": 63.82
+        },
+        {
+          "date": "2026-09-23T09:03:00.000+08:00",
+          "open": 63.7,
+          "high": 63.75,
+          "low": 63.7,
+          "close": 63.75,
+          "volume": 20,
+          "average": 63.79
+        },
+        {
+          "date": "2026-09-23T09:04:00.000+08:00",
+          "open": 63.7,
+          "high": 63.75,
+          "low": 63.7,
+          "close": 63.7,
+          "volume": 19,
+          "average": 63.78
+        },
+        {
+          "date": "2026-09-23T09:05:00.000+08:00",
+          "open": 63.7,
+          "high": 63.7,
+          "low": 63.65,
+          "close": 63.7,
+          "volume": 6,
+          "average": 63.77
+        },
+        {
+          "date": "2026-09-23T09:06:00.000+08:00",
+          "open": 63.7,
+          "high": 63.75,
+          "low": 63.65,
+          "close": 63.65,
+          "volume": 15,
+          "average": 63.76
+        },
+        {
+          "date": "2026-09-23T09:07:00.000+08:00",
+          "open": 63.65,
+          "high": 63.65,
+          "low": 63.65,
+          "close": 63.65,
+          "volume": 1,
+          "average": 63.76
+        },
+        {
+          "date": "2026-09-23T09:09:00.000+08:00",
+          "open": 63.65,
+          "high": 63.65,
+          "low": 63.6,
+          "close": 63.65,
+          "volume": 41,
+          "average": 63.72
+        },
+        {
+          "date": "2026-09-23T09:10:00.000+08:00",
+          "open": 63.65,
+          "high": 63.7,
+          "low": 63.65,
+          "close": 63.65,
+          "volume": 31,
+          "average": 63.71
+        },
+        {
+          "date": "2026-09-23T09:11:00.000+08:00",
+          "open": 63.7,
+          "high": 63.7,
+          "low": 63.6,
+          "close": 63.6,
+          "volume": 12,
+          "average": 63.71
+        },
+        {
+          "date": "2026-09-23T09:12:00.000+08:00",
+          "open": 63.6,
+          "high": 63.7,
+          "low": 63.55,
+          "close": 63.7,
+          "volume": 41,
+          "average": 63.69
+        },
+        {
+          "date": "2026-09-23T09:13:00.000+08:00",
+          "open": 63.6,
+          "high": 63.65,
+          "low": 63.55,
+          "close": 63.65,
+          "volume": 14,
+          "average": 63.68
+        },
+        {
+          "date": "2026-09-23T09:14:00.000+08:00",
           "open": 63.6,
           "high": 63.6,
           "low": 63.55,
           "close": 63.55,
-          "volume": 3,
-          "average": 63.67
-        },
-        {
-          "date": "2026-09-22T12:57:00.000+08:00",
-          "open": 63.65,
-          "high": 63.65,
-          "low": 63.6,
-          "close": 63.6,
-          "volume": 33,
-          "average": 63.67
-        },
-        {
-          "date": "2026-09-22T12:58:00.000+08:00",
-          "open": 63.6,
-          "high": 63.65,
-          "low": 63.6,
-          "close": 63.65,
           "volume": 41,
           "average": 63.67
         },
         {
-          "date": "2026-09-22T12:59:00.000+08:00",
-          "open": 63.65,
-          "high": 63.65,
-          "low": 63.65,
-          "close": 63.65,
-          "volume": 32,
-          "average": 63.67
-        },
-        {
-          "date": "2026-09-22T13:00:00.000+08:00",
+          "date": "2026-09-23T09:15:00.000+08:00",
           "open": 63.6,
-          "high": 63.65,
+          "high": 63.6,
           "low": 63.6,
-          "close": 63.65,
-          "volume": 34,
-          "average": 63.67
+          "close": 63.6,
+          "volume": 7,
+          "average": 63.66
         },
         {
-          "date": "2026-09-22T13:01:00.000+08:00",
-          "open": 63.65,
-          "high": 63.65,
-          "low": 63.65,
-          "close": 63.65,
-          "volume": 32,
-          "average": 63.67
+          "date": "2026-09-23T09:16:00.000+08:00",
+          "open": 63.6,
+          "high": 63.6,
+          "low": 63.5,
+          "close": 63.5,
+          "volume": 18,
+          "average": 63.66
         },
         {
-          "date": "2026-09-22T13:02:00.000+08:00",
-          "open": 63.65,
-          "high": 63.65,
-          "low": 63.65,
-          "close": 63.65,
-          "volume": 34,
-          "average": 63.67
-        },
-        {
-          "date": "2026-09-22T13:03:00.000+08:00",
-          "open": 63.65,
-          "high": 63.65,
-          "low": 63.65,
-          "close": 63.65,
-          "volume": 36,
-          "average": 63.67
-        },
-        {
-          "date": "2026-09-22T13:04:00.000+08:00",
-          "open": 63.65,
-          "high": 63.65,
-          "low": 63.6,
-          "close": 63.65,
+          "date": "2026-09-23T09:17:00.000+08:00",
+          "open": 63.55,
+          "high": 63.55,
+          "low": 63.5,
+          "close": 63.5,
           "volume": 39,
-          "average": 63.67
+          "average": 63.64
         },
         {
-          "date": "2026-09-22T13:05:00.000+08:00",
-          "open": 63.65,
-          "high": 63.65,
-          "low": 63.65,
-          "close": 63.65,
-          "volume": 30,
-          "average": 63.67
+          "date": "2026-09-23T09:18:00.000+08:00",
+          "open": 63.5,
+          "high": 63.55,
+          "low": 63.5,
+          "close": 63.55,
+          "volume": 88,
+          "average": 63.61
         },
         {
-          "date": "2026-09-22T13:06:00.000+08:00",
-          "open": 63.65,
-          "high": 63.65,
-          "low": 63.65,
-          "close": 63.65,
-          "volume": 41,
-          "average": 63.67
+          "date": "2026-09-23T09:19:00.000+08:00",
+          "open": 63.5,
+          "high": 63.55,
+          "low": 63.5,
+          "close": 63.55,
+          "volume": 20,
+          "average": 63.61
         },
         {
-          "date": "2026-09-22T13:07:00.000+08:00",
-          "open": 63.65,
-          "high": 63.65,
-          "low": 63.65,
-          "close": 63.65,
-          "volume": 35,
-          "average": 63.67
-        },
-        {
-          "date": "2026-09-22T13:08:00.000+08:00",
-          "open": 63.65,
-          "high": 63.65,
-          "low": 63.6,
-          "close": 63.65,
-          "volume": 90,
-          "average": 63.67
-        },
-        {
-          "date": "2026-09-22T13:09:00.000+08:00",
-          "open": 63.65,
-          "high": 63.65,
-          "low": 63.6,
-          "close": 63.65,
-          "volume": 34,
-          "average": 63.67
-        },
-        {
-          "date": "2026-09-22T13:10:00.000+08:00",
-          "open": 63.6,
-          "high": 63.65,
+          "date": "2026-09-23T09:20:00.000+08:00",
+          "open": 63.55,
+          "high": 63.6,
           "low": 63.55,
-          "close": 63.65,
-          "volume": 62,
-          "average": 63.67
-        },
-        {
-          "date": "2026-09-22T13:11:00.000+08:00",
-          "open": 63.65,
-          "high": 63.65,
-          "low": 63.55,
-          "close": 63.65,
-          "volume": 49,
-          "average": 63.67
-        },
-        {
-          "date": "2026-09-22T13:12:00.000+08:00",
-          "open": 63.65,
-          "high": 63.65,
-          "low": 63.6,
-          "close": 63.65,
-          "volume": 37,
-          "average": 63.67
-        },
-        {
-          "date": "2026-09-22T13:13:00.000+08:00",
-          "open": 63.6,
-          "high": 63.65,
-          "low": 63.6,
-          "close": 63.65,
-          "volume": 45,
-          "average": 63.66
-        },
-        {
-          "date": "2026-09-22T13:14:00.000+08:00",
-          "open": 63.65,
-          "high": 63.65,
-          "low": 63.6,
-          "close": 63.65,
-          "volume": 34,
-          "average": 63.66
-        },
-        {
-          "date": "2026-09-22T13:15:00.000+08:00",
-          "open": 63.65,
-          "high": 63.65,
-          "low": 63.6,
-          "close": 63.65,
-          "volume": 41,
-          "average": 63.66
-        },
-        {
-          "date": "2026-09-22T13:16:00.000+08:00",
-          "open": 63.65,
-          "high": 63.65,
-          "low": 63.6,
           "close": 63.6,
-          "volume": 53,
-          "average": 63.66
+          "volume": 15,
+          "average": 63.61
         },
         {
-          "date": "2026-09-22T13:17:00.000+08:00",
+          "date": "2026-09-23T09:21:00.000+08:00",
           "open": 63.6,
+          "high": 63.6,
+          "low": 63.55,
+          "close": 63.55,
+          "volume": 12,
+          "average": 63.61
+        },
+        {
+          "date": "2026-09-23T09:22:00.000+08:00",
+          "open": 63.55,
+          "high": 63.6,
+          "low": 63.55,
+          "close": 63.6,
+          "volume": 11,
+          "average": 63.61
+        },
+        {
+          "date": "2026-09-23T09:23:00.000+08:00",
+          "open": 63.55,
           "high": 63.6,
           "low": 63.55,
           "close": 63.6,
           "volume": 51,
-          "average": 63.66
+          "average": 63.61
         },
         {
-          "date": "2026-09-22T13:18:00.000+08:00",
+          "date": "2026-09-23T09:24:00.000+08:00",
+          "open": 63.55,
+          "high": 63.6,
+          "low": 63.55,
+          "close": 63.6,
+          "volume": 14,
+          "average": 63.61
+        },
+        {
+          "date": "2026-09-23T09:25:00.000+08:00",
+          "open": 63.6,
+          "high": 63.6,
+          "low": 63.55,
+          "close": 63.55,
+          "volume": 13,
+          "average": 63.61
+        },
+        {
+          "date": "2026-09-23T09:26:00.000+08:00",
+          "open": 63.55,
+          "high": 63.6,
+          "low": 63.55,
+          "close": 63.55,
+          "volume": 24,
+          "average": 63.6
+        },
+        {
+          "date": "2026-09-23T09:27:00.000+08:00",
+          "open": 63.55,
+          "high": 63.6,
+          "low": 63.55,
+          "close": 63.55,
+          "volume": 9,
+          "average": 63.6
+        },
+        {
+          "date": "2026-09-23T09:28:00.000+08:00",
           "open": 63.6,
           "high": 63.6,
           "low": 63.6,
           "close": 63.6,
-          "volume": 33,
-          "average": 63.66
-        },
-        {
-          "date": "2026-09-22T13:19:00.000+08:00",
-          "open": 63.6,
-          "high": 63.6,
-          "low": 63.55,
-          "close": 63.6,
-          "volume": 190,
-          "average": 63.66
-        },
-        {
-          "date": "2026-09-22T13:20:00.000+08:00",
-          "open": 63.6,
-          "high": 63.6,
-          "low": 63.55,
-          "close": 63.6,
-          "volume": 43,
-          "average": 63.66
-        },
-        {
-          "date": "2026-09-22T13:21:00.000+08:00",
-          "open": 63.6,
-          "high": 63.6,
-          "low": 63.6,
-          "close": 63.6,
-          "volume": 36,
-          "average": 63.66
-        },
-        {
-          "date": "2026-09-22T13:22:00.000+08:00",
-          "open": 63.6,
-          "high": 63.6,
-          "low": 63.6,
-          "close": 63.6,
-          "volume": 40,
-          "average": 63.66
-        },
-        {
-          "date": "2026-09-22T13:23:00.000+08:00",
-          "open": 63.6,
-          "high": 63.6,
-          "low": 63.55,
-          "close": 63.6,
-          "volume": 53,
-          "average": 63.66
-        },
-        {
-          "date": "2026-09-22T13:24:00.000+08:00",
-          "open": 63.6,
-          "high": 63.6,
-          "low": 63.55,
-          "close": 63.6,
-          "volume": 51,
-          "average": 63.66
-        },
-        {
-          "date": "2026-09-22T13:30:00.000+08:00",
-          "open": 63.7,
-          "high": 63.7,
-          "low": 63.7,
-          "close": 63.7,
-          "volume": 63,
-          "average": 63.66
+          "volume": 11,
+          "average": 63.6
         }
       ],
       "latestCandle": {
-        "date": "2026-09-22T13:30:00.000+08:00",
-        "open": 63.7,
-        "high": 63.7,
-        "low": 63.7,
-        "close": 63.7,
-        "volume": 63,
-        "average": 63.66
+        "date": "2026-09-23T09:28:00.000+08:00",
+        "open": 63.6,
+        "high": 63.6,
+        "low": 63.6,
+        "close": 63.6,
+        "volume": 11,
+        "average": 63.6
       },
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-22",
-        "asOf": "2026-09-21",
-        "fetchedAt": "2026-09-22T01:28:40.946Z",
-        "cacheSource": "github-cache",
+        "cacheDate": "2026-09-23",
+        "asOf": "2026-09-22",
+        "fetchedAt": "2026-09-23T01:28:39.865Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
-        "rowCount": 145,
+        "rowCount": 146,
         "projectionBase": {
           "close19Count": 19,
           "close59Count": 59,
-          "lastClose": 63.75,
-          "close19Sum": 1181.56,
-          "close59Sum": 3565.59,
+          "lastClose": 63.7,
+          "close19Sum": 1184.79,
+          "close59Sum": 3570.25,
           "high19": 63.95,
           "low19": 60.17,
           "high59": 63.95,
           "low59": 58.16
         },
-        "ma20": 62.1015,
-        "ma60": 60.4073,
-        "ma20Slope5": 0.887,
-        "ma60Slope5": 0.3507,
-        "ma20Slope5Pct": 1.449,
-        "ma60Slope5Pct": 0.584,
-        "atr14": 0.5384,
-        "atr14PctOfClose": 0.845,
-        "avgVolume20": 4892400,
+        "ma20": 62.263,
+        "ma60": 60.4882,
+        "ma20Slope5": 0.872,
+        "ma60Slope5": 0.375,
+        "ma20Slope5Pct": 1.42,
+        "ma60Slope5Pct": 0.624,
+        "atr14": 0.5214,
+        "atr14PctOfClose": 0.818,
+        "avgVolume20": 4743395,
         "avgVolume20Unit": "shares",
         "high20": 63.95,
-        "low20": 60.12,
+        "low20": 60.17,
         "high60": 63.95,
         "low60": 58.16,
         "lastSwingHigh": {
@@ -3627,14 +3406,14 @@
       "projectedDaily": {
         "ok": true,
         "source": "live-projected",
-        "asOf": "2026-09-22",
-        "basedOnDailyAsOf": "2026-09-21",
-        "sessionComplete": true,
+        "asOf": "2026-09-23",
+        "basedOnDailyAsOf": "2026-09-22",
+        "sessionComplete": false,
         "scaleDiffPct": 0,
-        "ma20": 62.263,
-        "ma60": 60.4882,
-        "atr14": 0.5214,
-        "atr14PctOfClose": 0.818,
+        "ma20": 62.4195,
+        "ma60": 60.5642,
+        "atr14": 0.5092,
+        "atr14PctOfClose": 0.801,
         "high20": 63.95,
         "low20": 60.17,
         "high60": 63.95,
@@ -3648,13 +3427,13 @@
           "price": 62.13
         }
       },
-      "fugleLastUpdated": 1790055000000000,
-      "fugleLastUpdatedAt": "2026-09-22T05:30:00.000Z",
-      "sourceAgeSeconds": 103,
+      "fugleLastUpdated": 1790126912631220,
+      "fugleLastUpdatedAt": "2026-09-23T01:28:32.631Z",
+      "sourceAgeSeconds": 7,
       "sourceFreshWithin7m": true,
       "quoteDateMatchesTaipeiDate": true,
-      "isClose": true,
-      "fetchedAt": "2026-09-22T05:31:43.117Z"
+      "isClose": null,
+      "fetchedAt": "2026-09-23T01:28:39.872Z"
     }
   }
 }
