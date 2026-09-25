@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-09-24T05:31:56.409Z",
+  "updatedAt": "2026-09-25T01:28:40.056Z",
   "source": "Fugle Market Data API",
   "bridgeVersion": "3.2.3",
   "triggerContext": {
-    "cron": "31 5 * * MON-FRI",
-    "scheduledTime": "2026-09-24T05:31:34.000Z"
+    "cron": "28 1 * * MON-FRI",
+    "scheduledTime": "2026-09-25T01:28:34.000Z"
   },
   "market": "TW",
   "watchlist": [
@@ -63,30 +63,52 @@
   "symbolCount": 9,
   "dailyContext": {
     "version": 2,
-    "cacheDate": "2026-09-24",
+    "cacheDate": "2026-09-25",
     "historicalAdjusted": true,
-    "staleAtStart": 0,
+    "staleAtStart": 9,
     "refreshBudget": 8,
-    "refreshAttempted": [],
-    "refreshedThisRun": [],
-    "remainingAfterRun": 0,
-    "pendingSymbols": [],
+    "refreshAttempted": [
+      "0050",
+      "00713",
+      "2303",
+      "2308",
+      "2330",
+      "2357",
+      "2408",
+      "2454"
+    ],
+    "refreshedThisRun": [
+      "0050",
+      "00713",
+      "2303",
+      "2308",
+      "2330",
+      "2357",
+      "2408",
+      "2454"
+    ],
+    "remainingAfterRun": 1,
+    "pendingSymbols": [
+      "6757"
+    ],
     "note": "Daily indicators use completed historical daily candles and are cached through the previous GitHub snapshot for the same Taipei calendar date. projectedDaily combines that prior completed-day background with the current live session without an extra historical subrequest."
   },
   "health": {
-    "status": "ok",
+    "status": "market-closed-or-stale",
     "okSymbolCount": 9,
     "failedSymbols": [],
     "staleSymbols": [],
     "watchlistTruncated": false,
     "omittedSymbols": [],
-    "currentDateSymbolCount": 9,
-    "currentDateSymbolRatio": 1,
-    "currentTradingDateLikely": true,
-    "freshWithin7mSymbolCount": 9,
-    "freshWithin7mSymbolRatio": 1,
-    "dailyPendingCount": 0,
-    "dailyPendingSymbols": [],
+    "currentDateSymbolCount": 0,
+    "currentDateSymbolRatio": 0,
+    "currentTradingDateLikely": false,
+    "freshWithin7mSymbolCount": 0,
+    "freshWithin7mSymbolRatio": 0,
+    "dailyPendingCount": 1,
+    "dailyPendingSymbols": [
+      "6757"
+    ],
     "externalSubrequestLimit": 50,
     "subrequestSafetyMargin": 1,
     "watchlistMax": 20
@@ -416,40 +438,40 @@
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-24",
-        "asOf": "2026-09-23",
-        "fetchedAt": "2026-09-24T01:28:42.066Z",
-        "cacheSource": "github-cache",
+        "cacheDate": "2026-09-25",
+        "asOf": "2026-09-24",
+        "fetchedAt": "2026-09-25T01:28:38.643Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
-        "rowCount": 147,
+        "rowCount": 148,
         "projectionBase": {
           "close19Count": 19,
           "close59Count": 59,
-          "lastClose": 160,
-          "close19Sum": 2680.5,
-          "close59Sum": 7951.95,
+          "lastClose": 154,
+          "close19Sum": 2704.5,
+          "close59Sum": 7943.23,
           "high19": 168.5,
-          "low19": 120,
+          "low19": 123,
           "high59": 168.61,
           "low59": 102.5
         },
-        "ma20": 139.95,
-        "ma60": 135.3018,
-        "ma20Slope5": 8.825,
-        "ma60Slope5": -0.9035,
-        "ma20Slope5Pct": 6.73,
-        "ma60Slope5Pct": -0.663,
-        "atr14": 7.4823,
-        "atr14PctOfClose": 4.676,
-        "avgVolume20": 200367409,
+        "ma20": 141.725,
+        "ma60": 135.0992,
+        "ma20Slope5": 9,
+        "ma60Slope5": -0.6478,
+        "ma20Slope5Pct": 6.781,
+        "ma60Slope5Pct": -0.477,
+        "atr14": 7.5193,
+        "atr14PctOfClose": 4.883,
+        "avgVolume20": 199017257,
         "avgVolume20Unit": "shares",
         "high20": 168.5,
-        "low20": 117,
-        "high60": 170.09,
+        "low20": 120,
+        "high60": 168.61,
         "low60": 102.5,
         "lastSwingHigh": {
-          "date": "2026-09-10",
-          "price": 145.5
+          "date": "2026-09-22",
+          "price": 168.5
         },
         "lastSwingLow": {
           "date": "2026-09-14",
@@ -457,36 +479,18 @@
         }
       },
       "projectedDaily": {
-        "ok": true,
-        "source": "live-projected",
-        "asOf": "2026-09-24",
-        "basedOnDailyAsOf": "2026-09-23",
-        "sessionComplete": true,
-        "scaleDiffPct": 0,
-        "ma20": 141.725,
-        "ma60": 135.0992,
-        "atr14": 7.5193,
-        "atr14PctOfClose": 4.883,
-        "high20": 168.5,
-        "low20": 120,
-        "high60": 168.61,
-        "low60": 102.5,
-        "lastSwingHigh": {
-          "date": "2026-09-10",
-          "price": 145.5
-        },
-        "lastSwingLow": {
-          "date": "2026-09-14",
-          "price": 135
-        }
+        "ok": false,
+        "reason": "quote-date-not-current",
+        "quoteDate": "2026-09-24",
+        "expectedDate": "2026-09-25"
       },
       "fugleLastUpdated": 1790227800000000,
       "fugleLastUpdatedAt": "2026-09-24T05:30:00.000Z",
-      "sourceAgeSeconds": 116,
-      "sourceFreshWithin7m": true,
-      "quoteDateMatchesTaipeiDate": true,
+      "sourceAgeSeconds": 71919,
+      "sourceFreshWithin7m": false,
+      "quoteDateMatchesTaipeiDate": false,
       "isClose": true,
-      "fetchedAt": "2026-09-24T05:31:55.542Z"
+      "fetchedAt": "2026-09-25T01:28:38.643Z"
     },
     "2308": {
       "ok": true,
@@ -812,40 +816,40 @@
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-24",
-        "asOf": "2026-09-23",
-        "fetchedAt": "2026-09-24T01:28:42.072Z",
-        "cacheSource": "github-cache",
+        "cacheDate": "2026-09-25",
+        "asOf": "2026-09-24",
+        "fetchedAt": "2026-09-25T01:28:38.360Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
-        "rowCount": 147,
+        "rowCount": 148,
         "projectionBase": {
           "close19Count": 19,
           "close59Count": 59,
-          "lastClose": 1900,
-          "close19Sum": 33690,
-          "close59Sum": 105040,
+          "lastClose": 1910,
+          "close19Sum": 33770,
+          "close59Sum": 104980,
           "high19": 1965,
           "low19": 1560,
           "high59": 2135,
           "low59": 1425
         },
-        "ma20": 1773,
-        "ma60": 1783.8333,
-        "ma20Slope5": 20.25,
-        "ma60Slope5": -9.1667,
-        "ma20Slope5Pct": 1.155,
-        "ma60Slope5Pct": -0.511,
-        "atr14": 86.5212,
-        "atr14PctOfClose": 4.554,
-        "avgVolume20": 11916525,
+        "ma20": 1780,
+        "ma60": 1782.5,
+        "ma20Slope5": 30.25,
+        "ma60Slope5": -5.25,
+        "ma20Slope5Pct": 1.729,
+        "ma60Slope5Pct": -0.294,
+        "atr14": 84.6268,
+        "atr14PctOfClose": 4.431,
+        "avgVolume20": 11921896,
         "avgVolume20Unit": "shares",
         "high20": 1965,
         "low20": 1560,
         "high60": 2135,
         "low60": 1425,
         "lastSwingHigh": {
-          "date": "2026-09-07",
-          "price": 1885
+          "date": "2026-09-22",
+          "price": 1965
         },
         "lastSwingLow": {
           "date": "2026-09-14",
@@ -853,36 +857,18 @@
         }
       },
       "projectedDaily": {
-        "ok": true,
-        "source": "live-projected",
-        "asOf": "2026-09-24",
-        "basedOnDailyAsOf": "2026-09-23",
-        "sessionComplete": true,
-        "scaleDiffPct": 0,
-        "ma20": 1780,
-        "ma60": 1782.5,
-        "atr14": 84.6268,
-        "atr14PctOfClose": 4.431,
-        "high20": 1965,
-        "low20": 1560,
-        "high60": 2135,
-        "low60": 1425,
-        "lastSwingHigh": {
-          "date": "2026-09-07",
-          "price": 1885
-        },
-        "lastSwingLow": {
-          "date": "2026-09-14",
-          "price": 1560
-        }
+        "ok": false,
+        "reason": "quote-date-not-current",
+        "quoteDate": "2026-09-24",
+        "expectedDate": "2026-09-25"
       },
       "fugleLastUpdated": 1790227800000000,
       "fugleLastUpdatedAt": "2026-09-24T05:30:00.000Z",
-      "sourceAgeSeconds": 116,
-      "sourceFreshWithin7m": true,
-      "quoteDateMatchesTaipeiDate": true,
+      "sourceAgeSeconds": 71918,
+      "sourceFreshWithin7m": false,
+      "quoteDateMatchesTaipeiDate": false,
       "isClose": true,
-      "fetchedAt": "2026-09-24T05:31:55.542Z"
+      "fetchedAt": "2026-09-25T01:28:38.360Z"
     },
     "2330": {
       "ok": true,
@@ -1208,40 +1194,40 @@
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-24",
-        "asOf": "2026-09-23",
-        "fetchedAt": "2026-09-24T01:28:42.372Z",
-        "cacheSource": "github-cache",
+        "cacheDate": "2026-09-25",
+        "asOf": "2026-09-24",
+        "fetchedAt": "2026-09-25T01:28:38.938Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
-        "rowCount": 147,
+        "rowCount": 148,
         "projectionBase": {
           "close19Count": 19,
           "close59Count": 59,
-          "lastClose": 2500,
-          "close19Sum": 46082.65,
-          "close59Sum": 141262.47,
+          "lastClose": 2475,
+          "close19Sum": 46144.75,
+          "close59Sum": 141279.7,
           "high19": 2510,
           "low19": 2368.03,
           "high59": 2510,
           "low59": 2173.6
         },
-        "ma20": 2424.279,
-        "ma60": 2396.002,
-        "ma20Slope5": 19.257,
-        "ma60Slope5": 7.6653,
-        "ma20Slope5Pct": 0.801,
-        "ma60Slope5Pct": 0.321,
-        "atr14": 41.8673,
-        "atr14PctOfClose": 1.675,
-        "avgVolume20": 22228505,
+        "ma20": 2427.8825,
+        "ma60": 2395.6245,
+        "ma20Slope5": 20.012,
+        "ma60Slope5": 6.5877,
+        "ma20Slope5Pct": 0.831,
+        "ma60Slope5Pct": 0.276,
+        "atr14": 41.0196,
+        "atr14PctOfClose": 1.657,
+        "avgVolume20": 21995664,
         "avgVolume20Unit": "shares",
         "high20": 2510,
         "low20": 2368.03,
         "high60": 2510,
         "low60": 2173.6,
         "lastSwingHigh": {
-          "date": "2026-09-08",
-          "price": 2497.65
+          "date": "2026-09-22",
+          "price": 2510
         },
         "lastSwingLow": {
           "date": "2026-09-14",
@@ -1249,36 +1235,18 @@
         }
       },
       "projectedDaily": {
-        "ok": true,
-        "source": "live-projected",
-        "asOf": "2026-09-24",
-        "basedOnDailyAsOf": "2026-09-23",
-        "sessionComplete": true,
-        "scaleDiffPct": 0,
-        "ma20": 2427.8825,
-        "ma60": 2395.6245,
-        "atr14": 41.0196,
-        "atr14PctOfClose": 1.657,
-        "high20": 2510,
-        "low20": 2368.03,
-        "high60": 2510,
-        "low60": 2173.6,
-        "lastSwingHigh": {
-          "date": "2026-09-08",
-          "price": 2497.65
-        },
-        "lastSwingLow": {
-          "date": "2026-09-14",
-          "price": 2373.01
-        }
+        "ok": false,
+        "reason": "quote-date-not-current",
+        "quoteDate": "2026-09-24",
+        "expectedDate": "2026-09-25"
       },
       "fugleLastUpdated": 1790227800000000,
       "fugleLastUpdatedAt": "2026-09-24T05:30:00.000Z",
-      "sourceAgeSeconds": 116,
-      "sourceFreshWithin7m": true,
-      "quoteDateMatchesTaipeiDate": true,
+      "sourceAgeSeconds": 71919,
+      "sourceFreshWithin7m": false,
+      "quoteDateMatchesTaipeiDate": false,
       "isClose": true,
-      "fetchedAt": "2026-09-24T05:31:55.830Z"
+      "fetchedAt": "2026-09-25T01:28:38.938Z"
     },
     "2357": {
       "ok": true,
@@ -1604,57 +1572,33 @@
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-24",
-        "asOf": "2026-09-23",
-        "fetchedAt": "2026-09-24T01:28:42.645Z",
-        "cacheSource": "github-cache",
+        "cacheDate": "2026-09-25",
+        "asOf": "2026-09-24",
+        "fetchedAt": "2026-09-25T01:28:38.936Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
-        "rowCount": 147,
+        "rowCount": 148,
         "projectionBase": {
           "close19Count": 19,
           "close59Count": 59,
-          "lastClose": 958,
-          "close19Sum": 18405,
-          "close59Sum": 50433,
+          "lastClose": 953,
+          "close19Sum": 18393,
+          "close59Sum": 50719,
           "high19": 1030,
           "low19": 900,
           "high59": 1030,
-          "low59": 642
+          "low59": 657
         },
-        "ma20": 968.65,
-        "ma60": 851.5,
-        "ma20Slope5": 5.6,
-        "ma60Slope5": 22.6563,
-        "ma20Slope5Pct": 0.581,
-        "ma60Slope5Pct": 2.733,
-        "atr14": 32.4982,
-        "atr14PctOfClose": 3.392,
-        "avgVolume20": 3370848,
-        "avgVolume20Unit": "shares",
-        "high20": 1030,
-        "low20": 900,
-        "high60": 1030,
-        "low60": 635,
-        "lastSwingHigh": {
-          "date": "2026-09-21",
-          "price": 973
-        },
-        "lastSwingLow": {
-          "date": "2026-09-14",
-          "price": 900
-        }
-      },
-      "projectedDaily": {
-        "ok": true,
-        "source": "live-projected",
-        "asOf": "2026-09-24",
-        "basedOnDailyAsOf": "2026-09-23",
-        "sessionComplete": true,
-        "scaleDiffPct": 0,
         "ma20": 967.9,
         "ma60": 856.4333,
+        "ma20Slope5": 3.1,
+        "ma60Slope5": 23.8687,
+        "ma20Slope5Pct": 0.321,
+        "ma60Slope5Pct": 2.867,
         "atr14": 31.1769,
         "atr14PctOfClose": 3.271,
+        "avgVolume20": 3348731,
+        "avgVolume20Unit": "shares",
         "high20": 1030,
         "low20": 900,
         "high60": 1030,
@@ -1664,17 +1608,23 @@
           "price": 973
         },
         "lastSwingLow": {
-          "date": "2026-09-14",
-          "price": 900
+          "date": "2026-09-22",
+          "price": 942
         }
+      },
+      "projectedDaily": {
+        "ok": false,
+        "reason": "quote-date-not-current",
+        "quoteDate": "2026-09-24",
+        "expectedDate": "2026-09-25"
       },
       "fugleLastUpdated": 1790227800000000,
       "fugleLastUpdatedAt": "2026-09-24T05:30:00.000Z",
-      "sourceAgeSeconds": 116,
-      "sourceFreshWithin7m": true,
-      "quoteDateMatchesTaipeiDate": true,
+      "sourceAgeSeconds": 71919,
+      "sourceFreshWithin7m": false,
+      "quoteDateMatchesTaipeiDate": false,
       "isClose": true,
-      "fetchedAt": "2026-09-24T05:31:55.832Z"
+      "fetchedAt": "2026-09-25T01:28:39.203Z"
     },
     "2408": {
       "ok": true,
@@ -2000,40 +1950,40 @@
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-24",
-        "asOf": "2026-09-23",
-        "fetchedAt": "2026-09-24T01:28:42.941Z",
-        "cacheSource": "github-cache",
+        "cacheDate": "2026-09-25",
+        "asOf": "2026-09-24",
+        "fetchedAt": "2026-09-25T01:28:39.494Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
-        "rowCount": 147,
+        "rowCount": 148,
         "projectionBase": {
           "close19Count": 19,
           "close59Count": 59,
-          "lastClose": 515,
-          "close19Sum": 9643.5,
-          "close59Sum": 27553.54,
-          "high19": 569,
+          "lastClose": 503,
+          "close19Sum": 9606.5,
+          "close59Sum": 27650.84,
+          "high19": 558,
           "low19": 465.5,
           "high59": 569,
           "low59": 322
         },
-        "ma20": 509.225,
-        "ma60": 466.2198,
-        "ma20Slope5": -1.6,
-        "ma60Slope5": 4.5548,
-        "ma20Slope5Pct": -0.313,
-        "ma60Slope5Pct": 0.987,
-        "atr14": 28.1501,
-        "atr14PctOfClose": 5.466,
-        "avgVolume20": 67125062,
+        "ma20": 507.325,
+        "ma60": 467.609,
+        "ma20Slope5": -2.05,
+        "ma60Slope5": 5.1787,
+        "ma20Slope5Pct": -0.402,
+        "ma60Slope5Pct": 1.12,
+        "atr14": 27.5679,
+        "atr14PctOfClose": 5.481,
+        "avgVolume20": 64760510,
         "avgVolume20Unit": "shares",
         "high20": 569,
         "low20": 465.5,
         "high60": 569,
         "low60": 322,
         "lastSwingHigh": {
-          "date": "2026-09-08",
-          "price": 540
+          "date": "2026-09-22",
+          "price": 533
         },
         "lastSwingLow": {
           "date": "2026-09-15",
@@ -2041,36 +1991,18 @@
         }
       },
       "projectedDaily": {
-        "ok": true,
-        "source": "live-projected",
-        "asOf": "2026-09-24",
-        "basedOnDailyAsOf": "2026-09-23",
-        "sessionComplete": true,
-        "scaleDiffPct": 0,
-        "ma20": 507.325,
-        "ma60": 467.609,
-        "atr14": 27.568,
-        "atr14PctOfClose": 5.481,
-        "high20": 569,
-        "low20": 465.5,
-        "high60": 569,
-        "low60": 322,
-        "lastSwingHigh": {
-          "date": "2026-09-08",
-          "price": 540
-        },
-        "lastSwingLow": {
-          "date": "2026-09-15",
-          "price": 465.5
-        }
+        "ok": false,
+        "reason": "quote-date-not-current",
+        "quoteDate": "2026-09-24",
+        "expectedDate": "2026-09-25"
       },
       "fugleLastUpdated": 1790227800000000,
       "fugleLastUpdatedAt": "2026-09-24T05:30:00.000Z",
-      "sourceAgeSeconds": 116,
-      "sourceFreshWithin7m": true,
-      "quoteDateMatchesTaipeiDate": true,
+      "sourceAgeSeconds": 71919,
+      "sourceFreshWithin7m": false,
+      "quoteDateMatchesTaipeiDate": false,
       "isClose": true,
-      "fetchedAt": "2026-09-24T05:31:56.118Z"
+      "fetchedAt": "2026-09-25T01:28:39.494Z"
     },
     "2454": {
       "ok": true,
@@ -2396,40 +2328,40 @@
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-24",
-        "asOf": "2026-09-23",
-        "fetchedAt": "2026-09-24T01:28:42.942Z",
-        "cacheSource": "github-cache",
+        "cacheDate": "2026-09-25",
+        "asOf": "2026-09-24",
+        "fetchedAt": "2026-09-25T01:28:39.777Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
-        "rowCount": 147,
+        "rowCount": 148,
         "projectionBase": {
           "close19Count": 19,
           "close59Count": 59,
-          "lastClose": 5185,
-          "close19Sum": 86760,
-          "close59Sum": 239619.77,
+          "lastClose": 5285,
+          "close19Sum": 88060,
+          "close59Sum": 240585.58,
           "high19": 5480,
           "low19": 3820,
           "high59": 5480,
           "low59": 2990
         },
-        "ma20": 4531.25,
-        "ma60": 4065.4837,
-        "ma20Slope5": 282.5,
-        "ma60Slope5": 67.9588,
-        "ma20Slope5Pct": 6.649,
-        "ma60Slope5Pct": 1.7,
-        "atr14": 226.2097,
-        "atr14PctOfClose": 4.363,
-        "avgVolume20": 8701423,
+        "ma20": 4602.25,
+        "ma60": 4081.7462,
+        "ma20Slope5": 313.5,
+        "ma60Slope5": 80.2138,
+        "ma20Slope5Pct": 7.31,
+        "ma60Slope5Pct": 2.005,
+        "atr14": 228.2661,
+        "atr14PctOfClose": 4.319,
+        "avgVolume20": 8807150,
         "avgVolume20Unit": "shares",
         "high20": 5480,
         "low20": 3820,
         "high60": 5480,
         "low60": 2990,
         "lastSwingHigh": {
-          "date": "2026-09-07",
-          "price": 4855
+          "date": "2026-09-22",
+          "price": 5480
         },
         "lastSwingLow": {
           "date": "2026-09-15",
@@ -2437,36 +2369,18 @@
         }
       },
       "projectedDaily": {
-        "ok": true,
-        "source": "live-projected",
-        "asOf": "2026-09-24",
-        "basedOnDailyAsOf": "2026-09-23",
-        "sessionComplete": true,
-        "scaleDiffPct": 0,
-        "ma20": 4602.25,
-        "ma60": 4081.7462,
-        "atr14": 228.2662,
-        "atr14PctOfClose": 4.319,
-        "high20": 5480,
-        "low20": 3820,
-        "high60": 5480,
-        "low60": 2990,
-        "lastSwingHigh": {
-          "date": "2026-09-07",
-          "price": 4855
-        },
-        "lastSwingLow": {
-          "date": "2026-09-15",
-          "price": 4430
-        }
+        "ok": false,
+        "reason": "quote-date-not-current",
+        "quoteDate": "2026-09-24",
+        "expectedDate": "2026-09-25"
       },
       "fugleLastUpdated": 1790227800000000,
       "fugleLastUpdatedAt": "2026-09-24T05:30:00.000Z",
-      "sourceAgeSeconds": 116,
-      "sourceFreshWithin7m": true,
-      "quoteDateMatchesTaipeiDate": true,
+      "sourceAgeSeconds": 71920,
+      "sourceFreshWithin7m": false,
+      "quoteDateMatchesTaipeiDate": false,
       "isClose": true,
-      "fetchedAt": "2026-09-24T05:31:56.119Z"
+      "fetchedAt": "2026-09-25T01:28:39.777Z"
     },
     "6757": {
       "ok": true,
@@ -2790,12 +2704,12 @@
         "average": 53.44
       },
       "dailyIndicators": {
-        "ok": true,
+        "ok": false,
         "version": 2,
         "cacheDate": "2026-09-24",
         "asOf": "2026-09-23",
         "fetchedAt": "2026-09-24T02:18:42.856Z",
-        "cacheSource": "github-cache",
+        "cacheSource": "stale-github-cache",
         "adjusted": true,
         "rowCount": 147,
         "projectionBase": {
@@ -2830,39 +2744,23 @@
         "lastSwingLow": {
           "date": "2026-09-16",
           "price": 52.6
-        }
+        },
+        "stale": true,
+        "refreshPending": true
       },
       "projectedDaily": {
-        "ok": true,
-        "source": "live-projected",
-        "asOf": "2026-09-24",
-        "basedOnDailyAsOf": "2026-09-23",
-        "sessionComplete": true,
-        "scaleDiffPct": 0,
-        "ma20": 54.555,
-        "ma60": 55.3728,
-        "atr14": 0.9746,
-        "atr14PctOfClose": 1.825,
-        "high20": 56.3,
-        "low20": 52.6,
-        "high60": 59.49,
-        "low60": 51.45,
-        "lastSwingHigh": {
-          "date": "2026-09-07",
-          "price": 56.3
-        },
-        "lastSwingLow": {
-          "date": "2026-09-16",
-          "price": 52.6
-        }
+        "ok": false,
+        "reason": "quote-date-not-current",
+        "quoteDate": "2026-09-24",
+        "expectedDate": "2026-09-25"
       },
       "fugleLastUpdated": 1790227800000000,
       "fugleLastUpdatedAt": "2026-09-24T05:30:00.000Z",
-      "sourceAgeSeconds": 116,
-      "sourceFreshWithin7m": true,
-      "quoteDateMatchesTaipeiDate": true,
+      "sourceAgeSeconds": 71920,
+      "sourceFreshWithin7m": false,
+      "quoteDateMatchesTaipeiDate": false,
       "isClose": true,
-      "fetchedAt": "2026-09-24T05:31:56.409Z"
+      "fetchedAt": "2026-09-25T01:28:40.056Z"
     },
     "0050": {
       "ok": true,
@@ -3188,40 +3086,40 @@
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-24",
-        "asOf": "2026-09-23",
-        "fetchedAt": "2026-09-24T01:28:41.647Z",
-        "cacheSource": "github-cache",
+        "cacheDate": "2026-09-25",
+        "asOf": "2026-09-24",
+        "fetchedAt": "2026-09-25T01:28:37.965Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
-        "rowCount": 147,
+        "rowCount": 148,
         "projectionBase": {
           "close19Count": 19,
           "close59Count": 59,
-          "lastClose": 112.45,
-          "close19Sum": 2062.2,
-          "close59Sum": 6203.85,
+          "lastClose": 112.4,
+          "close19Sum": 2067.65,
+          "close59Sum": 6208.11,
           "high19": 113.75,
           "low19": 105,
           "high59": 113.75,
           "low59": 91.8
         },
-        "ma20": 108.4125,
-        "ma60": 105.209,
-        "ma20Slope5": 1.55,
-        "ma60Slope5": 0.4508,
-        "ma20Slope5Pct": 1.45,
-        "ma60Slope5Pct": 0.43,
-        "atr14": 1.7906,
-        "atr14PctOfClose": 1.592,
-        "avgVolume20": 75088698,
+        "ma20": 108.73,
+        "ma60": 105.2708,
+        "ma20Slope5": 1.655,
+        "ma60Slope5": 0.4868,
+        "ma20Slope5Pct": 1.546,
+        "ma60Slope5Pct": 0.465,
+        "atr14": 1.7127,
+        "atr14PctOfClose": 1.524,
+        "avgVolume20": 74812302,
         "avgVolume20Unit": "shares",
         "high20": 113.75,
         "low20": 105,
         "high60": 113.75,
         "low60": 91.8,
         "lastSwingHigh": {
-          "date": "2026-09-08",
-          "price": 110.75
+          "date": "2026-09-22",
+          "price": 113.75
         },
         "lastSwingLow": {
           "date": "2026-09-14",
@@ -3229,36 +3127,18 @@
         }
       },
       "projectedDaily": {
-        "ok": true,
-        "source": "live-projected",
-        "asOf": "2026-09-24",
-        "basedOnDailyAsOf": "2026-09-23",
-        "sessionComplete": true,
-        "scaleDiffPct": 0,
-        "ma20": 108.73,
-        "ma60": 105.2708,
-        "atr14": 1.7127,
-        "atr14PctOfClose": 1.524,
-        "high20": 113.75,
-        "low20": 105,
-        "high60": 113.75,
-        "low60": 91.8,
-        "lastSwingHigh": {
-          "date": "2026-09-08",
-          "price": 110.75
-        },
-        "lastSwingLow": {
-          "date": "2026-09-14",
-          "price": 105.85
-        }
+        "ok": false,
+        "reason": "quote-date-not-current",
+        "quoteDate": "2026-09-24",
+        "expectedDate": "2026-09-25"
       },
       "fugleLastUpdated": 1790227800000000,
       "fugleLastUpdatedAt": "2026-09-24T05:30:00.000Z",
-      "sourceAgeSeconds": 115,
-      "sourceFreshWithin7m": true,
-      "quoteDateMatchesTaipeiDate": true,
+      "sourceAgeSeconds": 71918,
+      "sourceFreshWithin7m": false,
+      "quoteDateMatchesTaipeiDate": false,
       "isClose": true,
-      "fetchedAt": "2026-09-24T05:31:55.249Z"
+      "fetchedAt": "2026-09-25T01:28:38.069Z"
     },
     "00713": {
       "ok": true,
@@ -3584,32 +3464,32 @@
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-24",
-        "asOf": "2026-09-23",
-        "fetchedAt": "2026-09-24T01:28:41.644Z",
-        "cacheSource": "github-cache",
+        "cacheDate": "2026-09-25",
+        "asOf": "2026-09-24",
+        "fetchedAt": "2026-09-25T01:28:37.876Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
-        "rowCount": 147,
+        "rowCount": 148,
         "projectionBase": {
           "close19Count": 19,
           "close59Count": 59,
-          "lastClose": 63.65,
-          "close19Sum": 1188.02,
-          "close59Sum": 3575.15,
+          "lastClose": 63.2,
+          "close19Sum": 1190.85,
+          "close59Sum": 3579.6,
           "high19": 63.95,
           "low19": 60.17,
           "high59": 63.95,
           "low59": 58.16
         },
-        "ma20": 62.422,
-        "ma60": 60.565,
-        "ma20Slope5": 0.857,
-        "ma60Slope5": 0.3873,
-        "ma20Slope5Pct": 1.392,
-        "ma60Slope5Pct": 0.644,
-        "atr14": 0.5163,
-        "atr14PctOfClose": 0.811,
-        "avgVolume20": 4717901,
+        "ma20": 62.561,
+        "ma60": 60.6392,
+        "ma20Slope5": 0.81,
+        "ma60Slope5": 0.3888,
+        "ma20Slope5Pct": 1.312,
+        "ma60Slope5Pct": 0.645,
+        "atr14": 0.5187,
+        "atr14PctOfClose": 0.821,
+        "avgVolume20": 4710946,
         "avgVolume20Unit": "shares",
         "high20": 63.95,
         "low20": 60.17,
@@ -3625,36 +3505,18 @@
         }
       },
       "projectedDaily": {
-        "ok": true,
-        "source": "live-projected",
-        "asOf": "2026-09-24",
-        "basedOnDailyAsOf": "2026-09-23",
-        "sessionComplete": true,
-        "scaleDiffPct": 0,
-        "ma20": 62.561,
-        "ma60": 60.6392,
-        "atr14": 0.5187,
-        "atr14PctOfClose": 0.821,
-        "high20": 63.95,
-        "low20": 60.17,
-        "high60": 63.95,
-        "low60": 58.16,
-        "lastSwingHigh": {
-          "date": "2026-09-17",
-          "price": 63.95
-        },
-        "lastSwingLow": {
-          "date": "2026-09-11",
-          "price": 62.13
-        }
+        "ok": false,
+        "reason": "quote-date-not-current",
+        "quoteDate": "2026-09-24",
+        "expectedDate": "2026-09-25"
       },
       "fugleLastUpdated": 1790227800000000,
       "fugleLastUpdatedAt": "2026-09-24T05:30:00.000Z",
-      "sourceAgeSeconds": 115,
-      "sourceFreshWithin7m": true,
-      "quoteDateMatchesTaipeiDate": true,
+      "sourceAgeSeconds": 71918,
+      "sourceFreshWithin7m": false,
+      "quoteDateMatchesTaipeiDate": false,
       "isClose": true,
-      "fetchedAt": "2026-09-24T05:31:55.257Z"
+      "fetchedAt": "2026-09-25T01:28:38.041Z"
     }
   }
 }
