@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-09-25T05:31:44.035Z",
+  "updatedAt": "2026-09-28T01:28:09.918Z",
   "source": "Fugle Market Data API",
   "bridgeVersion": "3.2.3",
   "triggerContext": {
-    "cron": "31 5 * * MON-FRI",
-    "scheduledTime": "2026-09-25T05:31:34.000Z"
+    "cron": "28 1 * * MON-FRI",
+    "scheduledTime": "2026-09-28T01:28:02.000Z"
   },
   "market": "TW",
   "watchlist": [
@@ -63,14 +63,34 @@
   "symbolCount": 9,
   "dailyContext": {
     "version": 2,
-    "cacheDate": "2026-09-25",
+    "cacheDate": "2026-09-28",
     "historicalAdjusted": true,
-    "staleAtStart": 0,
+    "staleAtStart": 9,
     "refreshBudget": 8,
-    "refreshAttempted": [],
-    "refreshedThisRun": [],
-    "remainingAfterRun": 0,
-    "pendingSymbols": [],
+    "refreshAttempted": [
+      "0050",
+      "00713",
+      "2303",
+      "2308",
+      "2330",
+      "2357",
+      "2408",
+      "2454"
+    ],
+    "refreshedThisRun": [
+      "0050",
+      "00713",
+      "2303",
+      "2308",
+      "2330",
+      "2357",
+      "2408",
+      "2454"
+    ],
+    "remainingAfterRun": 1,
+    "pendingSymbols": [
+      "6757"
+    ],
     "note": "Daily indicators use completed historical daily candles and are cached through the previous GitHub snapshot for the same Taipei calendar date. projectedDaily combines that prior completed-day background with the current live session without an extra historical subrequest."
   },
   "health": {
@@ -85,8 +105,10 @@
     "currentTradingDateLikely": false,
     "freshWithin7mSymbolCount": 0,
     "freshWithin7mSymbolRatio": 0,
-    "dailyPendingCount": 0,
-    "dailyPendingSymbols": [],
+    "dailyPendingCount": 1,
+    "dailyPendingSymbols": [
+      "6757"
+    ],
     "externalSubrequestLimit": 50,
     "subrequestSafetyMargin": 1,
     "watchlistMax": 20
@@ -416,10 +438,10 @@
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-25",
+        "cacheDate": "2026-09-28",
         "asOf": "2026-09-24",
-        "fetchedAt": "2026-09-25T01:28:38.643Z",
-        "cacheSource": "github-cache",
+        "fetchedAt": "2026-09-28T01:28:08.496Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
         "rowCount": 148,
         "projectionBase": {
@@ -460,15 +482,15 @@
         "ok": false,
         "reason": "quote-date-not-current",
         "quoteDate": "2026-09-24",
-        "expectedDate": "2026-09-25"
+        "expectedDate": "2026-09-28"
       },
       "fugleLastUpdated": 1790227800000000,
       "fugleLastUpdatedAt": "2026-09-24T05:30:00.000Z",
-      "sourceAgeSeconds": 86503,
+      "sourceAgeSeconds": 331089,
       "sourceFreshWithin7m": false,
       "quoteDateMatchesTaipeiDate": false,
       "isClose": true,
-      "fetchedAt": "2026-09-25T05:31:42.801Z"
+      "fetchedAt": "2026-09-28T01:28:08.727Z"
     },
     "2308": {
       "ok": true,
@@ -794,10 +816,10 @@
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-25",
+        "cacheDate": "2026-09-28",
         "asOf": "2026-09-24",
-        "fetchedAt": "2026-09-25T01:28:38.360Z",
-        "cacheSource": "github-cache",
+        "fetchedAt": "2026-09-28T01:28:08.471Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
         "rowCount": 148,
         "projectionBase": {
@@ -838,15 +860,15 @@
         "ok": false,
         "reason": "quote-date-not-current",
         "quoteDate": "2026-09-24",
-        "expectedDate": "2026-09-25"
+        "expectedDate": "2026-09-28"
       },
       "fugleLastUpdated": 1790227800000000,
       "fugleLastUpdatedAt": "2026-09-24T05:30:00.000Z",
-      "sourceAgeSeconds": 86503,
+      "sourceAgeSeconds": 331089,
       "sourceFreshWithin7m": false,
       "quoteDateMatchesTaipeiDate": false,
       "isClose": true,
-      "fetchedAt": "2026-09-25T05:31:42.797Z"
+      "fetchedAt": "2026-09-28T01:28:08.750Z"
     },
     "2330": {
       "ok": true,
@@ -1172,10 +1194,10 @@
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-25",
+        "cacheDate": "2026-09-28",
         "asOf": "2026-09-24",
-        "fetchedAt": "2026-09-25T01:28:38.938Z",
-        "cacheSource": "github-cache",
+        "fetchedAt": "2026-09-28T01:28:09.040Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
         "rowCount": 148,
         "projectionBase": {
@@ -1216,15 +1238,15 @@
         "ok": false,
         "reason": "quote-date-not-current",
         "quoteDate": "2026-09-24",
-        "expectedDate": "2026-09-25"
+        "expectedDate": "2026-09-28"
       },
       "fugleLastUpdated": 1790227800000000,
       "fugleLastUpdatedAt": "2026-09-24T05:30:00.000Z",
-      "sourceAgeSeconds": 86503,
+      "sourceAgeSeconds": 331089,
       "sourceFreshWithin7m": false,
       "quoteDateMatchesTaipeiDate": false,
       "isClose": true,
-      "fetchedAt": "2026-09-25T05:31:43.165Z"
+      "fetchedAt": "2026-09-28T01:28:09.295Z"
     },
     "2357": {
       "ok": true,
@@ -1550,10 +1572,10 @@
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-25",
+        "cacheDate": "2026-09-28",
         "asOf": "2026-09-24",
-        "fetchedAt": "2026-09-25T01:28:38.936Z",
-        "cacheSource": "github-cache",
+        "fetchedAt": "2026-09-28T01:28:09.041Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
         "rowCount": 148,
         "projectionBase": {
@@ -1594,15 +1616,15 @@
         "ok": false,
         "reason": "quote-date-not-current",
         "quoteDate": "2026-09-24",
-        "expectedDate": "2026-09-25"
+        "expectedDate": "2026-09-28"
       },
       "fugleLastUpdated": 1790227800000000,
       "fugleLastUpdatedAt": "2026-09-24T05:30:00.000Z",
-      "sourceAgeSeconds": 86503,
+      "sourceAgeSeconds": 331089,
       "sourceFreshWithin7m": false,
       "quoteDateMatchesTaipeiDate": false,
       "isClose": true,
-      "fetchedAt": "2026-09-25T05:31:43.182Z"
+      "fetchedAt": "2026-09-28T01:28:09.041Z"
     },
     "2408": {
       "ok": true,
@@ -1928,10 +1950,10 @@
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-25",
+        "cacheDate": "2026-09-28",
         "asOf": "2026-09-24",
-        "fetchedAt": "2026-09-25T01:28:39.494Z",
-        "cacheSource": "github-cache",
+        "fetchedAt": "2026-09-28T01:28:09.633Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
         "rowCount": 148,
         "projectionBase": {
@@ -1972,15 +1994,15 @@
         "ok": false,
         "reason": "quote-date-not-current",
         "quoteDate": "2026-09-24",
-        "expectedDate": "2026-09-25"
+        "expectedDate": "2026-09-28"
       },
       "fugleLastUpdated": 1790227800000000,
       "fugleLastUpdatedAt": "2026-09-24T05:30:00.000Z",
-      "sourceAgeSeconds": 86503,
+      "sourceAgeSeconds": 331090,
       "sourceFreshWithin7m": false,
       "quoteDateMatchesTaipeiDate": false,
       "isClose": true,
-      "fetchedAt": "2026-09-25T05:31:43.466Z"
+      "fetchedAt": "2026-09-28T01:28:09.633Z"
     },
     "2454": {
       "ok": true,
@@ -2306,10 +2328,10 @@
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-25",
+        "cacheDate": "2026-09-28",
         "asOf": "2026-09-24",
-        "fetchedAt": "2026-09-25T01:28:39.777Z",
-        "cacheSource": "github-cache",
+        "fetchedAt": "2026-09-28T01:28:09.632Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
         "rowCount": 148,
         "projectionBase": {
@@ -2350,15 +2372,15 @@
         "ok": false,
         "reason": "quote-date-not-current",
         "quoteDate": "2026-09-24",
-        "expectedDate": "2026-09-25"
+        "expectedDate": "2026-09-28"
       },
       "fugleLastUpdated": 1790227800000000,
       "fugleLastUpdatedAt": "2026-09-24T05:30:00.000Z",
-      "sourceAgeSeconds": 86504,
+      "sourceAgeSeconds": 331090,
       "sourceFreshWithin7m": false,
       "quoteDateMatchesTaipeiDate": false,
       "isClose": true,
-      "fetchedAt": "2026-09-25T05:31:43.747Z"
+      "fetchedAt": "2026-09-28T01:28:09.632Z"
     },
     "6757": {
       "ok": true,
@@ -2682,12 +2704,12 @@
         "average": 53.44
       },
       "dailyIndicators": {
-        "ok": true,
+        "ok": false,
         "version": 2,
         "cacheDate": "2026-09-25",
         "asOf": "2026-09-24",
         "fetchedAt": "2026-09-25T02:18:41.158Z",
-        "cacheSource": "github-cache",
+        "cacheSource": "stale-github-cache",
         "adjusted": true,
         "rowCount": 148,
         "projectionBase": {
@@ -2722,21 +2744,23 @@
         "lastSwingLow": {
           "date": "2026-09-16",
           "price": 52.6
-        }
+        },
+        "stale": true,
+        "refreshPending": true
       },
       "projectedDaily": {
         "ok": false,
         "reason": "quote-date-not-current",
         "quoteDate": "2026-09-24",
-        "expectedDate": "2026-09-25"
+        "expectedDate": "2026-09-28"
       },
       "fugleLastUpdated": 1790227800000000,
       "fugleLastUpdatedAt": "2026-09-24T05:30:00.000Z",
-      "sourceAgeSeconds": 86504,
+      "sourceAgeSeconds": 331090,
       "sourceFreshWithin7m": false,
       "quoteDateMatchesTaipeiDate": false,
       "isClose": true,
-      "fetchedAt": "2026-09-25T05:31:44.035Z"
+      "fetchedAt": "2026-09-28T01:28:09.918Z"
     },
     "0050": {
       "ok": true,
@@ -3062,10 +3086,10 @@
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-25",
+        "cacheDate": "2026-09-28",
         "asOf": "2026-09-24",
-        "fetchedAt": "2026-09-25T01:28:37.965Z",
-        "cacheSource": "github-cache",
+        "fetchedAt": "2026-09-28T01:28:08.164Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
         "rowCount": 148,
         "projectionBase": {
@@ -3106,15 +3130,15 @@
         "ok": false,
         "reason": "quote-date-not-current",
         "quoteDate": "2026-09-24",
-        "expectedDate": "2026-09-25"
+        "expectedDate": "2026-09-28"
       },
       "fugleLastUpdated": 1790227800000000,
       "fugleLastUpdatedAt": "2026-09-24T05:30:00.000Z",
-      "sourceAgeSeconds": 86503,
+      "sourceAgeSeconds": 331088,
       "sourceFreshWithin7m": false,
       "quoteDateMatchesTaipeiDate": false,
       "isClose": true,
-      "fetchedAt": "2026-09-25T05:31:42.501Z"
+      "fetchedAt": "2026-09-28T01:28:08.171Z"
     },
     "00713": {
       "ok": true,
@@ -3440,10 +3464,10 @@
       "dailyIndicators": {
         "ok": true,
         "version": 2,
-        "cacheDate": "2026-09-25",
+        "cacheDate": "2026-09-28",
         "asOf": "2026-09-24",
-        "fetchedAt": "2026-09-25T01:28:37.876Z",
-        "cacheSource": "github-cache",
+        "fetchedAt": "2026-09-28T01:28:08.178Z",
+        "cacheSource": "fugle-historical",
         "adjusted": true,
         "rowCount": 148,
         "projectionBase": {
@@ -3484,15 +3508,15 @@
         "ok": false,
         "reason": "quote-date-not-current",
         "quoteDate": "2026-09-24",
-        "expectedDate": "2026-09-25"
+        "expectedDate": "2026-09-28"
       },
       "fugleLastUpdated": 1790227800000000,
       "fugleLastUpdatedAt": "2026-09-24T05:30:00.000Z",
-      "sourceAgeSeconds": 86503,
+      "sourceAgeSeconds": 331088,
       "sourceFreshWithin7m": false,
       "quoteDateMatchesTaipeiDate": false,
       "isClose": true,
-      "fetchedAt": "2026-09-25T05:31:42.502Z"
+      "fetchedAt": "2026-09-28T01:28:08.178Z"
     }
   }
 }
